@@ -7,7 +7,7 @@ goog.require('reagent.core');
 goog.require('reagent.ratom');
 re_frame.interop.on_load = (function re_frame$interop$on_load(listener){
 try{return goog.events.listen(self,"load",listener);
-}catch (e8674){var _ = e8674;
+}catch (e8773){var _ = e8773;
 return null;
 }});
 re_frame.interop.next_tick = goog.async.nextTick;
@@ -75,18 +75,18 @@ return Date.now();
  */
 re_frame.interop.reagent_id = (function re_frame$interop$reagent_id(reactive_val){
 if((((!((reactive_val == null))))?((((false) || ((cljs.core.PROTOCOL_SENTINEL === reactive_val.reagent$ratom$IReactiveAtom$))))?true:false):false)){
-return [(function (){var pred__8681 = cljs.core.instance_QMARK_;
-var expr__8682 = reactive_val;
-if(cljs.core.truth_(pred__8681.call(null,reagent.ratom.RAtom,expr__8682))){
+return [(function (){var pred__8780 = cljs.core.instance_QMARK_;
+var expr__8781 = reactive_val;
+if(cljs.core.truth_(pred__8780.call(null,reagent.ratom.RAtom,expr__8781))){
 return "ra";
 } else {
-if(cljs.core.truth_(pred__8681.call(null,reagent.ratom.RCursor,expr__8682))){
+if(cljs.core.truth_(pred__8780.call(null,reagent.ratom.RCursor,expr__8781))){
 return "rc";
 } else {
-if(cljs.core.truth_(pred__8681.call(null,reagent.ratom.Reaction,expr__8682))){
+if(cljs.core.truth_(pred__8780.call(null,reagent.ratom.Reaction,expr__8781))){
 return "rx";
 } else {
-if(cljs.core.truth_(pred__8681.call(null,reagent.ratom.Track,expr__8682))){
+if(cljs.core.truth_(pred__8780.call(null,reagent.ratom.Track,expr__8781))){
 return "tr";
 } else {
 return "other";

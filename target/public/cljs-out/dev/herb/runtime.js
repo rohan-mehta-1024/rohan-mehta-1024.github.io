@@ -48,12 +48,12 @@ herb.runtime.options = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMP
 /**
  * Either update a style in state, or create it depending on existing state.
  */
-herb.runtime.update_state = (function herb$runtime$update_state(state,ident,p__10236,css){
-var map__10237 = p__10236;
-var map__10237__$1 = (((((!((map__10237 == null))))?(((((map__10237.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__10237.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__10237):map__10237);
-var data = cljs.core.get.call(null,map__10237__$1,new cljs.core.Keyword(null,"data","data",-232669377));
-var data_string = cljs.core.get.call(null,map__10237__$1,new cljs.core.Keyword(null,"data-string","data-string",1508502883));
-var element = cljs.core.get.call(null,map__10237__$1,new cljs.core.Keyword(null,"element","element",1974019749));
+herb.runtime.update_state = (function herb$runtime$update_state(state,ident,p__11448,css){
+var map__11449 = p__11448;
+var map__11449__$1 = (((((!((map__11449 == null))))?(((((map__11449.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11449.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__11449):map__11449);
+var data = cljs.core.get.call(null,map__11449__$1,new cljs.core.Keyword(null,"data","data",-232669377));
+var data_string = cljs.core.get.call(null,map__11449__$1,new cljs.core.Keyword(null,"data-string","data-string",1508502883));
+var element = cljs.core.get.call(null,map__11449__$1,new cljs.core.Keyword(null,"element","element",1974019749));
 var css__$1 = (function (){var temp__5455__auto__ = cljs.core.get.call(null,cljs.core.deref.call(null,herb.runtime.injected_styles),ident);
 if(cljs.core.truth_(temp__5455__auto__)){
 var old = temp__5455__auto__;
@@ -69,26 +69,26 @@ herb.runtime.combinator_fns = new cljs.core.PersistentArrayMap(null, 4, [new clj
  * Renders CSS, and appends to DOM. Ensure state is in sync with DOM.
  */
 herb.runtime.render_style_BANG_ = (function herb$runtime$render_style_BANG_(identifier,new$){
-var style = (function (){var vec__10239 = new cljs.core.Keyword(null,"data","data",-232669377).cljs$core$IFn$_invoke$arity$1(new$);
-var classname = cljs.core.nth.call(null,vec__10239,(0),null);
-var map__10242 = cljs.core.nth.call(null,vec__10239,(1),null);
-var map__10242__$1 = (((((!((map__10242 == null))))?(((((map__10242.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__10242.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__10242):map__10242);
-var style = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"style","style",-496642736));
-var pseudo = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"pseudo","pseudo",851696982));
-var media = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"media","media",-1066138403));
-var supports = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"supports","supports",1501242067));
-var prefix = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"prefix","prefix",-265908465));
-var vendors = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"vendors","vendors",-153040496));
-var combinators = cljs.core.get.call(null,map__10242__$1,new cljs.core.Keyword(null,"combinators","combinators",-1995039000));
-return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [classname,cljs.core.with_meta.call(null,style,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"prefix","prefix",-265908465),prefix,new cljs.core.Keyword(null,"vendors","vendors",-153040496),vendors], null)),pseudo,media,supports], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.map.call(null,(function (p__10244){
-var vec__10245 = p__10244;
-var vec__10248 = cljs.core.nth.call(null,vec__10245,(0),null);
-var seq__10249 = cljs.core.seq.call(null,vec__10248);
-var first__10250 = cljs.core.first.call(null,seq__10249);
-var seq__10249__$1 = cljs.core.next.call(null,seq__10249);
-var combinator = first__10250;
-var elements = seq__10249__$1;
-var style__$1 = cljs.core.nth.call(null,vec__10245,(1),null);
+var style = (function (){var vec__11451 = new cljs.core.Keyword(null,"data","data",-232669377).cljs$core$IFn$_invoke$arity$1(new$);
+var classname = cljs.core.nth.call(null,vec__11451,(0),null);
+var map__11454 = cljs.core.nth.call(null,vec__11451,(1),null);
+var map__11454__$1 = (((((!((map__11454 == null))))?(((((map__11454.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__11454.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__11454):map__11454);
+var style = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"style","style",-496642736));
+var pseudo = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"pseudo","pseudo",851696982));
+var media = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"media","media",-1066138403));
+var supports = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"supports","supports",1501242067));
+var prefix = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"prefix","prefix",-265908465));
+var vendors = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"vendors","vendors",-153040496));
+var combinators = cljs.core.get.call(null,map__11454__$1,new cljs.core.Keyword(null,"combinators","combinators",-1995039000));
+return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [classname,cljs.core.with_meta.call(null,style,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"prefix","prefix",-265908465),prefix,new cljs.core.Keyword(null,"vendors","vendors",-153040496),vendors], null)),pseudo,media,supports], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.map.call(null,(function (p__11456){
+var vec__11457 = p__11456;
+var vec__11460 = cljs.core.nth.call(null,vec__11457,(0),null);
+var seq__11461 = cljs.core.seq.call(null,vec__11460);
+var first__11462 = cljs.core.first.call(null,seq__11461);
+var seq__11461__$1 = cljs.core.next.call(null,seq__11461);
+var combinator = first__11462;
+var elements = seq__11461__$1;
+var style__$1 = cljs.core.nth.call(null,vec__11457,(1),null);
 var temp__5455__auto__ = cljs.core.get.call(null,herb.runtime.combinator_fns,combinator);
 if(cljs.core.truth_(temp__5455__auto__)){
 var cfn = temp__5455__auto__;
@@ -131,11 +131,11 @@ return element;
  */
 herb.runtime.create_style_BANG_ = (function herb$runtime$create_style_BANG_(identifier,new$,data_str){
 var element = herb.runtime.create_element_BANG_.call(null,data_str);
-return herb.runtime.render_style_BANG_.call(null,identifier,(function (){var G__10251 = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"data","data",-232669377),new$,new cljs.core.Keyword(null,"element","element",1974019749),element], null);
+return herb.runtime.render_style_BANG_.call(null,identifier,(function (){var G__11463 = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"data","data",-232669377),new$,new cljs.core.Keyword(null,"element","element",1974019749),element], null);
 if(cljs.core.truth_(data_str)){
-return cljs.core.assoc.call(null,G__10251,new cljs.core.Keyword(null,"data-string","data-string",1508502883),data_str);
+return cljs.core.assoc.call(null,G__11463,new cljs.core.Keyword(null,"data-string","data-string",1508502883),data_str);
 } else {
-return G__10251;
+return G__11463;
 }
 })());
 });
@@ -164,14 +164,14 @@ return cljs.core.get.call(null,cljs.core.deref.call(null,herb.runtime.injected_s
  */
 herb.runtime.inject_obj_BANG_ = (function herb$runtime$inject_obj_BANG_(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___10256 = arguments.length;
-var i__4737__auto___10257 = (0);
+var len__4736__auto___11468 = arguments.length;
+var i__4737__auto___11469 = (0);
 while(true){
-if((i__4737__auto___10257 < len__4736__auto___10256)){
-args__4742__auto__.push((arguments[i__4737__auto___10257]));
+if((i__4737__auto___11469 < len__4736__auto___11468)){
+args__4742__auto__.push((arguments[i__4737__auto___11469]));
 
-var G__10258 = (i__4737__auto___10257 + (1));
-i__4737__auto___10257 = G__10258;
+var G__11470 = (i__4737__auto___11469 + (1));
+i__4737__auto___11469 = G__11470;
 continue;
 } else {
 }
@@ -183,9 +183,9 @@ return herb.runtime.inject_obj_BANG_.cljs$core$IFn$_invoke$arity$variadic((argum
 });
 
 (herb.runtime.inject_obj_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (sym,dispatch,obj){
-var state = (function (){var G__10255 = dispatch;
-var G__10255__$1 = (((G__10255 instanceof cljs.core.Keyword))?G__10255.fqn:null);
-switch (G__10255__$1) {
+var state = (function (){var G__11467 = dispatch;
+var G__11467__$1 = (((G__11467 instanceof cljs.core.Keyword))?G__11467.fqn:null);
+switch (G__11467__$1) {
 case "global":
 return herb.runtime.injected_global;
 
@@ -195,7 +195,7 @@ return herb.runtime.injected_keyframes;
 
 break;
 default:
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__10255__$1)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(G__11467__$1)].join('')));
 
 }
 })();
@@ -203,15 +203,15 @@ if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"data","data",-232669377)
 return null;
 } else {
 var css_str = garden.core.css.call(null,new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"pretty-print?","pretty-print?",1932217158),herb.runtime.dev_QMARK_], null),obj);
-var element_10260 = (function (){var or__4126__auto__ = document.querySelector(["style[data-herb=\"",cljs.core.name.call(null,dispatch),"\"]"].join(''));
+var element_11472 = (function (){var or__4126__auto__ = document.querySelector(["style[data-herb=\"",cljs.core.name.call(null,dispatch),"\"]"].join(''));
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
 } else {
 return herb.runtime.create_element_BANG_.call(null,cljs.core.name.call(null,dispatch));
 }
 })();
-var inner_html_10261 = goog.object.get(element_10260,"innerHTML");
-goog.object.set(element_10260,"innerHTML",[cljs.core.str.cljs$core$IFn$_invoke$arity$1(inner_html_10261),((herb.runtime.dev_QMARK_)?"\n":null),cljs.core.str.cljs$core$IFn$_invoke$arity$1(css_str)].join(''));
+var inner_html_11473 = goog.object.get(element_11472,"innerHTML");
+goog.object.set(element_11472,"innerHTML",[cljs.core.str.cljs$core$IFn$_invoke$arity$1(inner_html_11473),((herb.runtime.dev_QMARK_)?"\n":null),cljs.core.str.cljs$core$IFn$_invoke$arity$1(css_str)].join(''));
 
 return cljs.core.swap_BANG_.call(null,state,cljs.core.assoc,sym,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"data","data",-232669377),obj,new cljs.core.Keyword(null,"css","css",1135045163),css_str], null));
 }
@@ -220,13 +220,13 @@ return cljs.core.swap_BANG_.call(null,state,cljs.core.assoc,sym,new cljs.core.Pe
 (herb.runtime.inject_obj_BANG_.cljs$lang$maxFixedArity = (2));
 
 /** @this {Function} */
-(herb.runtime.inject_obj_BANG_.cljs$lang$applyTo = (function (seq10252){
-var G__10253 = cljs.core.first.call(null,seq10252);
-var seq10252__$1 = cljs.core.next.call(null,seq10252);
-var G__10254 = cljs.core.first.call(null,seq10252__$1);
-var seq10252__$2 = cljs.core.next.call(null,seq10252__$1);
+(herb.runtime.inject_obj_BANG_.cljs$lang$applyTo = (function (seq11464){
+var G__11465 = cljs.core.first.call(null,seq11464);
+var seq11464__$1 = cljs.core.next.call(null,seq11464);
+var G__11466 = cljs.core.first.call(null,seq11464__$1);
+var seq11464__$2 = cljs.core.next.call(null,seq11464__$1);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__10253,G__10254,seq10252__$2);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__11465,G__11466,seq11464__$2);
 }));
 
 
