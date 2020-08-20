@@ -1,4 +1,4 @@
-(ns personal-website.views.new-homepage-views
+(ns personal-website.views.homepage-views.nav-bar
   (:require [re-frame.core :as re-frame]
             [personal-website.db :as db]
             [personal-website.subs :as subs]))
@@ -20,7 +20,6 @@
     ["All Time Favorites"
      "Book Reviews"
      "placeholder"]]])
-
 
 (defn tooltips [sub-subpages]
   (->> (for [sub-subpage sub-subpages
@@ -58,7 +57,6 @@
      [:div {:class "lines"}]
      [:div {:class "lines"}]])
 
-
 (defn side-nav-arrow-subpages [sub-subpages]
   (->> (for [sub-subpage sub-subpages
              :when (not= sub-subpage "placeholder")]
@@ -76,7 +74,6 @@
          (get-in subpage-data)
          side-nav-arrow-subpages)]))
 
-
 (defn side-nav []
     (->> (for [[text id] [["About" 1] ["Projects" 2] ["Writings" 3] ["Readings" 4]]]
            (->> (side-nav-skeleton text id)
@@ -88,25 +85,9 @@
          (into [])
          (conj [:div {:id "side-nav-background"}])))
 
-(defn picture []
-  )
-
-(defn stuff []
-  [:div
-   [:p "hello my name is"]])
-
 (defn nav-bar []
   [:header
    [:h1 {:id "my-name"} "Rohan Mehta"]
    (subpages)
    (side-nav)
    (hamburger-button)])
-
-(defn content []
-  (stuff))
-
-(defn html []
-  [:div
-   (nav-bar)
-   (stuff)
-   ])

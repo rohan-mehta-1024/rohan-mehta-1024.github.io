@@ -88,13 +88,6 @@
          (into [])
          (conj [:div {:id "side-nav-background"}])))
 
-(defn picture []
-  )
-
-(defn stuff []
-  [:div
-   [:p "hello my name is"]])
-
 (defn nav-bar []
   [:header
    [:h1 {:id "my-name"} "Rohan Mehta"]
@@ -102,11 +95,18 @@
    (side-nav)
    (hamburger-button)])
 
-(defn content []
-  (stuff))
+
+(defn about-me []
+  [:div {:class "about me"}
+   [:p "so do you still work??"]])
+
+
+
+(defn page-content []
+  (about-me))
 
 (defn html []
   [:div
    (nav-bar)
-   (stuff)
+   (page-content)
    ])

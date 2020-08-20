@@ -1,9 +1,6 @@
 (ns personal-website.views
-  (:require-macros [garden.def :refer [defstylesheet]])
-  (:require [personal-website.views.new-homepage-views :as views]
-            [personal-website.styles.new-homepage-styles :as styles]
-            [personal-website.subs :as subs]
-            [re-frame.core :as re-frame]
+  (:require [personal-website.views.homepage-views.homepage :as views]
+            [personal-website.styles.homepage-styles.homepage :as styles]
             [garden.core :refer [css]]))
 
 (defn generate-and-inject-style-tag []
