@@ -3,8 +3,8 @@
 
 
 (defn about-me []
-  [:div
-   [:p "hello what is your name this is mine"]])
+  [:div {:id "about-me-container"}
+   [:p {:id "about-me"} "hello what is your name this is mine" ]])
 
 (defn page-content []
   (about-me))

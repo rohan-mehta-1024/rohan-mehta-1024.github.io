@@ -4,5 +4,9 @@
             [garden.units :refer [px vw]]))
 
 
+(defn about-me []
+  [:#about-me {:float "right"
+               :margin-right "10%"}])
+
 (defn page-content []
-  [])
+  (about-me))

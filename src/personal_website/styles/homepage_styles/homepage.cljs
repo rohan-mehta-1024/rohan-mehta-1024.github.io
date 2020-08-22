@@ -28,4 +28,5 @@
    (subpages)
    (hamburger-button)
    (side-nav)
+   (page-content)
    (media-queries)])

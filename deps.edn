@@ -6,4 +6,4 @@
         herb {:mvn/version "0.10.0"}
         garden {:mvn/version "1.3.9"}}
  :aliases {:fig {:main-opts ["-m" "figwheel.main"]}}
- :paths ["src" "resources" "target"]}
+ :paths ["src" "resources"]}
