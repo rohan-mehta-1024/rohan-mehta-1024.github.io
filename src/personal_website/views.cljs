@@ -31,9 +31,9 @@
 
 (defn  styles []  (reduce into [(homepage-styles) (all-posts) (footer)]))
 
+
 (defn inject-css [text-css]
-  (-> text-css (partial css {:vendors ["webkit"] :autoprefix #{:transition}})
-      update-page-css))
+  (-> text-css css update-page-css))
 
 
 
