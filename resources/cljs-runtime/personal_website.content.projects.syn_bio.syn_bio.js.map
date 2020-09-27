@@ -1,0 +1,1 @@
+{"version":3,"sources":["personal_website/content/projects/syn_bio/syn_bio.cljs"],"mappings":";AAGA,AAAA,AAAKA","names":["personal-website.content.projects.syn-bio.syn-bio/posts"],"sourcesContent":["(ns personal-website.content.projects.syn-bio.syn-bio)\n\n\n(def posts [])\n"]}

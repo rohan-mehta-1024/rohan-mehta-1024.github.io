@@ -21,3 +21,13 @@
   :homepage/side-nav-arrow
   (fn [db _]
     (-> db :homepage :side-nav-arrow)))
+
+(re-frame/reg-sub
+  :homepage/search
+  (fn [db _]
+    (-> db :homepage :search)))
+
+(re-frame/reg-sub
+  :homepage/search-term
+  (fn [db _]
+    (-> db :homepage :search-term)))

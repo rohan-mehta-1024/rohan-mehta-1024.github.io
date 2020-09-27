@@ -1,7 +1,13 @@
 (ns personal-website.views
-  (:require [personal-website.views.homepage-views.homepage :as views]
-            [personal-website.styles.homepage-styles.homepage :as styles]
-            [garden.core :refer [css]]))
+  (:require [re-frame.core :as re-frame]
+            [kee-frame.core :as k]
+            [garden.core :refer [css]]
+            [personal-website.views.all-posts-html :refer [display]]
+            [personal-website.styles.all-posts-stylesheet :refer [all-posts]]
+            [personal-website.styles.footer-stylesheet :refer [footer]]
+            [personal-website.views.homepage-views.homepage-html :refer [homepage-html]]
+            [personal-website.styles.homepage-styles.homepage-stylesheet :refer [homepage-styles]]))
+
 
 (defn generate-and-inject-style-tag []
   "Injects a style tag with the id 'injected-css' into the page's head tag"
@@ -20,8 +26,31 @@
                       style-tag-query)]
       (aset style-tag "innerHTML" input-css)))
 
+(def route-view-mapping {:homepage [homepage-html]
+                         :blog-posts display})
+
+(defn  styles []  (reduce into [(homepage-styles) (all-posts) (footer)]))
+
+
+(def l (print styles))
+(defn inject-css [text-css]
+  (-> text-css css update-page-css))
+
+
 
  (defn main-panel []
-    (let [inject-css (comp update-page-css css)
-          injected-css (inject-css (styles/homepage-styles))]
-     (views/html)))
+    (let [injected-css (inject-css (styles))]
+      [k/switch-route (fn [route] (-> route :data :name))
+         :homepage (route-view-mapping :homepage)
+         ;:who-i-am
+
+
+         :syn-bio display
+         :comp-sci display
+
+         :blog-posts display
+         :essays display
+         :stories display
+         :poems display
+         :papers display
+         nil [homepage-html]]))
