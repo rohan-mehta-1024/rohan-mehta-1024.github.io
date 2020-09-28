@@ -1,6 +1,7 @@
 (ns personal-website.styles.preview-stylesheet
   (:require [garden.units :refer [px]]
-            [garden.selectors :as s]))
+            [garden.selectors :as s]
+            [garden.stylesheet :refer [at-media]]))
 
 
 
@@ -31,7 +32,13 @@
                    :line-height (px 25)
                    :margin-top (px 15)}])
 
+(defn media-query-1 []
+  (at-media {:max-width (px 400)}
+      [[:.preview-title {:font-size (px 22)}]
+       [:.preview-header {:font-size (px 16)}]]))
+
 (defn preview []
   [(preview-header)
    (preview-title)
-   (preview-text)])
+   (preview-text)
+   (media-query-1)])

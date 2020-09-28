@@ -13,7 +13,8 @@
 (defn footer-part-1 []
   [:#footer-part-1 {:position "relative"
                     :top (px 10)
-                    :z-index -300}
+                    ;:z-index -300
+                    }
    [(s/+ s/a s/a) {:margin-left (px 50)}]
    [(s/& s/before) {:content "''"
                     :display "block"
@@ -30,6 +31,16 @@
                     :padding-bottom (px 7)
                     :z-index -300}])
 
+(defn email-img []
+  [:#email-img {:width (px 50)
+                :margin-bottom (px -15)}])
+
+(defn github-img []
+  [:#github-img {:width (px 50)
+                :margin-bottom (px -15)}])
+
+
+
 (defn links []
   [:.links {:color "#333"
             :font-family "WorkSansBold"
@@ -44,11 +55,17 @@
   (at-media {:max-width (px 800)}
       [:#whole-footer {:margin-top (px 20)}]))
 
+(defn media-query-2 []
+  (at-media {:max-width (px 400)}
+      [:#footer-part-2 {:font-size (px 13)}]))
 
 (defn footer []
   [(whole-footer)
    (footer-part-1)
    (footer-part-2)
+   (email-img)
+   (github-img)
    (links)
    (caption)
+   (media-query-2)
    ])

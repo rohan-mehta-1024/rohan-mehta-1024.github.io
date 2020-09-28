@@ -2,11 +2,17 @@
 
 (defn links []
   [:div {:id "footer-part-1"}
-   [:a {:class "icon-github social-button borderless static"
+   [:a {:class "icon-github social-button"
         :href "https://github.com/rohan-mehta-1024"
-        :style {:margin-left "25px"}}]
-   [:a {:class "icon-rss social-button borderless static"
-        :href "http://rohan-mehta-1024.github.io/rss"}]])
+        :style {:margin-left "25px"}
+        }]
+   [:a {:class "icon-rss social-button"
+        :href "http://rohan-mehta-1024.github.io/rss"}]
+   [:a {:href "mailto:rohanm1024@gmail.com"}
+    [:img {:src "/resources/email.png"
+              :id "email-img"
+              :class "links"}]]
+   ])
 
 (defn description []
     [:div {:id "footer-part-2"}
@@ -19,7 +25,7 @@
       "\n"
         [:a {:class "links" :href "https://github.com/noprompt/garden" :target "_blank"} "garden."]
      "\n and \n"
-        [:a {:class "links" :href "https://github.com/bhauman/figwheel-main" :target "_blank"} "figwheel-main."]])
+        [:a {:class "links" :href "https://github.com/thheller/shadow-cljs" :target "_blank"} "shadow-cljs."]])
 
 (defn footer []
   [:div {:id "whole-footer"}

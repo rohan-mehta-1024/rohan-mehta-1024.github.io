@@ -10,9 +10,7 @@
     [:#search-container {:display show?}]))
 
 (defn search-view []
-  (let [searching? @(re-frame/subscribe [:homepage/search])
-        ;show? (if searching? "block" "none")
-        autofocus (if searching? (.focus (.getElementById js/document "search-view")) nil)]
+  (let [searching? @(re-frame/subscribe [:homepage/search])]
     [:#search-view {;:display show?
                     :width "75%"
                     :margin "auto"

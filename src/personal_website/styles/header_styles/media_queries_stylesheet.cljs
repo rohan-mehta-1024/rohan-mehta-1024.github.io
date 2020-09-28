@@ -6,7 +6,7 @@
 
 
 (defn media-query-1 []
-  (at-media {:max-width (px 1115)}
+  (at-media {:max-width (px 1075)}
     (let [clicked? @(re-frame/subscribe [:homepage/hamburger-menu])])
     [[:header {:text-align "center"}]
      [:#my-name {:font-size (px 35) :margin-left (px 0)}]
@@ -31,9 +31,18 @@
           [(s/& (s/nth-child :3)) (if clicked? {:transform "translateY(-13px) rotate(-45deg)"} {})]]
          [:#side-nav-background (if clicked? {:width "100%"} {})]])))
 
+(defn media-query-4 []
+  (let [clicked? @(re-frame/subscribe [:homepage/hamburger-menu])]
+    (at-media {:max-width (px 400)}
+      [[:#my-name {:font-size (px 25)}]
+      [:.ham-menu {:margin-top (px 10)}]
+      [:.lines {:width (px 35) :height (px 2)}
+        [(s/& (s/nth-child :1)) (if clicked? {:transform "translateY(12px) rotate(45deg)"} {})]
+        [(s/& (s/nth-child :3)) (if clicked? {:transform "translateY(-12px) rotate(-45deg)"} {})]]
+     ])))
 
-;(defn media-query-4)
 (defn media-queries []
   [(media-query-1)
    (media-query-2)
-   (media-query-3)])
+   (media-query-3)
+   (media-query-4)])

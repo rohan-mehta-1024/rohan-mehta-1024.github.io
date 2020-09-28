@@ -53,6 +53,7 @@
   (let [[hovering? id] @(re-frame/subscribe [:homepage/subpage-hover])]
     [:.subpage-tooltips
      {:width (px 110)
+
       :z-index 1000
       :height (px 50)
       :padding (px 10)
@@ -68,13 +69,19 @@
       :display (if hovering? "block" "none")
       }
       [(s/+ s/a s/a) {:margin-top (px 5)}]
-      [(s/& s/after) {:content "''"
+      [(s/& s/before) {:content "''"
+
+                      :margin-top (px -200)
                       :position "relative"
-                      :top (px -128)
+                      :margin "auto"
+                      :top (px -38)
+                      :left ".5%"
+                      :padding-bottom (px -10)
                       :height (px 0)
                       :border-width (px 8)
                       :border-style "solid"
-                      :border-color "transparent transparent black transparent"}]]))
+                      :border-color "transparent transparent black transparent"
+                       }]]))
 
 
 (defn subpage-tooltip-elements-styles []
@@ -85,7 +92,8 @@
       :font-family "WorkSans"
       :cursor "pointer"
       :color "#333"
-      :display display?}
+      :display display?
+      :margin-top (px -20)}
      [(s/& s/hover) {:color "#000"}]]))
 
 (defn subpage-selector []

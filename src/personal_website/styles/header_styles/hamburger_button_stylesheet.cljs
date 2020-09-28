@@ -5,7 +5,7 @@
 
 (defn ham-menu []
   [:.ham-menu
-   {:position "absolute"
+   {:position "fixed"
     :right (px 25)
     :top (px 0)
     :width (px 55)

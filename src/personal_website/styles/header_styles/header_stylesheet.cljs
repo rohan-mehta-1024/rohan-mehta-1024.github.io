@@ -10,9 +10,10 @@
 (defn global []
   [[:header {:width "100%"
              :background "white";"#F8F8F8";"#fffffd"
-             :position "absolute"
+             :position "fixed"
              :top (px 0)
              :height (px 89)
+             :z-index 10000
              :overflow "visible"}
     [(s/& s/after) {:content "''"
                     :display "block"

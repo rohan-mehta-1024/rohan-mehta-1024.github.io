@@ -13,6 +13,13 @@
             (interpose ", ")
             clojure.string/join))
 
+
+(defn scroll-to-top []
+  (let [js-obj (clj->js {:top 0 :left 0})
+        scroll (fn [] (.scrollTo js/window js-obj))]
+    (js/setTimeout scroll 120)))
+
+
 (defn preview [post-object homepage?]
   (let [{:keys [title date content show tags type id] :as post} post-object
         suffix (if (= type "short-story") "short-stories" (str type "s"))
@@ -27,7 +34,6 @@
                          (= type "computer-science") (str "/" type "/" id)
                          (= type "synthetic-biology") (str "/" type "/" id)
                          :else (str "/" type "s" "/" id))
-             :on-click (fn [] (.scrollTo js/window (clj->js {:top 0 :left 0 :behavior "smooth"})))
-             }
+             :on-click scroll-to-top}
          title]
         [:em {:class "preview-text"} show]]))
