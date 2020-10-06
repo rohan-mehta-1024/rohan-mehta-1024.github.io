@@ -7,7 +7,7 @@
   [["About"
     ["Who I Am"
      "Accomplishments"
-     "Current Endeavors"
+     "placeholder"
      "placeholder"
      "placeholder"
      "placeholder"]]

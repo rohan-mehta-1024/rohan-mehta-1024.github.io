@@ -67,6 +67,12 @@
                    :line-height (px 25)
                    :padding-bottom (px 100)}])
 
+(defn in-post-links []
+  [:.post-links {:color "#DC143C"}
+   [(s/& s/hover) {:color "black"
+                   :text-decoration "underline"
+                   :cursor "pointer"}]])
+
 (defn media-query-1 []
   (at-media {:max-width (px 875)}
     [[:#post-container-1 {:width "95%"}]
@@ -82,6 +88,7 @@
    (post-intro-container)
    (post-intro-text)
    (post-content)
+   (in-post-links)
    (media-query-1)
 
    ])

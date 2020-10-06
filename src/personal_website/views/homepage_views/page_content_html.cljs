@@ -41,7 +41,7 @@
         on in these areas, things in mathematics
         and the sciences "
         (color-text "I find to be beautiful and interesting" "/blog-posts/all#subpage-container-1")
-        ", and my "
+        " (and the occasional practical tip), and my "
         (color-text "thoughts, values, and opinions" "b")
         " on science, technology, and life in general."])
 

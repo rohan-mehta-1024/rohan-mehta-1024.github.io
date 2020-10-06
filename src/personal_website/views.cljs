@@ -9,12 +9,15 @@
             [personal-website.styles.homepage-styles.homepage-stylesheet :refer [homepage-styles]]))
 
 
+
+
 (defn generate-and-inject-style-tag []
   "Injects a style tag with the id 'injected-css' into the page's head tag"
   (let [page-head (.-head js/document)
         style-tag (.createElement js/document "style")]
       (.setAttribute style-tag "id" "injected-css")
       (.appendChild page-head style-tag)))
+
 
 (defn update-page-css [input-css]
  "Updates #injected-css with provided argument - if page does not have #injected-css, then
@@ -26,23 +29,33 @@
                       style-tag-query)]
       (aset style-tag "innerHTML" input-css)))
 
+
+      (defn update-page-title [input-css]
+       "Updates #injected-css with provided argument - if page does not have #injected-css, then
+        creates it via call to generate-and-inject-style-tag"
+       (let [style-tag-selector "title"
+             style-tag-query (.querySelector js/document style-tag-selector)
+             style-tag (if (nil? style-tag-query)
+                            (generate-and-inject-style-tag)
+                            style-tag-query)]
+            (aset style-tag "innerHTML" input-css)))
+
+
+
 (def route-view-mapping {:homepage [homepage-html]
                          :blog-posts display})
 
 (defn styles []  (reduce into [(homepage-styles) (all-posts) (footer)]))
-
-
 (defn inject-css [text-css]
   (let [cssify (partial css {:vendors ["webkit"] :auto-prefix #{:transition}})]
     (-> text-css cssify update-page-css)))
 
  (defn main-panel []
-    (let [injected-css (inject-css (styles))]
+    (let [injected-css (inject-css (styles))
+          x (update-page-title "Rohan Mehta")]
       [k/switch-route (fn [route] (-> route :data :name))
          :homepage (route-view-mapping :homepage)
          ;:who-i-am
-
-
          :syn-bio display
          :comp-sci display
 
