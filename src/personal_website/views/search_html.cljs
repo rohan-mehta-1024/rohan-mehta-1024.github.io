@@ -55,8 +55,7 @@
 (defn search-results []
   (let [query @(re-frame/subscribe [:homepage/search-term])
         results (search (if (or (= query nil) (= query ""))
-                          "12345678987654321" query))
-        ]
+                          "12345678987654321" query))]
     [:div {:id "search-results"}
      [:div {:id "search-count"} (str (count results) " Result(s) Found.")]
      (if (not= (count results) 0)
