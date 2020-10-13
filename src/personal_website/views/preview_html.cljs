@@ -21,7 +21,7 @@
 
 (defn scroll-obj []
   (let [obj (.getElementById js/document "top")
-        scroll (fn [] (.scrollIntoView obj))]
+        scroll (fn [] (.scrollIntoView obj) (print "hello"))]
     ;(print "mogorelotikehellllooooo")
     (js/setTimeout scroll 5)
     ))
