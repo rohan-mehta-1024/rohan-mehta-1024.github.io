@@ -33,7 +33,6 @@
 (defn picture []
   [:#picture {:height (px 200)
               :width (px 200)
-              :background-color "black"
               :border-radius "50%"
               :border "1px solid black"
               :display "inline-block"
