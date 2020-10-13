@@ -7,7 +7,11 @@
 
 (defn content-container []
   (let [searching? @(re-frame/subscribe [:homepage/search])
-        show? (if searching? "none" "block")]
+        route  @(re-frame/subscribe [:kee-frame/route])
+        route-pred (if (-> route :path (= "/")) false true)
+        whole-pred (or searching? route-pred)
+        show? (if whole-pred "none" "block")
+        x (print (-> route :path))]
     [:#content-container {:text-align "center"
                           :width "75%"
                           :margin "auto"
@@ -31,8 +35,11 @@
               :width (px 200)
               :background-color "black"
               :border-radius "50%"
+              :border "1px solid black"
               :display "inline-block"
-              :vertical-align "middle"}])
+              :vertical-align "middle"
+              :margin-top (px 55)
+              }])
 
 (defn about-me []
   [:#about-me {:text-align "left"
@@ -60,6 +67,13 @@
               }
    [(s/+ s/div s/div) {:margin-top (px 50)}]])
 
+(defn media-query-1 []
+  (at-media {:max-width (px 875)}
+    [:#picture {:width (px 250)
+                :height (px 250)
+                :margin-bottom (px -40)
+                :margin-top (px 35)}]))
+
 
 
 (defn page-content []
@@ -69,4 +83,5 @@
    (about-me)
    (colored-text)
    (recents)
+   (media-query-1)
    ])

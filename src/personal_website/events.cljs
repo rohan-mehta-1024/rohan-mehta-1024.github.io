@@ -34,3 +34,8 @@
  :homepage/search-term
  (fn [db [_ new-val]]
    (assoc-in db [:homepage :search-term] new-val)))
+
+(re-frame/reg-event-db
+ :homepage/reloading
+ (fn [db [_ _]]
+  (update-in db [:homepage :reloading] not)))

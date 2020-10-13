@@ -1,4 +1,4 @@
-(ns personal-website.content.writings.blog-posts.transformer-post.post
+(ns personal-website.content.writings.blog-posts.x.post
   (:require [personal-website.content.utils :as utils]))
 
 

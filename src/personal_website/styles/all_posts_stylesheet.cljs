@@ -27,6 +27,7 @@
                              :position "relative"
 
 
+
                              ;:padding-bottom (px 200)
                              }])
 
@@ -64,7 +65,7 @@
   [:#post-content {:font-size (px 17)
                    :font-family "WorkSans"
                    :margin-top (px 35)
-                   :line-height (px 25)
+                   :line-height (px 28)
                    :padding-bottom (px 100)}])
 
 (defn in-post-links []
@@ -73,11 +74,30 @@
                    :text-decoration "underline"
                    :cursor "pointer"}]])
 
+(defn post-caption []
+  [:.post-caption {:font-style "italic"
+                   :font-size (px 16)}])
+
+(defn img-container []
+  [:.img-container {:margin (px 0)
+                    ;:text-align "center"
+                    }])
+
+
+(defn post-section-header []
+  [:.post-section-header {:margin-top (px 50)
+                          :font-family "WorkSansBold"}])
+
 (defn media-query-1 []
   (at-media {:max-width (px 875)}
     [[:#post-container-1 {:width "95%"}]
      [:#post-container-2 {:width "100%"}]
      [:#post-content-container {:width "95%"}]]))
+
+(defn media-query-2 []
+  (at-media {:max-width (px 700)}
+    [:.post-img {:width "90% !important"}]))
+
 
 (defn all-posts []
   [(post-container-1)
@@ -89,6 +109,10 @@
    (post-intro-text)
    (post-content)
    (in-post-links)
+   (post-caption)
+   (post-section-header)
+   (img-container)
    (media-query-1)
+   (media-query-2)
 
    ])

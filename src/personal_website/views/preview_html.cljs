@@ -15,9 +15,16 @@
 
 
 (defn scroll-to-top []
-  (let [js-obj (clj->js {:top 0 :left 0})
+  (let [js-obj (clj->js {:top 0 :left 0 :behavior "smooth"})
         scroll (fn [] (.scrollTo js/window js-obj))]
     (js/setTimeout scroll 120)))
+
+(defn scroll-obj []
+  (let [obj (.getElementById js/document "top")
+        scroll (fn [] (.scrollIntoView obj))]
+    ;(print "mogorelotikehellllooooo")
+    (js/setTimeout scroll 5)
+    ))
 
 
 (defn preview [post-object homepage?]
@@ -34,6 +41,6 @@
                          (= type "computer-science") (str "/" type "/" id)
                          (= type "synthetic-biology") (str "/" type "/" id)
                          :else (str "/" type "s" "/" id))
-             :on-click scroll-to-top}
+             :on-click scroll-obj}
          title]
         [:em {:class "preview-text"} show]]))

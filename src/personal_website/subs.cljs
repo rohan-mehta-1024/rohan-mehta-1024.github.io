@@ -31,3 +31,8 @@
   :homepage/search-term
   (fn [db _]
     (-> db :homepage :search-term)))
+
+(re-frame/reg-sub
+  :homepage/reloading
+  (fn [db _]
+    (-> db :homepage :reloading)))

@@ -61,8 +61,9 @@
 
 
 (defn page-content []
-  [:div {:id "content-container"}
+  [:div {:id "content-container" }
    [:div {:id "about-me-container"}
-        [:div {:id "picture"}]
+        [:img {:src "/resources/me.jpg" :id "picture"}]
+        ;[:div {:id "picture"}]
         [:span {:id "about-me"} about-me-text]]
    (recents)])

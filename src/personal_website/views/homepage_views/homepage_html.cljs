@@ -24,14 +24,13 @@
 
 
 (defn homepage-html []
-  (let [searching? @(re-frame/subscribe [:homepage/search])
-        pos (if searching? "absolute" "relative")
-        x (update-page-title "Rohan Mehta")]
+  (let [reloading? @(re-frame/subscribe [:homepage/reloading])
+        show (if reloading? "none" "block")]
     (-> [:div {:style {:id "super-container"
                        :position "relative"
+                       :display show
                        :min-height "100%"
                        :width "100%"}}]
-
         (conj (header))
         (conj (search-html))
         (conj (page-content))

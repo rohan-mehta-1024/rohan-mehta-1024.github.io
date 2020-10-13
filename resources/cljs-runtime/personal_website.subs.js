@@ -17,5 +17,8 @@ return new cljs.core.Keyword(null,"search","search",1564939822).cljs$core$IFn$_i
 re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword("homepage","search-term","homepage/search-term",-1305942950),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([(function (db,_){
 return new cljs.core.Keyword(null,"search-term","search-term",356193544).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"homepage","homepage",-1646828249).cljs$core$IFn$_invoke$arity$1(db));
 })], 0));
+re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword("homepage","reloading","homepage/reloading",372961106),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([(function (db,_){
+return new cljs.core.Keyword(null,"reloading","reloading",961158984).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"homepage","homepage",-1646828249).cljs$core$IFn$_invoke$arity$1(db));
+})], 0));
 
 //# sourceMappingURL=personal_website.subs.js.map

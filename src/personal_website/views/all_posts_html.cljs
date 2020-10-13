@@ -72,7 +72,7 @@
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
-        prefix (conj [:div [:div {:id "top"}]] (header))]
+        prefix (conj [:div] (header))]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"
@@ -99,7 +99,6 @@
           (as-> posts $
                 ($ (params :id))
                 [:div {:id "post-content-container"}
-                 [:a {:href "#top"}]
                  [:h1 {:id "post-title"} ($ :title)]
                  [:h4 {:id "post-byline"} (format-date ($ :date))]
                  [:div {:id "post-intro-container"}

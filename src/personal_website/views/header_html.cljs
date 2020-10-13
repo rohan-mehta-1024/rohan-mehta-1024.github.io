@@ -41,7 +41,7 @@
           (clojure.string/lower-case $)
           (clojure.string/split $ " ")
           (clojure.string/join "-" $)
-          (str "/" $)
+          (str "/#/" $)
           (if in-first?
             (str $ "")
             (str $ "/all")))))
@@ -62,7 +62,7 @@
          [el {:style {:opacity show?}
               :href (format-url sub-subpage)
               :class class
-              ;:on-click scroll-to-top
+              ;:on-click (re-frame)
               }
               sub-subpage])
        (cons {:class "subpage-tooltips"})

@@ -23,7 +23,10 @@
    [:nav {:float "right"}]
    [:ul {:list-style-type "none"}]
    [:a {:text-deocration "none"
-        :color "#333"}]])
+        :color "#333"}]
+   [:#top {:margin-top (px -100)
+           :height (px 100)
+           :background-color "blue"}]])
 
 (defn my-name []
   [:#my-name
