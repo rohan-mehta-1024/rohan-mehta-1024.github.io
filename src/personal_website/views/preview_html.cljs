@@ -21,10 +21,8 @@
 
 (defn scroll-obj []
   (let [obj (.getElementById js/document "top")
-        scroll (fn [] (.scrollIntoView obj) (print "hello"))]
-    ;(print "mogorelotikehellllooooo")
-    (js/setTimeout scroll 5)
-    ))
+        scroll (fn [] (.scrollIntoView obj))]
+    (js/setTimeout scroll 5)))
 
 
 (defn preview [post-object homepage?]

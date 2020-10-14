@@ -53,7 +53,8 @@
 (defn recents []
   (let [mr-project (most-recent-post projects/posts)
         mr-writing (most-recent-post writings/posts)
-        mr-reading (most-recent-post readings/posts)]
+        mr-reading (most-recent-post readings/posts)
+        s (print mr-writing "hoya")]
     [:h1 {:id "recents"} "Recent Activity"
      (preview mr-project true)
      (preview mr-writing true)

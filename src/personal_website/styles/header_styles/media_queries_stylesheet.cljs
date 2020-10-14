@@ -36,6 +36,7 @@
     (at-media {:max-width (px 400)}
       [[:#my-name {:font-size (px 25)}]
       [:.ham-menu {:margin-top (px 10)}]
+      [:header {:height (px 65)}]
       [:.lines {:width (px 35) :height (px 2)}
         [(s/& (s/nth-child :1)) (if clicked? {:transform "translateY(12px) rotate(45deg)"} {})]
         [(s/& (s/nth-child :3)) (if clicked? {:transform "translateY(-12px) rotate(-45deg)"} {})]]

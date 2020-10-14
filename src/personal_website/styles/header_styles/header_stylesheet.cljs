@@ -14,7 +14,8 @@
              :top (px 0)
              :height (px 89)
              :z-index 10000
-             :overflow "visible"}
+
+             }
     [(s/& s/after) {:content "''"
                     :display "block"
                     :height (px 1)
@@ -25,8 +26,8 @@
    [:a {:text-deocration "none"
         :color "#333"}]
    [:#top {:margin-top (px -100)
-           :height (px 100)
-           :background-color "blue"}]])
+           :height (px 100)}]
+   ])
 
 (defn my-name []
   [:#my-name

@@ -130,7 +130,8 @@
     [(s/& s/hover) {:cursor "pointer"}]])
 
 (defn search-img-2 []
-  [:#search-img-2 {:width (px 35)}])
+  [:#search-img-2 {:width (px 35)}
+   [(s/& s/hover) {:cursor "pointer"}]])
 
 (defn subpages []
   [(subpage-container-1)

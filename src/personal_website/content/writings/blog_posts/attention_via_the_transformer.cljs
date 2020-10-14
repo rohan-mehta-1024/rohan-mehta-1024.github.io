@@ -1,5 +1,5 @@
 (ns personal-website.content.writings.blog-posts.attention-via-the-transformer
-  (:require [personal-website.content.utils :as utils]))
+  (:require [personal-website.utils :as utils]))
 
 
 (def post-preview
@@ -109,7 +109,7 @@
 
 (def post
   {:title "Attention Via The Transformer"
-   :date "2020/8/29"
+   :date "2020/08/29"
    :show post-preview
    :content post-content
    :tags ["mathematics", "differentiable programming"]

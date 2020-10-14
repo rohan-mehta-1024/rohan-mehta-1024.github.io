@@ -6,8 +6,7 @@
             [personal-website.styles.all-posts-stylesheet :refer [all-posts]]
             [personal-website.styles.footer-stylesheet :refer [footer]]
             [personal-website.views.homepage-views.homepage-html :refer [homepage-html]]
-            [personal-website.styles.homepage-styles.homepage-stylesheet :refer [homepage-styles]]
-            [reitit.core :as r]))
+            [personal-website.styles.homepage-styles.homepage-stylesheet :refer [homepage-styles]]))
 
 
 (defn generate-and-inject-style-tag []
@@ -35,11 +34,11 @@
     (-> text-css cssify update-page-css)))
 
 
-
  (defn main-panel []
     (let [injected-css (inject-css (styles))]
       [k/switch-route (fn [route] (-> route :data :name))
          :homepage [homepage-html]
+
          ;:who-i-am
          :syn-bio display
          :comp-sci display
@@ -51,6 +50,6 @@
          :papers display
 
          nil [homepage-html]]))
-(print "hye")
-(.scrollIntoView (.getElementById js/document "whole-footer"))
-(print "bye")
+
+;(re-frame/dispatch [:homepage/hamburger-menu])
+;(re-frame/dispatch [:homepage/hamburger-menu])

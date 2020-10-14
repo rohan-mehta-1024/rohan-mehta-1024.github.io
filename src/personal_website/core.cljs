@@ -6,19 +6,16 @@
             [personal-website.db :as db]
 						[personal-website.events :as events]
 						[personal-website.views :as views]
-						[personal-website.config :as config]
-                 [reitit.core :as r]))
+						[personal-website.config :as config]))
 
 
-(def routes [;(r/router ["*" :wildcard])
-
-             ["/" :homepage]
+(def routes [["/" :homepage]
 
              ["/who-i-am" :who-i-am]
              ["/accomplishments" :accomplishments]
              ["/current-endeavors" :current-endeavors]
 
-             ;["/phsyics/:id" :physics]
+             ["/engineering/:id" :engineering]
              ["/synthetic-biology/:id" :syn-bio]
              ["/computer-science/:id" :comp-sci]
 
@@ -26,21 +23,14 @@
 						 ["/personal-essays/:id" :essays]
 						 ["/short-stories/:id" :stories]
              ["/poetry/:id" :poems]
-             ["/academic-papers/:id" :papers]
-             ;["*" :wildcard]
-
-             ])
+             ["/academic-papers/:id" :papers]])
 
 
-
- (print "hello" (r/match-by-path (r/router ["*" :wildcard]) "/who-am-i"))
- (print "bye")
 
 (defn init []
   (k/start! {:routes         routes
              :initial-db     db/default-db
              :root-component [views/main-panel]
              :debug?         true
-             :not-found "/"
-						 :hash-routing? true
-						 }))
+             :not-found      "/"
+						 :hash-routing?  true}))

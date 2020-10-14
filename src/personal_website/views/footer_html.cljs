@@ -1,4 +1,5 @@
-(ns personal-website.views.footer-html)
+(ns personal-website.views.footer-html
+  (:require [re-frame.core :as re-frame]))
 
 (defn links []
   [:div {:id "footer-part-1"}
@@ -28,7 +29,11 @@
         [:a {:class "links" :href "https://github.com/thheller/shadow-cljs" :target "_blank"} "shadow-cljs."]])
 
 (defn footer []
-  [:div {:id "whole-footer"}
+  (let [route  @(re-frame/subscribe [:kee-frame/route])
+        route-pred (if (-> route :path (= "/")) false true)
+        show? (if route-pred "none" "block")]
+  [:div {:id "whole-footer" :style {:display show?}
+         }
    (links)
    (description)
-    ])
+    ]))

@@ -1,7 +1,12 @@
 (ns personal-website.views.header-html
   (:require [re-frame.core :as re-frame]
             [personal-website.db :as db]
-            [personal-website.subs :as subs]))
+            [personal-website.subs :as subs]
+            [personal-website.utils :as utils]
+            ))
+
+
+
 
 (def subpage-data
   [["About"
@@ -33,10 +38,16 @@
      "placeholder"
      "placeholder"]]])
 
+
+     (defn s []
+      (let [obj (.getElementById js/document "top")
+            scroll (fn [] (.scrollIntoView obj))]
+        (js/setTimeout scroll 5)))
+
+
 (defn format-url [sub-subpage]
   (let [first-el ((subpage-data 0) 1)
-        in-first? (some #(= sub-subpage %) first-el)
-        ]
+        in-first? (some #(= sub-subpage %) first-el)]
     (as-> sub-subpage $
           (clojure.string/lower-case $)
           (clojure.string/split $ " ")
@@ -45,11 +56,6 @@
           (if in-first?
             (str $ "")
             (str $ "/all")))))
-
-  (defn scroll-to-top []
-    (let [js-obj (clj->js {:top 0 :left 0})
-          scroll (fn [] (.scrollTo js/window js-obj))]
-      (js/setTimeout scroll 120)))
 
 
 (defn tooltips [sub-subpages]
@@ -62,8 +68,7 @@
          [el {:style {:opacity show?}
               :href (format-url sub-subpage)
               :class class
-              ;:on-click (re-frame)
-              }
+              :on-click utils/scroll-to-top}
               sub-subpage])
        (cons {:class "subpage-tooltips"})
        (cons :ul)
@@ -107,16 +112,17 @@
 
 
 (defn side-nav-arrow-subpages [sub-subpages]
+  (let [close (fn [] (re-frame/dispatch [:homepage/hamburger-menu]) (print "hoot"))
+        x (fn [] (js/setTimeout close 50))]
   (->> (for [sub-subpage sub-subpages
              :when (not= sub-subpage "placeholder")]
          [:a {:class "side-nav-subpage-elements"
               :href (format-url sub-subpage)
-              :on-click (fn [] (re-frame/dispatch [:homepage/hamburger-menu])
-                               (scroll-to-top))
+              :on-click x
               } sub-subpage])
        (cons {:class "side-nav-subpage-container"})
        (cons :ul)
-       (into [])))
+       (into []))))
 
 
 
@@ -137,15 +143,17 @@
                 (cons {:class "side-nav-container-2"})
                 (cons :ul)
                 (into []))) $
-         (cons [:img {:src "/resources/search.svg" :id "search-img-2"}] $
-               );:class "side-nav-elements"
-        ;              :style {:text-align "center"
-        ;                      :width "35px"}}] $)
+         (cons [:img {:src "/resources/search.svg"
+                      :id "search-img-2"
+                      :on-click (fn [] (if @(re-frame/subscribe [:homepage/search])
+                                         (re-frame/dispatch [:homepage/search-term ""]) nil)
+                                         (re-frame/dispatch [:homepage/hamburger-menu])
+                                         (re-frame/dispatch [:homepage/search])
+                                         )}] $)
          (cons {:id "side-nav-container-1"} $)
          (cons :ul $)
          (into [] $)
-         [:div {:id "side-nav-background"} $]
-         ))
+         [:div {:id "side-nav-background"} $]))
 
 (defn header []
   [:header {:id "page-header"}

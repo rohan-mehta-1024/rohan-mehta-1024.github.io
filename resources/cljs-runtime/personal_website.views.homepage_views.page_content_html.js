@@ -11,6 +11,7 @@ personal_website.views.homepage_views.page_content_html.recents = (function pers
 var mr_project = personal_website.views.homepage_views.page_content_html.most_recent_post(personal_website.content.projects.projects.posts);
 var mr_writing = personal_website.views.homepage_views.page_content_html.most_recent_post(personal_website.content.writings.writings.posts);
 var mr_reading = personal_website.views.homepage_views.page_content_html.most_recent_post(personal_website.content.readings.readings.posts);
+var s = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([mr_writing,"hoya"], 0));
 return new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h1","h1",-1896887462),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"recents"], null),"Recent Activity",personal_website.views.preview_html.preview(mr_project,true),personal_website.views.preview_html.preview(mr_writing,true),personal_website.views.preview_html.preview(mr_reading,true)], null);
 });
 personal_website.views.homepage_views.page_content_html.page_content = (function personal_website$views$homepage_views$page_content_html$page_content(){

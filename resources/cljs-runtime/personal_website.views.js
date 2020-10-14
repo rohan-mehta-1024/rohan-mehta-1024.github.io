@@ -27,8 +27,5 @@ return new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EM
 return new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"data","data",-232669377).cljs$core$IFn$_invoke$arity$1(route));
 }),new cljs.core.Keyword(null,"homepage","homepage",-1646828249),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [personal_website.views.homepage_views.homepage_html.homepage_html], null),new cljs.core.Keyword(null,"syn-bio","syn-bio",-1893273080),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"comp-sci","comp-sci",-1030545072),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"blog-posts","blog-posts",2099061283),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"essays","essays",-1695424907),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"stories","stories",-1910187794),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"poems","poems",-1901766320),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"papers","papers",1152250078),personal_website.views.all_posts_html.display,null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [personal_website.views.homepage_views.homepage_html.homepage_html], null)], null);
 });
-cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["hye"], 0));
-document.getElementById("whole-footer").scrollIntoView();
-cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["bye"], 0));
 
 //# sourceMappingURL=personal_website.views.js.map
