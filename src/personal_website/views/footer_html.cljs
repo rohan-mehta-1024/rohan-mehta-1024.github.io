@@ -31,8 +31,8 @@
 (defn footer []
   (let [route  @(re-frame/subscribe [:kee-frame/route])
         route-pred (if (-> route :path (= "/")) false true)
-        show? (if route-pred "none" "block")]
-  [:div {:id "whole-footer" :style {:display show?}
+        show? (if route-pred (print "is not") (print "is"))]
+  [:div {:id "whole-footer" :style {:display "block"}
          }
    (links)
    (description)

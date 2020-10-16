@@ -10,15 +10,13 @@
         route  @(re-frame/subscribe [:kee-frame/route])
         route-pred (if (-> route :path (= "/")) false true)
         whole-pred (or searching? route-pred)
-        show? (if whole-pred "none" "block")
-        x (print (-> route :path))]
+        show? (if whole-pred "none" "block")]
     [:#content-container {:text-align "center"
                           :width "75%"
                           :margin "auto"
                           :display show?
                           :padding-top (px 135)
-                          :padding-bottom (px 50)
-                          }]))
+                          :padding-bottom (px 50)}]))
 
 (defn about-me-container []
   [:#about-me-container {}
@@ -37,8 +35,7 @@
               :border "1px solid black"
               :display "inline-block"
               :vertical-align "middle"
-              :margin-top (px 55)
-              }])
+              :margin-top (px 55)}])
 
 (defn about-me []
   [:#about-me {:text-align "left"
@@ -49,11 +46,8 @@
 
 (defn colored-text []
   [:.colored-text {:color "#DC143C"
-                   :font-family "WorkSansBold"
-                   ;:text-decoration "underline"
-                   }
+                   :font-family "WorkSansBold"}
    [(s/& s/hover) {:cursor "pointer"
-                   ;text-decoration "underline"
                    :color "black"}]])
 
 (defn recents []
@@ -62,8 +56,7 @@
               :width (px 700)
               :margin "auto"
               :text-align "left"
-              :margin-top (px 20)
-              }
+              :margin-top (px 20)}
    [(s/+ s/div s/div) {:margin-top (px 50)}]])
 
 (defn media-query-1 []
@@ -82,5 +75,4 @@
    (about-me)
    (colored-text)
    (recents)
-   (media-query-1)
-   ])
+   (media-query-1)])

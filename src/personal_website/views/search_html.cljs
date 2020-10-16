@@ -30,7 +30,9 @@
              (.ref this "title")
              (.field this "title")
              (.field this "content")
+             (.field this "type")
              (.field this "tags")
+             (.field this "overarching")
              (doseq [obj objs]
                (.add this obj)))))
 

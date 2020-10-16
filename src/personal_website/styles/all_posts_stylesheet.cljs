@@ -1,35 +1,38 @@
 (ns personal-website.styles.all-posts-stylesheet
-  (:require [garden.units :refer [px]]
+  (:require [re-frame.core :as re-frame]
+            [garden.units :refer [px]]
             [garden.selectors :as s]
             [garden.stylesheet :refer [at-media]]))
 
 
 (defn post-container-1 []
-  [:#post-container-1 {:width "75%"
-                       :margin "auto"
-                       :padding-top (px 135 )
-                       :min-height "100vh"
-
-                       }])
+  (let [searching? @(re-frame/subscribe [:homepage/search])
+        show? (if searching? "none" "block")]
+    [:#post-container-1 {:width "75%"
+                         :margin "auto"
+                         :padding-top (px 135)
+                         :min-height "100vh"
+                         :display show?}]))
 
 (defn post-container-2 []
   [:#post-container-2 {:width (px 700)
                        :margin "auto"
-                       ;:padding-top (px 135)
                        :font-family "WorkSansBold"
                        :font-size (px 30)}])
 
+(defn post-container-3 []
+  [:#post-container-3 {}
+   [(s/+ s/div s/div) {:margin-top (px 50)}]])
+
 (defn post-content-container []
-  [:#post-content-container {:width (px 850)
-                             :min-height "100vh"
-                             :margin "auto"
-                             :margin-top (px 150)
-                             :position "relative"
-
-
-
-                             ;:padding-bottom (px 200)
-                             }])
+  (let [searching? @(re-frame/subscribe [:homepage/search])
+        show? (if searching? "none" "block")]
+    [:#post-content-container {:width (px 850)
+                               :min-height "100vh"
+                               :margin "auto"
+                               :margin-top (px 150)
+                               :position "relative"
+                               :display show?}]))
 
 (defn post-title []
   [:#post-title {:text-align "left"
@@ -102,6 +105,7 @@
 (defn all-posts []
   [(post-container-1)
    (post-container-2)
+   (post-container-3)
    (post-content-container)
    (post-title)
    (post-byline)

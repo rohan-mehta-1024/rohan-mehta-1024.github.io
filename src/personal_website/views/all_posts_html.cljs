@@ -2,6 +2,8 @@
   (:require [personal-website.views.header-html :refer [header]]
             [personal-website.views.footer-html :refer [footer]]
             [personal-website.views.preview-html :refer [preview]]
+            [personal-website.views.search-html :refer [search-html]]
+            [personal-website.utils :as utils]
             [personal-website.content.projects.syn-bio.syn-bio :as syn-bio]
             [personal-website.content.projects.comp-sci.comp-sci :as comp-sci]
             [personal-website.content.writings.blog-posts.posts :as blog-posts]
@@ -50,6 +52,7 @@
         (str " " (split-date 2) ", " (split-date 0) " by Rohan Mehta"))))
 
 (defn get-posts [post-type]
+  (let [x (print "blogs" blog-posts/posts)])
   (cond
     (= post-type :syn-bio) syn-bio/posts
     (= post-type :comp-sci) comp-sci/posts
@@ -62,24 +65,25 @@
 (defn list-posts [posts]
   (let [preview-fn (fn [x] (preview x false))]
     (->> (map preview-fn posts)
-         (cons "Posts")
-         (cons {:id "post-container-2"})
+         (cons {:id "post-container-3"})
          (cons :div)
          (into [])
+         (conj [:div {:id "post-container-2"} "Posts"])
          (conj [:div {:id "post-container-1"}]))))
 
 
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
-        prefix (conj [:div] (header))]
+        prefix (conj [:div] (header) (search-html))
+        s (print "hi" posts  (-> route-data :data :name))]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"
                       :margin-top "350px"
                       :font-size "28px"
                       :font-family "WorkSansBold"
-                      :min-height "100%"}}
+                      :min-height "100vh"}}
        "There is currently no content on this page"]
        (footer)]
 
@@ -89,15 +93,19 @@
                         (map clojure.string/capitalize $)
                         (clojure.string/join " " $))
               page-title (update-page-title title)]
-          (as-> posts $
+          (as-> (vals posts) $
                 (list-posts $)
                 (conj prefix $)
                 (conj $ (footer))))
 
-        (let [post-title ((posts (params :id)) :title)
-              page-title (update-page-title post-title)]
+        (let [x (print "foolish" (params :id) posts)
+              a (print (utils/unformat-title (params :id)) "shikadai")
+              post-title ((posts (utils/unformat-title (params :id))) :title)
+              page-title (update-page-title post-title)
+              n (print "ok" post-title)
+              ]
           (as-> posts $
-                ($ (params :id))
+                ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
                  [:h1 {:id "post-title"} ($ :title)]
                  [:h4 {:id "post-byline"} (format-date ($ :date))]
@@ -105,5 +113,4 @@
                   [:blockquote {:id "post-intro-text"} ($ :show)]]
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
-                (conj $ (footer))))
-        ))))
+                (conj $ (footer))))))))

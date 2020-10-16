@@ -29,8 +29,8 @@
       [:div {:style {:text-align "center"}}
         [:img {:src "/auto_diff_nn_pic.svg"  :style {:width "65%"}}]]
       [:figcaption {:class "post-caption"}
-        "Fig. 1. An example of a simple neural network. Learnable transformations of information allow
-        them to approximate all kinds of functions."]]
+        "Fig. 1. An example of a simple neural network. A basic building block –
+        learnable transformations of information – allows them to approximate all kinds of complex functions."]]
 
 
     [:p "This is known - it is neural networks
@@ -40,6 +40,23 @@
         differentiation underpins every single one of them. So how does it actually work?"]
 
    [:h1 {:class "post-section-header"} "Learning To Differentiate"]
+
+   [:p "As you probably know already, it has everything to do with calculus. But before we dive deep into the
+        practical implementation (which, ironically enough, calls on the most abstract math) it's worth laying down
+        the basics of how we take the derivatives of multivariable functions."]
+
+   [:p "Derivatives are just measurements of the affect of a function’s inputs on its outputs, and the same remains true
+        when taking derivatives of a function with multiple such inputs. To start, let’s consider a function with two inputs,
+        as its easiest to visualize."]
+
+   [:figure {:class "img-container"}
+    [:div {:style {:text-align "center"}}
+     [:img {:src "/tangent_line_to_graph.png"  :style {:width "65%"}}]]
+    [:figcaption {:class "post-caption"}
+     "Fig. 2. The tangent line to the graph of some function. This is the classical way to
+     conceptualize the derivative for functions of a single variable. It can be extended
+     to the multivariable case as well."]]
+
 
    [:h1 "Computational Graphs"]
 
@@ -53,4 +70,5 @@
    :content post-content
    :tags ["mathematics", "differentiable programming"]
    :type "blog-post"
+   :overarching "writing"
    :id "1"})

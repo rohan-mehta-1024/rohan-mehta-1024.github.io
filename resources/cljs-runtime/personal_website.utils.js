@@ -9,5 +9,11 @@ return obj.scrollIntoView();
 });
 return setTimeout(scroll,(5));
 });
+personal_website.utils.format_title = (function personal_website$utils$format_title(title){
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2("-",cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.lower_case,clojure.string.split.cljs$core$IFn$_invoke$arity$2(title," ")));
+});
+personal_website.utils.unformat_title = (function personal_website$utils$unformat_title(title){
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.capitalize,clojure.string.split.cljs$core$IFn$_invoke$arity$2(title,"-")));
+});
 
 //# sourceMappingURL=personal_website.utils.js.map

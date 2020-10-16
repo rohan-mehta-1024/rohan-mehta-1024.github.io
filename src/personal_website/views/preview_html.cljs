@@ -1,4 +1,5 @@
-(ns personal-website.views.preview-html)
+(ns personal-website.views.preview-html
+  (:require [personal-website.utils :as utils]))
 
 (defn format-type [type]
   (->> (clojure.string/split type "-")
@@ -14,17 +15,6 @@
             clojure.string/join))
 
 
-(defn scroll-to-top []
-  (let [js-obj (clj->js {:top 0 :left 0 :behavior "smooth"})
-        scroll (fn [] (.scrollTo js/window js-obj))]
-    (js/setTimeout scroll 120)))
-
-(defn scroll-obj []
-  (let [obj (.getElementById js/document "top")
-        scroll (fn [] (.scrollIntoView obj))]
-    (js/setTimeout scroll 5)))
-
-
 (defn preview [post-object homepage?]
   (let [{:keys [title date content show tags type id] :as post} post-object
         suffix (if (= type "short-story") "short-stories" (str type "s"))
@@ -36,9 +26,9 @@
         [:p {:class "preview-header"} header]
         [:a {:class "preview-title"
              :href (cond (= type "paper") (post :paper-link)
-                         (= type "computer-science") (str "/" type "/" id)
-                         (= type "synthetic-biology") (str "/" type "/" id)
-                         :else (str "/" type "s" "/" id))
-             :on-click scroll-obj}
+                         (= type "computer-science") (str "/#/" type "/" (utils/format-title title))
+                         (= type "synthetic-biology") (str "/#/" type "/" (utils/format-title title))
+                         :else (str "/#/" type "s" "/"  (utils/format-title title)))
+             :on-click utils/scroll-to-top}
          title]
         [:em {:class "preview-text"} show]]))

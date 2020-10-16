@@ -47,14 +47,15 @@
 
 
 (defn most-recent-post [all-posts]
-  (let [most-recent (apply max (map :date all-posts))]
-    (first (filter (comp (partial = most-recent) :date) all-posts))))
+  (let [posts (flatten (map vals all-posts))
+        x (print "ichi" posts)
+        most-recent (apply max (map :date posts))]
+    (first (filter (comp (partial = most-recent) :date) posts))))
 
 (defn recents []
   (let [mr-project (most-recent-post projects/posts)
         mr-writing (most-recent-post writings/posts)
-        mr-reading (most-recent-post readings/posts)
-        s (print mr-writing "hoya")]
+        mr-reading (most-recent-post readings/posts)]
     [:h1 {:id "recents"} "Recent Activity"
      (preview mr-project true)
      (preview mr-writing true)

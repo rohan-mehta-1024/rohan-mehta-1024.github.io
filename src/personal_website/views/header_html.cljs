@@ -2,10 +2,7 @@
   (:require [re-frame.core :as re-frame]
             [personal-website.db :as db]
             [personal-website.subs :as subs]
-            [personal-website.utils :as utils]
-            ))
-
-
+            [personal-website.utils :as utils]))
 
 
 (def subpage-data
@@ -39,12 +36,6 @@
      "placeholder"]]])
 
 
-     (defn s []
-      (let [obj (.getElementById js/document "top")
-            scroll (fn [] (.scrollIntoView obj))]
-        (js/setTimeout scroll 5)))
-
-
 (defn format-url [sub-subpage]
   (let [first-el ((subpage-data 0) 1)
         in-first? (some #(= sub-subpage %) first-el)]
@@ -57,6 +48,18 @@
             (str $ "")
             (str $ "/all")))))
 
+(defn close-search []
+  (if @(re-frame/subscribe [:homepage/search])
+    (do (re-frame/dispatch [:homepage/search])
+        (re-frame/dispatch [:homepage/search-term ""]))
+     nil))
+
+(defn tooltips-element [el show? class sub-subpage]
+  [el {:style {:opacity show?}
+       :href (format-url sub-subpage)
+       :class class
+       :on-click (comp utils/scroll-to-top close-search)}
+   sub-subpage])
 
 (defn tooltips [sub-subpages]
   (->> (for [sub-subpage sub-subpages
@@ -65,11 +68,7 @@
                    el (if placeholder? :div :a)
                    class (if placeholder? "" "subpage-tooltip-elements")
                    link (if placeholder? "" (format-url sub-subpage))]]
-         [el {:style {:opacity show?}
-              :href (format-url sub-subpage)
-              :class class
-              :on-click utils/scroll-to-top}
-              sub-subpage])
+         (tooltips-element el show? class sub-subpage))
        (cons {:class "subpage-tooltips"})
        (cons :ul)
        (into [])))
@@ -80,9 +79,13 @@
     [:div {:class "subpage-elements"
            :onMouseEnter (fn [] (re-frame/dispatch [:homepage/subpage-hover [true id]]))}
      text]
-  (->> [(dec id) 1]
-       (get-in subpage-data)
-       tooltips)])
+  (->> [(dec id) 1] (get-in subpage-data) tooltips)])
+
+(defn search-fn []
+  (if @(re-frame/subscribe [:homepage/search])
+       (re-frame/dispatch [:homepage/search-term ""]) nil)
+       (re-frame/dispatch [:homepage/search])
+      (utils/scroll-to-top))
 
 (defn subpages []
   (as-> (for [[text id] [["About" 1] ["Projects" 2] ["Writings" 3] ["Readings" 4]]]
@@ -92,9 +95,7 @@
        (into [] $)
        [:nav $ [:img {:src "/resources/search.svg"
                       :id "search-img-1"
-                      :on-click (fn [] (if @(re-frame/subscribe [:homepage/search])
-                                         (re-frame/dispatch [:homepage/search-term ""]) nil)
-                                         (re-frame/dispatch [:homepage/search]))}]]))
+                      :on-click search-fn}]]))
 
 (defn hamburger-button []
     [:div {:class "ham-menu"
@@ -103,39 +104,32 @@
      [:div {:class "lines"}]
      [:div {:class "lines"}]])
 
-
 (defn close-all-others [given-idx mapping]
     (doseq [key [:2 :3 :4 :5]
              :when (and (mapping key) (not= key given-idx))]
       (re-frame/dispatch [:homepage/side-nav-arrow key]))
   (re-frame/dispatch [:homepage/side-nav-arrow given-idx]))
 
-
 (defn side-nav-arrow-subpages [sub-subpages]
-  (let [close (fn [] (re-frame/dispatch [:homepage/hamburger-menu]) (print "hoot"))
-        x (fn [] (js/setTimeout close 50))]
+  (let [close (fn [] (re-frame/dispatch [:homepage/hamburger-menu]))
+        close (fn [] (utils/scroll-to-top) (js/setTimeout close 50))]
   (->> (for [sub-subpage sub-subpages
              :when (not= sub-subpage "placeholder")]
          [:a {:class "side-nav-subpage-elements"
               :href (format-url sub-subpage)
-              :on-click x
-              } sub-subpage])
+              :on-click close}
+          sub-subpage])
        (cons {:class "side-nav-subpage-container"})
        (cons :ul)
        (into []))))
-
-
 
 (defn side-nav-skeleton [text id]
   (let [keyworded (-> id str keyword)
         pressed? @(re-frame/subscribe [:homepage/side-nav-arrow])]
     [[:li {:class "side-nav-elements"
-           :on-click (fn [] (close-all-others keyworded pressed?))} text
-     [:div {:class "side-nav-arrow"
-            }]]
-    (->> [(dec (dec id)) 1]
-         (get-in subpage-data)
-         side-nav-arrow-subpages)]))
+           :on-click (fn [] (close-all-others keyworded pressed?) (close-search))} text
+     [:div {:class "side-nav-arrow"}]]
+    (->> [(dec (dec id)) 1] (get-in subpage-data) side-nav-arrow-subpages)]))
 
 (defn side-nav []
     (as-> (for [[text id] [["About" 2] ["Projects" 3] ["Writings" 4] ["Readings" 5]]]
@@ -145,11 +139,7 @@
                 (into []))) $
          (cons [:img {:src "/resources/search.svg"
                       :id "search-img-2"
-                      :on-click (fn [] (if @(re-frame/subscribe [:homepage/search])
-                                         (re-frame/dispatch [:homepage/search-term ""]) nil)
-                                         (re-frame/dispatch [:homepage/hamburger-menu])
-                                         (re-frame/dispatch [:homepage/search])
-                                         )}] $)
+                      :on-click (comp (fn [] (re-frame/dispatch [:homepage/hamburger-menu])) search-fn)}] $)
          (cons {:id "side-nav-container-1"} $)
          (cons :ul $)
          (into [] $)
@@ -159,12 +149,7 @@
   [:header {:id "page-header"}
    [:h1 {:id "my-name"}
     [:a {:href "/"
-         :on-click (fn [] (if @(re-frame/subscribe [:homepage/search])
-                                (do
-                                  (re-frame/dispatch [:homepage/search])
-                                  (re-frame/dispatch [:homepage/search-term ""]))
-                                nil))} "Rohan Mehta"]]
+         :on-click close-search} "Rohan Mehta"]]
    (subpages)
    (side-nav)
-   (hamburger-button)
-   ])
+   (hamburger-button)])
