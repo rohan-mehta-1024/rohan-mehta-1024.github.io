@@ -117,7 +117,8 @@
         don't really have well defined meanings at all, but are instead only useful depending on how
         they are used respective to other words. The re-occuring theme here is that we need some
         form of contextual information in addition to raw information about the words themselves,
-        and this exactly what self-attention provides us with.
+        and this exactly what self-attention provides us with. To concretize this a bit more mathematically
+        consider the following: 
          When \\(a \\ne 0\\), there are two solutions to
         \\(ax^2 + bx + c = 0\\) and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"]
 ;[:p "In most cases, this would be enough. We’ve computed representations which give the network a sense of how words are related and provided it with an embedding space powerful enough to encode new words as it encounters them. But we also want a way to calculate how much attention any given word should focus on another, preferably by the same metric (closness) as it is relatively cheap and easy to compute (via the dot product).  The only problem is that we’ve already optimized the similarity between two vectors under the perspective of the similarity between the meanings of the words they represent. Furthermore, just because"]

@@ -10,15 +10,14 @@
         route  @(re-frame/subscribe [:kee-frame/route])
         route-pred (if (-> route :path (= "/")) false true)
         whole-pred (or searching? route-pred)
-        show? (if whole-pred "none" "block")
-        margin (if whole-pred (px -500) "auto")]
+        show? (if whole-pred "0%" "100%")]
     [:#content-container {:text-align "center"
                           :width "75%"
-                          :margin margin
-                          :background-color "blue"
-                          :display show?
+                          :margin "auto"
+                          :opacity show?
                           :padding-top (px 135)
-                          :padding-bottom (px 50)}]))
+                          :padding-bottom (px 50)
+                          :height "auto"}]))
 
 (defn about-me-container []
   [:#about-me-container {}
