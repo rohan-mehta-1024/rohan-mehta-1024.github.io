@@ -14,7 +14,7 @@
     [:#content-container {:text-align "center"
                           :width "75%"
                           :margin "auto"
-                          :display show?
+                          :display "block"
                           :padding-top (px 135)
                           :padding-bottom (px 50)
                           :height "auto"}]))
