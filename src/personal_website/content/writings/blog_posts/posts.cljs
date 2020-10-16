@@ -4,5 +4,4 @@
             [personal-website.content.writings.blog-posts.the-mathematics-of-automatic-differentiation :refer [post] :rename {post post2}]))
 
 (def posts {(:title post1) post1
-            (:title post2) post2
-            })
+            (:title post2) post2})

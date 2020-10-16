@@ -16,7 +16,6 @@
         (map clojure.string/lower-case)
         (clojure.string/join "-")))
 
-
 (defn unformat-title [title]
   (->> (clojure.string/split title "-")
        (map clojure.string/capitalize)

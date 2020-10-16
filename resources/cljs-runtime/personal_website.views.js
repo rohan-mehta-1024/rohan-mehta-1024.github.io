@@ -23,6 +23,12 @@ return personal_website.views.update_page_css(cssify(text_css));
 });
 personal_website.views.main_panel = (function personal_website$views$main_panel(){
 var injected_css = personal_website.views.inject_css(personal_website.views.styles());
+var typeset_fn = (function (){
+return setTimeout((function (){
+return MathJax.typeset();
+}),(500));
+});
+var call_typeset = typeset_fn();
 return new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, [kee_frame.core.switch_route,(function (route){
 return new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"data","data",-232669377).cljs$core$IFn$_invoke$arity$1(route));
 }),new cljs.core.Keyword(null,"homepage","homepage",-1646828249),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [personal_website.views.homepage_views.homepage_html.homepage_html], null),new cljs.core.Keyword(null,"syn-bio","syn-bio",-1893273080),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"comp-sci","comp-sci",-1030545072),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"blog-posts","blog-posts",2099061283),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"essays","essays",-1695424907),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"stories","stories",-1910187794),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"poems","poems",-1901766320),personal_website.views.all_posts_html.display,new cljs.core.Keyword(null,"papers","papers",1152250078),personal_website.views.all_posts_html.display,null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [personal_website.views.homepage_views.homepage_html.homepage_html], null)], null);

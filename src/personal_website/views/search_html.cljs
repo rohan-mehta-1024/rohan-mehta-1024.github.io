@@ -9,13 +9,15 @@
             [clojure.string :refer [join]]))
 
 
-(def posts (flatten [projects/posts
-                     writings/posts
-                     readings/posts]))
+(defn format-posts [posts]
+  (->> posts flatten (map vals) flatten))
+
+(def posts (format-posts [projects/posts
+                          writings/posts
+                          readings/posts]))
 
 (def post-mapping (into {} (for [post posts]
                         [(post :title) post])))
-
 
 (defn format-objs [objs]
   (->> objs
@@ -40,8 +42,8 @@
 (defn search [query]
   (let [search-fn (lunr searcher)
         results (.search search-fn query)
-
-        formatted (js->clj results)]
+        formatted (js->clj results)
+        l (print "achooqu" post-mapping)]
     (for [post formatted]
       (post-mapping (post "ref")))))
 

@@ -72,11 +72,15 @@
          (conj [:div {:id "post-container-1"}]))))
 
 
+
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
         prefix (conj [:div] (header) (search-html))
-        s (print "hi" posts  (-> route-data :data :name))]
+        s (print "hi" posts  (-> route-data :data :name))
+        type (.typeset js/MathJax)
+        wait  (fn [] (js/setTimeout type 500))
+        run (wait)]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"
@@ -84,7 +88,8 @@
                       :font-size "28px"
                       :font-family "WorkSansBold"
                       :min-height "100vh"}}
-       "There is currently no content on this page"]
+       "When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
+       $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"]
        (footer)]
 
       (if (-> params :id (= "all"))

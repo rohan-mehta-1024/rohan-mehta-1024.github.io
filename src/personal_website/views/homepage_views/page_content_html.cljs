@@ -36,6 +36,7 @@
         [:br]
         [:br]
 
+
         "This webpage is an outlet for me
         to share the projects I've worked
         on in these areas, things in mathematics
@@ -48,7 +49,6 @@
 
 (defn most-recent-post [all-posts]
   (let [posts (flatten (map vals all-posts))
-        x (print "ichi" posts)
         most-recent (apply max (map :date posts))]
     (first (filter (comp (partial = most-recent) :date) posts))))
 

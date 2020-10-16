@@ -35,7 +35,9 @@
 
 
  (defn main-panel []
-    (let [injected-css (inject-css (styles))]
+    (let [injected-css (inject-css (styles))
+          typeset-fn (fn [] (js/setTimeout (fn [](.typeset js/MathJax)) 500))
+          call-typeset (typeset-fn)]
       [k/switch-route (fn [route] (-> route :data :name))
          :homepage [homepage-html]
 
@@ -50,6 +52,3 @@
          :papers display
 
          nil [homepage-html]]))
-
-;(re-frame/dispatch [:homepage/hamburger-menu])
-;(re-frame/dispatch [:homepage/hamburger-menu])
