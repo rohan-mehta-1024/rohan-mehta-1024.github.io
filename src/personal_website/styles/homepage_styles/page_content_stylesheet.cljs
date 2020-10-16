@@ -10,11 +10,11 @@
         route  @(re-frame/subscribe [:kee-frame/route])
         route-pred (if (-> route :path (= "/")) false true)
         whole-pred (or searching? route-pred)
-        show? (if whole-pred "none" "block")]
+        show? (if whole-pred "0%" "100%")]
     [:#content-container {:text-align "center"
                           :width "75%"
                           :margin "auto"
-                          :display "block"
+                          :opacity show?
                           :padding-top (px 135)
                           :padding-bottom (px 50)
                           :height "auto"}]))

@@ -76,11 +76,7 @@
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
-        prefix (conj [:div] (header) (search-html))
-        s (print "hi" posts  (-> route-data :data :name))
-        type (.typeset js/MathJax)
-        wait  (fn [] (js/setTimeout type 500))
-        run (wait)]
+        prefix (conj [:div] (header) (search-html))]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"
