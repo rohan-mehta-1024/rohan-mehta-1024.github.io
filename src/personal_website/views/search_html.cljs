@@ -53,13 +53,11 @@
            :type "text"
            :placeholder "Search for content..."
            :value @(re-frame/subscribe [:homepage/search-term])
-           :on-change #(re-frame/dispatch [:homepage/search-term (-> % .-target .-value)])
-           }])
+           :on-change #(re-frame/dispatch [:homepage/search-term (-> % .-target .-value)])}])
 
 (defn search-results []
   (let [query @(re-frame/subscribe [:homepage/search-term])
-        results (search (if (or (= query nil) (= query ""))
-                          "12345678987654321" query))]
+        results (search (if (or (= query nil) (= query ""))  "12345678987654321" query))]
     [:div {:id "search-results"}
      [:div {:id "search-count"} (str (count results) " Result(s) Found.")]
      (if (not= (count results) 0)

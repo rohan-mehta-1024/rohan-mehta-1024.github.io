@@ -24,7 +24,9 @@
         "\n"
         [:a {:class "links" :href "https://github.com/ingesolvoll/kee-frame" :target "_blank"} "kee-frame,"]
       "\n"
-        [:a {:class "links" :href "https://github.com/noprompt/garden" :target "_blank"} "garden."]
+        [:a {:class "links" :href "https://github.com/noprompt/garden" :target "_blank"} "garden,"]
+      "\n"
+        [:a {:class "links" :href "https://github.com/olivernn/lunr.js/" :target "_blank"} "lunr.js,"]
      "\n and \n"
         [:a {:class "links" :href "https://github.com/thheller/shadow-cljs" :target "_blank"} "shadow-cljs."]])
 
