@@ -118,9 +118,18 @@
         they are used respective to other words. The re-occuring theme here is that we need some
         form of contextual information in addition to raw information about the words themselves,
         and this exactly what self-attention provides us with. To concretize this a bit more mathematically
-        consider the following: 
-         When \\(a \\ne 0\\), there are two solutions to
-        \\(ax^2 + bx + c = 0\\) and they are $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"]
+        consider the following:
+
+            $$\\boldsymbol{X} =
+              \\begin{bmatrix}
+              \\vert & \\vert & \\hspace{1cm} & \\vert \\\\
+              v_1 & v_2 & \\cdots & v_n \\\\
+              \\vert & \\vert & \\hspace{1cm} & \\vert \\\\
+              \\end{bmatrix}
+              \\hspace{2cm}
+              f(x) = \\sum_{i=1}^{n} \\sum_{j=1}^{m}
+                     \\boldsymbol{X}_{i,j} \\cdot w_{j}
+                      $$"]
 ;[:p "In most cases, this would be enough. We’ve computed representations which give the network a sense of how words are related and provided it with an embedding space powerful enough to encode new words as it encounters them. But we also want a way to calculate how much attention any given word should focus on another, preferably by the same metric (closness) as it is relatively cheap and easy to compute (via the dot product).  The only problem is that we’ve already optimized the similarity between two vectors under the perspective of the similarity between the meanings of the words they represent. Furthermore, just because"]
 
 

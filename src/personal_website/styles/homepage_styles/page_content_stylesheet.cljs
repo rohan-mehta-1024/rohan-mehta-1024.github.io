@@ -43,7 +43,11 @@
                :width (px 380)
                :display "inline-block"
                :vertical-align "middle"
-               :margin-left (px 75)}])
+               :margin-left (px 75)
+               }])
+
+(defn about-me-text []
+  [:#about-me-text {:line-height "1.5"}])
 
 (defn colored-text []
   [:.colored-text {:color "#DC143C"
@@ -68,12 +72,18 @@
                 :margin-top (px 35)}]))
 
 
+(defn media-query-2 []
+  (at-media {:max-width (px 400)}
+    [[:#about-me-text {:font-size (px 15)
+                       :margin-left (px -20)}]]))
 
 (defn page-content []
   [(content-container)
    (about-me-container)
    (picture)
    (about-me)
+   (about-me-text)
    (colored-text)
    (recents)
-   (media-query-1)])
+   (media-query-1)
+   (media-query-2)])

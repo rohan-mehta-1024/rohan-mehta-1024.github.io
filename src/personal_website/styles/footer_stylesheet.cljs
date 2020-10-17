@@ -6,9 +6,7 @@
 
 (defn whole-footer []
   [:#whole-footer {:width "100%"
-                   ;:position "relative"
-                   :bottom (px 0)
-                   }])
+                   :bottom (px 0)}])
 
 (defn footer-part-1 []
   [:#footer-part-1 {:position "relative"
@@ -57,7 +55,7 @@
 
 (defn media-query-2 []
   (at-media {:max-width (px 400)}
-      [:#footer-part-2 {:font-size (px 13)}]))
+      [:#footer-part-2 {:font-size (px 14)}]))
 
 (defn footer []
   [(whole-footer)

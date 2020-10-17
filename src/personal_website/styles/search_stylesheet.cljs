@@ -13,8 +13,7 @@
   (let [searching? @(re-frame/subscribe [:homepage/search])
         autofocus (fn [] (.focus (.getElementById js/document "search-view")))
         autofocus (fn [] (js/setTimeout autofocus 200))
-        autofocus (if searching? (autofocus) nil)
-        x (if searching? (print "activate") nil)]
+        autofocus (if searching? (autofocus) nil)]
     [:#search-view {;:display show?
                     :width "75%"
                     :margin "auto"

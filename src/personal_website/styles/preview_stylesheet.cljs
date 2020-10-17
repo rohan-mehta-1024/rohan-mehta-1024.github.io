@@ -34,7 +34,8 @@
 
 (defn media-query-1 []
   (at-media {:max-width (px 400)}
-      [[:.preview-title {:font-size (px 22)}]
+      [[:.preview-title {:font-size (px 18)}]
+       ;[:.preview-text {:font-size (px 13)}]
        [:.preview-header {:font-size (px 16)}]]))
 
 (defn preview []

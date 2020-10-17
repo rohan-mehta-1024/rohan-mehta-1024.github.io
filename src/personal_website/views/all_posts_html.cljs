@@ -52,7 +52,6 @@
         (str " " (split-date 2) ", " (split-date 0) " by Rohan Mehta"))))
 
 (defn get-posts [post-type]
-  (let [x (print "blogs" blog-posts/posts)])
   (cond
     (= post-type :syn-bio) syn-bio/posts
     (= post-type :comp-sci) comp-sci/posts
@@ -99,12 +98,8 @@
                 (conj prefix $)
                 (conj $ (footer))))
 
-        (let [x (print "foolish" (params :id) posts)
-              a (print (utils/unformat-title (params :id)) "shikadai")
-              post-title ((posts (utils/unformat-title (params :id))) :title)
-              page-title (update-page-title post-title)
-              n (print "ok" post-title)
-              ]
+        (let [post-title ((posts (utils/unformat-title (params :id))) :title)
+              page-title (update-page-title post-title)]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}

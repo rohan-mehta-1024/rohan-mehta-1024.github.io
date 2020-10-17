@@ -42,7 +42,7 @@
       [k/switch-route (fn [route] (-> route :data :name))
          :homepage [homepage-html]
 
-         ;:who-i-am
+         :who-i-am [(fn [] [:div "hi this is who i am"])]
          :syn-bio display
          :comp-sci display
 

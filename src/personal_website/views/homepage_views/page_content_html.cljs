@@ -10,7 +10,7 @@
   [:a {:class "colored-text"
           :href href} text])
 
-(def about-me-text [:p {:style {:line-height "1.5"}}
+(def about-me-text [:p {:id "about-me-text"}
 
         ;[:br]
         [:br]
@@ -39,10 +39,10 @@
 
         "This webpage is an outlet for me
         to share the projects I've worked
-        on in these areas, things in mathematics
+        on in these areas, things in math
         and the sciences "
-        (color-text "I find to be beautiful and interesting" "/blog-posts/all#subpage-container-1")
-        " (and the occasional practical tip), and my "
+        (color-text "I find beautiful and interesting" "/blog-posts/all#subpage-container-1")
+        " (plus the occasional practical tip), and my "
         (color-text "thoughts, values, and opinions" "b")
         " on science, technology, and life in general."])
 

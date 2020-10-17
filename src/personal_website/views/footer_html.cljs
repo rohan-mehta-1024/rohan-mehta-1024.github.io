@@ -12,30 +12,18 @@
    [:a {:href "mailto:rohanm1024@gmail.com"}
     [:img {:src "/resources/email.png"
               :id "email-img"
-              :class "links"}]]
-   ])
+              :class "links"}]]])
 
 (defn description []
     [:div {:id "footer-part-2"}
      "© 2020\n"
      [:a {:class "links" :href "mailto:rohanm1024@gmail.com"} "Rohan Mehta"]
-      ".\n A Clojurescript SPA built using \n"
-        [:a {:class "links" :href "https://github.com/day8/re-frame" :target "_blank"} "re-frame,"]
-        "\n"
-        [:a {:class "links" :href "https://github.com/ingesolvoll/kee-frame" :target "_blank"} "kee-frame,"]
-      "\n"
-        [:a {:class "links" :href "https://github.com/noprompt/garden" :target "_blank"} "garden,"]
-      "\n"
-        [:a {:class "links" :href "https://github.com/olivernn/lunr.js/" :target "_blank"} "lunr.js,"]
-     "\n and \n"
-        [:a {:class "links" :href "https://github.com/thheller/shadow-cljs" :target "_blank"} "shadow-cljs."]])
+      ".\n Built using \n"
+        [:a {:class "links" :href "https://github.com/day8/re-frame" :target "_blank"} "re-frame."]])
 
 (defn footer []
   (let [route  @(re-frame/subscribe [:kee-frame/route])
-        route-pred (if (-> route :path (= "/")) false true)
-        show? (if route-pred (print "is not") (print "is"))]
-  [:div {:id "whole-footer" :style {:display "block"}
-         }
+        route-pred (if (-> route :path (= "/")) false true)]
+  [:div {:id "whole-footer" :style {:display "block"}}
    (links)
-   (description)
-    ]))
+   (description)]))

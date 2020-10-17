@@ -42,8 +42,7 @@
 (defn search [query]
   (let [search-fn (lunr searcher)
         results (.search search-fn query)
-        formatted (js->clj results)
-        l (print "achooqu" post-mapping)]
+        formatted (js->clj results)]
     (for [post formatted]
       (post-mapping (post "ref")))))
 
