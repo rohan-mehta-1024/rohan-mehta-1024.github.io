@@ -14,7 +14,8 @@
                   :display "block"
                   :margin-top (px 40)
                   :margin-left (px 30)}]
-     [:#recents {:width "100%"}]]))
+     [:#recents {:width "100%"}]
+     [:.preview-text {:width "95%"}]]))
 
 (defn media-queries []
   [(media-query-1)])

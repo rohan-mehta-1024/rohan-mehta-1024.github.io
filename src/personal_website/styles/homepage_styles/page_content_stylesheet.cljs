@@ -47,7 +47,9 @@
                }])
 
 (defn about-me-text []
-  [:#about-me-text {:line-height "1.5"}])
+  [:#about-me-text {:line-height "1.5"
+                    :font-family "WorkSans"
+                    :color "black"}])
 
 (defn colored-text []
   [:.colored-text {:color "#DC143C"

@@ -9,7 +9,8 @@
   [:.preview-header {:font-size (px 16)
                      :margin-bottom (px 5)
                      :color "grey"
-                     :font-family "WorkSans"}])
+                     :font-family "WorkSans"
+                     }])
 
 
 (defn preview-title []
@@ -19,7 +20,6 @@
                     :width "auto"
                     :display "inline-block"
                     :font-family "WorkSansBold"
-                    ;:font-weight 900
                     }
    [(s/& s/hover) {:color "black"
                    :cursor "pointer"
@@ -27,16 +27,18 @@
 
 (defn preview-text []
   [:.preview-text {:font-size (px 16)
-                   :font-family "WorkSans"
                    :display "block"
                    :line-height (px 25)
-                   :margin-top (px 15)}])
+                   :margin-top (px 15)
+                   :font-weight "500"
+                   :font-family "WorkSans"}])
 
 (defn media-query-1 []
   (at-media {:max-width (px 400)}
       [[:.preview-title {:font-size (px 18)}]
-       ;[:.preview-text {:font-size (px 13)}]
-       [:.preview-header {:font-size (px 16)}]]))
+       [:.preview-text {:line-height (px 20)
+                        :font-size (px 14)}]
+       [:.preview-header {:font-size (px 12)}]]))
 
 (defn preview []
   [(preview-header)
