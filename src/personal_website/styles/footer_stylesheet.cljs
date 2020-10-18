@@ -46,7 +46,7 @@
       [:#whole-footer {:margin-top (px 20)}]))
 
 (defn media-query-2 []
-  (at-media {:max-width (px 500)}
+  (at-media {:max-width (px 450)}
       [:#footer-part-2 {:font-size (px 14)}]))
 
 (defn footer []

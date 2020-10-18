@@ -21,7 +21,7 @@
         width (. js/window -innerWidth)
         s (print "homey" homepage?)]
   (if homepage?
-    (if (<= width 500)
+    (if (<= width 450)
       (str date " | " type)
       (str date " | " type " | " tags))
     (str date " | " type " | " tags))))

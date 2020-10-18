@@ -19,7 +19,7 @@
                     :color "#DC143C"
                     :width "auto"
                     :display "inline-block"
-                    :font-family "WorkSansBold"
+                    :font-family "WorkSans"
                     }
    [(s/& s/hover) {:color "black"
                    :cursor "pointer"
@@ -35,11 +35,13 @@
 
 (defn media-query-1 []
   (at-media {:max-width (px 400)}
-      [[:.preview-title {:font-size (px 18)
-                         :margin-top (px 9)}]
-       [:.preview-text {:line-height (px 20)
-                        :font-size (px 14)
-                        :margin-top (px 8)}]
+      [[:.preview-title {:font-size (px 20)
+                         :margin-top (px 9)
+                         :font-family "WorkSans"}]
+       [:.preview-text {;:line-height (px 20)
+                        :font-size (px 15)
+                        :margin-top (px 8)
+                        }]
        [:.preview-header {:font-size (px 13)
                           :margin-bottom (px 0)}]]))
 

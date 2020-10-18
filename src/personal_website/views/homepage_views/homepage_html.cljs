@@ -5,12 +5,13 @@
             [personal-website.views.footer-html :refer [footer]]
             [personal-website.views.search-html :refer [search-html]]))
 
+
 (defn generate-and-inject-style-tag []
   "Injects a style tag with the id 'injected-css' into the page's head tag"
   (let [page-head (.-head js/document)
-        style-tag (.createElement js/document "style")]
-      (.setAttribute style-tag "id" "injected-css")
+        style-tag (.createElement js/document "title")]
       (.appendChild page-head style-tag)))
+
 
 (defn update-page-title [input-css]
  "Updates #injected-css with provided argument - if page does not have #injected-css, then
@@ -25,7 +26,8 @@
 
 (defn homepage-html []
   (let [reloading? @(re-frame/subscribe [:homepage/reloading])
-        show (if reloading? "none" "block")]
+        show (if reloading? "none" "block")
+        update-title (update-page-title "Rohan Mehta")]
     (-> [:div {:style {:id "super-container"
                        :position "relative"
                        :display show
