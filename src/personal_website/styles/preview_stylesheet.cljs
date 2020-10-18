@@ -6,7 +6,7 @@
 
 
 (defn preview-header []
-  [:.preview-header {:font-size (px 16)
+  [:.preview-header {:font-size (px 15)
                      :margin-bottom (px 5)
                      :color "grey"
                      :font-family "WorkSans"
@@ -14,9 +14,9 @@
 
 
 (defn preview-title []
-  [:.preview-title {:font-size (px 25)
+  [:.preview-title {:font-size (px 23)
                     :margin "0 0 0 0"
-                    :color "#DC143C";"#8B0000" ;#c31
+                    :color "#DC143C"
                     :width "auto"
                     :display "inline-block"
                     :font-family "WorkSansBold"
@@ -35,10 +35,13 @@
 
 (defn media-query-1 []
   (at-media {:max-width (px 400)}
-      [[:.preview-title {:font-size (px 18)}]
+      [[:.preview-title {:font-size (px 18)
+                         :margin-top (px 9)}]
        [:.preview-text {:line-height (px 20)
-                        :font-size (px 14)}]
-       [:.preview-header {:font-size (px 12)}]]))
+                        :font-size (px 14)
+                        :margin-top (px 8)}]
+       [:.preview-header {:font-size (px 13)
+                          :margin-bottom (px 0)}]]))
 
 (defn preview []
   [(preview-header)

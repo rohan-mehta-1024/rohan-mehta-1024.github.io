@@ -1,7 +1,7 @@
 (ns personal-website.content.projects.comp-sci.test-post)
 
 (def post
-  {:title "ML Algorithms From Scratch In Clojure"
+  {:title "Implementing simCLR In PyTorch"
    :date "2020/8/29"
    :content "blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
             blah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blahblah blah blah"

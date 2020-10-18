@@ -68,7 +68,7 @@
    :date "2020/10/29"
    :show post-preview
    :content post-content
-   :tags ["mathematics", "differentiable programming"]
+   :tags ["mathematics", "deep learning"]
    :type "blog-post"
    :overarching "writing"
    :id "1"})

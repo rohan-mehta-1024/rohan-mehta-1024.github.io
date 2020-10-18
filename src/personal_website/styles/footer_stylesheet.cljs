@@ -10,9 +10,7 @@
 
 (defn footer-part-1 []
   [:#footer-part-1 {:position "relative"
-                    :top (px 10)
-                    ;:z-index -300
-                    }
+                    :top (px 10)}
    [(s/+ s/a s/a) {:margin-left (px 50)}]
    [(s/& s/before) {:content "''"
                     :display "block"
@@ -23,7 +21,7 @@
 
 (defn footer-part-2 []
   [:#footer-part-2 {:position "relative"
-                    :margin-left (px 25)
+                    :margin-left (px 23)
                     :top (px 25)
                     :bottom (px 20)
                     :padding-bottom (px 7)
@@ -33,18 +31,12 @@
   [:#email-img {:width (px 50)
                 :margin-bottom (px -15)}])
 
-(defn github-img []
-  [:#github-img {:width (px 50)
-                :margin-bottom (px -15)}])
-
-
-
 (defn links []
   [:.links {:color "#333"
-            :font-family "WorkSansBold"
-            :text-decoration "underline"}
+            :font-family "WorkSansBold"}
    [(s/& s/hover) {:color "#000"
-                   :cursor "pointer"}]])
+                   :cursor "pointer"
+                   :text-decoration "underline"}]])
 
 (defn caption []
   [:.caption {:display "inline-block"}])
@@ -54,7 +46,7 @@
       [:#whole-footer {:margin-top (px 20)}]))
 
 (defn media-query-2 []
-  (at-media {:max-width (px 400)}
+  (at-media {:max-width (px 500)}
       [:#footer-part-2 {:font-size (px 14)}]))
 
 (defn footer []
@@ -62,7 +54,6 @@
    (footer-part-1)
    (footer-part-2)
    (email-img)
-   (github-img)
    (links)
    (caption)
    (media-query-2)

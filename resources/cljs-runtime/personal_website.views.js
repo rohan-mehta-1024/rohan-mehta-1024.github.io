@@ -26,7 +26,7 @@ var injected_css = personal_website.views.inject_css(personal_website.views.styl
 var typeset_fn = (function (){
 return setTimeout((function (){
 return MathJax.typeset();
-}),(500));
+}),(1000));
 });
 var call_typeset = typeset_fn();
 return new cljs.core.PersistentVector(null, 22, 5, cljs.core.PersistentVector.EMPTY_NODE, [kee_frame.core.switch_route,(function (route){

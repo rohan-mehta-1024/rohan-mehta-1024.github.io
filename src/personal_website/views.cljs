@@ -36,7 +36,7 @@
 
  (defn main-panel []
     (let [injected-css (inject-css (styles))
-          typeset-fn (fn [] (js/setTimeout (fn [](.typeset js/MathJax)) 500))
+          typeset-fn (fn [] (js/setTimeout (fn [](.typeset js/MathJax)) 1000))
           call-typeset (typeset-fn)
           ]
       [k/switch-route (fn [route] (-> route :data :name))

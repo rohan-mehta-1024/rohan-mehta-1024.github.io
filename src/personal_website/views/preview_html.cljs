@@ -1,5 +1,6 @@
 (ns personal-website.views.preview-html
-  (:require [personal-website.utils :as utils]))
+  (:require [re-frame.core :as re-frame]
+            [personal-website.utils :as utils]))
 
 (defn format-type [type]
   (->> (clojure.string/split type "-")
@@ -14,14 +15,24 @@
             (interpose ", ")
             clojure.string/join))
 
+(defn format-specifier [date type tags]
+  (let [page @(re-frame/subscribe [:kee-frame/route])
+        homepage? (if (= (:path page) "/") true false)
+        width (. js/window -innerWidth)
+        s (print "homey" homepage?)]
+  (if homepage?
+    (if (<= width 500)
+      (str date " | " type)
+      (str date " | " type " | " tags))
+    (str date " | " type " | " tags))))
 
 (defn preview [post-object homepage?]
   (let [{:keys [title date content show tags type id] :as post} post-object
         suffix (if (= type "short-story") "short-stories" (str type "s"))
         new-type (format-type type)
-        specifier (if homepage? (str new-type " | ") "")
         tags (format-tags tags)
-        header (str date " | " specifier tags)]
+
+        header (format-specifier date new-type tags)]
     [:div
         [:p {:class "preview-header"} header]
         [:a {:class "preview-title"
