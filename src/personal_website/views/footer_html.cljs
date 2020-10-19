@@ -4,13 +4,13 @@
 (defn links []
   [:div {:id "footer-part-1"}
    [:a  {:href "https://github.com/rohan-mehta-1024"}
-    [:img {:src "/github.svg"
+    [:img {:src "/resources/github.svg"
            :style {:margin-left "25px" :width "30px"}}]]
     [:a  {:href "https://github.com/rohan-mehta-1024"}
-     [:img {:src "/rss-feed.svg"
+     [:img {:src "/resources/rss-feed.svg"
             :style {:margin-left "25px" :width "26px" }}]]
      [:a  {:href "mailto:rohanm1024@gmail.com"}
-      [:img {:src "/mail.svg"
+      [:img {:src "/resources/mail.svg"
              :style {:margin-left "25px" :width "35px"}}]]])
 
 
