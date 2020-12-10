@@ -1,5 +1,6 @@
 (ns personal-website.views.all-posts-html
-  (:require [personal-website.views.header-html :refer [header]]
+  (:require [garden.core :refer [css]]
+            [personal-website.views.header-html :refer [header]]
             [personal-website.views.footer-html :refer [footer]]
             [personal-website.views.preview-html :refer [preview]]
             [personal-website.views.search-html :refer [search-html]]
@@ -29,6 +30,17 @@
                       (generate-and-inject-style-tag)
                       style-tag-query)]
       (aset style-tag "innerHTML" input-css)))
+
+(defn update-page-css [input-css]
+ "Updates #injected-css with provided argument - if page does not have #injected-css, then
+  creates it via call to generate-and-inject-style-tag"
+ (let [style-tag-selector "#injected-css"
+       style-tag-query (.querySelector js/document style-tag-selector)
+       style-tag (if (nil? style-tag-query)
+                      (generate-and-inject-style-tag)
+                      style-tag-query)
+      previous (.-innerHTML style-tag)]
+      (aset style-tag "innerHTML" (str previous input-css))))
 
 
 (def date-mapping {"1" "Jan"
@@ -75,7 +87,8 @@
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
-        prefix (conj [:div] (header) (search-html))]
+        prefix (conj [:div] (header) (search-html))
+        n (print "byeeee")]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"
@@ -83,8 +96,7 @@
                       :font-size "28px"
                       :font-family "WorkSansBold"
                       :min-height "100vh"}}
-       "When \\(a \\ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
-       $$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$"]
+       "This page is currently empty."]
        (footer)]
 
       (if (-> params :id (= "all"))
@@ -98,8 +110,14 @@
                 (conj prefix $)
                 (conj $ (footer))))
 
-        (let [post-title ((posts (utils/unformat-title (params :id))) :title)
-              page-title (update-page-title post-title)]
+        (let [q (print "hereonooo")
+              q (print (utils/unformat-title (params :id)))
+              l (print posts)
+              post-title ((posts (utils/unformat-title (params :id))) :title)
+              l (print post-title)
+              page-title (update-page-title post-title)
+              cssify (-> :id params utils/unformat-title posts :css css update-page-css)
+              x (print "helllllllo")]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}

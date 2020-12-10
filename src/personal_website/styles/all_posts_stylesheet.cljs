@@ -27,7 +27,7 @@
 (defn post-content-container []
   (let [searching? @(re-frame/subscribe [:homepage/search])
         show? (if searching? "none" "block")]
-    [:#post-content-container {:width (px 850)
+    [:#post-content-container {:width (px 750)
                                :min-height "100vh"
                                :margin "auto"
                                :margin-top (px 150)
@@ -65,7 +65,7 @@
                       :font-size (px 20)}])
 
 (defn post-content []
-  [:#post-content {:font-size (px 17)
+  [:#post-content {:font-size (px 16.5)
                    :font-family "WorkSans"
                    :margin-top (px 35)
                    :line-height (px 28)
@@ -79,7 +79,7 @@
 
 (defn post-caption []
   [:.post-caption {:font-style "italic"
-                   :font-size (px 16)}])
+                   :font-size (px 15)}])
 
 (defn img-container []
   [:.img-container {:margin (px 0)
@@ -91,6 +91,9 @@
   [:.post-section-header {:margin-top (px 50)
                           :font-family "WorkSansBold"}])
 
+(defn special []
+  [:.special {:width "30%"}])
+
 (defn media-query-1 []
   (at-media {:max-width (px 875)}
     [[:#post-container-1 {:width "95%"}]
@@ -100,6 +103,17 @@
 (defn media-query-2 []
   (at-media {:max-width (px 700)}
     [:.post-img {:width "90% !important"}]))
+
+(defn media-query-3 []
+  (at-media {:max-width (px 500)}
+    [:#post-content {:font-size (px 17)
+                     :line-height (px 30)}]))
+
+
+ (defn media-query-4 []
+   (at-media {:max-width (px 600)}
+     [:.special {:width "50%"}]))
+
 
 
 (defn all-posts []
@@ -118,5 +132,8 @@
    (img-container)
    (media-query-1)
    (media-query-2)
+   (special)
+   ;(media-query-3)
+   (media-query-4)
 
    ])

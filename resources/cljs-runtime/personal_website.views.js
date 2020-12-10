@@ -12,14 +12,14 @@ personal_website.views.update_page_css = (function personal_website$views$update
 var style_tag_selector = "#injected-css";
 var style_tag_query = document.querySelector(style_tag_selector);
 var style_tag = (((style_tag_query == null))?personal_website.views.generate_and_inject_style_tag():style_tag_query);
+var previous = style_tag.innerHTML;
 return (style_tag["innerHTML"] = input_css);
 });
 personal_website.views.styles = (function personal_website$views$styles(){
 return cljs.core.reduce.cljs$core$IFn$_invoke$arity$2(cljs.core.into,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [personal_website.styles.homepage_styles.homepage_stylesheet.homepage_styles(),personal_website.styles.all_posts_stylesheet.all_posts(),personal_website.styles.footer_stylesheet.footer()], null));
 });
 personal_website.views.inject_css = (function personal_website$views$inject_css(text_css){
-var cssify = cljs.core.partial.cljs$core$IFn$_invoke$arity$2(garden.core.css,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"vendors","vendors",-153040496),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["webkit"], null),new cljs.core.Keyword(null,"auto-prefix","auto-prefix",1484803466),new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"transition","transition",765692007),null], null), null)], null));
-return personal_website.views.update_page_css(cssify(text_css));
+return personal_website.views.update_page_css(garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([text_css], 0)));
 });
 personal_website.views.main_panel = (function personal_website$views$main_panel(){
 var injected_css = personal_website.views.inject_css(personal_website.views.styles());

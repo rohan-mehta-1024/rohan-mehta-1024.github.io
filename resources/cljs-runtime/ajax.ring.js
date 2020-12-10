@@ -13,8 +13,8 @@ return new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"st
  * populate the :body key in the response map.
  */
 ajax.ring.ring_response_format = (function ajax$ring$ring_response_format(var_args){
-var G__38326 = arguments.length;
-switch (G__38326) {
+var G__38327 = arguments.length;
+switch (G__38327) {
 case 0:
 return ajax.ring.ring_response_format.cljs$core$IFn$_invoke$arity$0();
 

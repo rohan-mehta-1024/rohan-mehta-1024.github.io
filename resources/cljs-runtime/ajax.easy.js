@@ -163,12 +163,12 @@ ajax.easy.default_error_handler = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(a
 /**
  * Converts easy API handlers to a `ajax-request` handler
  */
-ajax.easy.transform_handler = (function ajax$easy$transform_handler(p__38360){
-var map__38361 = p__38360;
-var map__38361__$1 = (((((!((map__38361 == null))))?(((((map__38361.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38361.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38361):map__38361);
-var handler = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38361__$1,new cljs.core.Keyword(null,"handler","handler",-195596612));
-var error_handler = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38361__$1,new cljs.core.Keyword(null,"error-handler","error-handler",-484945776));
-var finally$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38361__$1,new cljs.core.Keyword(null,"finally","finally",1589088705));
+ajax.easy.transform_handler = (function ajax$easy$transform_handler(p__38359){
+var map__38360 = p__38359;
+var map__38360__$1 = (((((!((map__38360 == null))))?(((((map__38360.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38360.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38360):map__38360);
+var handler = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38360__$1,new cljs.core.Keyword(null,"handler","handler",-195596612));
+var error_handler = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38360__$1,new cljs.core.Keyword(null,"error-handler","error-handler",-484945776));
+var finally$ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38360__$1,new cljs.core.Keyword(null,"finally","finally",1589088705));
 var h = (function (){var or__4126__auto__ = handler;
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
@@ -183,12 +183,12 @@ return or__4126__auto__;
 return cljs.core.deref(ajax.easy.default_error_handler);
 }
 })();
-return (function ajax$easy$transform_handler_$_easy_handler(p__38363){
-var vec__38364 = p__38363;
-var ok = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38364,(0),null);
-var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38364,(1),null);
-var fexpr__38367_38379 = (cljs.core.truth_(ok)?h:e);
-(fexpr__38367_38379.cljs$core$IFn$_invoke$arity$1 ? fexpr__38367_38379.cljs$core$IFn$_invoke$arity$1(result) : fexpr__38367_38379.call(null,result));
+return (function ajax$easy$transform_handler_$_easy_handler(p__38362){
+var vec__38363 = p__38362;
+var ok = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38363,(0),null);
+var result = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38363,(1),null);
+var fexpr__38367_38382 = (cljs.core.truth_(ok)?h:e);
+(fexpr__38367_38382.cljs$core$IFn$_invoke$arity$1 ? fexpr__38367_38382.cljs$core$IFn$_invoke$arity$1(result) : fexpr__38367_38382.call(null,result));
 
 if(cljs.core.fn_QMARK_(finally$)){
 return (finally$.cljs$core$IFn$_invoke$arity$0 ? finally$.cljs$core$IFn$_invoke$arity$0() : finally$.call(null));

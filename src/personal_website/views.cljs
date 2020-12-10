@@ -24,14 +24,15 @@
        style-tag-query (.querySelector js/document style-tag-selector)
        style-tag (if (nil? style-tag-query)
                       (generate-and-inject-style-tag)
-                      style-tag-query)]
+                      style-tag-query)
+       previous (.-innerHTML style-tag)]
       (aset style-tag "innerHTML" input-css)))
 
 
 (defn styles []  (reduce into [(homepage-styles) (all-posts) (footer)]))
 (defn inject-css [text-css]
-  (let [cssify (partial css {:vendors ["webkit"] :auto-prefix #{:transition}})]
-    (-> text-css cssify update-page-css)))
+    (-> text-css css update-page-css))
+
 
 
  (defn main-panel []

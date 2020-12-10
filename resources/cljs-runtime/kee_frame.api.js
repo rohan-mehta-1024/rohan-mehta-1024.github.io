@@ -5,7 +5,7 @@ goog.provide('kee_frame.api');
  */
 kee_frame.api.Navigator = function(){};
 
-var kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37967 = (function (_){
+var kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37966 = (function (_){
 var x__4428__auto__ = (((_ == null))?null:_);
 var m__4429__auto__ = (kee_frame.api.dispatch_current_BANG_[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -23,11 +23,11 @@ kee_frame.api.dispatch_current_BANG_ = (function kee_frame$api$dispatch_current_
 if((((!((_ == null)))) && ((!((_.kee_frame$api$Navigator$dispatch_current_BANG_$arity$1 == null)))))){
 return _.kee_frame$api$Navigator$dispatch_current_BANG_$arity$1(_);
 } else {
-return kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37967(_);
+return kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37966(_);
 }
 });
 
-var kee_frame$api$Navigator$navigate_BANG_$dyn_37968 = (function (_,url){
+var kee_frame$api$Navigator$navigate_BANG_$dyn_37967 = (function (_,url){
 var x__4428__auto__ = (((_ == null))?null:_);
 var m__4429__auto__ = (kee_frame.api.navigate_BANG_[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -45,7 +45,7 @@ kee_frame.api.navigate_BANG_ = (function kee_frame$api$navigate_BANG_(_,url){
 if((((!((_ == null)))) && ((!((_.kee_frame$api$Navigator$navigate_BANG_$arity$2 == null)))))){
 return _.kee_frame$api$Navigator$navigate_BANG_$arity$2(_,url);
 } else {
-return kee_frame$api$Navigator$navigate_BANG_$dyn_37968(_,url);
+return kee_frame$api$Navigator$navigate_BANG_$dyn_37967(_,url);
 }
 });
 
@@ -55,7 +55,7 @@ return kee_frame$api$Navigator$navigate_BANG_$dyn_37968(_,url);
  */
 kee_frame.api.Router = function(){};
 
-var kee_frame$api$Router$data__GT_url$dyn_37970 = (function (_,data){
+var kee_frame$api$Router$data__GT_url$dyn_37968 = (function (_,data){
 var x__4428__auto__ = (((_ == null))?null:_);
 var m__4429__auto__ = (kee_frame.api.data__GT_url[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -73,11 +73,11 @@ kee_frame.api.data__GT_url = (function kee_frame$api$data__GT_url(_,data){
 if((((!((_ == null)))) && ((!((_.kee_frame$api$Router$data__GT_url$arity$2 == null)))))){
 return _.kee_frame$api$Router$data__GT_url$arity$2(_,data);
 } else {
-return kee_frame$api$Router$data__GT_url$dyn_37970(_,data);
+return kee_frame$api$Router$data__GT_url$dyn_37968(_,data);
 }
 });
 
-var kee_frame$api$Router$url__GT_data$dyn_37972 = (function (_,url){
+var kee_frame$api$Router$url__GT_data$dyn_37974 = (function (_,url){
 var x__4428__auto__ = (((_ == null))?null:_);
 var m__4429__auto__ = (kee_frame.api.url__GT_data[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -95,7 +95,7 @@ kee_frame.api.url__GT_data = (function kee_frame$api$url__GT_data(_,url){
 if((((!((_ == null)))) && ((!((_.kee_frame$api$Router$url__GT_data$arity$2 == null)))))){
 return _.kee_frame$api$Router$url__GT_data$arity$2(_,url);
 } else {
-return kee_frame$api$Router$url__GT_data$dyn_37972(_,url);
+return kee_frame$api$Router$url__GT_data$dyn_37974(_,url);
 }
 });
 

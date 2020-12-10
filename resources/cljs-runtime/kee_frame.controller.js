@@ -87,83 +87,83 @@ var params = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs
 var start = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs.core.Keyword(null,"start","start",-355208981));
 var stop = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs.core.Keyword(null,"stop","stop",-2140911342));
 var current_params = kee_frame.controller.process_params(params,route);
-var last_params_41737__$1 = last_params;
-var current_params_41738__$1 = current_params;
-var ocr_41698_41739 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(last_params_41737__$1,current_params_41738__$1);
-try{if((ocr_41698_41739 === true)){
+var last_params_41745__$1 = last_params;
+var current_params_41746__$1 = current_params;
+var ocr_41698_41747 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(last_params_41745__$1,current_params_41746__$1);
+try{if((ocr_41698_41747 === true)){
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e41725){if((e41725 instanceof Error)){
-var e__40616__auto___41740 = e41725;
-if((e__40616__auto___41740 === cljs.core.match.backtrack)){
-try{if((ocr_41698_41739 === false)){
-try{if((last_params_41737__$1 === null)){
-kee_frame.controller.start_BANG_(id,ctx,start,current_params_41738__$1);
+}catch (e41729){if((e41729 instanceof Error)){
+var e__40658__auto___41748 = e41729;
+if((e__40658__auto___41748 === cljs.core.match.backtrack)){
+try{if((ocr_41698_41747 === false)){
+try{if((last_params_41745__$1 === null)){
+kee_frame.controller.start_BANG_(id,ctx,start,current_params_41746__$1);
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e41727){if((e41727 instanceof Error)){
-var e__40616__auto___41741__$1 = e41727;
-if((e__40616__auto___41741__$1 === cljs.core.match.backtrack)){
-try{if((current_params_41738__$1 === null)){
+}catch (e41731){if((e41731 instanceof Error)){
+var e__40658__auto___41749__$1 = e41731;
+if((e__40658__auto___41749__$1 === cljs.core.match.backtrack)){
+try{if((current_params_41746__$1 === null)){
 kee_frame.controller.stop_BANG_(id,ctx,stop);
 } else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e41728){if((e41728 instanceof Error)){
-var e__40616__auto___41742__$2 = e41728;
-if((e__40616__auto___41742__$2 === cljs.core.match.backtrack)){
+}catch (e41732){if((e41732 instanceof Error)){
+var e__40658__auto___41750__$2 = e41732;
+if((e__40658__auto___41750__$2 === cljs.core.match.backtrack)){
 kee_frame.controller.stop_BANG_(id,ctx,stop);
 
-kee_frame.controller.start_BANG_(id,ctx,start,current_params_41738__$1);
+kee_frame.controller.start_BANG_(id,ctx,start,current_params_41746__$1);
 } else {
-throw e__40616__auto___41742__$2;
+throw e__40658__auto___41750__$2;
 }
 } else {
-throw e41728;
+throw e41732;
 
 }
 }} else {
-throw e__40616__auto___41741__$1;
+throw e__40658__auto___41749__$1;
 }
 } else {
-throw e41727;
+throw e41731;
 
 }
 }} else {
 throw cljs.core.match.backtrack;
 
 }
-}catch (e41726){if((e41726 instanceof Error)){
-var e__40616__auto___41743__$1 = e41726;
-if((e__40616__auto___41743__$1 === cljs.core.match.backtrack)){
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(last_params_41737__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(current_params_41738__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ocr_41698_41739)].join('')));
+}catch (e41730){if((e41730 instanceof Error)){
+var e__40658__auto___41751__$1 = e41730;
+if((e__40658__auto___41751__$1 === cljs.core.match.backtrack)){
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(last_params_41745__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(current_params_41746__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ocr_41698_41747)].join('')));
 } else {
-throw e__40616__auto___41743__$1;
+throw e__40658__auto___41751__$1;
 }
 } else {
-throw e41726;
+throw e41730;
 
 }
 }} else {
-throw e__40616__auto___41740;
+throw e__40658__auto___41748;
 }
 } else {
-throw e41725;
+throw e41729;
 
 }
 }
 return current_params;
 });
 kee_frame.controller.apply_route = (function kee_frame$controller$apply_route(controllers,ctx,route){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__41729){
-var vec__41730 = p__41729;
-var id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__41730,(0),null);
-var controller = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__41730,(1),null);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__41733){
+var vec__41734 = p__41733;
+var id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__41734,(0),null);
+var controller = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__41734,(1),null);
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [id,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(controller,new cljs.core.Keyword(null,"last-params","last-params",1293824707),kee_frame.controller.process_controller(id,controller,ctx,route))], null);
 }),controllers));
 });
