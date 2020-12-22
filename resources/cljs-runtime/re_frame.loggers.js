@@ -10,14 +10,14 @@ return cljs.core.List.EMPTY;
 }))], null));
 re_frame.loggers.console = (function re_frame$loggers$console(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___36905 = arguments.length;
-var i__4737__auto___36906 = (0);
+var len__4736__auto___36885 = arguments.length;
+var i__4737__auto___36886 = (0);
 while(true){
-if((i__4737__auto___36906 < len__4736__auto___36905)){
-args__4742__auto__.push((arguments[i__4737__auto___36906]));
+if((i__4737__auto___36886 < len__4736__auto___36885)){
+args__4742__auto__.push((arguments[i__4737__auto___36886]));
 
-var G__36907 = (i__4737__auto___36906 + (1));
-i__4737__auto___36906 = G__36907;
+var G__36887 = (i__4737__auto___36886 + (1));
+i__4737__auto___36886 = G__36887;
 continue;
 } else {
 }
@@ -34,19 +34,19 @@ if(cljs.core.contains_QMARK_(cljs.core.deref(re_frame.loggers.loggers),level)){
 throw (new Error(["Assert failed: ",["re-frame: log called with unknown level: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(level)].join(''),"\n","(contains? (clojure.core/deref loggers) level)"].join('')));
 }
 
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$2((function (){var G__36887 = cljs.core.deref(re_frame.loggers.loggers);
-return (level.cljs$core$IFn$_invoke$arity$1 ? level.cljs$core$IFn$_invoke$arity$1(G__36887) : level.call(null,G__36887));
+return cljs.core.apply.cljs$core$IFn$_invoke$arity$2((function (){var G__36868 = cljs.core.deref(re_frame.loggers.loggers);
+return (level.cljs$core$IFn$_invoke$arity$1 ? level.cljs$core$IFn$_invoke$arity$1(G__36868) : level.call(null,G__36868));
 })(),args);
 }));
 
 (re_frame.loggers.console.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(re_frame.loggers.console.cljs$lang$applyTo = (function (seq36885){
-var G__36886 = cljs.core.first(seq36885);
-var seq36885__$1 = cljs.core.next(seq36885);
+(re_frame.loggers.console.cljs$lang$applyTo = (function (seq36866){
+var G__36867 = cljs.core.first(seq36866);
+var seq36866__$1 = cljs.core.next(seq36866);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__36886,seq36885__$1);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__36867,seq36866__$1);
 }));
 
 re_frame.loggers.set_loggers_BANG_ = (function re_frame$loggers$set_loggers_BANG_(new_loggers){

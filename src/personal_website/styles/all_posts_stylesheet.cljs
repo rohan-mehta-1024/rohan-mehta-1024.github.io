@@ -65,7 +65,7 @@
                       :font-size (px 20)}])
 
 (defn post-content []
-  [:#post-content {:font-size (px 16.5)
+  [:#post-content {:font-size (px 16.25)
                    :font-family "WorkSans"
                    :margin-top (px 35)
                    :line-height (px 28)
@@ -106,8 +106,10 @@
 
 (defn media-query-3 []
   (at-media {:max-width (px 500)}
-    [:#post-content {:font-size (px 17)
-                     :line-height (px 30)}]))
+    [[:#post-content {:font-size (px 15)
+                     :line-height (px 25)}]
+     [:.post-caption {:font-size (px 12)
+                      :line-height (px 20)}]]))
 
 
  (defn media-query-4 []
@@ -133,7 +135,7 @@
    (media-query-1)
    (media-query-2)
    (special)
-   ;(media-query-3)
+   (media-query-3)
    (media-query-4)
 
    ])

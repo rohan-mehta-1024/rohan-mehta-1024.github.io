@@ -49,7 +49,7 @@ return shadow$remote$runtime$api$IRuntime$add_extension$dyn_35474(runtime,key,sp
 }
 });
 
-var shadow$remote$runtime$api$IRuntime$del_extension$dyn_35475 = (function (runtime,key){
+var shadow$remote$runtime$api$IRuntime$del_extension$dyn_35479 = (function (runtime,key){
 var x__4428__auto__ = (((runtime == null))?null:runtime);
 var m__4429__auto__ = (shadow.remote.runtime.api.del_extension[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -67,7 +67,7 @@ shadow.remote.runtime.api.del_extension = (function shadow$remote$runtime$api$de
 if((((!((runtime == null)))) && ((!((runtime.shadow$remote$runtime$api$IRuntime$del_extension$arity$2 == null)))))){
 return runtime.shadow$remote$runtime$api$IRuntime$del_extension$arity$2(runtime,key);
 } else {
-return shadow$remote$runtime$api$IRuntime$del_extension$dyn_35475(runtime,key);
+return shadow$remote$runtime$api$IRuntime$del_extension$dyn_35479(runtime,key);
 }
 });
 
@@ -77,7 +77,7 @@ return shadow$remote$runtime$api$IRuntime$del_extension$dyn_35475(runtime,key);
  */
 shadow.remote.runtime.api.Inspectable = function(){};
 
-var shadow$remote$runtime$api$Inspectable$describe$dyn_35476 = (function (thing,opts){
+var shadow$remote$runtime$api$Inspectable$describe$dyn_35486 = (function (thing,opts){
 var x__4428__auto__ = (((thing == null))?null:thing);
 var m__4429__auto__ = (shadow.remote.runtime.api.describe[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -104,7 +104,7 @@ shadow.remote.runtime.api.describe = (function shadow$remote$runtime$api$describ
 if((((!((thing == null)))) && ((!((thing.shadow$remote$runtime$api$Inspectable$describe$arity$2 == null)))))){
 return thing.shadow$remote$runtime$api$Inspectable$describe$arity$2(thing,opts);
 } else {
-return shadow$remote$runtime$api$Inspectable$describe$dyn_35476(thing,opts);
+return shadow$remote$runtime$api$Inspectable$describe$dyn_35486(thing,opts);
 }
 });
 
@@ -114,7 +114,7 @@ return shadow$remote$runtime$api$Inspectable$describe$dyn_35476(thing,opts);
  */
 shadow.remote.runtime.api.IEvalCLJS = function(){};
 
-var shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$dyn_35485 = (function (runtime,input,callback){
+var shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$dyn_35487 = (function (runtime,input,callback){
 var x__4428__auto__ = (((runtime == null))?null:runtime);
 var m__4429__auto__ = (shadow.remote.runtime.api._cljs_eval[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -132,7 +132,7 @@ shadow.remote.runtime.api._cljs_eval = (function shadow$remote$runtime$api$_cljs
 if((((!((runtime == null)))) && ((!((runtime.shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$arity$3 == null)))))){
 return runtime.shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$arity$3(runtime,input,callback);
 } else {
-return shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$dyn_35485(runtime,input,callback);
+return shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$dyn_35487(runtime,input,callback);
 }
 });
 
@@ -143,7 +143,7 @@ return shadow$remote$runtime$api$IEvalCLJS$_cljs_eval$dyn_35485(runtime,input,ca
  */
 shadow.remote.runtime.api.IEvalJS = function(){};
 
-var shadow$remote$runtime$api$IEvalJS$_js_eval$dyn_35486 = (function (runtime,code){
+var shadow$remote$runtime$api$IEvalJS$_js_eval$dyn_35488 = (function (runtime,code){
 var x__4428__auto__ = (((runtime == null))?null:runtime);
 var m__4429__auto__ = (shadow.remote.runtime.api._js_eval[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -161,7 +161,7 @@ shadow.remote.runtime.api._js_eval = (function shadow$remote$runtime$api$_js_eva
 if((((!((runtime == null)))) && ((!((runtime.shadow$remote$runtime$api$IEvalJS$_js_eval$arity$2 == null)))))){
 return runtime.shadow$remote$runtime$api$IEvalJS$_js_eval$arity$2(runtime,code);
 } else {
-return shadow$remote$runtime$api$IEvalJS$_js_eval$dyn_35486(runtime,code);
+return shadow$remote$runtime$api$IEvalJS$_js_eval$dyn_35488(runtime,code);
 }
 });
 

@@ -226,11 +226,11 @@ return (new ajax.interceptors.StandardInterceptor(name,request,response,null,nul
  * Factory function for ajax.interceptors/StandardInterceptor, taking a map of keywords to field values.
  */
 ajax.interceptors.map__GT_StandardInterceptor = (function ajax$interceptors$map__GT_StandardInterceptor(G__38164){
-var extmap__4419__auto__ = (function (){var G__38188 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__38164,new cljs.core.Keyword(null,"name","name",1843675177),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"request","request",1772954723),new cljs.core.Keyword(null,"response","response",-1068424192)], 0));
+var extmap__4419__auto__ = (function (){var G__38186 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(G__38164,new cljs.core.Keyword(null,"name","name",1843675177),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"request","request",1772954723),new cljs.core.Keyword(null,"response","response",-1068424192)], 0));
 if(cljs.core.record_QMARK_(G__38164)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__38188);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__38186);
 } else {
-return G__38188;
+return G__38186;
 }
 })();
 return (new ajax.interceptors.StandardInterceptor(new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(G__38164),new cljs.core.Keyword(null,"request","request",1772954723).cljs$core$IFn$_invoke$arity$1(G__38164),new cljs.core.Keyword(null,"response","response",-1068424192).cljs$core$IFn$_invoke$arity$1(G__38164),null,cljs.core.not_empty(extmap__4419__auto__),null));
@@ -258,14 +258,14 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(response,new cljs.co
 });
 ajax.interceptors.fail = (function ajax$interceptors$fail(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___38356 = arguments.length;
-var i__4737__auto___38357 = (0);
+var len__4736__auto___38364 = arguments.length;
+var i__4737__auto___38365 = (0);
 while(true){
-if((i__4737__auto___38357 < len__4736__auto___38356)){
-args__4742__auto__.push((arguments[i__4737__auto___38357]));
+if((i__4737__auto___38365 < len__4736__auto___38364)){
+args__4742__auto__.push((arguments[i__4737__auto___38365]));
 
-var G__38358 = (i__4737__auto___38357 + (1));
-i__4737__auto___38357 = G__38358;
+var G__38367 = (i__4737__auto___38365 + (1));
+i__4737__auto___38365 = G__38367;
 continue;
 } else {
 }

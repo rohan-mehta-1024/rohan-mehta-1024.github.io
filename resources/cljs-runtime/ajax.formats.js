@@ -37,8 +37,8 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"wr
 });
 ajax.formats.text_response_format = ajax.formats.raw_response_format;
 ajax.formats.get_format = (function ajax$formats$get_format(var_args){
-var G__38299 = arguments.length;
-switch (G__38299) {
+var G__38305 = arguments.length;
+switch (G__38305) {
 case 2:
 return ajax.formats.get_format.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -135,8 +135,8 @@ return fe;
 (ajax.formats.get_accept_entries.cljs$lang$maxFixedArity = 2);
 
 ajax.formats.content_type_matches = (function ajax$formats$content_type_matches(var_args){
-var G__38311 = arguments.length;
-switch (G__38311) {
+var G__38310 = arguments.length;
+switch (G__38310) {
 case 2:
 return ajax.formats.content_type_matches.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 

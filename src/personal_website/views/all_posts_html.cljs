@@ -88,7 +88,9 @@
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
         prefix (conj [:div] (header) (search-html))
-        n (print "byeeee")]
+        typeset-fn (fn [] (js/setTimeout (fn [] (.typesetPromise js/MathJax) (print "typeset")) 1000))
+        call-typeset (typeset-fn)
+        n (print "hellloOO?")]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"

@@ -4,253 +4,1165 @@
 
 (def post-preview
   "Automatic differentiation is the numerical computing technique
-   that gave us the backpropogation algorithm, which is
-   how neural nets learn. In this post, we will explore
-   the mathematics behind it – both in the context of neural nets
-   and more broadly.")
+   that gave us the backpropogation algorithm, which is how
+   neural nets learn. In this post, we will explore it from both a mathematics
+   and computer science perspective.")
 
 (def post-content
   [:div ;{:style {:text-indent "25px"}}
    [:p "Backpropogation is the cornerstone of the differentiable
-        programming paradigm — the idea that we can allow programs to optimize
-        their behavior against certain metrics by  differentiating over and updating sets
-        of learnable functions. In fact, it is the very algorithm that allows neural
-        nets to learn! Less talked about is automatic differentiation, the numerical computing technique
-        that makes it possible, and one of the key reasons
-        neural nets are able to transcend theory and work in real life."]
+        programming paradigm — the idea that we can allow programs
+        to optimize their behavior against certain metrics by
+        differentiating over and updating sets of learnable functions.
+        In fact, it is the very algorithm that allows neural
+        nets to learn! But it is really only one of the many applications
+        of an even broader numerical computing technique known as automatic differentiation."]
 
-   [:p "Both, however, are essential to a thorough understanding of
-        how and why neural nets are even possible in the first place.
-        In this post, we'll go through the mathematics underpinning both
-        of them, which is a journey far less restricted to the realm
-        of a calculus than you may expect (no spoilers!).
-        That said, there is no escaping the calculus, so if you feel it's
-        worth taking a few moments
-        to review how exactly we take the deriavatives of multivariate functions, continue on.
-        Otherwise, skip here.
-        "]
+   [:p "Its contribution to neural nets is perhaps its most popularized use today,
+        but the idea has a long history, and its story is ongoing. In its modern
+        day incarnation, it draws on a broad swath of mathmetical
+        knowledge and is
+        a beautiful amalgamation of many different ideas. While
+        our dicussion of the technique will be phrased in terms of its utility to
+        neural nets, though, the ideas underpinning it are far more applicable,
+        illustrating some deeper truths about calculus, dynamic problem, and the
+        art of problem solving in in general."]
 
-   ;[:p "With that in mind, let’s start very simple. Neural nets are just
-    ;    hierarchies of “layers”  – vertical stacks of interconnected units known as
-    ;    neurons. Each neuron is associated with some learnable weight vector which
-    ;    computes a dot product with the vector of incoming values, adjusts it by some
-    ;    (also learnable) scalar, and pumps it through a non-linearity, such that
-    ;    optimizing these learnable parameters can result in very complex – and
-    ;    seemingly intelligent – behavior. "]
-
-
-    ;[:figure {:class "img-container"}
-    ;  [:div {:style {:text-align "center"}}
-    ;    [:img {:src "/auto_diff_nn_pic.svg"  :style {:width "65%"}}]]
-    ;  [:figcaption {:class "post-caption"}
-    ;    "Fig. 1. An example of a simple neural network. An almost laughably basic building block –
-    ;    learnable transformations of information – allows them to approximate all kinds of complex functions."]]
-
-
-    ;[:p "This is known - it is neural networks in their simplest, most
-    ;    straightforward form. But treating their optimization as a block box makes
-    ;    things seem deceptively easy, when in fact these optimization algorithms
-    ;    (along with the hardware they’re  running on) are the sole differentiator
-    ;    between neural nets being only of theoretical interest versus practical utility,
-    ;    and automatic differentiation underpins every single one of them. So how does it actually work?"]
+   [:p " What follows is a concise review of
+   multivariable calculus, before we delve into some more complex math.
+   If you don't need it, skip ahead. Otherwise, read on!"]
 
    [:h1 {:class "post-section-header"} "Learning To Differentiate"]
 
    [:p "Derivatives of single-variable functions are
-        measurements of how infinitesimal variations to a function's
-        input-space correspond to variations in the output-space. And the same
-        is true of multivariable functions,
-        except now we have many more ways in which
-        we can vary our input-space."]
+        measurements of how infinitesimal variations
+        to a function's input-space correspond to the
+        resulting variations in its output-space.
+        And the same is true of  multivariable functions,
+        except now we have many more ways in which to
+        vary our input-space."]
 
-   [:p "To start though, let’s consider the case of a
-        function of two variables. Such a function can be pictured as a surface
-        above the Cartesian plane, where the height of a point
-        on that surface is calculated using the function
-        \\(f(x,y)\\) in question. With this in mind, the geometrical
-        interpretation of the derivative is how the elevation of
-        this surface changes given a small step in some direction."]
+   [:p "To start, let’s consider a function of two
+        variables. Such a function can be pictured
+        as a surface above the Cartesian plane, where
+        the height of a point on that surface is
+        calculated using the function \\(f(x,y)\\)
+        in question. With this in mind, the geometrical
+        interpretation of the derivative is how
+        the elevation of this surface changes given
+        a small step in some direction."]
 
   [:figure {:class "img-container"}
    [:div {:style {:text-align "center"}}
-    [:img {:src "/multi-fn-2.png" :style {:width "45%"}}]
-    [:img {:src "/multi-fn-4.png" :style {:width "45%"}}]
+    [:img {:src "/resources/multi-fn-2.png" :style {:width "45%"}}]
+    [:img {:src "/resources/multi-fn-4.png" :style {:width "45%"}}]
      [:figcaption {:class "post-caption" :style {:text-align "left"}}
-     "Fig. 2. Examples of surfaces that can be generated
-     by a function of two variables (Source: "
-     (utils/link "CalcPlot3D" "https://www.monroecc.edu/faculty/paulseeburger/calcnsf/CalcPlot3D/")")."]]]
+     "Fig. 1. Examples of surfaces generated by a function of two variables (Source: "
+      (utils/link "CalcPlot3D" "https://www.monroecc.edu/faculty/paulseeburger/calcnsf/CalcPlot3D/")")."]]]
 
 
-   [:p "An important thing to notice here is that this step could be in any direction:
-        vertical, horizontal, or some combination of the two (diagonal). For simplicity
-        though, we'll resitrict ourselves to the first two cases – those in which we take
-        steps in purely the \\(x\\) and \\(y\\) directions – for right now.
-        So how would we calculate the derivative of the function \\(f(x,y) = x^2 + y^2\\)
-        with respect to \\(x\\) then?"]
+   [:p "An important thing to notice here is that
+        this step could be in any direction: the
+        \\(x\\) direction, \\(y\\) direction, or some
+        combination of the two. Say, for instance, we
+        wanted to differentiate the function
+        \\(f(x, y) = x^2 + y^2\\) with respect to \\(x\\).
+        We now know what this means geometrically,
+        but how exactly would we go about calculating it?"]
 
-   [:p "Imagine standing at some point on this function's surface, and walking
-        horizontally in both directions. If we walk such that a spool of
-        yarn unrolls behind  us, the shape this yarn takes will
-        resemble the graph of a single-variate function.
-        More specifically, it will look like
-          \\(f(x) = x^2 + C\\) (a parabola) where \\(C\\) is some constant, namely
-        whatever the \\(y\\)-value of our original point was."]
+   [:p "Imagine standing at some point on this
+        function's surface, and walking horizontally
+        in both directions. If we walk such that a spool
+        of yarn unravels behind us, the shape this yarn
+        takes will resemble the graph of the single-variate
+        function \\(f(x) = x^2 + C\\) (a parabola) where
+        \\(C\\) is some constant, namely whatever the
+        \\(y\\)-value of our original point was."]
 
-   [:p "It might not be immediately obvious, but by walking horizontally
-        across our surface we only varied our \\(x\\)-coordinate, while
-        our \\(y\\)-coordinate remained constant.
-        Thus, when walking in this way,
-        the surface can be described
-        by a special case of the original function where
-        \\(y\\) is a constant."]
+   [:p "It's not immediately obvious, but by walking
+        horizontally across our surface we only varied
+        our \\(x\\)-coordinate, while our \\(y\\)-coordinate
+        remained constant. Thus, when walking in this way,
+        the surface is described by a special case of the
+        original function where \\(y\\) is a constant."]
 
       [:p "Similarly, a walk
            in a purely vertical direction is described
-           when \\(x\\) is a constant. More generally, we would find that
-           all multivariate functions
-           behave in this way when being sliced
-           (or walked upon) purely in the direction of one their variables, such
-           that all others become constants."]
+           when \\(x\\) is a constant. In fact, we would find that
+           all multivariable functions
+           behave in this way when being walked upon
+           purely in the direction of one of their variables,
+           such that all others become constants."]
 
   [:figure {:class "img-container"}
    [:div {:style {:text-align "center"}}
-    [:img {:src "/parabaloid-1.png" :style {:width "50%"}}]
-    [:img {:src "/parabaloid-2.png" :style {:width "50%"}}]
+    [:img {:src "/resources/parabaloid-1.png" :style {:width "50%"}}]
+    [:img {:src "/resources/parabaloid-2.png" :style {:width "50%"}}]
     [:figcaption {:class "post-caption" :style {:text-align "left"}}
-    "Fig. 3. The graph the function \\(f(x,y) = x^2 + y^2\\), known as a parabaloid.
-    Slicing it across the \\(x\\)-axis reveals that \\(x\\)-wise
-    cross-sections are parabolas. In fact, this property defines the surface! (Source: "
-    (utils/link "GeoGebra3D" "https://www.geogebra.org/3d?lang=en")")."
-     ]]]
+    "Fig. 2. The graph the function \\(f(x,y) = x^2 + y^2\\), known as a parabaloid.
+    Slicing it across the \\(x\\)-axis (or walking in the \\(x\\) direction) reveals that \\(x\\)-wise
+    cross-sections are parabolas. (Source: " (utils/link "GeoGebra3D" "https://www.geogebra.org/3d?lang=en")")."]]]
 
-   [:p "In that vein of thought, we might conjecture that when computing
-        the derivative of our function \\(f(x,y) = x^2 + y^2\\) with
-        respect to \\(x\\), we can imagine we are taking the
-        derivative of \\(f(x) = x^2 + C\\), as this is what
-        the surface looks like when moving in the \\(x\\) direction.
-        Then the deriavative with respect to \\(x\\)
-        (what we call its partial derivative)
-        would be \\(2x\\). That is to say
-        \\(\\frac{\\partial{f}}{\\partial{x}}\\ = 2x\\)
-        (as would \\(\\frac{\\partial{f}}{\\partial{y}}\\))."]
+   [:p "In that vein of thought, we might conjecture
+        that when computing the derivative of our
+        function \\(f(x,y) = x^2 + y^2\\) with
+        respect to \\(x\\), we can imagine we are
+        instead differentiating \\(f(x) = x^2 + C\\),
+        as this is what the surface looks like when
+        moving in the \\(x\\) direction. Then the
+        deriavative with respect to \\(x\\) (what
+        we call the partial derivative) would
+        be \\(2x\\), or \\(\\frac{\\partial{f}}{\\partial{x}}\\ = 2x\\)"]
 
-   [:p "And it turns out that this thought is in fact correct!"
-        (utils/make-footnote "1" "first-footnote-a" "first-footnote-b")
-        " But how do we generalize this idea when taking steps across our surface that aren't
-          purely horizontal or vertical in nature? For instance,
-          what is the derivative associated with some step in the
-        direction of the vector \\(\\langle 1, 1 \\rangle \\)?"]
+   [:p "And it turns out that this thought is in fact
+        correct!" (utils/make-footnote "1" "first-footnote-a" "first-footnote-b")
+        " When taking the derivative of a multivariable
+        function with respect to only a single variable,
+        we can treat all other variables as constants
+        and just apply our single-variable
+        differentiation rules."]
 
-    [:p "
-        Well, a step in this direction is equivelant to one step
-        in both the \\(x\\) direction and \\(y\\) direction.
-        And since we know how our function changes for both a pure step in the
-        \\(x\\) direction (\\(\\frac{\\partial{f}}{\\partial{x}}\\)) and \\(y\\)
-        direction (\\(\\frac{\\partial{f}}{\\partial{y}}\\)), the derivative
-        in this direction is just a sum of the two: \\(\\frac{\\partial{f}}{\\partial{x}} + \\frac{\\partial{f}}{\\partial{y}}\\ =
-        2x + 2y\\)."]
+   [:p "But how do we generalize this idea when taking
+        steps across our surface that aren't only in the
+        \\(x\\) direction or only in the \\(y\\) direction,
+        but rather some combination of both? For instance,
+        how would we calculate the derivative for some
+        infinitesimal step along the vector
+        \\(\\langle 1, 1 \\rangle \\)?"]
 
-  [:p "More generally, given any multivariate function of \\(n\\) variables,
-       we can express a derivative with respect to some vector – what we
-       call a directional derivative – as the linear combination of that function's partial derivatives
-       and the components of that vector. Said another way, given the vectors:"]
+    [:p "Well, a step in this direction is equivelant
+         to one step in both the \\(x\\) direction and
+         \\(y\\) direction. And since we know how our
+         function changes for both a pure step in the
+         \\(x\\) direction (\\(\\frac{\\partial{f}}{\\partial{x}}\\))
+         and \\(y\\) direction (\\(\\frac{\\partial{f}}{\\partial{y}}\\)),
+         the derivative in this direction is just their sum:
+         \\(\\frac{\\partial{f}}{\\partial{x}} + \\frac{\\partial{f}}{\\partial{y}}\\ = 2x + 2y\\)."]
 
-  [:p "$$ \\boldsymbol{\\vec{\\alpha}} = \\begin{bmatrix}
-          a_{1} \\\\
-          a_{2} \\\\
-          \\vdots \\\\
-          a_{n} \\\\
-          \\end{bmatrix}
-          \\hspace{1cm}
-          \\boldsymbol{\\vec{\\beta}} =
+   [:p "More generally, given any vector \\(\\boldsymbol{\\vec{v}}\\)
+        we can compute its corresponding derivative
+        – or directional derivative – by dotting it with
+        the vector containing our function's partials."]
+
+   [:p "$$D_{\\boldsymbol{\\vec{v}}}f(x_1, x_2, \\ldots, x_n) = \\boldsymbol{\\vec{v}} \\cdot
           \\begin{bmatrix}
-          \\frac{\\partial{f}}{\\partial{x_1}} \\\\
-          \\frac{\\partial{f}}{\\partial{x_2}} \\\\
-          \\vdots \\\\
-          \\frac{\\partial{f}}{\\partial{x_n}} \\\\
-          \\end{bmatrix}
-        $$"]
+            \\frac{\\partial{f}}{\\partial{x_1}} \\\\
+            \\frac{\\partial{f}}{\\partial{x_2}} \\\\
+            \\vdots \\\\
+            \\frac{\\partial{f}}{\\partial{x_n}} \\\\
+          \\end{bmatrix}$$"]
 
-   [:p {:style {:margin-bottom "25px"}} "Then the derivative of \\(f(x_1, x_2, \\ldots, x_n)\\) with respect to \\(\\boldsymbol{\\vec{\\alpha}}\\) is \\(\\boldsymbol{\\vec{\\alpha}} \\cdot \\boldsymbol{\\vec{\\beta}}\\).
-        Just as before, the given vector can be decomposed as the sum of steps in the direction
-        of a single variable (\\(a_1\\hat{\\imath} + a_2\\hspace{0.08cm}\\skew{2}{\\hat}{\\jmath} + \\ldots\\)),
-        and as a function's partials represent the effects of such steps,
-        the derivative in this direction is just their sum,
-        one for each step taken in the direction they represent (\\(a_1 \\frac{\\partial{f}}{\\partial{x_1}} + a_2 \\frac{\\partial{f}}{\\partial{x_2}} + \\ldots \\))."]
-
-
-   ;; some image
    [:figure {:class "img-container"}
-   [:img {:src "/parabaloid-5.png" :style {:width "50%"}}]
-   [:img {:src "/parabaloid-6.png" :style {:width "50%"}}]
+   [:img {:src "/resources/parabaloid-5.png" :style {:width "50%"}}]
+   [:img {:src "/resources/parabaloid-6.png" :style {:width "50%"}}]
   [:figcaption {:class "post-caption"}
-   "Fig. 4. The slice of the parabaloid in the direction
-   \\(\\langle 1, 1 \\rangle\\) is also a parabola, albeit a
-   steeper one. It's generating function is \\(2n^2\\) for every \\(n\\) steps along this vector (see
-   right image where an \\(n = 1\\) returns \\(2\\))."]]
+   "Fig. 3. The derivative along the the vector \\(\\langle 1, 1 \\rangle\\)
+    is greater than either partial, since it is their sum.
+    This means that the parabaloid's surface is steeper
+    in this direction than in just the horizontal or vertical ones.
+    In fact, it is two times steeper. (Source: "
+    (utils/link "GeoGebra3D" "https://www.geogebra.org/3d?lang=en")")."]]
 
-   [:p "While this isn't rigorous"
-       " (how can you take multiple infinitesimal steps?)," (utils/make-footnote "2" "second-footnote-a" "second-footnote-b")"
-        it suits our immediate purposes, as we can now calculate both partial
-        and directional derivatives. A natural question then, is what derivative is the greatest?
+   [:p "While defining things in this way isn't completely
+        rigorous" (utils/make-footnote "2" "second-footnote-a" "second-footnote-b")
+        " it suits our immediate purposes, as we can now
+        calculate all of a function's possible derivatives.
+        A natural question then, is what derivative is the greatest?
         In what direction does a function increase most rapidly?"]
 
-   [:p "In other words, what vector, when dotted with the vector containing
-        the partials of our function, yields the largest possible
-        value? Well, the largest dot product a vector can have (when only
-        considering vectors of the same magnitude) is with
-        itself, so the direction of steepest ascent must be represented by the thing
-        we're dotting against – the vector containing the partials of our function! "]
+   [:p "The equation for directional derivatives says that
+        the derivative with respect to some vector is that
+        vector dotted with the vector of our function's
+        partials, so answering this question means finding
+        whatever vector yields the largest possible dot
+        product in this situation. "]
 
-   [:p "Intuitively, this makes sense too, as how much this vector points in a given
-        direction is equivelant to the derivative in that direction, such that it points
-        more in steeper directions and less in shallow ones, thus becoming the steepest direction itself." (utils/make-footnote "3" "third-footnote-a" "third-footnote-b")"
-        It is yielded by the \\(\\nabla\\) – or gradient – operation:"]
+   [:p "And since a vector's dot product is the largest when dotted
+        against itself, the vector that maximizes this dot product
+        is itself the vector containing all the partials of our function!
+        So the direction represented by this vector must be
+        the direction of steepest descent – the greatest
+        derivative of our function."]
+
+   [:p "Intuitively, this makes sense too,
+        as how much this vector points in a given
+        direction is equivelant to the derivative
+        in that direction, such that it points
+        more in steeper directions and less in shallow
+        ones, thus becoming the steepest direction itself.
+        This vector is known as a function's gradient,
+        and is denoted like so:"]
 
    [:p "$$\\nabla f(x_1, x_2, \\ldots, x_n) =
           \\begin{bmatrix}
-          \\frac{\\partial{f}}{\\partial{x_1}} \\\\
-          \\frac{\\partial{f}}{\\partial{x_2}} \\\\
-          \\vdots \\\\
-          \\frac{\\partial{f}}{\\partial{x_n}} \\\\
+            \\frac{\\partial{f}}{\\partial{x_1}} \\\\
+            \\frac{\\partial{f}}{\\partial{x_2}} \\\\
+            \\vdots \\\\
+            \\frac{\\partial{f}}{\\partial{x_n}} \\\\
           \\end{bmatrix}$$"]
 
 
 
    [:h1 {:class "post-section-header"} "Gradient Descent"]
 
+   [:p "We've now gone through all the basics necessary
+        to consider how we might optimize neural nets,
+        and the first step lies in understanding how
+        we can model them mathematically."]
 
-    ;The geometric interpretation associated with
-        ;    this idea is that instead of taking a step across
-;
-;            Even though we only can only really visualize
-;            functions of two variables as surfaces, it helps to hold this
-;            mental image – of multivariable functions encoding surfaces –
-;            in our heads. With that in mind, we can imagine that for some
-;            multivariable function of \\(n\\) inputs some surface is generated
-;            with some higher-dimesnional analogs for the concepts we would associate
-;            with 2D and 3D surfaces – that is to say, some sense of steepness,
-;            angle and direction, etc. We don't need to concretize what these might
-;            look like (at least not visually) but accepting that these properties
-;            exist in some shape or form will allow us to reason with them and make
-;            expanding upon our definition of the derivative.
+  [:p "As a quick review, we think of neural nets as universal
+       function approximators. Theoretically, if given enough
+       data and made deep enough, they can represent any
+       conceivable function."]
+
+  [:p "And what gives them this ability is their constituent unit,
+       the neuron:  a computational machine with the ability to
+       " [:q "learn"] ". Mathematically, a neuron's activation
+       (output) is defined like so, where \\(\\boldsymbol{\\vec{x}}\\)
+       is some input vector, \\(\\boldsymbol{\\vec{w}}\\) and \\(b\\)
+       are the neuron's two learnable parameters (known as a
+       weight and bias respectively) and \\(\\sigma\\) denotes
+       some non-linearity:"]
+
+  [:p "$$\\alpha = \\sigma(\\boldsymbol{\\vec{x}} \\cdot \\boldsymbol{\\vec{w}} + b)$$"]
+
+  [:p "We refer to a neuron's parameters as learnable
+       because they can be updated such that the
+       the neuron returns the desired output for a
+       given input. And somewhat counter to intution,
+       by stacking these simplistic units together, we
+       can get the resulting structure – known as a neural
+       net – to exhibit suprisingly intelligent behavior."]
+
+  [:p "What's more, all of these behaviors can be framed
+       as some sort of prediction task: given lots of labeled
+       data, how do optimize the parameters of all neurons in
+       a given network such that it predicts the correct label
+       for a given input?"]
+
+[:figure {:class "img-container"}
+     [:div {:style {:text-align "center"}}
+     [:img {:src "/resources/neural-net-1.svg" :class "post-img" :style {:width "65%"}}]
+     [:figcaption {:class "post-caption" :style {:text-align "left"}}
+     "Fig. 4. Visual diagram of a neuron. It computes a dot product
+     between the incoming values and its weight vector, adds a bias
+     term, and then pumps everything through some non-linearity."]]]
+
+[:p "Well, all optimization is just a matter of searching
+     the space of possibilities. If we consider only a single
+     neuron, then this space is defined by all
+     \\((\\boldsymbol{\\vec{w}}, b)\\) pairs that the neuron
+     could have. But to search this space intelligently,
+     we need to mathematically define what exactly makes
+     a specific pair " [:q "good"] " – more concretely,
+     what criterion does a good pair minimize?"]
+
+[:p "Good pairs allow the neuron to make predictions that
+     are close to the corresponding label. Said another way,
+     they minimize the margin of error between the prediction
+     and the correct label. If we define an error function"
+     (utils/make-footnote "3" "third-footnote-a" "third-footnote-b")
+     " \\(E(\\hat{y}, y)\\)  that takes a prediction \\(\\hat{y}\\)
+     and a label \\(y\\) and computes this margin of error,
+     then a good pair minimizes the following "
+     (utils/link "objective function" "https://en.wikipedia.org/wiki/Mathematical_optimization") ":
+     $$J(\\boldsymbol{\\vec{x}}, y;  \\boldsymbol{\\theta}) = E(\\alpha, y)$$"]
+
+ [:p "This function takes in some labeled datapoint
+      \\((\\boldsymbol{\\vec{x}}, y)\\) and our parameters
+      \\(\\boldsymbol{\\theta}\\). Using these, it computes
+      our neuron's activation, and passes it and the label
+      \\(y\\) to our error function. Thus, it returns low
+      values for good parameters, because good parameters
+      generate good predictions, and good predictions have
+      a low margin of error."]
+
+[:p "So optimizing our neuron boils down to finding parameters
+     located in the local minima of this function, or the
+     "[:q "valleys"] " of whatever high-dimensional
+     "[:q "error-surface"] " it encodes."]
+
+[:p "For a single neuron, it would be easy enough to obtain
+     these analytically (by solving for critical points),
+     but as we scale things up this approach quickly becomes
+     intractable. Thus, we might consider the simpler sub-problem
+     of how to get a slightly better parameter pair
+     (instead of an optimal one), and then repeat this
+     process over and over."]
+
+[:p "Well, a better pair is just one for whom the function
+     returns a lower value – so any pair on our error-surface
+     with lower elevation than our current one. We can get
+     to such a pair by taking some step across this surface
+     in the downhill direction. To be most efficient,
+     we would want to move in the direction of steepest
+     descent – or the negative gradient,
+     \\(-\\nabla_{\\boldsymbol{\\theta}} J\\)!"
+     (utils/make-footnote "4" "fourth-footnote-a" "fourth-footnote-b")]
+
+ [:figure {:class "img-container"}
+      [:div {:style {:text-align "center"}}
+     [:img {:src "/resources/loss_landscape-4.jpg" :class "post-img" :style {:width "65%"}}]
+      [:figcaption {:class "post-caption" :style {:text-align "left"}}
+      "Fig. 5. A visualization of the error-surface for a single neuron. Each point
+      is some parameter pair \\((\\boldsymbol{\\vec{w}}, b)\\) and height of each
+      pair indicates how badly the neuron performs when it uses them as its parameters.
+      By traveling along the negative gradient (black line)
+      we can arrive at good pairs."]]]
+
+ [:p "And it turns out that repeatedly stepping in the
+      direction of the negative gradient – a process
+      aptly named gradient descent – does indeed
+      produce a \\((\\boldsymbol{\\vec{w}}, b)\\)
+      pair that minimizes our objective function,
+      and thus maximizes our neuron's performance."]
+
+[:p "Since the gradient is only valid for infinitesimal
+     steps, though, we need to  make sure the steps we
+     are taking, while not infinitesimal, are appropriately
+     small. Thus we scale down the gradient by some factor
+     \\(\\eta\\),"(utils/make-footnote "5" "fifth-footnote-a" "fifth-footnote-b")"
+     such that the step we actually take is: \\(-\\eta \\nabla_{\\boldsymbol{\\theta}}J\\)."]
+
+ [:p "Mathematically, " [:q "taking a step"] " in the direction
+      of some vector just means adding that vector to our
+      parameter vector \\(\\boldsymbol{\\theta}\\),
+      so the equation for gradient descent looks like this:"]
+
+  [:p "$$\\boldsymbol{\\theta}^{new} = \\boldsymbol{\\theta}^{old} - \\eta\\nabla_{\\boldsymbol{\\theta}}J$$"]
+
+
+  [:p "And this one-liner is, more or less, how neural nets learn!
+       But we've made one simplifcation so far. Our current objective
+       function \\(J\\) only takes into account one labeled datapoint
+       \\((\\boldsymbol{\\vec{x}}, y)\\), but being able to correctly
+       predict the label for a single datapoint doesn't guarantee the
+       neuron is learning the underlying mapping from datapoints
+       to labels that we want it to."]
+
+   [:p "It could, for instance, be learning the constant function that
+        maps every input to the same label. So instead of calculating
+        the error in our neuron's prediction against a single datapoint,
+        we must do so against all datapoints"
+        (utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
+        " in our dataset, and then take the average. So the function we're
+        really trying to minimize looks more like this:"]
+
+   [:p "$$J(\\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, y_n)$$"]
+
+   [:p "And since the gradient of a sum equals the sum of gradients,"
+        (utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")"
+        the gradient of this function is the average
+        of the gradients of our previous objective function
+        evaluated across all samples."]
+
+   [:p "In so many words, we're going to have to take a lot of gradients,
+        one for each of our thousands (or millions) of samples,
+        possibly hundreds of times (one per step). So we'll need a way
+        to compute them quickly if this approach is to be at all practical."]
 
 
 
-   ])
+  [:h1 {:class "post-section-header"} "Computational Graphs"]
+
+
+  [:p "Before we focus on computing these gradients, though,
+       we first need to upgrade our current working model
+       of only a single neuron to fully-fledged neural net."]
+
+  [:p "As we touched on before, a neural net is just many
+       indvidual neurons stacked atop one another. More
+       specifically, a given network is a horizontal stack
+       of many " [:q "layers"] ", which are themselves vertical
+       stacks of neurons. Computation happens as activations are
+       propogated between adjacent layers, such that each neuron
+       takes in all activations of the previous layer."]
+
+  [:p "In other words, each entry in a given neuron's weight
+       vector is multiplied with the activation of a neuron
+       in the previous layer. Thus we can visualize each of these
+       entries as a weighted edge connecting the current neuron to
+       a neuron in the previous layer."]
+
+  [:p "After computing the weighted sum these edges encode,
+       adding a bias, and passing the whole thing through a
+       non-linearity, we obtain a neuron's activation, which
+       is propogated forward and becomes a part of the weighted
+       sum computed by neurons in the next layer. "]
+
+
+  [:figure {:class "img-container"}
+    [:div {:style {:text-align "center"}}
+      [:img {:src "/resources/neural-net-3.svg" :class "post-img" :style {:width "70%"}}]]
+      [:figcaption {:class "post-caption"}
+       "Fig. 6. An example of a neural network that maps 2D vectors to scalars. Each
+        neuron is connected to every neuron in the previous layer by some weighted edge
+        determined by it weight vector."]]
+
+  [:p "This view of the neuron, where we decompose each
+       neuron's weight vector into a set of weighted edges,
+       is admittedly slightly more messy and less elegant
+       than our previous model. But as we don't know how
+       to take the derivative with respect to an entire vector
+       (yet), it is a necessary evil if we want to be able to
+       optimize our parameters by gradient descent."]
+
+   [:p "So how do we represent all this mathematically?
+        Well, we can index each neuron by its layer and
+        position in that layer. Each of a neuron's weights can
+        then be indexed with one additional term, representing
+        the position of the neuron it connects to in the previous
+        layer. Thus the activation of the \\(i\\)th neuron in
+        the \\(L\\)th layer, given \\(j\\) neurons in the previous layer, is:"]
+
+   [:p "$$\\alpha^{(L)}_i = \\sigma \\left( \\sum_{n=0}^{j} \\alpha^{(L - 1)}_n \\cdot w^{(L)}_{(i, \\hspace{0.1cm} n)} + b^{(L)}_i \\right)$$"]
+
+   [:p {:style {:margin-bottom "30px"}}
+    "Writing things out in this way makes it exceedingly
+    clear that a neuron's activation is defined recursively,
+    since it appears in its own definition. The mathematical
+    consequence of this recursiveness is that the expression
+    representing a network's output is incredibly nested, so that
+    even a trivial three layer-network like the one above is
+    quite complicated. "]
+
+   [:p {:style {:font-size "15px" :margin-bottom "30px" :overflow-x "auto" :overflow-y "hidden"} :id "special"} "
+   $$\\sigma \\left(\\bbox[yellow]{\\alpha^{(1)}_1} \\cdot w^{(2)}_{(1, \\hspace{0.1cm} 1)}+ \\bbox[orange]{\\alpha^{(1)}_2} \\cdot w^{(2)}_{(1, \\hspace{0.1cm} 2)} + b^{(2)}_1\\right)$$
+   $$\\sigma \\left(\\bbox[yellow]{\\sigma\\left(x^{(0)}_1 \\cdot w^{(1)}_{(1, \\hspace{0.1cm} 1)} + x^{(0)}_2 \\cdot w^{(1)}_{(1, \\hspace{0.1cm} 2)} + b^{(1)}_ 1\\right)} \\cdot w^{(2)}_{(1, \\hspace{0.1cm} 1)} + \\bbox[orange]{\\sigma\\left(x^{(0)}_1 \\cdot w^{(1)}_{(1, \\hspace{0.1cm} 1)} + \\alpha^{(0)}_2 \\cdot w^{(1)}_{(1, \\hspace{0.1cm} 2)} + b^{(1)}_2 \\right) \\cdot w^{(2)}_{(1, \\hspace{0.1cm} 1)}} + b^{(2)}_1 \\right)$$"]
+
+
+  [:p "And, unfortunately for us, it is this bulky expression
+       we're going to have to pass into our error function, because
+       it represents the network's prediction. Worse, we're going have
+       to differentiate it with respect to each of our weights and biases
+       to calculate the gradient."]
+
+  [:p "But this expression is so convoluted, it's unclear where we would
+       even start. Luckily, we can simplify things with a helpful model
+       known as a computational graph, where the nodes of this graph
+       represent some fundamental operations (e.g., addition, multiplication)
+       and its edges represent the values flowing into these operations."]
+
+  [:p {:style {:margin-bottom "30px"}}
+    "We think of each node as performing its operation
+     on the values it receives, and then spitting out some
+     output. What's more, by storing each node's output
+     in some associated variable we can track all intermediate
+     states an expression goes through before arriving
+     at its final state – the last node in our graph –
+     and this will turn out to be incredibly helpful. "]
+
+   [:figure {:class "img-container"}
+    [:div {:style {:text-align "center"}}
+      [:img {:src "/resources/comp_graph.svg" :class "post-img" :style {:width "90%"}}]]
+      [:figcaption {:class "post-caption"}]]
+
+  [:p "Let's imagine constructing such a graph to represent
+       the evaluation of our error function at this three-layer
+       net's prediction for some labeled datapoint \\((\\boldsymbol{\\vec{x}}, y)\\).
+       Then finding the gradient means finding the derivatives
+       of the final node with respect to each of our weights
+       and biases. To make things easier, we'll abstract away
+       each node with some generic function."]
+
+  [:p "With that in mind, let's examine the following segment
+       of the graph. We see that we can represent our network's
+       error as some composition of functions:
+       \\(\\varphi = a(b(c(\\xi, b^{(2)}_1)), y)\\)."]
+
+  [:figure {:class "img-container"}
+   [:div {:style {:text-align "center"}}
+     [:img {:src "/resources/comp_graph_7.svg" :class "post-img" :style {:width "75%"}}]]
+     [:figcaption {:class "post-caption"}]]
+
+
+  [:p "What we want is to find the deriative of this error
+       with respect to our bias \\(b^{(2)}_1\\), but because
+       it is not a direct function of this bias, we must apply
+       the chain rule."]
+
+  [:p "The chain rule tells us that when trying to find
+       the derivative of some expression with respect to
+       a variable that it does not directly depend on, we
+       first must find the derivative of that expression with
+       respect to the variable it does directly depend on. "]
+
+  [:p "Well, each node in the graph directly depends on
+       the node(s) before it. So, per the chain rule, we must
+       calculate the derivative of each node with respect to
+       its predecessor(s). Then we can construct another
+       computational graph that runs in the opposite direction,
+       with each node passing down its derivative
+       with respect to the previous node."]
+
+ [:figure {:class "img-container"}
+   [:div {:style {:text-align "center"}}
+     [:img {:src "/resources/comp_graph_11.svg" :class "post-img" :style {:width "75%"}}]]
+     [:figcaption {:class "post-caption"}]]
+
+ [:p "This might seem like a somewhat artifical construction,
+      but bear with me for a minute – phrasing things in this way
+      will make the solution to our problem just pop out. That said,
+      now that we have identified all necessary derivatives,
+      the chain rule tells us we must multiply them together
+      to get our answer – the derivative of our error with
+      respect to the bias."]
+
+ [:span "And if we study the graph a bit more carefully, we see
+        that all the derivatives we must multiply together " ]
+
+ [:span {:style {:font-size "20px"}} " \\(\\Big( \\frac{\\partial{\\varphi}}{\\partial{\\tau}}, \\frac{d\\tau}{d\\pi}, \\frac{\\partial{\\pi}}{\\partial{b^{(2)}_1}} \\Big)\\)"]
+
+ [:span "lie somewhere on the path from \\(\\varphi\\) to
+         our bias \\(b^{(2)}_1\\)."]
+
+ [:p "Thus we can compute the derivative in question
+      simply by traversing the graph, accumulating
+      all the derivatives being passed down from node to node,
+      and multiplying them together."]
+
+ [:p "And this fact is no less true for any other
+     nodes in our graph. Since moving between any two
+     nodes means encountering all the intermediary states
+     between them, and as the chain rule is fundamentally
+     a statement about how we must multiply the derivatives
+     of these states when differentiating nested expressions,
+     any path on this graph computes some derivative!"]
+
+
+ [:figure {:class "img-container"}
+  [:div {:style {:text-align "center"}}
+    [:img {:src "/resources/comp_graph_2.svg" :class "post-img" :style {:width "100%"}}]]
+    [:figcaption {:class "post-caption"}]]
+
+
+  [:p "Moreover, we can imagine constructing such a
+       graph for the whole network. Then calculating the
+       gradient corresponds to traversing the paths from our final
+       node to each weight and bias."]
+
+  [:p "But we might notice that many of these paths
+       are essentially the same, only diverging at the very end.
+       For instance, consider the paths from \\(\\varphi\\)
+       to the weights \\(w^{(1)}_{(1,\\hspace{0.1cm}1)}\\) and
+       \\(w^{(1)}_{(1,\\hspace{0.1cm}2)}\\). They are equivelant
+       except for two divisions – in other words, they differ by
+       only two derivatives."]
+
+   [:p "Thus traversing the graph two seperate times
+        – one for each weight – seems wasteful. Wouldn't it
+        be better if we could somehow remember what the shared
+        segment of their paths was, and then just multiply
+        this shared part by their two different parts?"]
+
+   [:p "Then we could get away with traversing the graph only once.
+        To see this in action, imagine every time we step to a new node
+        we multiply the derivative the current node is passing down to
+        it by all previous derivatives, and store it in some variable \\(\\delta_n\\)
+        denoting the local error signal – or the derivative of
+        the error with respect to the current node."]
+
+   [:p "Now, when we reach a branch in our graph – say
+        where \\(\\pi\\) branches out to
+        \\(\\xi\\) and the bias \\(b^{(2)}_1\\) – 
+        we have the derivative chain up to that point
+        stored in the local error signal, so even if we choose to step
+        to \\(\\xi\\) first, we don't have to go back and recompute the entire
+        derivative chain preceeding the bias when we want to step
+        to it, we can just pickup where we left off."]
+
+    [:figure {:class "img-container"}
+     [:div {:style {:text-align "center"}}
+       [:img {:src "/resources/comp_graph_18.svg" :class "post-img" :style {:width "75%"}}]]
+       [:figcaption {:class "post-caption"}]]
+
+
+  [:p "This process of caching the current derivative
+       chain in an associated variable for each node – known as adjoint
+       – is called " (utils/link "memoization" "https://en.wikipedia.org/wiki/Memoization#:~:text=In%20computing%2C%20memoization%20or%20memoisation,the%20same%20inputs%20occur%20again")
+       " and does wonders for our efficiency."]
+
+   [:p "But the problem is not completely solved just yet.
+        Even though we know what derivatives we have to multiply
+        together to find each element of the gradient,
+        we still don't know what  the actual numerical values
+        for these derivatives are."]
+
+              [:figure {:class "img-container"}
+               [:div {:style {:text-align "center"}}
+                 [:img {:src "/resources/comp_graph_3.svg" :class "post-img" :style {:width "70%"}}]]
+                 [:figcaption {:class "post-caption"}]]
+
+
+   [:p "But calculating these values is much easier that it might seem.
+        So far we've imagined each node as some generic function,
+        but in reality each node is a rather simple operation – additions,
+        multiplications, or applications of our non-linearity.
+        And since we know the derivatives of these operations,
+        finding the derivatives between nodes is trivial."]
+
+   [:p "For intsance, examine the node \\(\\iota\\) in the graph above. It is a sum of
+        two variables: the node \\(\\eta\\) and the bias \\(b^{(1)}_1\\).
+        So obviously the derivative with respect to both variables
+        is just one. "]
+
+   [:p "We can similarly consider node \\(\\epsilon\\) which is
+        a product of the first entry of our input vector, \\(x_1\\),
+        and the weight \\(w^{(1)}_{(1, \\hspace{0.1cm} 1)}\\).
+        Again, its obvious the derivative with respect
+        to our weight is just \\(x_1\\)."]
+
+   [:p "But what does all of this mean, taken together? Well,
+        the first key idea is that any complex expression
+        we might want to differentiate – for example, our network's
+        error – is actually just a composition of many
+        elementary operations that we already know
+        how to differentiate."]
+
+   [:p "Second, the chain rule provides us with a very
+        straightforward way to find the derivatives
+        of such compositions. And even though we, as humans,
+        wouldn't usually use the chain rule, to, say,
+        differentiate an expression like \\(x^2 + 2x\\),
+        technically you could. After all, the chain rule
+        is the only differentiation rule you really need to know –
+        everything else follows from it."]
+
+   [:p "And this approach works great for computers, because
+        it allows us to hardcode the expressions for only a few
+        basic derivatices, while still allowing the computer to
+        differentiate pretty complex expressions. If we also
+        think to memoize derivative chains, then what we get is
+        an algorithm for quickly and efficiently computing exact
+        derivatives, which is exactly what we need to make
+        gradient descent viable."]
+
+
+
+   [:h1 {:class "post-section-header"} "An Algorithmic Perspective"]
+
+   [:p "Together this entire process is known as reverse-mode
+        automatic differentiation (AD). In the context of neural
+        networks, though, it goes under another name – backpropogation. "]
+
+   [:p "But it's actually not the only way we could traverse
+        a computational graph. After all, our decision to start
+        at the end of the graph was an arbitrary one – we could
+        have just as easily chosen to start at the beginning
+        of the graph and propogate derivatives forward instead."]
+
+   [:p "In fact, this method – forward-mode AD – and reverse-mode
+        AD are conceptually equivelant, because they are just different
+        ways of parsing the chain rule. Given some function composition
+        \\(f(g(h(x)))\\), forward-mode computes derivatives from the
+        inside-out, whereas reverse-mode does the opposite, computing
+        them from the outside-in."]
+
+   [:p "$$\\left(\\frac{dh}{dx}\\right)\\left(\\frac{dg}{dh}\\frac{df}{dg}\\right) \\hspace{1cm} \\textrm{vs.} \\hspace{1cm}
+          \\left(\\frac{df}{dg}\\frac{dg}{dh}\\right)\\left(\\frac{dh}{dx}\\right)$$"]
+
+  [:p "Thus in forward-mode when we step to a node, we are not
+      computing the derivative of our previous node with respect to it,
+      but rather the derivative of it with respect to our previous node.
+      As such, the way we did things in reverse-mode won't really work here."]
+
+   [:p "We won't get into the specifics, but the solution is the
+        use of a higher-dimensional number system – the dual numbers –
+        that is seemingly able to compute derivatives for "[:q "free"]
+        "."(utils/make-footnote "9" "ninth-footnote-a" "ninth-footnote-b")]
+
+   [:p "So why do we use reverse-mode in neural nets then? Well, it has to do with the fact
+        that each method is only optimal in a specific situation. While dual numbers
+        can compute derivatives very cheaply, they can only do so with respect to one variable at a time.
+        Thus, if our graph has multiple inputs and only a single outout,
+        we must traverse the entire thing multiple times. Reverse-mode, one the other hand,
+        finds all derivatives in a single sweep."]
+
+        [:figure {:class "img-container"}
+         [:div {:style {:text-align "center"}}
+           [:img {:src "/resources/adiff_1.png" :class "post-img" :style {:width "80%"}}]]
+           [:figcaption {:class "post-caption"}]]
+
+   [:p "Of course, there's the flip side: when we have a graph with many outputs, but only
+        a single input, forward-mode can grab everything in one go (since it only
+        needs to keep track of one variable), while reverse-mode must
+        traverse the whole graph once per output, because even though it memoizes
+        derivative chains, it does so with respect to a specific output."]
+
+  [:figure {:class "img-container"}
+   [:div {:style {:text-align "center"}}
+     [:img {:src "/resources/adiff_2.png" :class "post-img" :style {:width "80%"}}]]
+     [:figcaption {:class "post-caption"}
+      ]]
+
+
+  [:p "Thus the general rule is, given some function \\(f : M \\rightarrow N\\),
+       when \\(M \\gg N\\) – when we have many more inputs than outputs – we should
+       use reverse-mode, since forward mode will have to traverse the graph \\(M\\) times
+       while reverse-mode will only have to traverse it \\(N\\) times. For the same reasons,
+       when \\(M \\ll N\\), forward-mode is the optimal method."]
+
+   [:p "And obviously neural nets fit the first description – they are functions from millions
+        or even billions of parameters (GPT-3, anyone?) to usually no more than a few hundred
+        outputs, and most of the time, even less than that. If we used forward mode
+        to differentiate neural nets instead, our performance could
+        potentially be millions of times worse!"]
+
+
+
+
+
+
+
+   [:h1 {:class "post-section-header"} "Vectorization"]
+
+   [:p "If you'll remember though, I mentioned that this very
+        atomic representation of the network – where each weight, bias, and neuron
+        is represented individually – is not the most efficient nor most
+        elegant way of doing things. Instead, a much cleaner conception of what's going on
+        can be acheived by representing things in a vectorized fashion."]
+
+   [:p "So let's vectorize! Given a \\(k\\)-neuron layer,
+        with \\(j\\) neurons in the previous layer,
+        we can stack the weights and biases of each of these \\(k\\) neurons into
+        a matrix and vector respectively."]
+
+    [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\boldsymbol{W}^{(L)} =
+           \\begin{bmatrix}
+           w^{(L)}_{(1, \\hspace{0.1cm} 1)} & \\cdots &w^{(L)}_{(1, \\hspace{0.1cm} j)} \\\\
+           \\vdots  & \\ddots & \\vdots \\\\
+           w^{(L)}_{(k, \\hspace{0.1cm} 1)} & \\cdots &w^{(L)}_{(k, \\hspace{0.1cm} j)} \\\\
+           \\end{bmatrix} \\in \\mathbb{R}^{k \\times j}
+
+           \\hspace{2cm}
+
+        \\boldsymbol{\\vec{b}}^{(L)} =
+        \\begin{bmatrix}
+        b^{(L)}_1 \\\\
+        b^{(L)}_2 \\\\
+        \\vdots \\\\
+        b^{(L)}_k \\\\
+        \\end{bmatrix} \\in \\mathbb{R}^{k}$$"]
+
+
+   [:p "Then multiplying this matrix against the vector of previous
+        activations yields a new vector containing the weighted
+        sum each neuron computes. This is an equivelant construction
+        to our earlier model,  where each neuron dotted its weight
+        vector against the incoming input vector, as matrix-vector
+        multiplications are just a way of batching many dot products."]
+
+   [:p "If we add this resulting vector to our bias vector and do
+        an element-wise application of our non-linearity, then
+        we have computed the vector of activations for that layer like so:"]
+
+
+   [:p "$$\\boldsymbol{\\vec{\\alpha}}^{(L)} = \\sigma(\\boldsymbol{W}^{(L)}\\boldsymbol{\\vec{\\alpha}}^{(L-1)} + \\boldsymbol{\\vec{b}}^{(L)})$$"]
+
+   [:p {:style {:margin-bottom "30px"}}
+      "Our network's output is just some recursive composition
+       of these layers, which we can also represent
+       with a computational graph. For the three-layer network
+       we were working with previously, the vectorized versions
+       of the primal and adjoint graphs would look like this:"]
+
+   [:figure {:class "img-container"}
+    [:div {:style {:text-align "center"}}
+      [:img {:src "/resources/comp_graph_13.svg" :class "post-img" :style {:width "100%"}}]]
+      [:figcaption {:class "post-caption"}]]
+
+   [:figure {:class "img-container" :style {:margin-top "50px"}}
+    [:div {:style {:text-align "center"}}
+      [:img {:src "/resources/comp_graph_14.svg" :class "post-img" :style {:width "100%"}}]]
+      [:figcaption {:class "post-caption"}]]
+
+
+   [:p "The only problem here is that these derivatives not
+        scalar-to-scalar derivatives like we dealt with earlier,
+        but vector-to-vector, or even vector-to-matrix derivatives.
+        Thus we need to develop some reasonable notion of what such
+        derivatives should look like."]
+
+   [:p "Let's imagine some function mapping an input
+        vector \\(\\boldsymbol{\\vec{x}}\\) to an
+        output vector \\(\\boldsymbol{\\vec{y}}\\).
+        If we want to measure the effect varying the
+        input vector has on the output vector, we need
+        to determine how each element of this input
+        vector affects each element of the output vector."]
+
+   [:p "In other words, we need to find the individual
+        derivatives of each element of the output with
+        respect to each element of the input, which we
+        could organize into a matrix like so:"]
+
+    [:p {:style {:font-size "20px"}} "$$
+      \\begin{bmatrix}
+        \\frac{\\partial{y_1}}{\\partial{x_1}} & \\cdots & \\frac{\\partial{y_1}}{\\partial{x_n}} \\\\
+        \\vdots & \\ddots & \\vdots \\\\
+         \\frac{\\partial{y_n}}{\\partial{x_1}} & \\cdots & \\frac{\\partial{y_n}}{\\partial{x_n}} \\\\
+        \\end{bmatrix}$$" ]
+
+
+   [:p "In some sense, then, this matrix is the derivative
+        of that vector-to-vector function, because it represents
+        all the ways the output vector could change given some
+        infinitesimal nudge to the input vector. We refer to such
+        a matrix as the Jacobian, and can think of it as a generalization
+        of the gradient, since it similarly consolidates all of a
+        function's derivative " [:q "information"]"."]
+
+   [:p "So each derivative being passed down in the adjoint graph
+        is a Jacobian. Thus, we can perform reverse-mode AD just like before,
+        substituting matrix multiplication for the scalar kind.
+        Of course, this requires storing the derivatives of some basic
+        matrix operations: vector addition, matrix-vector multiplication,
+        and element-wise applications of our non-linearity."]
+
+   [:p "Let's start out easy with vector addition. Remember,
+        calculating the Jacobian means differentiating each entry of the output
+        with respect to each entry of the input."]
+
+   [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\frac{\\partial}{\\partial{\\boldsymbol{\\vec{x}}}}
+
+
+
+
+\\left(        \\begin{bmatrix}
+          x_1 \\\\
+          x_2 \\\\
+          \\vdots \\\\
+          x_n \\\\
+          \\end{bmatrix} +
+          \\begin{bmatrix}
+             y_1 \\\\
+             y_2 \\\\
+             \\vdots \\\\
+             y_n\\\\
+             \\end{bmatrix}\\right) = \\begin{bmatrix}
+                \\frac{\\partial}{\\partial{x_1}}(x_1 + y_1) & \\cdots & \\frac{\\partial}{\\partial{x_n}}(x_1 + y_1) \\\\
+                \\vdots & \\ddots & \\vdots \\\\
+                \\frac{\\partial}{\\partial{x_1}}(x_n + y_n) & \\cdots & \\frac{\\partial}{\\partial{x_n}}(x_n + y_n)  \\\\
+                \\end{bmatrix}$$"]
+
+
+      [:p "In this case, the result is the identity matrix
+           \\(\\boldsymbol{I}\\). This offers nice parallel to
+           classical calculus, as differentiating the sum
+           of two different variables also returns the
+           multiplicative identity."]
+
+   [:p "Slightly more complex is the idea of differentiating a matrix-vector product
+        with respect to the vector. It turns out though that this also has a nice
+        interpretation under the rules of classical calculus, if we think of the matrix
+        as a coefficient. Setting up the Jacobian: "]
+
+   [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\frac{\\partial}{\\partial{\\boldsymbol{\\vec{x}}}} \\left(
+          \\begin{bmatrix}
+          a & b \\\\
+          c & d \\end{bmatrix}
+          \\begin{bmatrix} x_1 \\\\ x_ 2 \\\\ \\end{bmatrix} \\right)
+          =
+          \\begin{bmatrix}
+            \\frac{\\partial}{\\partial{x_1}}(ax_1 + bx_2) & \\frac{\\partial}{\\partial{x_2}}(ax_1 + bx_2) \\\\
+            \\frac{\\partial}{\\partial{x_1}}(cx_1 + dx_2) & \\frac{\\partial}{\\partial{x_2}}(cx_1 + dx_2) \\\\
+          \\end{bmatrix}$$"]
+
+   [:p "We see that it simplifies to the matrix
+        \\(\\boldsymbol{W}\\). In other words, the derivative
+        of a matrix-vector product with respect to the
+        vector is the matrix the vector is being multiplied by."]
+
+
+   ;[:p "$$\\frac{\\partial}{\\partial{\\boldsymbol{\\vec{x}}}}(\\boldsymbol{W}\\boldsymbol{\\vec{x}}) = \\boldsymbol{W}$$"]
+
+   [:p "But what if we want to differentiate this product the other
+        way around, with respect to the matrix? Well, this is a bit
+        harder, because differentiating each entry of a vector with
+        respect to each entry of a matrix means we'll need multiple matrices,
+        one per element of our output."]
+
+   [:p "The generalization of a matrix to higher dimensions is known as a tensor,
+        and they're not the most pleasant things to work with. But if we examine
+        the situation more closely, we'll see that there is actually a way we can
+        represent the Jacobian in matrix form. For example, let's try differentiating
+        only a single element of the output vector \\(\\boldsymbol{\\vec{y}}\\)
+        with respect to the matrix."]
+
+
+        [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\frac{\\partial{\\boldsymbol{\\vec{y}}}_1}{\\partial{\\boldsymbol{W}}} =
+          \\begin{bmatrix}
+          \\frac{\\partial}{\\partial{a}}(ax_1 + bx_2) & \\frac{\\partial}{\\partial{b}}(ax_1 + bx_2) \\\\
+          \\frac{\\partial}{\\partial{c}}(ax_1 + bx_2) & \\frac{\\partial}{\\partial{d}}(ax_1 + bx_2) \\\\
+          \\end{bmatrix}$$"]
+
+   [:p "Simplifying, we see that the resulting matrix only has one non-zero row.
+        Furthermore, we would find that this trend holds for any matrix-vector product
+        we could imagine. And if we think about it, this makes sense too – after all,
+        each element of the ouput vector only depends on one row of the
+        actual matrix, thus all its other derivatives will be zero."]
+
+   [:p "If we do this for each element in our output vector, then we get
+        a series of mostly non-zero matrices, with a single row filled in.
+        But the filled-in rows for each of these matrices never collide,
+        because each element of the input depends on a different
+        row of the matrix."]
+
+
+        [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\frac{\\partial{\\boldsymbol{\\vec{y}}}_1}{\\partial{\\boldsymbol{W}}} =
+            \\begin{bmatrix}
+            x_1 & x_2 \\\\
+            0 & 0 \\\\
+            \\end{bmatrix}
+            \\hspace{1cm}
+            \\frac{\\partial{\\boldsymbol{\\vec{y}}}_2}{\\partial{\\boldsymbol{W}}} =
+            \\begin{bmatrix}
+            0 & 0 \\\\
+            x_1 & x_2 \\\\
+            \\end{bmatrix}$$"]
+
+            [:p "So even though the Jacobian, as we've previously defined it, should
+                 be some 3D stack of these matrices – some tensor –
+                 because none of their non-trivial entries interfere,
+                 we could imagine smushing this 3D stack down into a single matrix."
+                " Thus:"]
+
+
+
+           [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\frac{\\partial}{\\partial{\\boldsymbol{W}}} \\left(
+                  \\begin{bmatrix}
+                  a & b \\\\
+                  c & d \\end{bmatrix}
+                  \\begin{bmatrix} x_1 \\\\ x_ 2 \\\\ \\end{bmatrix} \\right)
+                  =
+               \\begin{bmatrix}
+               x_1 & x_2 \\\\
+               x_1 & x_2\\\\
+               \\end{bmatrix}$$"]
+
+               [:p "The final derivative we must consider is that of element-wise function applications – such as with our
+                    non-linearity – where an element-wise function is defined like so:"]
+
+
+   [:p "$$ f\\left( \\begin{bmatrix} x_1 \\\\ x_2 \\\\ \\vdots \\\\ x_n \\\\ \\end{bmatrix} \\right) =
+            \\begin{bmatrix}
+            f(x_1) \\\\
+            f(x_2) \\\\
+            \\vdots \\\\
+            f(x_n) \\\\
+            \\end{bmatrix}$$"]
+
+  [:p "The Jacobian of such a function, then, looks something like this,
+       where the diagonal entries holds the derivative of the function,
+       and all non-diagonal entries are zero:"]
+
+  [:p "$$\\begin{bmatrix}
+          \\frac{\\partial}{\\partial{x_1}}(f(x_1)) & \\cdots & \\frac{\\partial}{\\partial{x_1}}(f(x_n)) \\\\
+          \\vdots & \\ddots & \\vdots \\\\
+          \\frac{\\partial}{\\partial{x_1}}(f(x_n)) & \\cdots & \\frac{\\partial}{\\partial{x_n}}(f(x_n)) \\\\
+         \\end{bmatrix} =
+
+         \\begin{bmatrix}
+          f\\prime & 0 & \\cdots & 0 \\\\
+          0 & f\\prime & \\dots & 0 \\\\
+          \\vdots & \\vdots & \\ddots & \\vdots \\\\
+          0 & 0 & \\cdots & f\\prime \\end{bmatrix}
+         $$"]
+
+  [:p "Moreover, matrix multiplying against a diagonal matrix like this one
+       is analogous to performing element-wise multiplication against a matrix filled
+       with whatever is occupying this diagonal,"(utils/make-footnote "10" "tenth-footnote-a" "tenth-footnote-b")
+       " where the element-wise – or Hadamard – product between two matrices is denoted
+       \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is much more efficient
+       than matrix multiplying because it requires fewer operations, and we don't
+       have to needlessly multiply against zeroes."]
+
+  [:p "In fact, the whole reason we vectorize to begin with
+       is because bundling things into matrices and doing batch
+       operations is faster than doing things one-by-one. And knowing
+       only these matrix calculus primitives, we can pretty much
+       differentiate through any vanilla neural net!"]
+
+[:h1 {:class "post-section-header"} "The Generalized Chain Rule"]
+
+[:p "I would be remiss if I didn't mention one more thing though.
+     Isn't it kind of convenient how the chain rule just automatically
+     generalized to Jacoboians? Why did that happen?"]
+
+  [:p "It has to do with the deeper definition of derivatives as linear maps.
+       Even if we don't often think of them in this way, derivatives naturally satisfy
+       the two properties of linearity: the derivative of a sum is the sum
+       of derivatives, and the derivative at a function times a scalar is the derivative
+       of that function times the scalar (yes, I know English kind of fails here)."]
+
+   [:p "$$D(f + g) = Df + Dg \\hspace{1cm} D(cf) = c(Df)$$"]
+
+   [:p "And because they are linear maps, we can represent them as matrices.
+        And these matrices are what we've been calling Jacobians all along.
+        When our function maps from scalars to scalars, then our Jacobian
+        is just a one-element matrix – a scalar, or the classical
+        definition of the derivative. When it maps
+        from vectors to scalars, it's a matrix with a single column – a vector,
+        a.k.a the gradient. And when it maps from vectors to vectors, it's a
+        filled matrix."]
+
+   [:p "In other words, we're always working with Jacobians, where a Jacobian
+        represents all the ways a function could change given some nudge
+        to its input. And the chain rule is nothing more than a statement about the Jacobian of
+        a function composition, which says that given two functions \\(f\\) and \\(g\\),
+        the Jacobian of their composition \\(f(g(x))\\), where \\(x\\) could be a scalar,
+        vector, or something in between, is the Jacobian of \\(f\\) at \\(g\\)
+        times the Jacobian of \\(g\\) at \\(x\\).
+        "]
+
+   [:p "$$D(f \\circ g)(x) = Df(g(x)) \\cdot Dg(x)$$"]
+
+   [:p "So it's not that the chain rule magically generalizes to Jacobians –
+        it's defined in terms of them to begin with. Traditional calculus
+        just doesn't expose them in their full generality. After all,
+        matrix multiplication with one-element matrices is nothing more than
+        scalar multiplication – that's why we use scalar multiplication in the single-variable
+        chain rule."]
+
+   [:p "This is long-winded way of saying that the derivative is the Jacobian - they're equivelant
+        concepts. And the different branches of calculus just study increasingly less specialized
+        versions of it."]
+
+
+[:h1 {:class "post-section-header"} "Conclusion"]
+
+[:p "So, automatic differentiation is a way of quickly computing derivatives with computers.
+     It has both a forward-mode and reverse-mode implementation, the latter of which is
+     used in neural nets. And like all truly great ideas it is based on a simple, but
+     piercing insight: that the amount of expressions we can differentiate grows
+     exponentially with the amount of elementary derivatives that we know. In other words,
+     the chain rule is a lot more powerful than we may always give it credit for."]
+
+[:p "It also shows us the power in simple tricks such as a memoization – tools
+     of the trade from a branch of computer science known as dynamic programming."]
+
+[:h1 {:class "post-section-header"} "Footnotes"]
+
+
+[:p {:id "first-footnote-b"} (utils/bold "1.") " If you want to see this with your own eyes:"]
+  [:p {:style {:overflow-x "auto" :overflow-y "hidden"}}
+
+ "$$\\begin{aligned}
+    \\lim_{h\\to 0} \\frac{f(x+h, y) - f(x, y)}{h}\\hspace{1cm}
+    &\\textrm{(Definition of the derivative of } f(x,y) = x^2 + y^2 \\hspace{0.1cm}\\textrm{ w.r.t to } x)
+    \\\\ \\\\ \\lim_{h\\to 0} \\frac{(x+h)^2 + y^2 - (x^2 + y^2)}{h}\\hspace{1cm}
+    &\\textrm{(Simplification)}
+    \\\\ \\\\ \\lim_{h\\to 0} \\frac{(x+h)^2 - x^2}{h}\\hspace{1cm}
+    &\\textrm{(Definition of the derivative of} f(x) = x^2 \\hspace{0.1cm}\\textrm{ w.r.t to } x)
+    \\end{aligned}$$"]
+
+   [:p "As you see, \\(y\\) washes out. Another way to think
+    about this is that since \\(y\\) isn't being nudged by some inifnitesimal
+    \\(h\\) like \\(x\\) is, its presence in the first term will be completely canceled
+    out by its presence in the second, which is just another way of saying
+    that since it isn't changing, it is " [:q "invisble"] " as far as the
+    derivative is concerned."
+
+ (utils/make-footnote "↩" "first-footnote-b" "first-footnote-a")
+ ]
+
+
+[:p  (utils/bold "2.") " You might notice that this formulation of the directional derivative returns different
+      results for different multiples of the same vector, even
+      though they represent a step in the same direction.
+      That's why we usually only take derivatives
+      with respect to unit vectors." (utils/make-footnote "↩" "second-footnote-b" "second-footnote-a")]
+
+[:p  (utils/bold "3.") " The simplest error function you could have is just
+         the difference between the prediction and the label:
+         \\(E(\\hat{y}, y) = \\hat{y} - y\\). In practice
+         we actually square this difference to accentuate
+         really bad predictions and so that we don't have to deal
+         with a negative result. This is known as the square error:
+         \\(E(\\hat{y}, y) = (\\hat{y} - y)^2\\).
+         " (utils/make-footnote "↩" "third-footnote-b" "third-footnote-a")]
+
+
+ [:p  (utils/bold "4.") " What is \\(\\boldsymbol{\\theta}\\) doing in the susbcript of the gradient symbol?
+       It's just a way of saying that even though our function
+       also takes in an input and a label, we don't want to include their partials
+       in our gradient – after all, we can't
+       change our input or label, those two pieces
+       of information are set for the problem."
+       (utils/make-footnote "↩" "fourth-footnote-b" "fourth-footnote-a")]
+
+ [:p (utils/bold "5.") " \\(\\eta\\) is a hyperparamater, or a variable
+          the neural net does not learn by itself, but must be explicitly
+          set. Specifically, it's known as learning rate, since it controls
+          how quickly we descend the error-surface, and thus how
+          fast we learn."
+       (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a")]
+
+
+
+ [:p (utils/bold "6.") " If you think this seems inefficient – that we have to compute our error against
+          all datapoints before taing a single step – you're not alone. That's why we have alternatives
+          such as stochastic and mini-batch gradient descent."
+       (utils/make-footnote "↩" "sixth-footnote-b" "sixth-footnote-a")]
+
+
+ [:p  "8. This is easy to realize. The gradient is just the vector of
+          partial derivatives, and the partial derivative of a sum
+          is the sum of partial derivatives."
+       (utils/make-footnote "↩" "eigth-footnote-b" "eigth-footnote-a")]
+
+
+       [:p  "9. The idea comes from"
+             (utils/make-footnote "↩" "ninth-footnote-b" "ninth-footnote-a")]
+
+
+ [:p  "10. A demonstration of this property with conrete matrices:
+        $$\\begin{align}
+          \\begin{bmatrix}
+            a & b \\\\
+            c & d \\\\
+          \\end{bmatrix}
+          \\begin{bmatrix}
+              x & 0 \\\\
+              0 & x \\\\
+          \\end{bmatrix} =
+          \\begin{bmatrix}
+              ax & bx \\\\
+              cx & dx \\\\
+          \\end{bmatrix}\\hspace{1cm}&\\textrm{(Multiplication against diagonal matrix)} \\\\ \\\\
+
+          \\begin{bmatrix}
+              a & b \\\\
+              c & d \\\\
+            \\end{bmatrix}
+            \\odot
+            \\begin{bmatrix}
+                x & x \\\\
+                x & x \\\\
+            \\end{bmatrix} =
+            \\begin{bmatrix}
+                ax & bx \\\\
+                cx & dx \\\\
+            \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
+            \\end{align}$$"
+       (utils/make-footnote "↩" "tenth-footnote-b" "tenth-footnote-a")]])
+
+
+
 
 
 (defn media-query-1 []
  (at-media {:max-width "600px"}
      [
-      ;[:#first-footnote-b {:font-size "13.5px"}]
+      ;[:#special {:display "none"}]
+      ;[:#special-2 {:display "inline-block"}]
       ;[:#math-2 {:font-size "13.5px"}]
 
       ;[:#hot-cold-2 {:width "200px"}]
       ]))
 
 (def post
-  {:title "The Mathematics Of Automatic Differentiation"
+  {:title "Automatic Differentiation In Neural Nets"
    :date "2020/10/29"
    :show post-preview
    :content post-content
