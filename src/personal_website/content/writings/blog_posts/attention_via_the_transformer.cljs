@@ -669,7 +669,7 @@
 
 (def post
   {:title "Attention Via The Transformer"
-   :date "2020/08/29"
+   :date "08/29/2020"
    :show post-preview
    :content post-content
    :tags ["mathematics", "differentiable programming"]

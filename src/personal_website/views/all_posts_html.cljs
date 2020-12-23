@@ -59,9 +59,9 @@
 (defn format-date [date]
   (let [split-date (clojure.string/split date "/")]
     (-> split-date
-        (get 1)
+        (get 0)
         date-mapping
-        (str " " (split-date 2) ", " (split-date 0) " by Rohan Mehta"))))
+        (str " "  (split-date 1) ", " (split-date 2)  " by Rohan Mehta"))))
 
 (defn get-posts [post-type]
   (cond

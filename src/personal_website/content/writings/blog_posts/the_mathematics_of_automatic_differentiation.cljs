@@ -308,7 +308,7 @@
       is some parameter pair \\((\\boldsymbol{\\vec{w}}, b)\\) and height of each
       pair indicates how badly the neuron performs when it uses them as its parameters.
       By traveling along the negative gradient (black line)
-      we can arrive at good pairs."]]]
+      we can arrive at good pairs (Source: "(utils/link "Amini et. al., 2018" "file:///Users/Rohan%20Mehta/Downloads/Spatial_Uncertainty_Sampling_for_End-to-End_Contro%20(1).pdf")")."]]]
 
  [:p "And it turns out that repeatedly stepping in the
       direction of the negative gradient – a process
@@ -343,15 +343,13 @@
    [:p "It could, for instance, be learning the constant function that
         maps every input to the same label. So instead of calculating
         the error in our neuron's prediction against a single datapoint,
-        we must do so against all datapoints"
-        (utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
-        " in our dataset, and then take the average. So the function we're
+        we must do so against all datapoints in our dataset, and then
+        take the average. So the function we're
         really trying to minimize looks more like this:"]
 
    [:p "$$J(\\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, y_n)$$"]
 
-   [:p "And since the gradient of a sum equals the sum of gradients,"
-        (utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")"
+   [:p "And since the gradient of a sum equals the sum of gradients,
         the gradient of this function is the average
         of the gradients of our previous objective function
         evaluated across all samples."]
@@ -667,9 +665,8 @@
       As such, the way we did things in reverse-mode won't really work here."]
 
    [:p "We won't get into the specifics, but the solution is the
-        use of a higher-dimensional number system – the dual numbers –
-        that is seemingly able to compute derivatives for "[:q "free"]
-        "."(utils/make-footnote "9" "ninth-footnote-a" "ninth-footnote-b")]
+        use of a higher-dimensional number system – the "(utils/link "dual numbers" "https://en.wikipedia.org/wiki/Dual_number") "–
+        that is seemingly able to compute derivatives for "[:q "free"]]
 
    [:p "So why do we use reverse-mode in neural nets then? Well, it has to do with the fact
         that each method is only optimal in a specific situation. While dual numbers
@@ -681,7 +678,7 @@
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
            [:img {:src "/resources/adiff_1.png" :class "post-img" :style {:width "80%"}}]]
-           [:figcaption {:class "post-caption"}]]
+           [:figcaption {:class "post-caption"} "Fig. 7. (Source: "(utils/link  "Håvard Berland, 2006" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")")."]]
 
    [:p "Of course, there's the flip side: when we have a graph with many outputs, but only
         a single input, forward-mode can grab everything in one go (since it only
@@ -691,9 +688,8 @@
 
   [:figure {:class "img-container"}
    [:div {:style {:text-align "center"}}
-     [:img {:src "/resources/adiff_2.png" :class "post-img" :style {:width "80%"}}]]
-     [:figcaption {:class "post-caption"}
-      ]]
+     [:img {:src "/resources/adiff_2.png" :class "post-i mg" :style {:width "80%"}}]]
+     [:figcaption {:class "post-caption"} "Fig. 8. (Source: "(utils/link  "Håvard Berland, 2006" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")")."]]
 
 
   [:p "Thus the general rule is, given some function \\(f : M \\rightarrow N\\),
@@ -971,10 +967,10 @@
 
   [:p "Moreover, matrix multiplying against a diagonal matrix like this one
        is analogous to performing element-wise multiplication against a matrix filled
-       with whatever is occupying this diagonal,"(utils/make-footnote "10" "tenth-footnote-a" "tenth-footnote-b")
+       with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
        " where the element-wise – or Hadamard – product between two matrices is denoted
        \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is much more efficient
-       than matrix multiplying because it requires fewer operations, and we don't
+       than matrix multiplying because it requires fewer operations and we don't
        have to needlessly multiply against zeroes."]
 
   [:p "In fact, the whole reason we vectorize to begin with
@@ -997,21 +993,21 @@
 
    [:p "$$D(f + g) = Df + Dg \\hspace{1cm} D(cf) = c(Df)$$"]
 
-   [:p "And because they are linear maps, we can represent them as matrices.
-        And these matrices are what we've been calling Jacobians all along.
+   [:p "And because they are linear maps we can represent them as matrices.
+        And these matrices are what we've been calling Jacobians all along!
         When our function maps from scalars to scalars, then our Jacobian
         is just a one-element matrix – a scalar, or the classical
         definition of the derivative. When it maps
         from vectors to scalars, it's a matrix with a single column – a vector,
-        a.k.a the gradient. And when it maps from vectors to vectors, it's a
-        filled matrix."]
+        a.k.a the gradient. And when it maps from vectors to vectors, it's a completely
+        filled matrix, the way we originally introduced it."]
 
    [:p "In other words, we're always working with Jacobians, where a Jacobian
         represents all the ways a function could change given some nudge
         to its input. And the chain rule is nothing more than a statement about the Jacobian of
         a function composition, which says that given two functions \\(f\\) and \\(g\\),
         the Jacobian of their composition \\(f(g(x))\\), where \\(x\\) could be a scalar,
-        vector, or something in between, is the Jacobian of \\(f\\) at \\(g\\)
+        vector, matrix, or even tensor, is the Jacobian of \\(f\\) at \\(g\\)
         times the Jacobian of \\(g\\) at \\(x\\).
         "]
 
@@ -1020,18 +1016,21 @@
    [:p "So it's not that the chain rule magically generalizes to Jacobians –
         it's defined in terms of them to begin with. Traditional calculus
         just doesn't expose them in their full generality. After all,
-        matrix multiplication with one-element matrices is nothing more than
+        matrix multiplication with one-element matrices is
         scalar multiplication – that's why we use scalar multiplication in the single-variable
-        chain rule."]
+        chain rule in the first place."]
 
    [:p "This is long-winded way of saying that the derivative is the Jacobian - they're equivelant
         concepts. And the different branches of calculus just study increasingly less specialized
-        versions of it."]
+        versions of it. Practically, this means that automatic differentiation isn't limited
+        to one branch of calculus nor one type of derivative. Anywhere we can define some
+        sensible definition of the Jacobian, automatic differentiation will give us a
+        way of computing it."]
 
 
 [:h1 {:class "post-section-header"} "Conclusion"]
 
-[:p "So, automatic differentiation is a way of quickly computing derivatives with computers.
+[:p "So automatic differentiation is a way of quickly computing derivatives with computers.
      It has both a forward-mode and reverse-mode implementation, the latter of which is
      used in neural nets. And like all truly great ideas it is based on a simple, but
      piercing insight: that the amount of expressions we can differentiate grows
@@ -1039,7 +1038,24 @@
      the chain rule is a lot more powerful than we may always give it credit for."]
 
 [:p "It also shows us the power in simple tricks such as a memoization – tools
-     of the trade from a branch of computer science known as dynamic programming."]
+     of the trade from a branch of computer science known as "(utils/link "dynamic programming" "https://en.wikipedia.org/wiki/Dynamic_programming")
+     ". The thing to take away from this is that even if something looks
+     like it'd be expensive to compute at first glance,
+     it might be unitituively cheap once we figure out how
+     to reuse computation and reduce redunancy."]
+
+[:p "All in all, automatic differentiation is one powerhouse of an algorithm,
+     often cited as one of the most important ones to come forward in
+     the twentieth century."]
+
+[:h1 {:class "post-section-header"} "References"]
+
+   [:ul {:style {:list-style-type "circle"}}
+    [:li (utils/link "Håvard Berland's Slides" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    [:li (utils/link "AMS: How to Differentiate with a Computer" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    [:li (utils/link "Computing Neural Network Gradients" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    [:li (utils/link "Vector, Matrix, and Tensor Derivatives" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]]
+
 
 [:h1 {:class "post-section-header"} "Footnotes"]
 
@@ -1053,7 +1069,7 @@
     \\\\ \\\\ \\lim_{h\\to 0} \\frac{(x+h)^2 + y^2 - (x^2 + y^2)}{h}\\hspace{1cm}
     &\\textrm{(Simplification)}
     \\\\ \\\\ \\lim_{h\\to 0} \\frac{(x+h)^2 - x^2}{h}\\hspace{1cm}
-    &\\textrm{(Definition of the derivative of} f(x) = x^2 \\hspace{0.1cm}\\textrm{ w.r.t to } x)
+    &\\textrm{(Definition of the derivative of } f(x) = x^2 \\hspace{0.1cm}\\textrm{ w.r.t to } x)
     \\end{aligned}$$"]
 
    [:p "As you see, \\(y\\) washes out. Another way to think
@@ -1099,24 +1115,7 @@
        (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a")]
 
 
-
- [:p (utils/bold "6.") " If you think this seems inefficient – that we have to compute our error against
-          all datapoints before taing a single step – you're not alone. That's why we have alternatives
-          such as stochastic and mini-batch gradient descent."
-       (utils/make-footnote "↩" "sixth-footnote-b" "sixth-footnote-a")]
-
-
- [:p  "8. This is easy to realize. The gradient is just the vector of
-          partial derivatives, and the partial derivative of a sum
-          is the sum of partial derivatives."
-       (utils/make-footnote "↩" "eigth-footnote-b" "eigth-footnote-a")]
-
-
-       [:p  "9. The idea comes from"
-             (utils/make-footnote "↩" "ninth-footnote-b" "ninth-footnote-a")]
-
-
- [:p  "10. A demonstration of this property with conrete matrices:
+ [:p  "6. A demonstration of this property with conrete matrices:
         $$\\begin{align}
           \\begin{bmatrix}
             a & b \\\\
@@ -1145,7 +1144,7 @@
                 cx & dx \\\\
             \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
             \\end{align}$$"
-       (utils/make-footnote "↩" "tenth-footnote-b" "tenth-footnote-a")]])
+       (utils/make-footnote "↩" "ninth-footnote-b" "ninth-footnote-a")]])
 
 
 
@@ -1163,7 +1162,7 @@
 
 (def post
   {:title "Automatic Differentiation In Neural Nets"
-   :date "2020/10/29"
+   :date "12/22/2020"
    :show post-preview
    :content post-content
    :tags ["mathematics", "deep learning"]
