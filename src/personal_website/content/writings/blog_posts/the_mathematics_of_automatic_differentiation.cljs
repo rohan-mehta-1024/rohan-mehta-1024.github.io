@@ -82,7 +82,7 @@
    [:p "It's not immediately obvious, but by walking
         horizontally across our surface we only varied
         our \\(x\\)-coordinate, while our \\(y\\)-coordinate
-        remained constant. Thus, when walking in this way,
+        remained constant. When walking in this way,
         the surface is described by a special case of the
         original function where \\(y\\) is a constant."]
 
@@ -175,7 +175,7 @@
         whatever vector yields the largest possible dot
         product in this situation. "]
 
-   [:p "And since a vector's dot product is the largest when dotted
+   [:p "And since a vector's dot product is largest when dotted
         against itself, the vector that maximizes this dot product
         is itself the vector containing all the partials of our function!
         So the direction represented by this vector must be
@@ -246,7 +246,7 @@
      between the incoming values and its weight vector, adds a bias
      term, and then pumps everything through some non-linearity."]]]
 
-[:p "Well, all optimization is just a matter of searching
+[:p "All optimization is just a matter of searching
      the space of possibilities. If we consider only a single
      neuron, then this space is defined by all
      \\((\\boldsymbol{\\vec{w}}, b)\\) pairs that the neuron
@@ -270,7 +270,7 @@
       \\((\\boldsymbol{\\vec{x}}, y)\\) and our parameters
       \\(\\boldsymbol{\\theta}\\). Using these, it computes
       our neuron's activation, and passes it and the label
-      \\(y\\) to our error function. Thus, it returns low
+      \\(y\\) to our error function. It returns low
       values for good parameters, because good parameters
       generate good predictions, and good predictions have
       a low margin of error."]
@@ -283,12 +283,12 @@
 [:p "For a single neuron, it would be easy enough to obtain
      these analytically (by solving for critical points),
      but as we scale things up this approach quickly becomes
-     intractable. Thus, we might consider the simpler sub-problem
+     intractable. We might instead consider the simpler sub-problem
      of how to get a slightly better parameter pair
      (instead of an optimal one), and then repeat this
      process over and over."]
 
-[:p "Well, a better pair is just one for whom the function
+[:p "A better pair is just one for whom the function
      returns a lower value – so any pair on our error-surface
      with lower elevation than our current one. We can get
      to such a pair by taking some step across this surface
@@ -304,9 +304,9 @@
       [:figcaption {:class "post-caption" :style {:text-align "left"}}
       "Fig. 5. A visualization of the error-surface for a single neuron. Each point
       is some parameter pair \\((\\boldsymbol{\\vec{w}}, b)\\) and height of each
-      pair indicates how badly the neuron performs when it uses them as its parameters.
-      By traveling along the negative gradient (black line)
-      we can arrive at good pairs (Source: "(utils/link "Amini et. al., 2018" "file:///Users/Rohan%20Mehta/Downloads/Spatial_Uncertainty_Sampling_for_End-to-End_Contro%20(1).pdf")")."]]]
+      pair indicates how badly the neuron performs when it uses them.
+      By traveling along the negative gradient
+      we can arrive at good pairs (Source: "(utils/link "Amini et. al, 2018" "file:///Users/Rohan%20Mehta/Downloads/Spatial_Uncertainty_Sampling_for_End-to-End_Contro%20(1).pdf")")."]]]
 
  [:p "And it turns out that repeatedly stepping in the
       direction of the negative gradient – a process
@@ -342,10 +342,10 @@
         maps every input to the same label. So instead of calculating
         the error in our neuron's prediction against a single datapoint,
         we must do so against all datapoints in our dataset, and then
-        take the average. So the function we're
+        take the average. In other words, the function we're
         really trying to minimize looks more like this:"]
 
-   [:p "$$J(\\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, y_n)$$"]
+   [:p "$$J(\\boldsymbol{X}, \\boldsymbol{\\vec{y}}; \\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, y_n)$$"]
 
    [:p "And since the gradient of a sum equals the sum of gradients,
         the gradient of this function is the average

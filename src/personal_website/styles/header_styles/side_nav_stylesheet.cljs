@@ -89,8 +89,7 @@
 (defn side-nav-arrow-selector-skeleton [id clicked?]
   (let [transform (if clicked? "rotate(45deg)" "rotate(-45deg)")
         exist? (if clicked? "block" "none")
-        show? (if clicked? "100%" "0%")
-        l (print "l" id clicked?)]
+        show? (if clicked? "100%" "0%")]
     [[(-> (s/nth-child id)
          side-nav-container-2
          (s/> side-nav-elements)

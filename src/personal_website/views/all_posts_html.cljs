@@ -65,7 +65,6 @@
         (str " "  (split-date 1) ", " (split-date 2)  " by Rohan Mehta"))))
 
 (defn get-posts [post-type]
-  (let [x (print post-type)])
   (cond
     (= post-type :syn-bio) syn-bio/posts
     (= post-type :comp-sci) comp-sci/posts

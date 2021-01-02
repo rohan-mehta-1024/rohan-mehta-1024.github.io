@@ -38,10 +38,8 @@
 
  (defn main-panel []
     (let [injected-css (inject-css (styles))
-          ;typeset-fn (fn [] (js/setTimeout (fn [] (.typeset js/MathJax) (print "typeset")) 2000))
-          ;call-typeset (typeset-fn)
           ]
-      [k/switch-route (fn [route] (let [x (print route)]) (-> route :data :name))
+      [k/switch-route (fn [route] (-> route :data :name))
          :homepage [homepage-html]
 
          :who-i-am content
