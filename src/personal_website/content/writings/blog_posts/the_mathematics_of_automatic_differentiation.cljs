@@ -25,7 +25,7 @@
         a beautiful amalgamation of many different ideas. While
         our dicussion of the technique will be phrased in terms of its utility to
         neural nets, though, the ideas underpinning it are far more applicable,
-        illustrating some deeper truths about calculus, dynamic problem, and the
+        illustrating some deeper truths about calculus, dynamic programming, and the
         art of problem solving in in general."]
 
    [:p " What follows is a concise review of
@@ -163,9 +163,7 @@
     In fact, it is two times steeper. (Source: "
     (utils/link "GeoGebra3D" "https://www.geogebra.org/3d?lang=en")")."]]
 
-   [:p "While defining things in this way isn't completely
-        rigorous" (utils/make-footnote "2" "second-footnote-a" "second-footnote-b")
-        " it suits our immediate purposes, as we can now
+   [:p "We can now
         calculate all of a function's possible derivatives.
         A natural question then, is what derivative is the greatest?
         In what direction does a function increase most rapidly?"]
@@ -261,7 +259,7 @@
      are close to the corresponding label. Said another way,
      they minimize the margin of error between the prediction
      and the correct label. If we define an error function"
-     (utils/make-footnote "3" "third-footnote-a" "third-footnote-b")
+     (utils/make-footnote "2" "second-footnote-a" "second-footnote-b")
      " \\(E(\\hat{y}, y)\\)  that takes a prediction \\(\\hat{y}\\)
      and a label \\(y\\) and computes this margin of error,
      then a good pair minimizes the following "
@@ -298,7 +296,7 @@
      we would want to move in the direction of steepest
      descent – or the negative gradient,
      \\(-\\nabla_{\\boldsymbol{\\theta}} J\\)!"
-     (utils/make-footnote "4" "fourth-footnote-a" "fourth-footnote-b")]
+     (utils/make-footnote "3" "third-footnote-a" "third-footnote-b")]
 
  [:figure {:class "img-container"}
       [:div {:style {:text-align "center"}}
@@ -321,7 +319,7 @@
      steps, though, we need to  make sure the steps we
      are taking, while not infinitesimal, are appropriately
      small. Thus we scale down the gradient by some factor
-     \\(\\eta\\),"(utils/make-footnote "5" "fifth-footnote-a" "fifth-footnote-b")"
+     \\(\\eta\\),"(utils/make-footnote "4" "fourth-footnote-a" "fourth-footnote-b")"
      such that the step we actually take is: \\(-\\eta \\nabla_{\\boldsymbol{\\theta}}J\\)."]
 
  [:p "Mathematically, " [:q "taking a step"] " in the direction
@@ -665,8 +663,8 @@
       As such, the way we did things in reverse-mode won't really work here."]
 
    [:p "We won't get into the specifics, but the solution is the
-        use of a higher-dimensional number system – the "(utils/link "dual numbers" "https://en.wikipedia.org/wiki/Dual_number") "–
-        that is seemingly able to compute derivatives for "[:q "free"]]
+        use of a higher-dimensional number system – the "(utils/link "dual numbers" "https://en.wikipedia.org/wiki/Dual_number") " –
+        that is seemingly able to compute derivatives for "[:q "free"]"."]
 
    [:p "So why do we use reverse-mode in neural nets then? Well, it has to do with the fact
         that each method is only optimal in a specific situation. While dual numbers
@@ -949,7 +947,7 @@
             \\end{bmatrix}$$"]
 
   [:p "The Jacobian of such a function, then, looks something like this,
-       where the diagonal entries holds the derivative of the function,
+       where the diagonal entries hold the derivative of the function,
        and all non-diagonal entries are zero:"]
 
   [:p "$$\\begin{bmatrix}
@@ -967,7 +965,7 @@
 
   [:p "Moreover, matrix multiplying against a diagonal matrix like this one
        is analogous to performing element-wise multiplication against a matrix filled
-       with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
+       with whatever is occupying this diagonal,"(utils/make-footnote "5" "fifth-footnote-a" "fifth-footnote-b")
        " where the element-wise – or Hadamard – product between two matrices is denoted
        \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is much more efficient
        than matrix multiplying because it requires fewer operations and we don't
@@ -988,13 +986,13 @@
   [:p "It has to do with the deeper definition of derivatives as linear maps.
        Even if we don't often think of them in this way, derivatives naturally satisfy
        the two properties of linearity: the derivative of a sum is the sum
-       of derivatives, and the derivative at a function times a scalar is the derivative
+       of derivatives, and the derivative of a function times a scalar is the derivative
        of that function times the scalar (yes, I know English kind of fails here)."]
 
    [:p "$$D(f + g) = Df + Dg \\hspace{1cm} D(cf) = c(Df)$$"]
 
-   [:p "And because they are linear maps we can represent them as matrices.
-        And these matrices are what we've been calling Jacobians all along!
+   [:p "And because we can represent linear maps as matrices, we can represent
+        derivatives as matrices too, and these are what we've been calling Jacobians all along!
         When our function maps from scalars to scalars, then our Jacobian
         is just a one-element matrix – a scalar, or the classical
         definition of the derivative. When it maps
@@ -1022,15 +1020,14 @@
 
    [:p "This is long-winded way of saying that the derivative is the Jacobian - they're equivelant
         concepts. And the different branches of calculus just study increasingly less specialized
-        versions of it. Practically, this means that automatic differentiation isn't limited
-        to one branch of calculus nor one type of derivative. Anywhere we can define some
-        sensible definition of the Jacobian, automatic differentiation will give us a
+        versions of it. What this means practically is that anywhere we can define some
+        sensible notion of the Jacobian, automatic differentiation will give us a
         way of computing it."]
 
 
 [:h1 {:class "post-section-header"} "Conclusion"]
 
-[:p "So automatic differentiation is a way of quickly computing derivatives with computers.
+[:p "So to recap, automatic differentiation is a way of quickly computing derivatives with computers.
      It has both a forward-mode and reverse-mode implementation, the latter of which is
      used in neural nets. And like all truly great ideas it is based on a simple, but
      piercing insight: that the amount of expressions we can differentiate grows
@@ -1045,22 +1042,31 @@
      to reuse computation and reduce redunancy."]
 
 [:p "All in all, automatic differentiation is one powerhouse of an algorithm,
-     often cited as one of the most important ones to come forward in
-     the twentieth century."]
+     often cited as one of the most important ones to have come forward in
+     the twentieth century. Understanding it well opens
+     up many doors in scientific computing and beyond, and research
+     in the field is ongoing. Given that neural networks only
+     discovered it relatively recently,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
+     " it might very well be
+     that there are other "[:q "killer"] " applications of the
+     technique yet to be found. After all, there's not
+     much you can't solve with derivatives."]
 
 [:h1 {:class "post-section-header"} "References"]
 
    [:ul {:style {:list-style-type "circle"}}
     [:li (utils/link "Håvard Berland's Slides" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
-    [:li (utils/link "AMS: How to Differentiate with a Computer" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    [:li (utils/link "Calculus on Computational Graphs" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    [:li (utils/link "How to Differentiate with a Computer" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
     [:li (utils/link "Computing Neural Network Gradients" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
-    [:li (utils/link "Vector, Matrix, and Tensor Derivatives" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]]
+    [:li (utils/link "Vector, Matrix, and Tensor Derivatives" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    ]
 
 
 [:h1 {:class "post-section-header"} "Footnotes"]
 
 
-[:p {:id "first-footnote-b"} (utils/bold "1.") " If you want to see this with your own eyes:"]
+[:p {:id "first-footnote-b"} (utils/bold "1.") " It's relatively trivial to demonstrate this:"]
   [:p {:style {:overflow-x "auto" :overflow-y "hidden"}}
 
  "$$\\begin{aligned}
@@ -1083,39 +1089,33 @@
  ]
 
 
-[:p  (utils/bold "2.") " You might notice that this formulation of the directional derivative returns different
-      results for different multiples of the same vector, even
-      though they represent a step in the same direction.
-      That's why we usually only take derivatives
-      with respect to unit vectors." (utils/make-footnote "↩" "second-footnote-b" "second-footnote-a")]
-
-[:p  (utils/bold "3.") " The simplest error function you could have is just
+[:p  (utils/bold "2.") " The simplest error function you could have is just
          the difference between the prediction and the label:
          \\(E(\\hat{y}, y) = \\hat{y} - y\\). In practice
          we actually square this difference to accentuate
          really bad predictions and so that we don't have to deal
          with a negative result. This is known as the square error:
          \\(E(\\hat{y}, y) = (\\hat{y} - y)^2\\).
-         " (utils/make-footnote "↩" "third-footnote-b" "third-footnote-a")]
+         " (utils/make-footnote "↩" "second-footnote-b" "second-footnote-a")]
 
 
- [:p  (utils/bold "4.") " What is \\(\\boldsymbol{\\theta}\\) doing in the susbcript of the gradient symbol?
+ [:p  (utils/bold "3.") " What is \\(\\boldsymbol{\\theta}\\) doing in the susbcript of the gradient symbol?
        It's just a way of saying that even though our function
        also takes in an input and a label, we don't want to include their partials
        in our gradient – after all, we can't
        change our input or label, those two pieces
        of information are set for the problem."
-       (utils/make-footnote "↩" "fourth-footnote-b" "fourth-footnote-a")]
+       (utils/make-footnote "↩" "third-footnote-b" "third-footnote-a")]
 
- [:p (utils/bold "5.") " \\(\\eta\\) is a hyperparamater, or a variable
+ [:p (utils/bold "4.") " \\(\\eta\\) is a hyperparamater, or a variable
           the neural net does not learn by itself, but must be explicitly
-          set. Specifically, it's known as learning rate, since it controls
+          set. It's known as learning rate, since it controls
           how quickly we descend the error-surface, and thus how
           fast we learn."
-       (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a")]
+       (utils/make-footnote "↩" "fourth-footnote-b" "fourth-footnote-a")]
 
 
- [:p  "6. A demonstration of this property with conrete matrices:
+ [:p  (utils/bold "5.")" A demonstration of this property with conrete matrices:
         $$\\begin{align}
           \\begin{bmatrix}
             a & b \\\\
@@ -1143,8 +1143,25 @@
                 ax & bx \\\\
                 cx & dx \\\\
             \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
-            \\end{align}$$"
-       (utils/make-footnote "↩" "ninth-footnote-b" "ninth-footnote-a")]])
+            \\end{align}$$
+            As you can see they are equivelant. But wheras
+            the Hadamard product only has to do \\(N \\times M\\)
+            operations when multiplying two
+            \\(N \\times M\\) matrices, matrix multiplication
+            has to do \\(N \\times M \\times M \\times (M - 1)\\) operations."
+       (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a")]
+
+       [:p
+        (utils/bold "6.") " While researching for this post I found out
+        that in days of old people used to compute their network's derivatives
+        symbolically by hand, hardcode them into computers, and then optimize them
+        So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
+        (utils/make-footnote "↩" "sixth-footnote-b" "sixth-footnote-a")]
+
+
+
+
+  ])
 
 
 

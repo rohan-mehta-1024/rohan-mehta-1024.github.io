@@ -11,7 +11,8 @@
             [personal-website.content.writings.essays.essays :as essays]
             [personal-website.content.writings.short-stories.stories :as stories]
             [personal-website.content.writings.poetry.poems :as poems]
-            [personal-website.content.writings.papers.papers :as papers]))
+            [personal-website.content.writings.papers.papers :as papers]
+            [personal-website.content.readings.books.books :as books]))
 
 
 (defn generate-and-inject-style-tag []
@@ -64,6 +65,7 @@
         (str " "  (split-date 1) ", " (split-date 2)  " by Rohan Mehta"))))
 
 (defn get-posts [post-type]
+  (let [x (print post-type)])
   (cond
     (= post-type :syn-bio) syn-bio/posts
     (= post-type :comp-sci) comp-sci/posts
@@ -71,7 +73,8 @@
     (= post-type :essays)     essays/posts
     (= post-type :stories)    stories/posts
     (= post-type :poems)      poems/posts
-    (= post-type :papers)     papers/posts))
+    (= post-type :papers)     papers/posts
+    (= post-type :books)      books/posts))
 
 (defn list-posts [posts]
   (let [preview-fn (fn [x] (preview x false))]
@@ -88,9 +91,8 @@
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
         prefix (conj [:div] (header) (search-html))
-        typeset-fn (fn [] (js/setTimeout (fn [] (.typesetPromise js/MathJax) (print "typeset")) 1000))
-        call-typeset (typeset-fn)
-        n (print "hellloOO?")]
+        typeset-fn (fn [] (js/setTimeout (fn [] (.typesetPromise js/MathJax)) 1000))
+        call-typeset (typeset-fn)]
     (if (empty? posts)
       [:div (header)
        [:div {:style {:text-align "center"
@@ -112,14 +114,9 @@
                 (conj prefix $)
                 (conj $ (footer))))
 
-        (let [q (print "hereonooo")
-              q (print (utils/unformat-title (params :id)))
-              l (print posts)
-              post-title ((posts (utils/unformat-title (params :id))) :title)
-              l (print post-title)
+        (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
-              cssify (-> :id params utils/unformat-title posts :css css update-page-css)
-              x (print "helllllllo")]
+              cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}

@@ -23,11 +23,13 @@ return (style_tag["innerHTML"] = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(pr
 personal_website.views.all_posts_html.date_mapping = cljs.core.PersistentHashMap.fromArrays(["9","3","4","8","7","5","12","6","1","11","2","10"],["Sep","Mar","Apr","Aug","Jul","May","Dec","Jun","Jan","Nov","Feb","Oct"]);
 personal_website.views.all_posts_html.format_date = (function personal_website$views$all_posts_html$format_date(date){
 var split_date = clojure.string.split.cljs$core$IFn$_invoke$arity$2(date,"/");
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__45435 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(split_date,(0));
-return (personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1 ? personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1(G__45435) : personal_website.views.all_posts_html.date_mapping.call(null,G__45435));
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__31333 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(split_date,(0));
+return (personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1 ? personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1(G__31333) : personal_website.views.all_posts_html.date_mapping.call(null,G__31333));
 })())," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1((split_date.cljs$core$IFn$_invoke$arity$1 ? split_date.cljs$core$IFn$_invoke$arity$1((1)) : split_date.call(null,(1)))),", ",cljs.core.str.cljs$core$IFn$_invoke$arity$1((split_date.cljs$core$IFn$_invoke$arity$1 ? split_date.cljs$core$IFn$_invoke$arity$1((2)) : split_date.call(null,(2))))," by Rohan Mehta"].join('');
 });
 personal_website.views.all_posts_html.get_posts = (function personal_website$views$all_posts_html$get_posts(post_type){
+var x_31339 = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([post_type], 0));
+
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(post_type,new cljs.core.Keyword(null,"syn-bio","syn-bio",-1893273080))){
 return personal_website.content.projects.syn_bio.syn_bio.posts;
 } else {
@@ -49,7 +51,11 @@ return personal_website.content.writings.poetry.poems.posts;
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(post_type,new cljs.core.Keyword(null,"papers","papers",1152250078))){
 return personal_website.content.writings.papers.papers.posts;
 } else {
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(post_type,new cljs.core.Keyword(null,"books","books",-2005362272))){
+return personal_website.content.readings.books.books.posts;
+} else {
 return null;
+}
 }
 }
 }
@@ -70,13 +76,10 @@ var params = new cljs.core.Keyword(null,"path-params","path-params",-48130597).c
 var prefix = cljs.core.conj.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632)], null),personal_website.views.header_html.header(),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([personal_website.views.search_html.search_html()], 0));
 var typeset_fn = (function (){
 return setTimeout((function (){
-MathJax.typesetPromise();
-
-return cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["typeset"], 0));
+return MathJax.typesetPromise();
 }),(1000));
 });
 var call_typeset = typeset_fn();
-var n = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["hellloOO?"], 0));
 if(cljs.core.empty_QMARK_(posts)){
 return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),personal_website.views.header_html.header(),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"text-align","text-align",1786091845),"center",new cljs.core.Keyword(null,"margin-top","margin-top",392161226),"350px",new cljs.core.Keyword(null,"font-size","font-size",-1847940346),"28px",new cljs.core.Keyword(null,"font-family","font-family",-667419874),"WorkSansBold",new cljs.core.Keyword(null,"min-height","min-height",398480837),"100vh"], null)], null),"This page is currently empty."], null),personal_website.views.footer_html.footer()], null);
 } else {
@@ -95,23 +98,18 @@ var $__$1 = personal_website.views.all_posts_html.list_posts($);
 var $__$2 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(prefix,$__$1);
 return cljs.core.conj.cljs$core$IFn$_invoke$arity$2($__$2,personal_website.views.footer_html.footer());
 } else {
-var q = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["hereonooo"], 0));
-var q__$1 = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))))], 0));
-var l = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([posts], 0));
-var post_title = (function (){var fexpr__45437 = (function (){var G__45438 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
-return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__45438) : posts.call(null,G__45438));
+var post_title = (function (){var fexpr__31335 = (function (){var G__31336 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
+return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__31336) : posts.call(null,G__31336));
 })();
-return (fexpr__45437.cljs$core$IFn$_invoke$arity$1 ? fexpr__45437.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title","title",636505583)) : fexpr__45437.call(null,new cljs.core.Keyword(null,"title","title",636505583)));
+return (fexpr__31335.cljs$core$IFn$_invoke$arity$1 ? fexpr__31335.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title","title",636505583)) : fexpr__31335.call(null,new cljs.core.Keyword(null,"title","title",636505583)));
 })();
-var l__$1 = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([post_title], 0));
 var page_title = personal_website.views.all_posts_html.update_page_title(post_title);
-var cssify = personal_website.views.all_posts_html.update_page_css(garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"css","css",1135045163).cljs$core$IFn$_invoke$arity$1((function (){var G__45439 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
-return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__45439) : posts.call(null,G__45439));
+var cssify = personal_website.views.all_posts_html.update_page_css(garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"css","css",1135045163).cljs$core$IFn$_invoke$arity$1((function (){var G__31337 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
+return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__31337) : posts.call(null,G__31337));
 })())], 0)));
-var x = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["helllllllo"], 0));
 var $ = posts;
-var $__$1 = (function (){var G__45440 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
-return ($.cljs$core$IFn$_invoke$arity$1 ? $.cljs$core$IFn$_invoke$arity$1(G__45440) : $.call(null,G__45440));
+var $__$1 = (function (){var G__31338 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
+return ($.cljs$core$IFn$_invoke$arity$1 ? $.cljs$core$IFn$_invoke$arity$1(G__31338) : $.call(null,G__31338));
 })();
 var $__$2 = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-content-container"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h1","h1",-1896887462),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-title"], null),($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title","title",636505583)) : $__$1.call(null,new cljs.core.Keyword(null,"title","title",636505583)))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h4","h4",2004862993),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-byline"], null),personal_website.views.all_posts_html.format_date(($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"date","date",-1463434462)) : $__$1.call(null,new cljs.core.Keyword(null,"date","date",-1463434462))))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-intro-container"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"blockquote","blockquote",372264190),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-intro-text"], null),($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"show","show",-576705889)) : $__$1.call(null,new cljs.core.Keyword(null,"show","show",-576705889)))], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-content"], null),($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"content","content",15833224)) : $__$1.call(null,new cljs.core.Keyword(null,"content","content",15833224)))], null)], null);
 var $__$3 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(prefix,$__$2);

@@ -2,6 +2,7 @@
   (:require [re-frame.core :as re-frame]
             [kee-frame.core :as k]
             [garden.core :refer [css]]
+            [personal-website.views.who-i-am-html :refer [content]]
             [personal-website.views.all-posts-html :refer [display]]
             [personal-website.styles.all-posts-stylesheet :refer [all-posts]]
             [personal-website.styles.footer-stylesheet :refer [footer]]
@@ -40,10 +41,10 @@
           ;typeset-fn (fn [] (js/setTimeout (fn [] (.typeset js/MathJax) (print "typeset")) 2000))
           ;call-typeset (typeset-fn)
           ]
-      [k/switch-route (fn [route] (-> route :data :name))
+      [k/switch-route (fn [route] (let [x (print route)]) (-> route :data :name))
          :homepage [homepage-html]
 
-         :who-i-am [(fn [] [:div "hi this is who i am"])]
+         :who-i-am content
          :syn-bio display
          :comp-sci display
 
@@ -52,5 +53,7 @@
          :stories display
          :poems display
          :papers display
+
+         :books display
 
          nil [homepage-html]]))

@@ -18,8 +18,7 @@
 (defn format-specifier [date type tags]
   (let [page @(re-frame/subscribe [:kee-frame/route])
         homepage? (if (= (:path page) "/") true false)
-        width (. js/window -innerWidth)
-        s (print "homey" homepage?)]
+        width (. js/window -innerWidth)]
   (if homepage?
     (if (<= width 450)
       (str date " | " type)

@@ -11,7 +11,6 @@ personal_website.views.preview_html.format_specifier = (function personal_websit
 var page = cljs.core.deref(re_frame.core.subscribe.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("kee-frame","route","kee-frame/route",-106555640)], null)));
 var homepage_QMARK_ = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"path","path",-188191168).cljs$core$IFn$_invoke$arity$1(page),"/"))?true:false);
 var width = window.innerWidth;
-var s = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["homey",homepage_QMARK_], 0));
 if(homepage_QMARK_){
 if((width <= (450))){
 return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(date)," | ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(type)].join('');

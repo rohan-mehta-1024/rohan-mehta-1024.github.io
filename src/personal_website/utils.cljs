@@ -5,6 +5,9 @@
        :href link
        :target "_blank"} text])
 
+(def special-words
+  {"Mnist" "MNIST"})
+
 (defn scroll-to-top []
  (let [obj (.getElementById js/document "top")
        scroll (fn [] (.scrollIntoView obj))]
@@ -18,6 +21,9 @@
 (defn unformat-title [title]
   (->> (clojure.string/split title "-")
        (map clojure.string/capitalize)
+       (map (fn [x]
+              (let [y (special-words x)]
+                (if y y x))) )
        (clojure.string/join " ")))
 
 (defn scroll-to-this [el-id]

@@ -23,7 +23,11 @@
 						 ["/personal-essays/:id" :essays]
 						 ["/short-stories/:id" :stories]
              ["/poetry/:id" :poems]
-             ["/academic-papers/:id" :papers]])
+             ["/academic-papers/:id" :papers]
+
+            ["/books/:id" :books]
+
+             ])
 
 
 

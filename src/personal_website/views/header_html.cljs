@@ -14,9 +14,9 @@
      "placeholder"
      "placeholder"]]
    ["Projects"
-    ["Engineering"
-     "Synthetic Biology"
+    ["Synthetic Biology"
      "Computer Science"
+     "placeholder"
      "placeholder"
      "placeholder"
      "placeholder"]]
@@ -28,7 +28,7 @@
      "Blog Posts"
      "placeholder"]]
    ["Readings"
-    ["Books & Novels"
+    ["Books"
      "Articles & Essays"
      "placeholder"
      "placeholder"
