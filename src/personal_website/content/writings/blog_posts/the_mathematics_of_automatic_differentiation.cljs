@@ -788,8 +788,8 @@
         output vector \\(\\boldsymbol{\\vec{y}}\\).
         If we want to measure the effect varying the
         input vector has on the output vector (i.e., its derivative), we need
-        to determine how each element of this input
-        vector affects each element of the output vector."]
+        to determine how each element of the input
+        affects each element of the output."]
 
    [:p "In other words, we need to find the individual
         derivatives of each element of the output with
@@ -798,9 +798,9 @@
 
     [:p {:style {:font-size "20px"}} "$$
       \\begin{bmatrix}
-        \\frac{\\partial{y_1}}{\\partial{x_1}} & \\cdots & \\frac{\\partial{y_1}}{\\partial{x_n}} \\\\
+        \\frac{\\partial{\\boldsymbol{\\vec{y}}_1}}{\\partial\\boldsymbol{\\vec{x}}_1} & \\cdots & \\frac{\\partial{\\boldsymbol{\\vec{y}}_1}}{\\partial{\\boldsymbol{\\vec{x}}_n}} \\\\
         \\vdots & \\ddots & \\vdots \\\\
-         \\frac{\\partial{y_n}}{\\partial{x_1}} & \\cdots & \\frac{\\partial{y_n}}{\\partial{x_n}} \\\\
+         \\frac{\\partial{\\boldsymbol{\\vec{y}}_n}}{\\partial{\\boldsymbol{\\vec{x}}_1}} & \\cdots & \\frac{\\partial{\\boldsymbol{\\vec{y}}_n}}{\\partial{\\boldsymbol{\\vec{x}}_n}} \\\\
         \\end{bmatrix}$$" ]
 
 
@@ -877,7 +877,7 @@
    ;[:p "$$\\frac{\\partial}{\\partial{\\boldsymbol{\\vec{x}}}}(\\boldsymbol{W}\\boldsymbol{\\vec{x}}) = \\boldsymbol{W}$$"]
 
    [:p "But what if we want to differentiate this product the other
-        way around, with respect to the matrix? Well, this is a bit
+        way around, with respect to the matrix? This is a bit
         harder, because differentiating each entry of a vector with
         respect to each entry of a matrix means we'll need multiple matrices,
         one per element of our output."]
@@ -900,12 +900,12 @@
         Furthermore, we would find that this trend holds for any matrix-vector product
         we could imagine. And if we think about it, this makes sense too – after all,
         each element of the output vector only depends on one row of the
-        actual matrix, thus all its other derivatives will be zero."]
+        actual matrix, so all its other derivatives will be zero."]
 
    [:p "If we do this for each element in our output vector, then we get
         a series of mostly non-zero matrices, with a single row filled in.
         But the filled-in rows for each of these matrices never collide,
-        because each element of the input depends on a different
+        because each element of the output vector depends on a different
         row of the matrix."]
 
 
