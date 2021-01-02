@@ -612,7 +612,7 @@
         the first key idea here is that any complex expression
         we might want to differentiate – like our network's
         error – is actually just a composition of many
-        elementary operations whose derivatives we already."]
+        elementary operations whose derivatives we already know."]
 
    [:p "Secondly, the chain rule provides us with a very
         straightforward way to find the derivatives
