@@ -419,8 +419,8 @@
     since it appears in its own definition. The mathematical
     consequence of this recursiveness is that the expression
     representing a network's output is incredibly nested, so that
-    even a trivial three layer-network like the one above is
-    quite complicated. "]
+    even a trivial net like the one above is actually suprisingly
+    complex, once expanded out."]
 
    [:p {:style {:font-size "15px" :margin-bottom "30px" :overflow-x "auto" :overflow-y "hidden"} :id "special"} "
    $$\\sigma \\left(\\bbox[yellow]{\\alpha^{(1)}_1} \\cdot w^{(2)}_{(1, \\hspace{0.1cm} 1)}+ \\bbox[orange]{\\alpha^{(1)}_2} \\cdot w^{(2)}_{(1, \\hspace{0.1cm} 2)} + b^{(2)}_1\\right)$$
@@ -451,7 +451,8 @@
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
       [:img {:src "/resources/comp_graph.svg" :class "post-img" :style {:width "90%"}}]]
-      [:figcaption {:class "post-caption"}]]
+      [:figcaption {:class "post-caption"} "Fig. 7. A computational graph
+      representing the error of our three-layer net's prediction."]]
 
   [:p "Let's imagine constructing such a graph to represent
        the evaluation of our error function at this three-layer
