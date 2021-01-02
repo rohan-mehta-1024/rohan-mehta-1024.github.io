@@ -345,7 +345,7 @@
         take the average. In other words, the function we're
         really trying to minimize looks more like this:"]
 
-   [:p "$$J(\\boldsymbol{X}, \\boldsymbol{\\vec{y}}; \\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, y_n)$$"]
+   [:p "$$J(\\boldsymbol{X}, \\boldsymbol{\\vec{y}}; \\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, \\boldsymbol{\\vec{y}}_n)$$"]
 
    [:p "And since the gradient of a sum equals the sum of gradients,
         the gradient of this function is the average
@@ -563,7 +563,7 @@
         \\(\\xi\\) and the bias \\(b^{(2)}_1\\) – 
         we have the derivative chain up to that point
         stored in the local error signal, so even if we choose to step
-        to \\(\\xi\\) first, we don't have to re-traverse the entire graph when
+        to \\(\\xi\\), we don't have to re-traverse the entire graph when
         we want to find the derivative with respect to the bias.
         We can just pick back up from where we left off."]
 
@@ -575,7 +575,7 @@
 
   [:p "This process of caching the current derivative
        chain in an associated variable for each node (known as adjoint)
-       – is called " (utils/link "memoization" "https://en.wikipedia.org/wiki/Memoization#:~:text=In%20computing%2C%20memoization%20or%20memoisation,the%20same%20inputs%20occur%20again")
+       is called " (utils/link "memoization" "https://en.wikipedia.org/wiki/Memoization#:~:text=In%20computing%2C%20memoization%20or%20memoisation,the%20same%20inputs%20occur%20again")
        " and does wonders for our efficiency."]
 
    [:p "But the problem is not completely solved just yet.
@@ -605,17 +605,16 @@
    [:p "We can similarly consider node \\(\\epsilon\\) which is
         a product of the first entry of our input vector, \\(x_1\\),
         and the weight \\(w^{(1)}_{(1, \\hspace{0.1cm} 1)}\\).
-        It's trivial finding the derivative with respect
-        to the weight to be \\(x_1\\)."]
+        Again, it's obvious that the weight's derivative
+        is just \\(x_1\\)."]
 
    [:p "But what does all of this mean, taken together? Well,
-        the first key idea is that any complex expression
-        we might want to differentiate – for example, our network's
+        the first key idea here is that any complex expression
+        we might want to differentiate – like our network's
         error – is actually just a composition of many
-        elementary operations that we already know
-        how to differentiate."]
+        elementary operations whose derivatives we already."]
 
-   [:p "Second, the chain rule provides us with a very
+   [:p "Secondly, the chain rule provides us with a very
         straightforward way to find the derivatives
         of such compositions. And even though we, as humans,
         wouldn't usually use the chain rule, to, say,
@@ -626,7 +625,7 @@
 
    [:p "And this approach works great for computers, because
         it allows us to hardcode the expressions for only a few
-        basic deriivatives, while still allowing the computer to
+        basic deriivatives while still enabling them to
         differentiate pretty complex expressions. If we also
         think to memoize derivative chains, then what we get is
         an algorithm for quickly and efficiently computing exact
