@@ -376,7 +376,7 @@
 
   [:p "In other words, each entry in a given neuron's weight
        vector is multiplied with the activation of a neuron
-       in the previous layer. Thus we can visualize each of these
+       in the previous layer. So we can visualize each of these
        entries as a weighted edge connecting the current neuron to
        a neuron in the previous layer."]
 
@@ -515,7 +515,7 @@
  [:p "So we can compute the derivative in question
       simply by traversing the graph, accumulating
       all the derivatives being passed down from node to node,
-      and then multiplying them together."]
+      and multiplying them together."]
 
  [:p "And this fact is no less true for any other
      nodes in our graph. Since moving between any two
@@ -563,8 +563,9 @@
         \\(\\xi\\) and the bias \\(b^{(2)}_1\\) – 
         we have the derivative chain up to that point
         stored in the local error signal, so even if we choose to step
-        to \\(\\xi\\) first, we don't have to start at the beginning of the
-        graph when. We can just pick backup from the division."]
+        to \\(\\xi\\) first, we don't have to re-traverse the entire graph when
+        we want to find the derivative with respect to the bias.
+        We can just pick back up from where we left off."]
 
     [:figure {:class "img-container"}
      [:div {:style {:text-align "center"}}
@@ -604,11 +605,11 @@
    [:p "We can similarly consider node \\(\\epsilon\\) which is
         a product of the first entry of our input vector, \\(x_1\\),
         and the weight \\(w^{(1)}_{(1, \\hspace{0.1cm} 1)}\\).
-        Again, it's obvious that the derivative with respect
-        to our weight is just \\(x_1\\)."]
+        It's trivial finding the derivative with respect
+        to the weight to be \\(x_1\\)."]
 
    [:p "But what does all of this mean, taken together? Well,
-        the first key idea here is that any complex expression
+        the first key idea is that any complex expression
         we might want to differentiate – for example, our network's
         error – is actually just a composition of many
         elementary operations that we already know
