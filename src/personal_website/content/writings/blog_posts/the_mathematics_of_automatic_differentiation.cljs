@@ -4,13 +4,13 @@
 
 (def post-preview
   "Automatic differentiation is the numerical computing technique
-   that gave us the backpropogation algorithm, which is how
+   that gave us the backpropagation algorithm, which is how
    neural nets learn. In this post, we will explore it from both a mathematics
    and computer science perspective.")
 
 (def post-content
   [:div ;{:style {:text-indent "25px"}}
-   [:p "Backpropogation is the cornerstone of the differentiable
+   [:p "Backpropagation is the cornerstone of the differentiable
         programming paradigm — the idea that we can allow programs
         to optimize their behavior against certain metrics by
         differentiating over and updating sets of learnable functions.
@@ -20,13 +20,13 @@
 
    [:p "Its contribution to neural nets is perhaps its most popularized use today,
         but the idea has a long history, and its story is ongoing. In its modern
-        day incarnation, it draws on a broad swath of mathmetical
+        day incarnation, it draws on a broad swath of mathmatical
         knowledge and is
         a beautiful amalgamation of many different ideas. While
-        our dicussion of the technique will be phrased in terms of its utility to
+        our discussion of the technique will be phrased in terms of its utility to
         neural nets, though, the ideas underpinning it are far more applicable,
         illustrating some deeper truths about calculus, dynamic programming, and the
-        art of problem solving in in general."]
+        art of problem solving in general."]
 
    [:p " What follows is a concise review of
    multivariable calculus, before we delve into some more complex math.
@@ -99,7 +99,7 @@
     [:img {:src "/resources/parabaloid-1.png" :style {:width "50%"}}]
     [:img {:src "/resources/parabaloid-2.png" :style {:width "50%"}}]
     [:figcaption {:class "post-caption" :style {:text-align "left"}}
-    "Fig. 2. The graph the function \\(f(x,y) = x^2 + y^2\\), known as a parabaloid.
+    "Fig. 2. The graph the function \\(f(x,y) = x^2 + y^2\\), known as a paraboloid.
     Slicing it across the \\(x\\)-axis (or walking in the \\(x\\) direction) reveals that \\(x\\)-wise
     cross-sections are parabolas. (Source: " (utils/link "GeoGebra3D" "https://www.geogebra.org/3d?lang=en")")."]]]
 
@@ -110,7 +110,7 @@
         instead differentiating \\(f(x) = x^2 + C\\),
         as this is what the surface looks like when
         moving in the \\(x\\) direction. Then the
-        deriavative with respect to \\(x\\) (what
+        derivative with respect to \\(x\\) (what
         we call the partial derivative) would
         be \\(2x\\), or \\(\\frac{\\partial{f}}{\\partial{x}}\\ = 2x\\)"]
 
@@ -130,7 +130,7 @@
         infinitesimal step along the vector
         \\(\\langle 1, 1 \\rangle \\)?"]
 
-    [:p "Well, a step in this direction is equivelant
+    [:p "Well, a step in this direction is equivalent
          to one step in both the \\(x\\) direction and
          \\(y\\) direction. And since we know how our
          function changes for both a pure step in the
@@ -156,9 +156,9 @@
    [:img {:src "/resources/parabaloid-5.png" :style {:width "50%"}}]
    [:img {:src "/resources/parabaloid-6.png" :style {:width "50%"}}]
   [:figcaption {:class "post-caption"}
-   "Fig. 3. The derivative along the the vector \\(\\langle 1, 1 \\rangle\\)
+   "Fig. 3. The derivative along the vector \\(\\langle 1, 1 \\rangle\\)
     is greater than either partial, since it is their sum.
-    This means that the parabaloid's surface is steeper
+    This means that the paraboloid's surface is steeper
     in this direction than in just the horizontal or vertical ones.
     In fact, it is two times steeper. (Source: "
     (utils/link "GeoGebra3D" "https://www.geogebra.org/3d?lang=en")")."]]
@@ -184,7 +184,7 @@
 
    [:p "Intuitively, this makes sense too,
         as how much this vector points in a given
-        direction is equivelant to the derivative
+        direction is equivalent to the derivative
         in that direction, such that it points
         more in steeper directions and less in shallow
         ones, thus becoming the steepest direction itself.
@@ -226,11 +226,11 @@
 
   [:p "We refer to a neuron's parameters as learnable
        because they can be updated such that the
-       the neuron returns the desired output for a
-       given input. And somewhat counter to intution,
+       neuron returns the desired output for a
+       given input. And somewhat counter to intuition,
        by stacking these simplistic units together, we
        can get the resulting structure – known as a neural
-       net – to exhibit suprisingly intelligent behavior."]
+       net – to exhibit surprisingly intelligent behavior."]
 
   [:p "What's more, all of these behaviors can be framed
        as some sort of prediction task: given lots of labeled
@@ -303,7 +303,7 @@
      [:img {:src "/resources/loss_landscape-4.jpg" :class "post-img" :style {:width "65%"}}]
       [:figcaption {:class "post-caption" :style {:text-align "left"}}
       "Fig. 5. A visualization of the error-surface for a single neuron. Each point
-      is some parameter pair \\((\\boldsymbol{\\vec{w}}, b)\\) and height of each
+      is some parameter pair \\((\\boldsymbol{\\vec{w}}, b)\\) and the height of each
       pair indicates how badly the neuron performs when it uses them.
       By traveling along the negative gradient
       we can arrive at good pairs (Source: "(utils/link "Amini et. al, 2018" "file:///Users/Rohan%20Mehta/Downloads/Spatial_Uncertainty_Sampling_for_End-to-End_Contro%20(1).pdf")")."]]]
@@ -331,7 +331,7 @@
 
 
   [:p "And this one-liner is, more or less, how neural nets learn!
-       But we've made one simplifcation so far. Our current objective
+       But we've made one simplification so far. Our current objective
        function \\(J\\) only takes into account one labeled datapoint
        \\((\\boldsymbol{\\vec{x}}, y)\\), but being able to correctly
        predict the label for a single datapoint doesn't guarantee the
@@ -364,14 +364,14 @@
 
   [:p "Before we focus on computing these gradients, though,
        we first need to upgrade our current working model
-       of only a single neuron to fully-fledged neural net."]
+       of only a single neuron to a fully-fledged neural net."]
 
   [:p "As we touched on before, a neural net is just many
-       indvidual neurons stacked atop one another. More
+       individual neurons stacked atop one another. More
        specifically, a given network is a horizontal stack
        of many " [:q "layers"] ", which are themselves vertical
        stacks of neurons. Computation happens as activations are
-       propogated between adjacent layers, such that each neuron
+       propagated between adjacent layers, such that each neuron
        takes in all activations of the previous layer."]
 
   [:p "In other words, each entry in a given neuron's weight
@@ -383,7 +383,7 @@
   [:p "After computing the weighted sum these edges encode,
        adding a bias, and passing the whole thing through a
        non-linearity, we obtain a neuron's activation, which
-       is propogated forward and becomes a part of the weighted
+       is propagated forward and becomes a part of the weighted
        sum computed by neurons in the next layer. "]
 
 
@@ -393,7 +393,7 @@
       [:figcaption {:class "post-caption"}
        "Fig. 6. An example of a neural network that maps 2D vectors to scalars. Each
         neuron is connected to every neuron in the previous layer by some weighted edge
-        determined by it weight vector."]]
+        determined by its weight vector."]]
 
   [:p "This view of the neuron, where we decompose each
        neuron's weight vector into a set of weighted edges,
@@ -419,7 +419,7 @@
     since it appears in its own definition. The mathematical
     consequence of this recursiveness is that the expression
     representing a network's output is incredibly nested, so that
-    even a trivial net like the one above is actually suprisingly
+    even a trivial net like the one above is actually surprisingly
     complex, once expanded out."]
 
    [:p {:style {:font-size "15px" :margin-bottom "30px" :overflow-x "auto" :overflow-y "hidden"} :id "special"} "
@@ -472,7 +472,7 @@
      [:figcaption {:class "post-caption"}]]
 
 
-  [:p "What we want is to find the deriative of this error
+  [:p "What we want is to find the derivative of this error
        with respect to our bias \\(b^{(2)}_1\\), but because
        it is not a direct function of this bias, we must apply
        the chain rule."]
@@ -496,7 +496,7 @@
      [:img {:src "/resources/comp_graph_11.svg" :class "post-img" :style {:width "75%"}}]]
      [:figcaption {:class "post-caption"}]]
 
- [:p "This might seem like a somewhat artifical construction,
+ [:p "This might seem like a somewhat artificial construction,
       but bear with me for a minute – phrasing things in this way
       will make the solution to our problem just pop out. That said,
       now that we have identified all necessary derivatives,
@@ -541,11 +541,11 @@
        are essentially the same, only diverging at the very end.
        For instance, consider the paths from \\(\\varphi\\)
        to the weights \\(w^{(1)}_{(1,\\hspace{0.1cm}1)}\\) and
-       \\(w^{(1)}_{(1,\\hspace{0.1cm}2)}\\). They are equivelant
+       \\(w^{(1)}_{(1,\\hspace{0.1cm}2)}\\). They are equivalent
        except for two divisions – in other words, they differ by
        only two derivatives."]
 
-   [:p "Traversing the graph two seperate times
+   [:p "Traversing the graph two separate times
         – one for each weight – seems wasteful. Wouldn't it
         be better if we could somehow remember what the shared
         segment of their paths was, and then just multiply
@@ -579,9 +579,9 @@
        " and does wonders for our efficiency."]
 
    [:p "But the problem is not completely solved just yet.
-        Even though we now know what derivatives we have to multiply
+        Even though we now know which derivatives we have to multiply
         together to find each element of the gradient,
-        we still don't know what  the actual numerical values
+        we still don't know what the actual numerical values
         for these derivatives are."]
 
               [:figure {:class "img-container"}
@@ -625,7 +625,7 @@
 
    [:p "And this approach works great for computers, because
         it allows us to hardcode the expressions for only a few
-        basic deriivatives while still enabling them to
+        basic derivatives while still enabling them to
         differentiate pretty complex expressions. If we also
         think to memoize derivative chains, then what we get is
         an algorithm for quickly and efficiently computing exact
@@ -638,16 +638,16 @@
 
    [:p "Together this entire process is known as reverse-mode
         automatic differentiation (AD). In the context of neural
-        networks, though, it goes under another name – backpropogation. "]
+        networks, though, it goes under another name – backpropagation. "]
 
    [:p "But it's actually not the only way we could traverse
         a computational graph. After all, our decision to start
         at the end of the graph was an arbitrary one – we could
         have just as easily chosen to start at the beginning
-        of the graph and propogate derivatives forward instead."]
+        of the graph and propagate derivatives forward instead."]
 
    [:p "In fact, this method – forward-mode AD – and reverse-mode
-        AD are conceptually equivelant, because they are just different
+        AD are conceptually equivalent, because they are just different
         ways of parsing the chain rule. Given some function composition
         \\(f(g(h(x)))\\), forward-mode computes derivatives from the
         inside-out, whereas reverse-mode does the opposite, computing
@@ -659,7 +659,14 @@
   [:p "Thus in forward-mode when we step to a node, we are not
       computing the derivative of our previous node with respect to it,
       but rather the derivative of it with respect to our previous node.
-      As such, the way we did things in reverse-mode won't really work here."]
+      Let's look at a simple example to "]
+
+      [:figure {:class "img-container"}
+       [:div {:style {:text-align "center"}}
+         [:img {:src "comp_graph_19.svg" :class "post-img" :style {:width "50%"}}]]
+         [:figcaption {:class "post-caption"}]]
+
+
 
    [:p "We won't get into the specifics, but the solution is the
         use of a higher-dimensional number system – the "(utils/link "dual numbers" "https://en.wikipedia.org/wiki/Dual_number") " –
@@ -707,15 +714,15 @@
 
 
 
-   [:h1 {:class "post-section-header"} "Vectorization"]
+   [:h1 {:class "post-section-header"} "Let's Vectorize!"]
 
    [:p "If you'll remember though, I mentioned that this very
         atomic representation of the network – where each weight, bias, and neuron
         is represented individually – is not the most efficient nor most
         elegant way of doing things. Instead, a much cleaner conception of what's going on
-        can be acheived by representing things in a vectorized fashion."]
+        can be achieved by representing things in a vectorized fashion."]
 
-   [:p "So let's vectorize! Given a \\(k\\)-neuron layer,
+   [:p "Given a \\(k\\)-neuron layer,
         with \\(j\\) neurons in the previous layer,
         we can stack the weights and biases of each of these \\(k\\) neurons into
         a matrix and vector respectively."]
@@ -738,9 +745,9 @@
         \\end{bmatrix} \\in \\mathbb{R}^{k}$$"]
 
 
-   [:p "Then multiplying this matrix against the vector of previous
+   [:p "Then, multiplying this matrix against the vector of previous
         activations yields a new vector containing the weighted
-        sum each neuron computes. This is an equivelant construction
+        sum each neuron computes. This is an equivalent construction
         to our earlier model,  where each neuron dotted its weight
         vector against the incoming input vector, as matrix-vector
         multiplications are just a way of batching many dot products."]
@@ -750,7 +757,7 @@
         we have computed the vector of activations for that layer like so:"]
 
 
-   [:p "$$\\boldsymbol{\\vec{\\alpha}}^{(L)} = \\sigma(\\boldsymbol{W}^{(L)}\\boldsymbol{\\vec{\\alpha}}^{(L-1)} + \\boldsymbol{\\vec{b}}^{(L)})$$"]
+   [:p "$$\\boldsymbol{\\vec{\\alpha}}^{(L)} = \\sigma\\left(\\boldsymbol{W}^{(L)}\\boldsymbol{\\vec{\\alpha}}^{(L-1)} + \\boldsymbol{\\vec{b}}^{(L)}\\right)$$"]
 
    [:p {:style {:margin-bottom "30px"}}
       "Our network's output is just some recursive composition
@@ -770,7 +777,7 @@
       [:figcaption {:class "post-caption"}]]
 
 
-   [:p "The only problem here is that these derivatives not
+   [:p "The only problem here is that these derivatives are not
         scalar-to-scalar derivatives like we dealt with earlier,
         but vector-to-vector, or even vector-to-matrix derivatives.
         Thus we need to develop some reasonable notion of what such
@@ -780,7 +787,7 @@
         vector \\(\\boldsymbol{\\vec{x}}\\) to an
         output vector \\(\\boldsymbol{\\vec{y}}\\).
         If we want to measure the effect varying the
-        input vector has on the output vector, we need
+        input vector has on the output vector (i.e., its derivative), we need
         to determine how each element of this input
         vector affects each element of the output vector."]
 
@@ -805,8 +812,8 @@
         of the gradient, since it similarly consolidates all of a
         function's derivative " [:q "information"]"."]
 
-   [:p "So each derivative being passed down in the adjoint graph
-        is a Jacobian. Thus, we can perform reverse-mode AD just like before,
+   [:p "Since each derivative being passed down in the adjoint graph
+        is a Jacobian, we can perform reverse-mode AD just like before,
         substituting matrix multiplication for the scalar kind.
         Of course, this requires storing the derivatives of some basic
         matrix operations: vector addition, matrix-vector multiplication,
@@ -840,10 +847,10 @@
 
 
       [:p "In this case, the result is the identity matrix
-           \\(\\boldsymbol{I}\\). This offers nice parallel to
+           \\(\\boldsymbol{I}\\). This offers a nice parallel to
            classical calculus, as differentiating the sum
            of two different variables also returns the
-           multiplicative identity."]
+           multiplicative identity."(utils/make-footnote "5" "fifth-footnote-a" "fifth-footnote-b")]
 
    [:p "Slightly more complex is the idea of differentiating a matrix-vector product
         with respect to the vector. It turns out though that this also has a nice
@@ -892,7 +899,7 @@
    [:p "Simplifying, we see that the resulting matrix only has one non-zero row.
         Furthermore, we would find that this trend holds for any matrix-vector product
         we could imagine. And if we think about it, this makes sense too – after all,
-        each element of the ouput vector only depends on one row of the
+        each element of the output vector only depends on one row of the
         actual matrix, thus all its other derivatives will be zero."]
 
    [:p "If we do this for each element in our output vector, then we get
@@ -949,7 +956,7 @@
        where the diagonal entries hold the derivative of the function,
        and all non-diagonal entries are zero:"]
 
-  [:p "$$\\begin{bmatrix}
+  [:p  {:style {:overflow-x "auto" :overflow-y "hidden"}} "$$\\begin{bmatrix}
           \\frac{\\partial}{\\partial{x_1}}(f(x_1)) & \\cdots & \\frac{\\partial}{\\partial{x_1}}(f(x_n)) \\\\
           \\vdots & \\ddots & \\vdots \\\\
           \\frac{\\partial}{\\partial{x_1}}(f(x_n)) & \\cdots & \\frac{\\partial}{\\partial{x_n}}(f(x_n)) \\\\
@@ -964,7 +971,7 @@
 
   [:p "Moreover, matrix multiplying against a diagonal matrix like this one
        is analogous to performing element-wise multiplication against a matrix filled
-       with whatever is occupying this diagonal,"(utils/make-footnote "5" "fifth-footnote-a" "fifth-footnote-b")
+       with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
        " where the element-wise – or Hadamard – product between two matrices is denoted
        \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is much more efficient
        than matrix multiplying because it requires fewer operations and we don't
@@ -1017,7 +1024,7 @@
         scalar multiplication – that's why we use scalar multiplication in the single-variable
         chain rule in the first place."]
 
-   [:p "This is long-winded way of saying that the derivative is the Jacobian - they're equivelant
+   [:p "This is long-winded way of saying that the derivative is the Jacobian - they're equivalent
         concepts. And the different branches of calculus just study increasingly less specialized
         versions of it. What this means practically is that anywhere we can define some
         sensible notion of the Jacobian, automatic differentiation will give us a
@@ -1045,7 +1052,7 @@
      the twentieth century. Understanding it well opens
      up many doors in scientific computing and beyond, and research
      in the field is ongoing. Given that neural networks only
-     discovered it relatively recently,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
+     discovered it relatively recently,"(utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")
      " it might very well be
      that there are other "[:q "killer"] " applications of the
      technique yet to be found. After all, there's not
@@ -1114,7 +1121,10 @@
        (utils/make-footnote "↩" "fourth-footnote-b" "fourth-footnote-a")]
 
 
- [:p  (utils/bold "5.")" A demonstration of this property with conrete matrices:
+[:p (utils/bold "5.") (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a") ]
+
+
+ [:p  (utils/bold "6.")" A demonstration of this property with conrete matrices:
         $$\\begin{align}
           \\begin{bmatrix}
             a & b \\\\
@@ -1143,19 +1153,19 @@
                 cx & dx \\\\
             \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
             \\end{align}$$
-            As you can see they are equivelant. But wheras
+            As you can see they are equivalent. But wheras
             the Hadamard product only has to do \\(N \\times M\\)
             operations when multiplying two
             \\(N \\times M\\) matrices, matrix multiplication
             has to do \\(N \\times M \\times M \\times (M - 1)\\) operations."
-       (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a")]
+       (utils/make-footnote "↩" "sixth-footnote-b" "sixth-footnote-a")]
 
        [:p
-        (utils/bold "6.") " While researching for this post I found out
+        (utils/bold "7.") " While researching for this post I found out
         that in days of old people used to compute their network's derivatives
         symbolically by hand, hardcode them into computers, and then optimize them
         So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
-        (utils/make-footnote "↩" "sixth-footnote-b" "sixth-footnote-a")]
+        (utils/make-footnote "↩" "seventh-footnote-b" "seventh-footnote-a")]
 
 
 
