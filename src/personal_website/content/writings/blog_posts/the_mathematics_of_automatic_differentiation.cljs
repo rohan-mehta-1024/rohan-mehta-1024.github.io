@@ -451,8 +451,7 @@
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
       [:img {:src "/resources/comp_graph.svg" :class "post-img" :style {:width "90%"}}]]
-      [:figcaption {:class "post-caption"} "Fig. 7. A computational graph
-      representing the error of our three-layer net's prediction."]]
+      [:figcaption {:class "post-caption"}]]
 
   [:p "Let's imagine constructing such a graph to represent
        the evaluation of our error function at this three-layer
@@ -484,8 +483,8 @@
        first must find the derivative of that expression with
        respect to the variable it does directly depend on. "]
 
-  [:p "Well, each node in the graph directly depends on
-       the node(s) before it. So, per the chain rule, we must
+  [:p "Each node in the graph directly depends on
+       the node(s) before it, so, per the chain rule, we must
        calculate the derivative of each node with respect to
        its predecessor(s). Then we can construct another
        computational graph that runs in the opposite direction,
@@ -510,13 +509,13 @@
 
  [:span {:style {:font-size "20px"}} " \\(\\Big( \\frac{\\partial{\\varphi}}{\\partial{\\tau}}, \\frac{d\\tau}{d\\pi}, \\frac{\\partial{\\pi}}{\\partial{b^{(2)}_1}} \\Big)\\)"]
 
- [:span "lie somewhere on the path from \\(\\varphi\\) to
+ [:span " lie somewhere on the path from \\(\\varphi\\) to
          our bias \\(b^{(2)}_1\\)."]
 
- [:p "Thus we can compute the derivative in question
+ [:p "So we can compute the derivative in question
       simply by traversing the graph, accumulating
       all the derivatives being passed down from node to node,
-      and multiplying them together."]
+      and then multiplying them together."]
 
  [:p "And this fact is no less true for any other
      nodes in our graph. Since moving between any two
@@ -546,14 +545,14 @@
        except for two divisions – in other words, they differ by
        only two derivatives."]
 
-   [:p "Thus traversing the graph two seperate times
+   [:p "Traversing the graph two seperate times
         – one for each weight – seems wasteful. Wouldn't it
         be better if we could somehow remember what the shared
         segment of their paths was, and then just multiply
         this shared part by their two different parts?"]
 
    [:p "Then we could get away with traversing the graph only once.
-        To see this in action, imagine every time we step to a new node
+        To see this in action, imagine that every time we step to a new node
         we multiply the derivative the current node is passing down to
         it by all previous derivatives, and store it in some variable \\(\\delta_n\\)
         denoting the local error signal – or the derivative of
@@ -564,9 +563,8 @@
         \\(\\xi\\) and the bias \\(b^{(2)}_1\\) – 
         we have the derivative chain up to that point
         stored in the local error signal, so even if we choose to step
-        to \\(\\xi\\) first, we don't have to go back and recompute the entire
-        derivative chain preceeding the bias when we want to step
-        to it, we can just pickup where we left off."]
+        to \\(\\xi\\) first, we don't have to start at the beginning of the
+        graph when. We can just pick backup from the division."]
 
     [:figure {:class "img-container"}
      [:div {:style {:text-align "center"}}
@@ -575,12 +573,12 @@
 
 
   [:p "This process of caching the current derivative
-       chain in an associated variable for each node – known as adjoint
+       chain in an associated variable for each node (known as adjoint)
        – is called " (utils/link "memoization" "https://en.wikipedia.org/wiki/Memoization#:~:text=In%20computing%2C%20memoization%20or%20memoisation,the%20same%20inputs%20occur%20again")
        " and does wonders for our efficiency."]
 
    [:p "But the problem is not completely solved just yet.
-        Even though we know what derivatives we have to multiply
+        Even though we now know what derivatives we have to multiply
         together to find each element of the gradient,
         we still don't know what  the actual numerical values
         for these derivatives are."]
@@ -598,7 +596,7 @@
         And since we know the derivatives of these operations,
         finding the derivatives between nodes is trivial."]
 
-   [:p "For intsance, examine the node \\(\\iota\\) in the graph above. It is a sum of
+   [:p "For instance, examine the node \\(\\iota\\) in the graph above. It is a sum of
         two variables: the node \\(\\eta\\) and the bias \\(b^{(1)}_1\\).
         So obviously the derivative with respect to both variables
         is just one. "]
@@ -606,11 +604,11 @@
    [:p "We can similarly consider node \\(\\epsilon\\) which is
         a product of the first entry of our input vector, \\(x_1\\),
         and the weight \\(w^{(1)}_{(1, \\hspace{0.1cm} 1)}\\).
-        Again, its obvious the derivative with respect
+        Again, it's obvious that the derivative with respect
         to our weight is just \\(x_1\\)."]
 
    [:p "But what does all of this mean, taken together? Well,
-        the first key idea is that any complex expression
+        the first key idea here is that any complex expression
         we might want to differentiate – for example, our network's
         error – is actually just a composition of many
         elementary operations that we already know
@@ -627,7 +625,7 @@
 
    [:p "And this approach works great for computers, because
         it allows us to hardcode the expressions for only a few
-        basic derivatices, while still allowing the computer to
+        basic deriivatives, while still allowing the computer to
         differentiate pretty complex expressions. If we also
         think to memoize derivative chains, then what we get is
         an algorithm for quickly and efficiently computing exact
