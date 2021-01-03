@@ -617,8 +617,8 @@
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
-          [:img {:src "/resources/comp_graph_20.svg" :style {:width "45%"}}]
-          [:img {:src "/resources/comp_graph_21.svg" :style {:width "45%" :margin-left "10%"}}]
+          [:img {:src "comp_graph_20.svg" :style {:width "45%"}}]
+          ;[:img {:src "comp_graph_21.svg" :style {:width "45%" :margin-left "10%"}}]
            [:figcaption {:class "post-caption" :style {:text-align "left"}} "Fig. 7.
            An example of a more complex computational graph. The green node, for example
            can be reached by three different paths."]]]
@@ -627,7 +627,7 @@
 
    [:p "That might seem like a problem at first – if there are multiple paths to a single node,
         then there are also multiple definitions for its derivative. So which one do we choose?
-        The answer, perhaps unsurpisingly, is all of them, in that we add them all together."]
+        The answer, perhaps unsurprisingly, is all of them, in that we add them all together."]
 
    [:p "This is just a more general version of the chain rule,
         what you might call the multivariable chain rule. If a variable
