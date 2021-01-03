@@ -472,7 +472,7 @@
      [:figcaption {:class "post-caption"}]]
 
 
-  [:p "We want to find the derivative of this error
+  [:p "What we want is to find the derivative of this error
        with respect to the bias \\(b^{(2)}_1\\).
        But because it is not a direct function of this bias, we must apply
        the chain rule."]
@@ -547,11 +547,11 @@
 
    [:p "Traversing the graph two separate times
         – one for each weight – seems wasteful. Wouldn't it
-        be better if we could somehow remember what the shared
-        segment of their paths was, and then just multiply
-        this shared part by their two different parts?"]
+        be better if we could somehow "[:q "remember"] " what the shared
+        segment of their paths was, so we wouldn't have to re-traverse the
+        whole graph all over again?"]
 
-   [:p "Then we could get away with traversing the graph only once.
+   [:p "Then we could calculate the entire gradient in one traversal.
         To see this in action, imagine that every time we step to a new node
         we multiply the derivative the current node is passing down to
         it by all previous derivatives, and store it in some variable \\(\\delta_n\\)
@@ -563,7 +563,7 @@
         \\(\\xi\\) and the bias \\(b^{(2)}_1\\) – 
         we have the derivative chain up to that point
         stored in the local error signal, so even if we choose to step
-        to \\(\\xi\\), we don't have to re-traverse the entire graph when
+        to \\(\\xi\\) first, we don't have to re-traverse the entire graph when
         we want to find the derivative with respect to the bias.
         We can just pick back up from where we left off."]
 
@@ -574,7 +574,7 @@
 
 
   [:p "This process of caching the current derivative
-       chain in an associated variable for each node (known as adjoint)
+       chain in an associated variable for each node
        is called " (utils/link "memoization" "https://en.wikipedia.org/wiki/Memoization#:~:text=In%20computing%2C%20memoization%20or%20memoisation,the%20same%20inputs%20occur%20again")
        " and does wonders for our efficiency."]
 
@@ -591,8 +591,8 @@
 
 
    [:p "But calculating these values is much easier than it might seem.
-        So far we've imagined each node as some abstract function,
-        but in reality each node is a rather simple operation – additions,
+        Even though we've been dealing with each node as if it were some abstract function,
+        in reality it's a rather simple operation – additions,
         multiplications, or applications of our non-linearity.
         And since we know the derivatives of these operations,
         finding the derivatives between nodes is trivial."]
@@ -613,26 +613,33 @@
         some linear chain of nodes – there is only one path by which to reach
         each node. But as we up the complexity of our architectures with things
         like skip connections or recurrence,
-        we can get computational graphs where this is no longer true."]
+        we can get graphs for which this property no longer holds."]
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
           [:img {:src "/resources/comp_graph_20.svg" :style {:width "45%"}}]
           [:img {:src "/resources/comp_graph_21.svg" :style {:width "45%" :margin-left "10%"}}]
-           [:figcaption {:class "post-caption" :style {:text-align "left"}}]]]
+           [:figcaption {:class "post-caption" :style {:text-align "left"}} "Fig. 7.
+           An example of a more complex computational graph. The green node, for example
+           can be reached by three different paths."]]]
 
 
-   [:p "But that's a problem – if there a multiple paths to a node, that means
-        that there are different definitions for its derivative. So which do we choose?
-        Both. We sum them"]
 
-   [:p "This seems to deviate from the chain rule but actually it's just,
-        perhaps what you might call the multivariable chain rule. Means
-        it depends on the same variable in two different ways"]
+   [:p "That might seem like a problem at first – if there are multiple paths to a single node,
+        then there are also multiple definitions for its derivative. So which one do we choose?
+        The answer, perhaps unsurpisingly, is all of them, in that we add them all together."]
+
+   [:p "This is just a more general version of the chain rule,
+        what you might call the multivariable chain rule. If a variable
+        depends on another variable in two different ways, then we have
+        to sum up the derivatives of both of these dependencies to
+        find the total derivative."]
+
+   [:p "$$\\frac{\\partial}{\\partial{x}}\\left(f(a(x), b(x))\\right) = \\frac{da}{dx}\\frac{\\partial{f}}{\\partial{a}} + \\frac{db}{dx}\\frac{\\partial{f}}{\\partial{b}}$$"]
 
 
-   [:p "So what does all of this mean, taken together? Well,
-        the first key idea here is that any complex expression
+   [:p "So what does all of this mean, taken together? Well, the first key
+        idea here is that any complex expression
         we might want to differentiate – like our network's
         error – is actually just a composition of many
         elementary operations whose derivatives we already know."]
@@ -999,17 +1006,14 @@
        with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
        " where the element-wise – or Hadamard – product between two matrices is denoted
        \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is much more efficient
-       than matrix multiplying because it requires fewer operations and we don't
-       have to needlessly multiply against zeroes."]
+       than matrix multiplying because it requires fewer operations and we can avoid
+       having to needlessly multiply against zeroes."]
 
   [:p "In fact, the whole reason we vectorize to begin with
        is because bundling things into matrices and doing batch
        operations is faster than doing things one-by-one. And knowing
        only these matrix calculus primitives, we can pretty much
        differentiate through any vanilla neural net!"]
-
-   [:p "So using all this what is the derivative of a single layer?
-        "]
 
 [:h1 {:class "post-section-header"} "The Generalized Chain Rule"]
 
