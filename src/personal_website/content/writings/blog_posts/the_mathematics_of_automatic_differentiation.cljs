@@ -456,7 +456,7 @@
   [:p "Let's imagine constructing such a graph to represent
        the evaluation of our error function at this three-layer
        net's prediction for some labeled datapoint \\((\\boldsymbol{\\vec{x}}, y)\\).
-       Then finding the gradient means finding the derivatives
+       Calculating the gradient means finding the derivatives
        of the final node with respect to each of our weights
        and biases. To make things easier, we'll abstract away
        each node with some generic function."]
@@ -472,9 +472,9 @@
      [:figcaption {:class "post-caption"}]]
 
 
-  [:p "What we want is to find the derivative of this error
-       with respect to our bias \\(b^{(2)}_1\\), but because
-       it is not a direct function of this bias, we must apply
+  [:p "We want to find the derivative of this error
+       with respect to the bias \\(b^{(2)}_1\\).
+       But because it is not a direct function of this bias, we must apply
        the chain rule."]
 
   [:p "The chain rule tells us that when trying to find
@@ -488,7 +488,7 @@
        calculate the derivative of each node with respect to
        its predecessor(s). Then we can construct another
        computational graph that runs in the opposite direction,
-       with each node passing down its derivative
+       where each node passes down its derivative
        with respect to the previous node."]
 
  [:figure {:class "img-container"}
