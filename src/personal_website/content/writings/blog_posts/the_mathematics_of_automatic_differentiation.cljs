@@ -611,26 +611,24 @@
    [:p "It is worth noting that things aren't always this simple, though.
         The computational graph for a feedforward neural net is just
         some linear chain of nodes – there is only one path by which to reach
-        each node. But as we up the complexity of our architectures, with things
+        each node. But as we up the complexity of our architectures with things
         like skip connections or recurrence,
         we can get computational graphs where this is no longer true."]
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
-          [:img {:src "comp_graph_20.svg" :style {:width "45%"}}]
-          [:img {:src "comp_graph_21.svg" :style {:width "45%" :margin-left "10%"}}]
+          [:img {:src "/resources/comp_graph_20.svg" :style {:width "45%"}}]
+          [:img {:src "/resources/comp_graph_21.svg" :style {:width "45%" :margin-left "10%"}}]
            [:figcaption {:class "post-caption" :style {:text-align "left"}}]]]
 
 
-   [:p "But that's a problem – if there a multipe paths to a node, that means
-        that there are two different definitions for its derivative, so which do we choose?
+   [:p "But that's a problem – if there a multiple paths to a node, that means
+        that there are different definitions for its derivative. So which do we choose?
         Both. We sum them"]
 
-   [:p "This seems to deviate from the chain rule but actually it's just, perhaps what you might call the multivariable
-        chain rule."]
-
-
-
+   [:p "This seems to deviate from the chain rule but actually it's just,
+        perhaps what you might call the multivariable chain rule. Means
+        it depends on the same variable in two different ways"]
 
 
    [:p "So what does all of this mean, taken together? Well,
