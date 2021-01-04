@@ -5,7 +5,8 @@
 (def post-preview
   "Automatic differentiation is the numerical computing technique
    that gave us the backpropagation algorithm, which is how
-   neural nets learn. In this post, we will explore it from both a mathematics
+   neural nets learn. In this post, we will explore it
+   from both a mathematics
    and computer science perspective.")
 
 (def post-content
@@ -610,9 +611,9 @@
 
    [:p "It is worth noting that things aren't always this simple, though.
         The computational graph for a feedforward neural net is just
-        some linear chain of nodes – there is only one path by which to reach
+        some linear chain of nodes; there is only one path by which to reach
         each node. But as we up the complexity of our architectures with things
-        like skip connections or recurrence,
+        like skip connections and recurrence,
         we can get graphs for which this property no longer holds."]
 
         [:figure {:class "img-container"}
@@ -757,8 +758,8 @@
    [:h1 {:class "post-section-header"} "Let's Vectorize!"]
 
    [:p "But what we've described so far still isn't how things are done in practice.
-        As I mentioned before, concerning ourselves with each indivdual each weight and
-        bias not the most efficient nor most elegant way of doing things.
+        As I mentioned before, concerning ourselves each indivdual each weight and
+        bias is not the most efficient nor most elegant way of doing things.
         Instead, a much cleaner conception of what's going on
         can be achieved by representing things in a vectorized fashion."]
 
@@ -800,9 +801,9 @@
    [:p "$$\\boldsymbol{\\vec{\\alpha}}^{(L)} = \\sigma\\left(\\boldsymbol{W}^{(L)}\\boldsymbol{\\vec{\\alpha}}^{(L-1)} + \\boldsymbol{\\vec{b}}^{(L)}\\right)$$"]
 
    [:p {:style {:margin-bottom "30px"}}
-      "Our network's output is just some recursive composition
+      "As before, our network's output is just some recursive composition
        of these layers, which we can also represent
-       with a (noticeably more succint) computational graph."]
+       with a (noticeably more succint) set of computational graphs."]
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
@@ -815,10 +816,11 @@
       [:figcaption {:class "post-caption"}]]
 
 
-   [:p "The only problem here is that the derivatives in the adjoint graph are not
+   [:p "The only problem here is that the derivatives being passed down
+        in the adjoint graph are not
         scalar-to-scalar derivatives like we dealt with earlier,
         but vector-to-vector, or even vector-to-matrix derivatives.
-        Thus we need to develop some reasonable notion of what such
+        As such, we need to develop some reasonable notion of what these
         derivatives should look like."]
 
    [:p "Let's imagine some function mapping an input
@@ -842,7 +844,7 @@
         \\end{bmatrix}$$" ]
 
 
-   [:p "In some sense, then, this matrix is the derivative
+   [:p "In some sense then, this matrix is the derivative
         of that vector-to-vector function, because it represents
         all the ways the output vector could change given some
         infinitesimal nudge to the input vector. We refer to such
@@ -850,12 +852,12 @@
         of the gradient, since it similarly consolidates all of a
         function's derivative " [:q "information"]"."]
 
-   [:p "Since each derivative being passed down in the adjoint graph
-        is a Jacobian, we can perform reverse-mode AD just like before,
+   [:p "In other words, each derivative being passed down in the adjoint graph
+        is a Jacobian. So we can perform reverse-mode AD just like before,
         substituting matrix multiplication for the scalar kind.
         Of course, this requires storing the derivatives of some basic
         matrix operations: vector addition, matrix-vector multiplication,
-        and element-wise applications of our non-linearity."]
+        and element-wise function applications."]
 
    [:p "Let's start out easy with vector addition. Remember,
         calculating the Jacobian means differentiating each entry of the output
@@ -922,7 +924,7 @@
 
    [:p "The generalization of a matrix to higher dimensions is known as a tensor,
         and they're not the most pleasant things to work with. But if we examine
-        the situation more closely, we'll see that there is actually a way we can
+        the situation more closely, we'll see that it is actually possible to
         represent the Jacobian in matrix form. To see what I mean, let's try differentiating
         only a single element of the output vector \\(\\boldsymbol{\\vec{y}}\\)
         with respect to the matrix."]
@@ -1011,9 +1013,8 @@
        is analogous to performing element-wise multiplication against a matrix filled
        with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
        " where the element-wise – or Hadamard – product between two matrices is denoted
-       \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is much more efficient
-       than matrix multiplying because it requires fewer operations and we can avoid
-       having to needlessly multiply against zeroes."]
+       \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is what we do in practice,
+       because the Hadamard product has far fewer operations."]
 
   [:p "In fact, the whole reason we vectorize to begin with
        is because bundling things into matrices and doing batch
@@ -1031,12 +1032,12 @@
        Even if we don't often think of them in this way, derivatives naturally satisfy
        the two properties of linearity: the derivative of a sum is the sum
        of derivatives, and the derivative of a function times a scalar is the derivative
-       of that function times the scalar (yes, I know English kind of fails here)."]
+       of that function times the scalar (yes, I'm aware English breaks down here)."]
 
    [:p "$$D(f + g) = Df + Dg \\hspace{1cm} D(cf) = c(Df)$$"]
 
    [:p "And because we can represent linear maps as matrices, we can represent
-        derivatives as matrices too, and these are what we've been calling Jacobians all along!
+        derivatives as matrices too. And these are what we've been calling Jacobians all along!
         When our function maps from scalars to scalars, then our Jacobian
         is just a one-element matrix – a scalar, or the classical
         definition of the derivative. When it maps
@@ -1049,25 +1050,32 @@
         to its input. And the chain rule is nothing more than a statement about the Jacobian of
         a function composition, which says that given two functions \\(f\\) and \\(g\\),
         the Jacobian of their composition \\(f(g(x))\\), where \\(x\\) could be a scalar,
-        vector, matrix, or even tensor, is the Jacobian of \\(f\\) at \\(g\\)
-        times the Jacobian of \\(g\\) at \\(x\\).
+        vector, matrix, or even tensor, is the Jacobian of \\(f\\) at \\(g\\) " [:em "composed"] " with
+         the Jacobian of \\(g\\) at \\(x\\).
         "]
 
-   [:p "$$D(f \\circ g)(x) = Df(g(x)) \\cdot Dg(x)$$"]
+   [:p "$$D(f \\circ g)(x) = Df(g(x)) \\circ Dg(x)$$"]
 
    [:p "So it's not that the chain rule magically generalizes to Jacobians –
         it's defined in terms of them to begin with. Traditional calculus
-        just doesn't expose them in their full generality. After all,
-        matrix multiplication with one-element matrices is
-        scalar multiplication – that's why we use scalar multiplication in the single-variable
-        chain rule in the first place."]
+        just doesn't expose them in their full generality. And the only reason
+        there's a notion of multiplication in the chain rule to begin with
+        is because composing linear maps is defined as matrix multiplication."]
 
-   [:p "This is long-winded way of saying that the derivative is the Jacobian - they're equivalent
+   [:p "This is a long-winded way of saying that the derivative is the Jacobian - they're equivalent
         concepts. And the different branches of calculus just study increasingly less specialized
-        versions of it. What this means practically is that anywhere we can define some
-        sensible notion of the Jacobian, automatic differentiation will give us a
-        way of computing it."]
+        versions of it. In that sense, all automatic differentiation is
+        is a way of computing some Jacobian-vector product, or the Jacobian at a specific
+        input."]
 
+   [:p "Thinking about things in terms of Jacobians, also highlights an important difference between forward-mode
+        and reverse-mode.
+        One pass with forward mode computes the derivatives of all outputs with respect to a single input.
+        Conversely, one pass with reverse-mode computes the derivatives of a single output with respect to all inputs."]
+
+   [:p "In other words, forward-mode computes the Jacobian column-by-column whereas reverse-mode does
+        it row-by-row. That's why functions with many outputs (many rows) are better suited to forward-mode
+        and those with many inputs (many columns) to reverse-mode."]
 
 [:h1 {:class "post-section-header"} "Conclusion"]
 
@@ -1100,10 +1108,10 @@
 
    [:ul {:style {:list-style-type "circle"}}
     [:li (utils/link "Håvard Berland's Slides" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
-    [:li (utils/link "Calculus on Computational Graphs" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
-    [:li (utils/link "How to Differentiate with a Computer" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
-    [:li (utils/link "Computing Neural Network Gradients" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
-    [:li (utils/link "Vector, Matrix, and Tensor Derivatives" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")]
+    [:li (utils/link "Calculus on Computational Graphs" "https://colah.github.io/posts/2015-08-Backprop/")]
+    [:li (utils/link "How to Differentiate with a Computer" "http://www.ams.org/publicoutreach/feature-column/fc-2017-12")]
+    [:li (utils/link "Computing Neural Network Gradients" "https://web.stanford.edu/class/cs224n/readings/gradient-notes.pdf")]
+    [:li (utils/link "Vector, Matrix, and Tensor Derivatives" "http://cs231n.stanford.edu/vecDerivs.pdf")]
     ]
 
 
