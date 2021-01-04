@@ -597,13 +597,13 @@
         And since we know the derivatives of these operations,
         finding the derivatives between nodes is trivial."]
 
-   [:p "For instance, examine the node \\(\\iota\\) in the graph above. It is a sum of
+   [:p "For instance, examine the node \\(\\iota\\) in the graph above. It is the sum of
         two variables: the node \\(\\eta\\) and the bias \\(b^{(1)}_1\\).
         So obviously the derivative with respect to both variables
         is just one. "]
 
    [:p "We can similarly consider node \\(\\epsilon\\) which is
-        a product of the first entry of our input vector, \\(x_1\\),
+        the product of the first entry of our input vector \\(x_1\\)
         and the weight \\(w^{(1)}_{(1, \\hspace{0.1cm} 1)}\\).
         Again, it's obvious that the weight's derivative
         is just \\(x_1\\)."]
@@ -632,19 +632,21 @@
    [:p "This is just a more general version of the chain rule,
         what you might call the multivariable chain rule. If a variable
         depends on another variable in two different ways, then we have
-        to sum up the derivatives of both of these dependencies to
+        to sum up the derivatives of both of these dependencies in order to
         find the total derivative. In other words, the local
-        error signal at a node is the sum of all derivative chains
+        error signal at a given node is the sum of all paths
         that lead to it."]
 
-   [:p "$$\\frac{\\partial}{\\partial{x}}\\left(f(a(x), b(x))\\right) = \\frac{da}{dx}\\frac{\\partial{f}}{\\partial{a}} + \\frac{db}{dx}\\frac{\\partial{f}}{\\partial{b}}$$"]
+   [:p "$$\\frac{d}{dx}\\left(f(a(x), b(x))\\right) = \\frac{da}{dx}\\frac{\\partial{f}}{\\partial{a}} + \\frac{db}{dx}\\frac{\\partial{f}}{\\partial{b}}$$"]
 
 
    [:p "So what does all of this mean, taken together? Well, the first key
         idea here is that any complex expression
         we might want to differentiate – like our network's
         error – is actually just a composition of many
-        elementary operations whose derivatives we already know."]
+        elementary operations whose derivatives we already know. And
+        a computational graph is nothing more than the visual manifestation
+        of this composition."]
 
    [:p "Secondly, the chain rule provides us with a very
         straightforward way to find the derivatives
@@ -653,7 +655,9 @@
         differentiate an expression like \\(x^2 + 2x\\),
         technically you could. After all, the chain rule
         is the only differentiation rule you really need to know –
-        everything else follows from it."]
+        everything else follows from it. Plus, it generalizes
+        rather nicely to the multivariable case – all we have
+        to do is add paths together."]
 
    [:p "And this approach works great for computers, because
         it allows us to hardcode the expressions for only a few
