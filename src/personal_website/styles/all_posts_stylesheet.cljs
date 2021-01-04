@@ -91,8 +91,8 @@
   [:.post-section-header {:margin-top (px 50)
                           :font-family "WorkSansBold"}])
 
-(defn special []
-  [:.special {:width "30%"}])
+;(defn special []
+;  [:.special {:background-color "green"}])
 
 (defn media-query-1 []
   (at-media {:max-width (px 875)}
@@ -102,7 +102,9 @@
 
 (defn media-query-2 []
   (at-media {:max-width (px 700)}
-    [:.post-img {:width "90% !important"}]))
+    [
+    [:.post-img {:width "90% !important"}]
+    [:.special {:width "60% !important"}]]))
 
 (defn media-query-3 []
   (at-media {:max-width (px 500)}
@@ -110,12 +112,6 @@
                      :line-height (px 25)}]
      [:.post-caption {:font-size (px 12)
                       :line-height (px 20)}]]))
-
-
- (defn media-query-4 []
-   (at-media {:max-width (px 600)}
-     [:.special {:width "50%"}]))
-
 
 
 (defn all-posts []
@@ -134,8 +130,7 @@
    (img-container)
    (media-query-1)
    (media-query-2)
-   (special)
+   ;(special)
    (media-query-3)
-   (media-query-4)
 
    ])

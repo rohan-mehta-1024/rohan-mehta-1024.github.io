@@ -617,11 +617,11 @@
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
-          [:img {:src "comp_graph_20.svg" :style {:width "45%"}}]
-          ;[:img {:src "comp_graph_21.svg" :style {:width "45%" :margin-left "10%"}}]
-           [:figcaption {:class "post-caption" :style {:text-align "left"}} "Fig. 7.
-           An example of a more complex computational graph. The green node, for example
-           can be reached by three different paths."]]]
+           [:img {:src "/resources/comp_graph_20.svg" :class "special" :style {:width "50%"}}]]
+           [:figcaption {:class "post-caption"} "Fig. 7. An example of one
+           of these more complex computational graphs. There are three different
+           paths from the final node (beige) to the starting node (dark green)."]]
+
 
 
 
@@ -633,7 +633,9 @@
         what you might call the multivariable chain rule. If a variable
         depends on another variable in two different ways, then we have
         to sum up the derivatives of both of these dependencies to
-        find the total derivative."]
+        find the total derivative. In other words, the local
+        error signal at a node is the sum of all derivative chains
+        that lead to it."]
 
    [:p "$$\\frac{\\partial}{\\partial{x}}\\left(f(a(x), b(x))\\right) = \\frac{da}{dx}\\frac{\\partial{f}}{\\partial{a}} + \\frac{db}{dx}\\frac{\\partial{f}}{\\partial{b}}$$"]
 
