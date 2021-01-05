@@ -591,7 +591,7 @@
                  [:figcaption {:class "post-caption"}]]
 
 
-   [:p "But calculating these values is much easier than it might seem.
+   [:p "Calculating these values, however, is much easier than it might seem.
         Even though we've been dealing with each node as if it were some abstract function,
         in reality it's a rather simple operation – additions,
         multiplications, or applications of our non-linearity.
@@ -658,7 +658,7 @@
         is the only differentiation rule you really need to know –
         everything else follows from it. Plus, it generalizes
         rather nicely to the multivariable case – all we have
-        to do is add paths together."]
+        to do is add "[:q "paths"]" together."]
 
    [:p "And this approach works great for computers, because
         it allows us to hardcode the expressions for only a few
@@ -695,11 +695,6 @@
    [:p "$$\\left(\\frac{dh}{dx}\\right)\\left(\\frac{dg}{dh}\\frac{df}{dg}\\right) \\hspace{1cm} \\textrm{vs.} \\hspace{1cm}
           \\left(\\frac{df}{dg}\\frac{dg}{dh}\\right)\\left(\\frac{dh}{dx}\\right)$$"]
 
-  [:p "In other words, in forward-mode, when we step to a node, we are not
-      computing the derivative of our previous node with respect to it (like we were in reverse-mode),
-      but rather the derivative of it with respect to our previous node."]
-
-
       ;[:figure {:class "img-container"}
        ;[:div {:style {:text-align "center"}}
         ; [:img {:src "comp_graph_19.svg" :class "post-img" :style {:width "70%"}}]]
@@ -718,10 +713,15 @@
 ;$$"]
 
    [:p "So why do we use reverse-mode in neural nets then? Well, it has to do with the fact
-        that each method is only optimal in a specific situation. When using forward mode,
-        we start at one node and explore all the paths from that node to the output node.
-        That means if we have many inputs we'll have to do it many times. Whereas
-        reverse-mode – which explores the path from one input to all outputs -
+        that each method is only optimal in a specific situation. Let's imagine we want
+        to differentiate some expression whose graph has many inputs but only a single
+        output."]
+
+   [:p "When using forward mode,
+        we start at one of the input nodes and explore all the paths from that node to the output node.
+        After one pass through the graph, we get the derivative
+        of the output with respect to that one input. Reverse-mode on the other hand –
+        which explores the paths from the one output to all input –
         can get everything in one go."]
 
         [:figure {:class "img-container"}
@@ -730,10 +730,9 @@
            [:figcaption {:class "post-caption"} "Fig. 7. (Source: "(utils/link  "Håvard Berland, 2006" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")")."]]
 
    [:p "Of course, there's the flip side: when we have a graph with many outputs, but only
-        a single input, forward-mode can grab everything in one go (since it only
-        needs to keep track of one variable), while reverse-mode must
-        traverse the whole graph once per output, because even though it memoizes
-        derivative chains, it does so with respect to a specific output."]
+        a single input, forward-mode can grab everything in one go, since
+        it can reach, while reverse-mode must
+        traverse the whole graph once per output."]
 
   [:figure {:class "img-container"}
    [:div {:style {:text-align "center"}}
@@ -1074,6 +1073,11 @@
         so row-by-row. That's why functions with many outputs (many rows) are better suited to forward-mode
         and those with many inputs (many columns) to reverse-mode."]
 
+[:h1 {:class "post-section-header"} "Differentiable Programming: A Vision"]
+
+   [:p "One last thing, I promise! Automatic differentiation has a key
+        advantage over symbolic methods "]
+
 [:h1 {:class "post-section-header"} "Conclusion"]
 
 [:p "So to recap, automatic differentiation is a way of quickly computing derivatives with computers.
@@ -1109,8 +1113,16 @@
     [:li (utils/link "How to Differentiate with a Computer" "http://www.ams.org/publicoutreach/feature-column/fc-2017-12")]
     [:li (utils/link "Computing Neural Network Gradients" "https://web.stanford.edu/class/cs224n/readings/gradient-notes.pdf")]
     [:li (utils/link "Vector, Matrix, and Tensor Derivatives" "http://cs231n.stanford.edu/vecDerivs.pdf")]
-    ]
+    [:li (utils/link "Automatic Differentiation in Machine Learning: A Survey" "https://arxiv.org/abs/1502.05767")]
+    [:li (utils/link "The CS 6120 Course Blog: Automatic Differentiation in Bril" "https://www.cs.cornell.edu/courses/cs6120/2019fa/blog/autograd/")]]
 
+[:h1 {:class "post-section-header"} "Further Reading"]
+
+[:ul {:style {:list-style-type "circle"}}
+ [:li (utils/link "Automatic Differentiation in ML: Where We Are and Where We Should Be Going" "https://arxiv.org/abs/1810.11530")]
+ [:li (utils/link "The Simple Essence of Automatic Differentiation" "https://arxiv.org/abs/1804.00746")]
+ [:li (utils/link "Neural Networks, Types, and Functional Programming" " https://colah.github.io/posts/2015-09-NN-Types-FP/")]
+ [:li (utils/link "A Functional Reboot For Deep Learning" "  https://www.youtube.com/watch?v=Ns3DxUeCvRg")]]
 
 [:h1 {:class "post-section-header"} "Footnotes"]
 
