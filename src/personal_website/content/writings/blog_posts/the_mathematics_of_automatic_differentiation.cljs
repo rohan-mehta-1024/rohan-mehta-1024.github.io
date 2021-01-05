@@ -21,7 +21,7 @@
 
    [:p "Its contribution to neural nets is perhaps its most popularized use today,
         but the idea has a long history, and its story is ongoing. In its modern
-        day incarnation, it draws on a broad swath of mathmatical
+        day incarnation, it draws on a broad swath of mathematical
         knowledge and is
         a beautiful amalgamation of many different ideas. While
         our discussion of the technique will be phrased in terms of its utility to
@@ -748,8 +748,8 @@
        when \\(M \\ll N\\), forward-mode is the optimal method."]
 
    [:p "And obviously neural nets fit the first description – they are functions from millions
-        or even billions of parameters (GPT-3, anyone?) to usually no more than a hundred outputs
-        outputs, and most of the time, even less than that. If we used forward mode
+        or even billions of parameters (GPT-3, anyone?) to usually no more than a hundred outputs,
+        and most of the time, even less than that. If we used forward mode
         to differentiate neural nets instead, our performance could
         potentially be millions of times worse!"]
 
@@ -757,7 +757,7 @@
    [:h1 {:class "post-section-header"} "Let's Vectorize!"]
 
    [:p "But what we've described so far still isn't how things are done in practice.
-        As I mentioned before, concerning ourselves each indivdual each weight and
+        As I mentioned before, concerning ourselves each individual each weight and
         bias is not the most efficient nor most elegant way of doing things.
         Instead, a much cleaner conception of what's going on
         can be achieved by representing things in a vectorized fashion."]
@@ -802,7 +802,7 @@
    [:p {:style {:margin-bottom "30px"}}
       "As before, our network's output is just some recursive composition
        of these layers, which we can also represent
-       with a (noticeably more succint) set of computational graphs."]
+       with a (noticeably more succinct) set of computational graphs."]
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
@@ -1013,7 +1013,7 @@
        with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
        " where the element-wise – or Hadamard – product is denoted
        \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is what we do in practice,
-       because the it is much more efficient than matrix multiplication."]
+       because it is much more efficient than matrix multiplication."]
 
   [:p "In fact, the whole reason we vectorize to begin with
        is because bundling things into matrices and doing batch
@@ -1025,7 +1025,7 @@
 
 [:p "I would be remiss if I didn't mention one more thing though.
      Isn't it kind of convenient how the chain rule just automatically
-     generalized to Jacoboians? Why did that happen?"]
+     generalized to Jacobians? Why did that happen?"]
 
   [:p "It has to do with the deeper definition of derivatives as linear maps.
        Even if we don't often think of them in this way, derivatives naturally satisfy
@@ -1063,7 +1063,7 @@
 
    [:p "This is a long-winded way of saying that the derivative is the Jacobian - they're equivalent
         concepts. And the different branches of calculus just study increasingly less specialized
-        versions of it. In that sense, all automatic differentiation does is
+        versions of it. In that sense, all automatic differentiation does
         is compute a Jacobian-vector product, or the Jacobian for a specific input."]
 
    [:p "Thinking about things in terms of Jacobians also highlights an important difference between forward-mode
@@ -1087,8 +1087,8 @@
      of the trade from a branch of computer science known as "(utils/link "dynamic programming" "https://en.wikipedia.org/wiki/Dynamic_programming")
      ". The thing to take away from this is that even if something looks
      like it'd be expensive to compute at first glance,
-     it might be unitituively cheap once we figure out how
-     to reuse computation and reduce redunancy."]
+     it might be unintuitively cheap once we figure out how
+     to reuse computation and reduce redundancy."]
 
 [:p "All in all, automatic differentiation is one powerhouse of an algorithm,
      often cited as one of the most important ones to have come forward in
@@ -1128,10 +1128,10 @@
     \\end{aligned}$$"]
 
    [:p "As you see, \\(y\\) washes out. Another way to think
-    about this is that since \\(y\\) isn't being nudged by some inifnitesimal
+    about this is that since \\(y\\) isn't being nudged by some infinitesimal
     \\(h\\) like \\(x\\) is, its presence in the first term will be completely canceled
     out by its presence in the second, which is just another way of saying
-    that since it isn't changing, it is " [:q "invisble"] " as far as the
+    that since it isn't changing, it is " [:q "invisible"] " as far as the
     derivative is concerned."
 
  (utils/make-footnote "↩" "first-footnote-b" "first-footnote-a")
@@ -1148,7 +1148,7 @@
          " (utils/make-footnote "↩" "second-footnote-b" "second-footnote-a")]
 
 
- [:p  (utils/bold "3.") " What is \\(\\boldsymbol{\\theta}\\) doing in the susbcript of the gradient symbol?
+ [:p  (utils/bold "3.") " What is \\(\\boldsymbol{\\theta}\\) doing in the subscript of the gradient symbol?
        It's just a way of saying that even though our function
        also takes in an input and a label, we don't want to include their partials
        in our gradient – after all, we can't
@@ -1156,7 +1156,7 @@
        of information are set for the problem."
        (utils/make-footnote "↩" "third-footnote-b" "third-footnote-a")]
 
- [:p (utils/bold "4.") " \\(\\eta\\) is a hyperparamater, or a variable
+ [:p (utils/bold "4.") " \\(\\eta\\) is a hyperparameter, or a variable
           the neural net does not learn by itself, but must be explicitly
           set. It's known as learning rate, since it controls
           how quickly we descend the error-surface, and thus how
@@ -1167,7 +1167,7 @@
 [:p (utils/bold "5.") (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a") ]
 
 
- [:p  (utils/bold "6.")" A demonstration of this property with conrete matrices:
+ [:p  (utils/bold "6.")" A demonstration of this property with concrete matrices:
         $$\\begin{align}
           \\begin{bmatrix}
             a & b \\\\
@@ -1196,7 +1196,7 @@
                 cx & dx \\\\
             \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
             \\end{align}$$
-            As you can see they are equivalent. But wheras
+            As you can see they are equivalent. But whereas
             the Hadamard product only has to do \\(N \\times M\\)
             operations when multiplying two
             \\(N \\times M\\) matrices, matrix multiplication
