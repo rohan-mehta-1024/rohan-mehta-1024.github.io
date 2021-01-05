@@ -1,7 +1,7 @@
 goog.provide('re_frame.interop');
 re_frame.interop.on_load = (function re_frame$interop$on_load(listener){
 try{return goog.events.listen(self,"load",listener);
-}catch (e36891){var _ = e36891;
+}catch (e36892){var _ = e36892;
 return null;
 }});
 re_frame.interop.next_tick = goog.async.nextTick;

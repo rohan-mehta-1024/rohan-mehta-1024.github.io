@@ -695,30 +695,34 @@
    [:p "$$\\left(\\frac{dh}{dx}\\right)\\left(\\frac{dg}{dh}\\frac{df}{dg}\\right) \\hspace{1cm} \\textrm{vs.} \\hspace{1cm}
           \\left(\\frac{df}{dg}\\frac{dg}{dh}\\right)\\left(\\frac{dh}{dx}\\right)$$"]
 
-  [:p "In forward-mode when we step to a node, we are not
+  [:p "In other words, in forward-mode, when we step to a node, we are not
       computing the derivative of our previous node with respect to it (like we were in reverse-mode),
-      but rather the derivative of it with respect to our previous node.
-      Let's look at a simple example to "]
-
-   [:p "Both examples first work by traversing the graph"]
-
-      [:figure {:class "img-container"}
-       [:div {:style {:text-align "center"}}
-         [:img {:src "comp_graph_19.svg" :class "post-img" :style {:width "50%"}}]]
-         [:figcaption {:class "post-caption"}]]
+      but rather the derivative of it with respect to our previous node."]
 
 
+      ;[:figure {:class "img-container"}
+       ;[:div {:style {:text-align "center"}}
+        ; [:img {:src "comp_graph_19.svg" :class "post-img" :style {:width "70%"}}]]
+         ;[:figcaption {:class "post-caption"}]]
 
-   [:p "We won't get into the specifics, but the solution is the
-        use of a higher-dimensional number system – the "(utils/link "dual numbers" "https://en.wikipedia.org/wiki/Dual_number") " –
-        that is seemingly able to compute derivatives for "[:q "free"]"."]
+      ;  [:p "Both examples first work by traversing the graph to resolve
+      ;      what the intermediate. We call this first pass through the graph
+      ;      the primal trace. If we set \\(x_1 = \\frac{\\pi}{2}\\) and \\(x_2 = 2\\pi\\)."]
+
+      ;      [:p "$$\\begin{align*}
+      ;           \\alpha\\hspace{0.9cm} &= sin(x_1) & &=1\\\\
+      ;           \\beta\\hspace{0.9cm} &= cos(x_2)  & &=1\\\\
+      ;           \\gamma\\hspace{0.9cm} &= \\alpha + \\beta   & &=2\\\\
+;                 \\epsilon\\hspace{0.9cm} &= \\gamma \\times \\beta  & &=2 \\end{align*}
+;
+;$$"]
 
    [:p "So why do we use reverse-mode in neural nets then? Well, it has to do with the fact
-        that each method is only optimal in a specific situation. While dual numbers
-        can compute derivatives very cheaply, they can only do so with respect to one variable at a time.
-        Thus, if our graph has multiple inputs and only a single outout,
-        we must traverse the entire thing multiple times. Reverse-mode, one the other hand,
-        finds all derivatives in a single sweep."]
+        that each method is only optimal in a specific situation. When using forward mode,
+        we start at one node and explore all the paths from that node to the output node.
+        That means if we have many inputs we'll have to do it many times. Whereas
+        reverse-mode – which explores the path from one input to all outputs -
+        can get everything in one go."]
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
@@ -744,15 +748,10 @@
        when \\(M \\ll N\\), forward-mode is the optimal method."]
 
    [:p "And obviously neural nets fit the first description – they are functions from millions
-        or even billions of parameters (GPT-3, anyone?) to usually no more than a few hundred
+        or even billions of parameters (GPT-3, anyone?) to usually no more than a hundred outputs
         outputs, and most of the time, even less than that. If we used forward mode
         to differentiate neural nets instead, our performance could
         potentially be millions of times worse!"]
-
-
-
-
-
 
 
    [:h1 {:class "post-section-header"} "Let's Vectorize!"]
@@ -943,7 +942,7 @@
         actual matrix, so all its other derivatives will be zero."]
 
    [:p "If we do this for each element in our output vector, then we get
-        a series of mostly non-zero matrices, with a single row filled in.
+        a series of mostly non-zero matrices with a single row filled in.
         But the filled-in rows for each of these matrices never collide,
         because each element of the output vector depends on a different
         row of the matrix."]
@@ -1012,9 +1011,9 @@
   [:p "Moreover, matrix multiplying against a diagonal matrix like this one
        is analogous to performing element-wise multiplication against a matrix filled
        with whatever is occupying this diagonal,"(utils/make-footnote "6" "sixth-footnote-a" "sixth-footnote-b")
-       " where the element-wise – or Hadamard – product between two matrices is denoted
+       " where the element-wise – or Hadamard – product is denoted
        \\(\\boldsymbol{A} \\odot \\boldsymbol{B}\\). This is what we do in practice,
-       because the Hadamard product has far fewer operations."]
+       because the it is much more efficient than matrix multiplication."]
 
   [:p "In fact, the whole reason we vectorize to begin with
        is because bundling things into matrices and doing batch
@@ -1032,7 +1031,7 @@
        Even if we don't often think of them in this way, derivatives naturally satisfy
        the two properties of linearity: the derivative of a sum is the sum
        of derivatives, and the derivative of a function times a scalar is the derivative
-       of that function times the scalar (yes, I'm aware English breaks down here)."]
+       of that function times the scalar ()."]
 
    [:p "$$D(f + g) = Df + Dg \\hspace{1cm} D(cf) = c(Df)$$"]
 
@@ -1059,22 +1058,20 @@
    [:p "So it's not that the chain rule magically generalizes to Jacobians –
         it's defined in terms of them to begin with. Traditional calculus
         just doesn't expose them in their full generality. And the only reason
-        there's a notion of multiplication in the chain rule to begin with
+        there's a notion of multiplication in the chain rule in the first place
         is because composing linear maps is defined as matrix multiplication."]
 
    [:p "This is a long-winded way of saying that the derivative is the Jacobian - they're equivalent
         concepts. And the different branches of calculus just study increasingly less specialized
-        versions of it. In that sense, all automatic differentiation is
-        is a way of computing some Jacobian-vector product, or the Jacobian at a specific
-        input."]
+        versions of it. In that sense, all automatic differentiation does is
+        is compute a Jacobian-vector product, or the Jacobian for a specific input."]
 
-   [:p "Thinking about things in terms of Jacobians, also highlights an important difference between forward-mode
-        and reverse-mode.
-        One pass with forward mode computes the derivatives of all outputs with respect to a single input.
+   [:p "Thinking about things in terms of Jacobians also highlights an important difference between forward-mode
+        and reverse-mode. One pass with forward mode computes the derivatives of all outputs with respect to a single input.
         Conversely, one pass with reverse-mode computes the derivatives of a single output with respect to all inputs."]
 
    [:p "In other words, forward-mode computes the Jacobian column-by-column whereas reverse-mode does
-        it row-by-row. That's why functions with many outputs (many rows) are better suited to forward-mode
+        so row-by-row. That's why functions with many outputs (many rows) are better suited to forward-mode
         and those with many inputs (many columns) to reverse-mode."]
 
 [:h1 {:class "post-section-header"} "Conclusion"]

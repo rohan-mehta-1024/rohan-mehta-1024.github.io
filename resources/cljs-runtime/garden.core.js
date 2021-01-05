@@ -5,14 +5,14 @@ goog.provide('garden.core');
  */
 garden.core.css = (function garden$core$css(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___44971 = arguments.length;
-var i__4737__auto___44972 = (0);
+var len__4736__auto___44970 = arguments.length;
+var i__4737__auto___44971 = (0);
 while(true){
-if((i__4737__auto___44972 < len__4736__auto___44971)){
-args__4742__auto__.push((arguments[i__4737__auto___44972]));
+if((i__4737__auto___44971 < len__4736__auto___44970)){
+args__4742__auto__.push((arguments[i__4737__auto___44971]));
 
-var G__44973 = (i__4737__auto___44972 + (1));
-i__4737__auto___44972 = G__44973;
+var G__44972 = (i__4737__auto___44971 + (1));
+i__4737__auto___44971 = G__44972;
 continue;
 } else {
 }
@@ -41,14 +41,14 @@ return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  */
 garden.core.style = (function garden$core$style(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___44974 = arguments.length;
-var i__4737__auto___44975 = (0);
+var len__4736__auto___44973 = arguments.length;
+var i__4737__auto___44974 = (0);
 while(true){
-if((i__4737__auto___44975 < len__4736__auto___44974)){
-args__4742__auto__.push((arguments[i__4737__auto___44975]));
+if((i__4737__auto___44974 < len__4736__auto___44973)){
+args__4742__auto__.push((arguments[i__4737__auto___44974]));
 
-var G__44976 = (i__4737__auto___44975 + (1));
-i__4737__auto___44975 = G__44976;
+var G__44975 = (i__4737__auto___44974 + (1));
+i__4737__auto___44974 = G__44975;
 continue;
 } else {
 }
