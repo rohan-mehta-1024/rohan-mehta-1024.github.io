@@ -712,17 +712,17 @@
 ;
 ;$$"]
 
-   [:p "So why do we use reverse-mode in neural nets then? Well, it has to do with the fact
-        that each method is only optimal in a specific situation. Let's imagine we want
+   [:p "So why do we use reverse-mode in neural nets then? It has to do with the fact
+        that each method is only optimal in a specific situation. For instance, let's imagine we want
         to differentiate some expression whose graph has many inputs but only a single
         output."]
 
    [:p "When using forward mode,
         we start at one of the input nodes and explore all the paths from that node to the output node.
-        After one pass through the graph, we get the derivative
+        So after one pass through the graph, we end up with the derivative
         of the output with respect to that one input. Reverse-mode on the other hand –
-        which explores the paths from the one output to all input –
-        can get everything in one go."]
+        which explores the paths from the one output node to all input nodes –
+        can get the derivatives of the output with respect to every inputin a single go."]
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
@@ -730,9 +730,9 @@
            [:figcaption {:class "post-caption"} "Fig. 7. (Source: "(utils/link  "Håvard Berland, 2006" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")")."]]
 
    [:p "Of course, there's the flip side: when we have a graph with many outputs, but only
-        a single input, forward-mode can grab everything in one go, since
-        it can reach, while reverse-mode must
-        traverse the whole graph once per output."]
+        a single input, forward-mode can grab everything in one go, since it only has to
+        worry about a single input anyway. Reverse-mode, however, only gets the
+        the derivative of output with the respesct to the input each time it runs."]
 
   [:figure {:class "img-container"}
    [:div {:style {:text-align "center"}}
@@ -740,7 +740,7 @@
      [:figcaption {:class "post-caption"} "Fig. 8. (Source: "(utils/link  "Håvard Berland, 2006" "https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf")")."]]
 
 
-  [:p "Thus the general rule is, given some function \\(f : M \\rightarrow N\\),
+  [:p "The general rule is, given some function \\(f : M \\rightarrow N\\),
        when \\(M \\gg N\\) – when we have many more inputs than outputs – we should
        use reverse-mode, since forward mode will have to traverse the graph \\(M\\) times
        while reverse-mode will only have to traverse it \\(N\\) times. For the same reasons,
@@ -1030,7 +1030,7 @@
        Even if we don't often think of them in this way, derivatives naturally satisfy
        the two properties of linearity: the derivative of a sum is the sum
        of derivatives, and the derivative of a function times a scalar is the derivative
-       of that function times the scalar ()."]
+       of that function times the scalar (English kind of breaks down here...)."]
 
    [:p "$$D(f + g) = Df + Dg \\hspace{1cm} D(cf) = c(Df)$$"]
 
@@ -1063,11 +1063,19 @@
    [:p "This is a long-winded way of saying that the derivative is the Jacobian - they're equivalent
         concepts. And the different branches of calculus just study increasingly less specialized
         versions of it. In that sense, all automatic differentiation does
-        is compute a Jacobian-vector product, or the Jacobian for a specific input."]
+        is compute a Jacobian-vector product, or the Jacobian at a specific input."]
 
    [:p "Thinking about things in terms of Jacobians also highlights an important difference between forward-mode
-        and reverse-mode. One pass with forward mode computes the derivatives of all outputs with respect to a single input.
-        Conversely, one pass with reverse-mode computes the derivatives of a single output with respect to all inputs."]
+        and reverse-mode. As we ackowledged before, one pass with forward-mode
+        computes the derivatives of all outputs with respect to a single input, while
+        one pass with reverse-mode computes the derivatives of a single output with respect to all inputs."]
+
+   [:p "$$\\begin{bmatrix}\\frac{\\partial{\\boldsymbol{\\vec{y}}}_1}{\\partial{\\boldsymbol{\\vec{x}}}_1} \\\\
+                          \\frac{\\partial{\\boldsymbol{\\vec{y}}}_2}{\\partial{\\boldsymbol{\\vec{x}}}_1} \\\\
+                          \\vdots \\\\
+                          \\frac{\\partial{\\boldsymbol{\\vec{y}}}_n}{\\partial{\\boldsymbol{\\vec{x}}}_1} \\\\
+                          \\end{bmatrix} \\hspace{1cm}\\textrm{vs.}
+                    \\hspace{1cm}\\begin{bmatrix}\\frac{\\partial{\\boldsymbol{\\vec{y}}}_1}{\\partial{\\boldsymbol{\\vec{x}}}_1}  & \\frac{\\partial{\\boldsymbol{\\vec{y}}}_1}{\\partial{\\boldsymbol{\\vec{x}}}_2} & \\ldots & \\frac{\\partial{\\boldsymbol{\\vec{y}}}_1}{\\partial{\\boldsymbol{\\vec{x}}}_n}  \\end{bmatrix}$$"]
 
    [:p "In other words, forward-mode computes the Jacobian column-by-column whereas reverse-mode does
         so row-by-row. That's why functions with many outputs (many rows) are better suited to forward-mode
@@ -1075,8 +1083,23 @@
 
 [:h1 {:class "post-section-header"} "Differentiable Programming: A Vision"]
 
-   [:p "One last thing, I promise! Automatic differentiation has a key
-        advantage over symbolic methods "]
+   [:p "One last thing, I promise! Automatic differentiation is not just
+        limited to typical mathematical expressions. Anything that can be
+        represented as a computational graph is fair game. That means that
+        programs can be differentiated over too, and so can control flow
+        constructs like loops and conditionals."]
+
+   [:p "This is where the idea of differentiable programming was borne:
+        automatic differentiation that can run directly on programs.
+        We're still a ways off from being able to do this (the extent of the differentiable
+        programs we code now basically just consists of increasingly inventive compositions
+        of matrix multiplication), but this is where things are heading in the future
+        (check the further reading if you're interested)."]
+
+   [:p "Especially interesting
+        is what happens when we restrict the subset of programs we wan't to
+        be able to differentiate over to functional ones, because now
+        the programming"]
 
 [:h1 {:class "post-section-header"} "Conclusion"]
 
@@ -1098,8 +1121,8 @@
      often cited as one of the most important ones to have come forward in
      the twentieth century. Understanding it well opens
      up many doors in scientific computing and beyond, and research
-     in the field is ongoing. Given that neural networks only
-     discovered it relatively recently,"(utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")
+     in the field is ongoing."(utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")" Given that neural networks only
+     discovered it relatively recently,"(utils/make-footnote "8" "eigth-footnote-a" "eigth-footnote-b")
      " it might very well be
      that there are other "[:q "killer"] " applications of the
      technique yet to be found. After all, there's not
@@ -1176,7 +1199,8 @@
        (utils/make-footnote "↩" "fourth-footnote-b" "fourth-footnote-a")]
 
 
-[:p (utils/bold "5.") (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a") ]
+[:p (utils/bold "5.") "The deeper is that addition is some operation, that, when you change its inputs the same exact change is reflected in its output."
+                      (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a") ]
 
 
  [:p  (utils/bold "6.")" A demonstration of this property with concrete matrices:
@@ -1215,12 +1239,20 @@
             has to do \\(N \\times M \\times M \\times (M - 1)\\) operations."
        (utils/make-footnote "↩" "sixth-footnote-b" "sixth-footnote-a")]
 
+
        [:p
         (utils/bold "7.") " While researching for this post I found out
         that in days of old people used to compute their network's derivatives
         symbolically by hand, hardcode them into computers, and then optimize them
         So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
         (utils/make-footnote "↩" "seventh-footnote-b" "seventh-footnote-a")]
+
+       [:p
+        (utils/bold "8.") " While researching for this post I found out
+        that in days of old people used to compute their network's derivatives
+        symbolically by hand, hardcode them into computers, and then optimize them
+        So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
+        (utils/make-footnote "↩" "eigth-footnote-b" "eigth-footnote-a")]
 
 
 
