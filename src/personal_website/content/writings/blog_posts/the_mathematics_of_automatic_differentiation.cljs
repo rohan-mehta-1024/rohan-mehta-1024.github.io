@@ -11,10 +11,9 @@
 
 (def post-content
   [:div ;{:style {:text-indent "25px"}}
-   [:p "Backpropagation is the cornerstone of the differentiable
-        programming paradigm — the idea that we can allow programs
-        to optimize their behavior against certain metrics by
-        differentiating over and updating sets of learnable functions.
+   [:p "Backpropagation is the cornerstone of the deep learning
+        paradigm — the idea that learning is nothing more
+        than optimizing some composition of differentiable functions.
         In fact, it is the very algorithm that allows neural
         nets to learn! But it is really only one of the many applications
         of an even broader numerical computing technique known as automatic differentiation."]
@@ -1085,21 +1084,22 @@
 
    [:p "One last thing, I promise! Automatic differentiation is not just
         limited to typical mathematical expressions. Anything that can be
-        represented as a computational graph is fair game. That means that
-        programs can be differentiated over too, and so can control flow
-        constructs like loops and conditionals."]
+        represented as a computational graph is fair game. That includes
+        control flow constructs like loops and conditionals, and so as a consequence,
+        entire programs can be differentiated over too!"]
 
    [:p "This is where the idea of differentiable programming was borne:
         automatic differentiation that can run directly on programs.
-        We're still a ways off from being able to do this (the extent of the differentiable
-        programs we code now basically just consists of increasingly inventive compositions
-        of matrix multiplication), but this is where things are heading in the future
-        (check the further reading if you're interested)."]
+        We're still a ways off from being able to do this (the extent of our differentiable
+        programs right now – neural nets – are basically just increasingly inventive compositions
+        of matrix multiplication), but this is where things are headed in the future
+        (check the further reading if you're interested), and personally, I think
+        a good language for differentible programming will take the whole
+        deep learning paradigm to the next level."]
 
-   [:p "Especially interesting
-        is what happens when we restrict the subset of programs we wan't to
-        be able to differentiate over to functional ones, because now
-        the programming"]
+   [:p "The main point here, though, is that as a tool, automatic differentiation
+        is very flexible, and can give us some notion of a derivative
+        where even classical calculus fails."]
 
 [:h1 {:class "post-section-header"} "Conclusion"]
 
@@ -1121,8 +1121,8 @@
      often cited as one of the most important ones to have come forward in
      the twentieth century. Understanding it well opens
      up many doors in scientific computing and beyond, and research
-     in the field is ongoing."(utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")" Given that neural networks only
-     discovered it relatively recently,"(utils/make-footnote "8" "eigth-footnote-a" "eigth-footnote-b")
+     in the field is ongoing. Given that neural networks only
+     discovered it relatively recently,"(utils/make-footnote "7" "seventh-footnote-a" "seventh-footnote-b")
      " it might very well be
      that there are other "[:q "killer"] " applications of the
      technique yet to be found. After all, there's not
@@ -1142,10 +1142,9 @@
 [:h1 {:class "post-section-header"} "Further Reading"]
 
 [:ul {:style {:list-style-type "circle"}}
- [:li (utils/link "Automatic Differentiation in ML: Where We Are and Where We Should Be Going" "https://arxiv.org/abs/1810.11530")]
  [:li (utils/link "The Simple Essence of Automatic Differentiation" "https://arxiv.org/abs/1804.00746")]
- [:li (utils/link "Neural Networks, Types, and Functional Programming" " https://colah.github.io/posts/2015-09-NN-Types-FP/")]
- [:li (utils/link "A Functional Reboot For Deep Learning" "  https://www.youtube.com/watch?v=Ns3DxUeCvRg")]]
+ [:li (utils/link "Automatic Differentiation in ML: Where We Are and Where We Should Be Going" "https://arxiv.org/abs/1810.11530")]
+ ]
 
 [:h1 {:class "post-section-header"} "Footnotes"]
 
@@ -1199,11 +1198,13 @@
        (utils/make-footnote "↩" "fourth-footnote-b" "fourth-footnote-a")]
 
 
-[:p (utils/bold "5.") "The deeper is that addition is some operation, that, when you change its inputs the same exact change is reflected in its output."
+[:p (utils/bold "5.") " All this means is that addition is some
+                        operation, that, when you change its inputs,
+                         reflects the exact same change in its output."
                       (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a") ]
 
 
- [:p  (utils/bold "6.")" A demonstration of this property with concrete matrices:
+ [:p  {:style {:overflow-x "auto" :overflow-y "hidden"}} (utils/bold "6.")" A demonstration of this property with concrete matrices:
         $$\\begin{align}
           \\begin{bmatrix}
             a & b \\\\
@@ -1232,7 +1233,7 @@
                 cx & dx \\\\
             \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
             \\end{align}$$
-            As you can see they are equivalent. But whereas
+            As you can see, they are equivalent. But whereas
             the Hadamard product only has to do \\(N \\times M\\)
             operations when multiplying two
             \\(N \\times M\\) matrices, matrix multiplication
@@ -1241,20 +1242,12 @@
 
 
        [:p
-        (utils/bold "7.") " While researching for this post I found out
-        that in days of old people used to compute their network's derivatives
-        symbolically by hand, hardcode them into computers, and then optimize them
+        (utils/bold "7.") " While researching for this post, I found out
+        that before AD was commonly used, neural net researches
+        would calculate the derivatives for their networks by hand
+        and then hardcode them into computers.
         So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
         (utils/make-footnote "↩" "seventh-footnote-b" "seventh-footnote-a")]
-
-       [:p
-        (utils/bold "8.") " While researching for this post I found out
-        that in days of old people used to compute their network's derivatives
-        symbolically by hand, hardcode them into computers, and then optimize them
-        So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
-        (utils/make-footnote "↩" "eigth-footnote-b" "eigth-footnote-a")]
-
-
 
 
   ])
