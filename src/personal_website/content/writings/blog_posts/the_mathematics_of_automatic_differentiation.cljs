@@ -1204,7 +1204,9 @@
                       (utils/make-footnote "↩" "fifth-footnote-b" "fifth-footnote-a") ]
 
 
- [:p  {:style {:overflow-x "auto" :overflow-y "hidden"}} (utils/bold "6.")" A demonstration of this property with concrete matrices:
+ [:p (utils/bold "6.")" A demonstration of this property with concrete matrices:"]
+
+   [:p {:style {:overflow-x "auto" :overflow-y "hidden"}} "
         $$\\begin{align}
           \\begin{bmatrix}
             a & b \\\\
@@ -1232,7 +1234,8 @@
                 ax & bx \\\\
                 cx & dx \\\\
             \\end{bmatrix}\\hspace{1cm}&\\textrm{(Hadamard product)}
-            \\end{align}$$
+            \\end{align}$$"]
+   [:p "
             As you can see, they are equivalent. But whereas
             the Hadamard product only has to do \\(N \\times M\\)
             operations when multiplying two
