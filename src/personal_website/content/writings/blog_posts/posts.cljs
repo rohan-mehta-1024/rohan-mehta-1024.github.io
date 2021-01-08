@@ -3,6 +3,6 @@
             [personal-website.content.writings.blog-posts.attention-via-the-transformer :refer [post] :rename {post post1}]
             [personal-website.content.writings.blog-posts.the-mathematics-of-automatic-differentiation :refer [post] :rename {post post2}]))
 
-(def posts {(:title post1) post1
+(def posts {;(:title post1) post1
             (:title post2) post2
             })
