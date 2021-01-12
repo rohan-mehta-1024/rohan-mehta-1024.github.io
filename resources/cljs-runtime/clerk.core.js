@@ -2,8 +2,8 @@ goog.provide('clerk.core');
 clerk.core.current_path = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(location.pathname);
 clerk.core.deferred_navigation_chan = cljs.core.async.chan.cljs$core$IFn$_invoke$arity$1(cljs.core.async.sliding_buffer((1)));
 clerk.core.debounce = (function clerk$core$debounce(var_args){
-var G__39939 = arguments.length;
-switch (G__39939) {
+var G__39945 = arguments.length;
+switch (G__39945) {
 case 1:
 return clerk.core.debounce.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -229,11 +229,11 @@ return clerk.core.scroll_to((y - y_translation));
 (clerk.core.navigate_page_BANG_.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(clerk.core.navigate_page_BANG_.cljs$lang$applyTo = (function (seq39952){
-var G__39953 = cljs.core.first(seq39952);
-var seq39952__$1 = cljs.core.next(seq39952);
+(clerk.core.navigate_page_BANG_.cljs$lang$applyTo = (function (seq39955){
+var G__39956 = cljs.core.first(seq39955);
+var seq39955__$1 = cljs.core.next(seq39955);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__39953,seq39952__$1);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__39956,seq39955__$1);
 }));
 
 /**

@@ -2606,15 +2606,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3223093"
-     inkscape:cx="-13.059533"
-     inkscape:cy="216.23511"
+     inkscape:zoom="0.56323804"
+     inkscape:cx="-339.60796"
+     inkscape:cy="79.37585"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g29208"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1252"
-     inkscape:window-height="770"
+     inkscape:window-height="769"
      inkscape:window-x="0"
      inkscape:window-y="23"
      inkscape:window-maximized="0"
@@ -3535,21 +3535,24 @@
          d="m 13.394516,18.518527 12.28721,-4.085223"
          id="path16925-5"
          sodipodi:nodetypes="cc" />
-      <circle
-         style="fill:#ff7201;fill-opacity:0.59919;stroke:#000000;stroke-width:0.407289;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="path13736-7-3-2-4-0-8-0"
-         cx="30.607571"
-         cy="12.567278"
-         r="4.7963557" />
-      <use
-         xlink:href="#glyph0-1-52"
-         x="-0.63700002"
-         y="6.849"
-         id="use19415-1-8"
-         width="100%"
-         height="100%"
-         style="fill:#000000;fill-opacity:1"
-         transform="matrix(0.79375,0,0,0.79375001,27.429693,9.433372)" />
+      <g
+         id="g3408">
+        <circle
+           style="fill:#ff7201;fill-opacity:0.59919;stroke:#000000;stroke-width:0.407289;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="path13736-7-3-2-4-0-8-0"
+           cx="30.607571"
+           cy="12.567278"
+           r="4.7963557" />
+        <use
+           xlink:href="#glyph0-1-52"
+           x="-0.63700002"
+           y="6.849"
+           id="use19415-1-8"
+           width="100%"
+           height="100%"
+           style="fill:#000000;fill-opacity:1"
+           transform="matrix(0.79375,0,0,0.79375001,27.429693,9.433372)" />
+      </g>
       <circle
          style="mix-blend-mode:normal;fill:#00bcbe;fill-opacity:0.59919;stroke:#000000;stroke-width:0.407289;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path13736-7-3-2-4-0-8-5-5"

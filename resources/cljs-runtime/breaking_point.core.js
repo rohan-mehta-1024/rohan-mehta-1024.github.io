@@ -1,73 +1,73 @@
 goog.provide('breaking_point.core');
-re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),(function (_,p__38582){
-var vec__38583 = p__38582;
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38583,(0),null);
-var map__38586 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38583,(1),null);
-var map__38586__$1 = (((((!((map__38586 == null))))?(((((map__38586.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38586.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38586):map__38586);
-var opts = map__38586__$1;
-var breakpoints = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38586__$1,new cljs.core.Keyword(null,"breakpoints","breakpoints",1018731739));
-var debounce_ms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38586__$1,new cljs.core.Keyword(null,"debounce-ms","debounce-ms",-1127263167));
+re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),(function (_,p__38570){
+var vec__38571 = p__38570;
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38571,(0),null);
+var map__38574 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38571,(1),null);
+var map__38574__$1 = (((((!((map__38574 == null))))?(((((map__38574.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38574.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38574):map__38574);
+var opts = map__38574__$1;
+var breakpoints = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38574__$1,new cljs.core.Keyword(null,"breakpoints","breakpoints",1018731739));
+var debounce_ms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38574__$1,new cljs.core.Keyword(null,"debounce-ms","debounce-ms",-1127263167));
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),opts], null);
 }));
 re_frame.core.reg_cofx(new cljs.core.Keyword("breaking-point.core","screen-dimensions","breaking-point.core/screen-dimensions",407195814),(function (coeffect){
-var screen_width = (function (){var or__4126__auto__ = (function (){var G__38589 = window;
-if((G__38589 == null)){
+var screen_width = (function (){var or__4126__auto__ = (function (){var G__38580 = window;
+if((G__38580 == null)){
 return null;
 } else {
-return G__38589.innerWidth;
+return G__38580.innerWidth;
 }
 })();
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
 } else {
-var or__4126__auto____$1 = (function (){var G__38591 = document;
-var G__38591__$1 = (((G__38591 == null))?null:G__38591.documentElement);
-if((G__38591__$1 == null)){
+var or__4126__auto____$1 = (function (){var G__38582 = document;
+var G__38582__$1 = (((G__38582 == null))?null:G__38582.documentElement);
+if((G__38582__$1 == null)){
 return null;
 } else {
-return G__38591__$1.clientWidth;
+return G__38582__$1.clientWidth;
 }
 })();
 if(cljs.core.truth_(or__4126__auto____$1)){
 return or__4126__auto____$1;
 } else {
-var G__38592 = document;
-var G__38592__$1 = (((G__38592 == null))?null:G__38592.body);
-if((G__38592__$1 == null)){
+var G__38583 = document;
+var G__38583__$1 = (((G__38583 == null))?null:G__38583.body);
+if((G__38583__$1 == null)){
 return null;
 } else {
-return G__38592__$1.clientWidth;
+return G__38583__$1.clientWidth;
 }
 }
 }
 })();
-var screen_height = (function (){var or__4126__auto__ = (function (){var G__38594 = window;
-if((G__38594 == null)){
+var screen_height = (function (){var or__4126__auto__ = (function (){var G__38585 = window;
+if((G__38585 == null)){
 return null;
 } else {
-return G__38594.innerHeight;
+return G__38585.innerHeight;
 }
 })();
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
 } else {
-var or__4126__auto____$1 = (function (){var G__38596 = document;
-var G__38596__$1 = (((G__38596 == null))?null:G__38596.documentElement);
-if((G__38596__$1 == null)){
+var or__4126__auto____$1 = (function (){var G__38588 = document;
+var G__38588__$1 = (((G__38588 == null))?null:G__38588.documentElement);
+if((G__38588__$1 == null)){
 return null;
 } else {
-return G__38596__$1.clientHeight;
+return G__38588__$1.clientHeight;
 }
 })();
 if(cljs.core.truth_(or__4126__auto____$1)){
 return or__4126__auto____$1;
 } else {
-var G__38597 = document;
-var G__38597__$1 = (((G__38597 == null))?null:G__38597.body);
-if((G__38597__$1 == null)){
+var G__38593 = document;
+var G__38593__$1 = (((G__38593 == null))?null:G__38593.body);
+if((G__38593__$1 == null)){
 return null;
 } else {
-return G__38597__$1.clientHeight;
+return G__38593__$1.clientHeight;
 }
 }
 }
@@ -140,75 +140,75 @@ re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(orientation,new cljs.core.Keyword(null,"landscape","landscape",1519839253));
 })], 0));
 
-var screen_keys = (function (){var G__38614 = breakpoints;
-var G__38614__$1 = (((G__38614 == null))?null:cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2(cljs.core.vector,G__38614));
-var G__38614__$2 = (((G__38614__$1 == null))?null:cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p__38615){
-var vec__38616 = p__38615;
-var i = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38616,(0),null);
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38616,(1),null);
+var screen_keys = (function (){var G__38613 = breakpoints;
+var G__38613__$1 = (((G__38613 == null))?null:cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2(cljs.core.vector,G__38613));
+var G__38613__$2 = (((G__38613__$1 == null))?null:cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p__38614){
+var vec__38615 = p__38614;
+var i = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38615,(0),null);
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38615,(1),null);
 return cljs.core.even_QMARK_(i);
-}),G__38614__$1));
-if((G__38614__$2 == null)){
+}),G__38613__$1));
+if((G__38613__$2 == null)){
 return null;
 } else {
-return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(cljs.core.second,G__38614__$2);
+return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(cljs.core.second,G__38613__$2);
 }
 })();
-var seq__38620 = cljs.core.seq(screen_keys);
-var chunk__38621 = null;
-var count__38622 = (0);
-var i__38623 = (0);
+var seq__38618 = cljs.core.seq(screen_keys);
+var chunk__38619 = null;
+var count__38620 = (0);
+var i__38621 = (0);
 while(true){
-if((i__38623 < count__38622)){
-var screen_key = chunk__38621.cljs$core$IIndexed$_nth$arity$2(null,i__38623);
-re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(cljs.core.keyword.cljs$core$IFn$_invoke$arity$2("breaking-point.core",[cljs.core.name(screen_key),"?"].join('')),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"<-","<-",760412998),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","screen","breaking-point.core/screen",834517405)], null),((function (seq__38620,chunk__38621,count__38622,i__38623,screen_key,screen_keys){
+if((i__38621 < count__38620)){
+var screen_key = chunk__38619.cljs$core$IIndexed$_nth$arity$2(null,i__38621);
+re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(cljs.core.keyword.cljs$core$IFn$_invoke$arity$2("breaking-point.core",[cljs.core.name(screen_key),"?"].join('')),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"<-","<-",760412998),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","screen","breaking-point.core/screen",834517405)], null),((function (seq__38618,chunk__38619,count__38620,i__38621,screen_key,screen_keys){
 return (function (screen,_){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(screen,screen_key);
-});})(seq__38620,chunk__38621,count__38622,i__38623,screen_key,screen_keys))
+});})(seq__38618,chunk__38619,count__38620,i__38621,screen_key,screen_keys))
 ], 0));
 
 
-var G__38653 = seq__38620;
-var G__38654 = chunk__38621;
-var G__38655 = count__38622;
-var G__38656 = (i__38623 + (1));
-seq__38620 = G__38653;
-chunk__38621 = G__38654;
-count__38622 = G__38655;
-i__38623 = G__38656;
+var G__38635 = seq__38618;
+var G__38636 = chunk__38619;
+var G__38637 = count__38620;
+var G__38638 = (i__38621 + (1));
+seq__38618 = G__38635;
+chunk__38619 = G__38636;
+count__38620 = G__38637;
+i__38621 = G__38638;
 continue;
 } else {
-var temp__5735__auto__ = cljs.core.seq(seq__38620);
+var temp__5735__auto__ = cljs.core.seq(seq__38618);
 if(temp__5735__auto__){
-var seq__38620__$1 = temp__5735__auto__;
-if(cljs.core.chunked_seq_QMARK_(seq__38620__$1)){
-var c__4556__auto__ = cljs.core.chunk_first(seq__38620__$1);
-var G__38657 = cljs.core.chunk_rest(seq__38620__$1);
-var G__38658 = c__4556__auto__;
-var G__38659 = cljs.core.count(c__4556__auto__);
-var G__38660 = (0);
-seq__38620 = G__38657;
-chunk__38621 = G__38658;
-count__38622 = G__38659;
-i__38623 = G__38660;
+var seq__38618__$1 = temp__5735__auto__;
+if(cljs.core.chunked_seq_QMARK_(seq__38618__$1)){
+var c__4556__auto__ = cljs.core.chunk_first(seq__38618__$1);
+var G__38639 = cljs.core.chunk_rest(seq__38618__$1);
+var G__38640 = c__4556__auto__;
+var G__38641 = cljs.core.count(c__4556__auto__);
+var G__38642 = (0);
+seq__38618 = G__38639;
+chunk__38619 = G__38640;
+count__38620 = G__38641;
+i__38621 = G__38642;
 continue;
 } else {
-var screen_key = cljs.core.first(seq__38620__$1);
-re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(cljs.core.keyword.cljs$core$IFn$_invoke$arity$2("breaking-point.core",[cljs.core.name(screen_key),"?"].join('')),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"<-","<-",760412998),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","screen","breaking-point.core/screen",834517405)], null),((function (seq__38620,chunk__38621,count__38622,i__38623,screen_key,seq__38620__$1,temp__5735__auto__,screen_keys){
+var screen_key = cljs.core.first(seq__38618__$1);
+re_frame.core.reg_sub.cljs$core$IFn$_invoke$arity$variadic(cljs.core.keyword.cljs$core$IFn$_invoke$arity$2("breaking-point.core",[cljs.core.name(screen_key),"?"].join('')),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"<-","<-",760412998),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","screen","breaking-point.core/screen",834517405)], null),((function (seq__38618,chunk__38619,count__38620,i__38621,screen_key,seq__38618__$1,temp__5735__auto__,screen_keys){
 return (function (screen,_){
 return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(screen,screen_key);
-});})(seq__38620,chunk__38621,count__38622,i__38623,screen_key,seq__38620__$1,temp__5735__auto__,screen_keys))
+});})(seq__38618,chunk__38619,count__38620,i__38621,screen_key,seq__38618__$1,temp__5735__auto__,screen_keys))
 ], 0));
 
 
-var G__38662 = cljs.core.next(seq__38620__$1);
-var G__38663 = null;
-var G__38664 = (0);
-var G__38665 = (0);
-seq__38620 = G__38662;
-chunk__38621 = G__38663;
-count__38622 = G__38664;
-i__38623 = G__38665;
+var G__38643 = cljs.core.next(seq__38618__$1);
+var G__38644 = null;
+var G__38645 = (0);
+var G__38646 = (0);
+seq__38618 = G__38643;
+chunk__38619 = G__38644;
+count__38620 = G__38645;
+i__38621 = G__38646;
 continue;
 }
 } else {
@@ -218,12 +218,12 @@ return null;
 break;
 }
 });
-breaking_point.core.set_breakpoints = (function breaking_point$core$set_breakpoints(p__38624){
-var map__38625 = p__38624;
-var map__38625__$1 = (((((!((map__38625 == null))))?(((((map__38625.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38625.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38625):map__38625);
-var opts = map__38625__$1;
-var breakpoints = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38625__$1,new cljs.core.Keyword(null,"breakpoints","breakpoints",1018731739));
-var debounce_ms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38625__$1,new cljs.core.Keyword(null,"debounce-ms","debounce-ms",-1127263167));
+breaking_point.core.set_breakpoints = (function breaking_point$core$set_breakpoints(p__38622){
+var map__38623 = p__38622;
+var map__38623__$1 = (((((!((map__38623 == null))))?(((((map__38623.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38623.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38623):map__38623);
+var opts = map__38623__$1;
+var breakpoints = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38623__$1,new cljs.core.Keyword(null,"breakpoints","breakpoints",1018731739));
+var debounce_ms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38623__$1,new cljs.core.Keyword(null,"debounce-ms","debounce-ms",-1127263167));
 breaking_point.core.register_subs(breakpoints);
 
 re_frame.core.dispatch(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","set-screen-dimensions","breaking-point.core/set-screen-dimensions",1622393691)], null));

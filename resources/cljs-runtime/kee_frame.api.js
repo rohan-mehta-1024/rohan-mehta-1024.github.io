@@ -5,7 +5,7 @@ goog.provide('kee_frame.api');
  */
 kee_frame.api.Navigator = function(){};
 
-var kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37960 = (function (_){
+var kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37956 = (function (_){
 var x__4428__auto__ = (((_ == null))?null:_);
 var m__4429__auto__ = (kee_frame.api.dispatch_current_BANG_[goog.typeOf(x__4428__auto__)]);
 if((!((m__4429__auto__ == null)))){
@@ -23,7 +23,7 @@ kee_frame.api.dispatch_current_BANG_ = (function kee_frame$api$dispatch_current_
 if((((!((_ == null)))) && ((!((_.kee_frame$api$Navigator$dispatch_current_BANG_$arity$1 == null)))))){
 return _.kee_frame$api$Navigator$dispatch_current_BANG_$arity$1(_);
 } else {
-return kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37960(_);
+return kee_frame$api$Navigator$dispatch_current_BANG_$dyn_37956(_);
 }
 });
 

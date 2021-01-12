@@ -4,13 +4,13 @@
 
 
 (def post-preview
-  "The transformer NN architecture introduced the modern attention mechanism.
-   In this post we will develop an intution for how it works and the
-   deeper ideas at play behind it.")
+  "The transformer neural net architecture introduced the modern attention mechanism, and to great success.
+   In this post, we will develop an intution for how it works, examine the
+   deeper ideas at play behind it, and take a look at where it's heading in the future.")
 
 (def post-content
   [:div
-   [:p "The transformer — a neural network architecture proposed in "
+   [:p "The transformer — a neural net architecture proposed in "
         (utils/link "Vsawani et. al., 2017" "https://arxiv.org/pdf/1706.03762.pdf")
        " – has taken the NLP world by storm in the past few years, contributing
         to the recent success of "
@@ -23,46 +23,51 @@
        is to hopefully provide some of that intuition and demonstrate why it is
        so powerful."]
 
+   [:p "Beyond that, though, I also want to take a look at how
+        beautifully connects so many ideas in deep learning,
+        and how we'll use it in the future. Is attention more
+        powerful that convolutions? Recurrence? Any indutive bias
+      we can think of Elucdiating the mechanisms inner workings will allow us to have such convs"]
 
-   [:p "Before we lay out this idea from the bottom-up however,
-        it's worth taking a few moments to get a bird's-eye-view of
-        the whole concept, even if right now it only gives us a vague
-        sense of what's really going on. On that note, the core
-        idea behind the transformer can be extrapolated
-        even beyond the scope of attention to representation
-        learning itself. Specifically, it operates on the principle
-        that computing multiple representations of a single entity is
-        more feasible than trying to compute only a single representation
-        [of that entity] without comprimsing it's quality. That is
-        a veritable mouthful, but in other words: "
-        (utils/bold "many [smaller] representations are better than
-        [a larger] one. ")]
 
-        [:p "And it is this idea – more so than that of attention itself –
-         that has led to the explosion of successes in the NLP field so recently.
-         With that in mind, this post also seeks to (ironically enough) bring
-         attention to this somewhat untalked about idea which silently
-         supports the transformer's (and most modern) attention mechanisms
-         from the shadows, and examine how it might be more generally applied to the
-         field of deep learning as whole (my ulterior motive, if you will). With that
-         out of the way though, let's begin!"]
+  ; [:p "Before we lay out this idea from the bottom-up however,
+  ;      it's worth taking a few moments to get a bird's-eye-view of
+  ;      the whole concept, even if it only gives us a vague
+  ;      sense of what's really going on. On that note, the core
+  ;      idea behind the transformer can be extrapolated
+  ;      even beyond the scope of attention to representation
+  ;      learning itself. Specifically, it operates on the principle
+  ;      that computing multiple representations of a single entity is
+  ;      more feasible than trying to compute only a single representation
+  ;      [of that entity] without comprimsing it's quality. That is
+  ;      a veritable mouthful, but in other words: "
+  ;      (utils/bold "many [smaller] representations are better than
+  ;      [a larger] one. ")]
+
+  ;;      [:p "And it is this idea – more so than that of attention itself –
+    ;     that has led to the explosion of successes in the NLP field so recently.
+    ;     With that in mind, this post also seeks to (ironically enough) bring
+    ;     attention to this somewhat untalked about idea which silently
+    ;     supports the transformer's (and most modern) attention mechanisms
+    ;     from the shadows, and examine how it might be more generally applied to the
+    ;     field of deep learning as whole (my ulterior motive, if you will). With that
+    ;     out of the way though, let's begin!"]
 
    [:h1 {:class "post-section-header"} "Introduction"]
 
    [:p "Before we delve further into how exactly the transformer phrases
         self-attention mathematically, it's worth clarifying what exactly
-        " [:q "self-attention"] " means. In a single sentence, it is the
-        ability for the elements of an input to selectively incorporate
-        information from other elements of that same input when being
-        processed by a neural net, where the degree to which they
-        incorporate this information is determined by some learnable
-        function."]
+        " [:q "self-attention"] " means. Just like a standard layer of neurons,
+        the self-attention operation is some parameterized, differentiable function we can
+        include in our neural nets. Unlike these layers,
+        it works on sets of elements (instead of vectors), and learns some
+        function to linearly combine each element with all the others."]
 
-    [:p "In a more intuitive sense, it allows the network to " [:q "focus"]
-        " on certain relevant parts of the input other than the one its
-        currently processing so that it can take into account contextual
-        (although not neccessarily local) information when making a
-        prediction."]
+    [:p "In other words, it selectively incoporates the "[:q "information"] "
+         of all other elements into the current element, providing the network with some
+         contextual information about the set as a whole. Intuitively, we can think of this
+         process as the network learning to focus some its attention on elements other than
+         the one it currently processing, hence the operation's name."]
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
@@ -74,10 +79,11 @@
       (utils/link "Cheng et al., 2016" "https://arxiv.org/pdf/1601.06733.pdf") ")."]]
 
   [:p "This approach has proven to be especially useful for language
-      tasks as it allows the mapping of informational dependencies
+      tasks, as it allows the mapping of informational dependencies
       across the entire input, whereas conventional approaches such
       as RNNs (and their more complex cousins, LSTMs and GRUs) degrade
-      the further spread out those dependencies are. Self-attention on
+      the further spread out those dependencies are."]
+   [:p "Self-attention on
       the other hand allows any element of the input to attend to any
       other element, making it much easier for models to build up more
       robust representations of the text they are fed, even when that
@@ -108,20 +114,22 @@
 
    [:p "So how might we go about implementing self-attention for some language
         task? A key part of the attentional paradigm is being able to selectively
-        incorporate information from other sources – in the case of self-attention
-        from other elements of the input. For us, this equates to words.
+        incorporate information from other sources – in the case of self-attention specifically,
+        from other elements of the input."]
+
+   [:p "For us, this equates to words.
         But whereas the constituent units of other types of data (e.g.,
         the pixels in an image) have self-explanatory digital representations
-        (the same as those computers use), how exactly do we represent words?"]
+        (the same as those computers use), representing words is not so straightforward."]
 
    [:p "A naive implementation might encode each word into a one-hot vector that
         considers the first thousand-or-so most common words. This would
-        (obviously) not only be computationally inefficient, but fail to make
+        not only be computationally inefficient, but also fail to make
         full use of all the properties of the underlying embedding space
         (the vector space used to hold the learned representations of our data)."]
 
    [:p "For one, the space would be very sparsely populated, with only its
-        basis vectors (assuming standard basis) holding any real semantic
+        basis vectors holding any real semantic
         meaning; consequently, all representations would be orthogonal to one
         another – which is to say, equally different. This is not a faithful
         depiction our data though, as some words are definitely more similar
@@ -637,8 +645,11 @@
           subspaces at different positions. With a single attention head, averaging inhibits this."]
 
 [:h1 {:class "post-section-header"} "What Does It All Mean?"]
+[:h1 {:class "post-section-header"} "Alternative "]
 [:h1 {:class "post-section-header"} "Multi-Representation Learning"]
 [:h1 {:class "post-section-header"} "An Ode To The Transformer"]
+[:h1 {:class "post-section-header"} "noitatumerP Invariant?"]
+[:h1 {:class "post-section-header"} "But...RNNs Aren't Dead"]
 
 [:h1 {:class "post-section-header"} "References"]
 [:h1 {:class "post-section-header" :id "further-reading"} "Further Reading"]
@@ -668,8 +679,8 @@
        ]))
 
 (def post
-  {:title "Attention Via The Transformer"
-   :date "08/29/2020"
+  {:title "Intuitive Attention Via The Transformer"
+   :date "1/12/2021"
    :show post-preview
    :content post-content
    :tags ["mathematics", "differentiable programming"]

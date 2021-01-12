@@ -24,7 +24,7 @@
         knowledge and is
         a beautiful amalgamation of many different ideas. While
         our discussion of the technique will be phrased in terms of its utility to
-        neural nets, though, the ideas underpinning it are far more applicable,
+        neural nets, the ideas underpinning it are far more applicable,
         illustrating some deeper truths about calculus, dynamic programming, and the
         art of problem solving in general."]
 
