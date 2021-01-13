@@ -67,7 +67,7 @@
          of all other elements into the current element, providing the network with some
          contextual information about the set as a whole. Intuitively, we can think of this
          process as the network learning to focus some its attention on elements other than
-         the one it currently processing, hence the operation's name."]
+         the one it currently processing, hence it's name."]
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}

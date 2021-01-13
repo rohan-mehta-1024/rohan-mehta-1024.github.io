@@ -16,10 +16,10 @@
 (defn format-title [title]
    (->> (clojure.string/split title " ")
         (map clojure.string/lower-case)
-        (clojure.string/join "-")))
+        (clojure.string/join "_")))
 
 (defn unformat-title [title]
-  (->> (clojure.string/split title "-")
+  (->> (clojure.string/split title "_")
        (map clojure.string/capitalize)
        (map (fn [x]
               (let [y (special-words x)]

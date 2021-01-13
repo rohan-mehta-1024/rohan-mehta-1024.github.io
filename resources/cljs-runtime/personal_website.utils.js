@@ -11,7 +11,7 @@ return obj.scrollIntoView();
 return setTimeout(scroll,(5));
 });
 personal_website.utils.format_title = (function personal_website$utils$format_title(title){
-return clojure.string.join.cljs$core$IFn$_invoke$arity$2("-",cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.lower_case,clojure.string.split.cljs$core$IFn$_invoke$arity$2(title," ")));
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2("_",cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.lower_case,clojure.string.split.cljs$core$IFn$_invoke$arity$2(title," ")));
 });
 personal_website.utils.unformat_title = (function personal_website$utils$unformat_title(title){
 return clojure.string.join.cljs$core$IFn$_invoke$arity$2(" ",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (x){
@@ -21,7 +21,7 @@ return y;
 } else {
 return x;
 }
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.capitalize,clojure.string.split.cljs$core$IFn$_invoke$arity$2(title,"-"))));
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(clojure.string.capitalize,clojure.string.split.cljs$core$IFn$_invoke$arity$2(title,"_"))));
 });
 personal_website.utils.scroll_to_this = (function personal_website$utils$scroll_to_this(el_id){
 var obj = document.getElementById(el_id);

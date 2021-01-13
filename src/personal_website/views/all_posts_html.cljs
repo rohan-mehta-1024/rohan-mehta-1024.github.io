@@ -104,7 +104,7 @@
 
       (if (-> params :id (= "all"))
         (let [title (as-> route-data $
-                        (:data $) (:name $) (name $) (clojure.string/split $ "-")
+                        (:data $) (:name $) (name $) (clojure.string/split $ "_")
                         (map clojure.string/capitalize $)
                         (clojure.string/join " " $))
               page-title (update-page-title title)]
@@ -113,7 +113,10 @@
                 (conj prefix $)
                 (conj $ (footer))))
 
-        (let [post-title ((posts (utils/unformat-title (params :id))) :title)
+        (let [q (print (params :id))
+              s (print (keys posts))
+              l (print (utils/unformat-title (params :id)))
+              post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
               cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
           (as-> posts $

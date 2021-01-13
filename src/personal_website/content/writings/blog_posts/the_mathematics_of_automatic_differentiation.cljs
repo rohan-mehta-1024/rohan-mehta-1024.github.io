@@ -1246,7 +1246,7 @@
 
        [:p
         (utils/bold "7.") " While researching for this post, I found out
-        that before AD was commonly used, neural net researches
+        that before AD was commonly used, neural net researchers
         would calculate the derivatives for their networks by hand
         and then hardcode them into computers.
         So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
