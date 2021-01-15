@@ -6,5 +6,5 @@
 
 (def posts {(:title post1) post1
             (:title post2) post2
-            ;(:title post3) post3
+            (:title post3) post3
             })

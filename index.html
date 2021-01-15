@@ -9,8 +9,9 @@
     <style>
       @font-face { font-family: WorkSans; src: url("resources/WorkSans-Regular.ttf");}
       @font-face { font-family: WorkSansBold; src: url("resources/WorkSans-SemiBold.ttf")};
-      html {
-    -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+      html {-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */}
+      @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+html {-webkit-text-size-adjust: none;}
 }
     </style>
   </head>
