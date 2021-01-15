@@ -136,8 +136,8 @@ return (new kee_frame.interop.AccountantNavigator(self__.__meta,cljs.core.not_em
 (kee_frame.interop.AccountantNavigator.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__4387__auto__,k__4388__auto__,G__38625){
 var self__ = this;
 var this__4387__auto____$1 = this;
-var pred__38649 = cljs.core.keyword_identical_QMARK_;
-var expr__38650 = k__4388__auto__;
+var pred__38636 = cljs.core.keyword_identical_QMARK_;
+var expr__38637 = k__4388__auto__;
 return (new kee_frame.interop.AccountantNavigator(self__.__meta,cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(self__.__extmap,k__4388__auto__,G__38625),null));
 }));
 
@@ -188,11 +188,11 @@ return (new kee_frame.interop.AccountantNavigator(null,null,null));
  * Factory function for kee-frame.interop/AccountantNavigator, taking a map of keywords to field values.
  */
 kee_frame.interop.map__GT_AccountantNavigator = (function kee_frame$interop$map__GT_AccountantNavigator(G__38629){
-var extmap__4419__auto__ = (function (){var G__38654 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$1(G__38629);
+var extmap__4419__auto__ = (function (){var G__38640 = cljs.core.dissoc.cljs$core$IFn$_invoke$arity$1(G__38629);
 if(cljs.core.record_QMARK_(G__38629)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__38654);
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,G__38640);
 } else {
-return G__38654;
+return G__38640;
 }
 })();
 return (new kee_frame.interop.AccountantNavigator(null,cljs.core.not_empty(extmap__4419__auto__),null));
@@ -230,36 +230,36 @@ return breaking_point.core.register_subs(new cljs.core.Keyword(null,"breakpoints
 kee_frame.interop.set_breakpoints = (function kee_frame$interop$set_breakpoints(breakpoints){
 return re_frame.core.dispatch_sync(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),kee_frame.interop.breakpoints_or_defaults(breakpoints)], null));
 });
-kee_frame.interop.set_log_level_BANG_ = (function kee_frame$interop$set_log_level_BANG_(p__38656){
-var map__38657 = p__38656;
-var map__38657__$1 = (((((!((map__38657 == null))))?(((((map__38657.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38657.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38657):map__38657);
-var overwrites_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__38657__$1,new cljs.core.Keyword(null,"overwrites?","overwrites?",-1906761528),false);
+kee_frame.interop.set_log_level_BANG_ = (function kee_frame$interop$set_log_level_BANG_(p__38641){
+var map__38642 = p__38641;
+var map__38642__$1 = (((((!((map__38642 == null))))?(((((map__38642.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38642.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38642):map__38642);
+var overwrites_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__38642__$1,new cljs.core.Keyword(null,"overwrites?","overwrites?",-1906761528),false);
 if(cljs.core.truth_(overwrites_QMARK_)){
 return null;
 } else {
 return re_frame.loggers.set_loggers_BANG_(new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"warn","warn",-436710552),(function() { 
-var G__38667__delegate = function (args){
+var G__38663__delegate = function (args){
 if(cljs.core.truth_(cljs.core.re_find(/^re-frame: overwriting/,cljs.core.first(args)))){
 return null;
 } else {
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(console.warn,args);
 }
 };
-var G__38667 = function (var_args){
+var G__38663 = function (var_args){
 var args = null;
 if (arguments.length > 0) {
-var G__38668__i = 0, G__38668__a = new Array(arguments.length -  0);
-while (G__38668__i < G__38668__a.length) {G__38668__a[G__38668__i] = arguments[G__38668__i + 0]; ++G__38668__i;}
-  args = new cljs.core.IndexedSeq(G__38668__a,0,null);
+var G__38664__i = 0, G__38664__a = new Array(arguments.length -  0);
+while (G__38664__i < G__38664__a.length) {G__38664__a[G__38664__i] = arguments[G__38664__i + 0]; ++G__38664__i;}
+  args = new cljs.core.IndexedSeq(G__38664__a,0,null);
 } 
-return G__38667__delegate.call(this,args);};
-G__38667.cljs$lang$maxFixedArity = 0;
-G__38667.cljs$lang$applyTo = (function (arglist__38669){
-var args = cljs.core.seq(arglist__38669);
-return G__38667__delegate(args);
+return G__38663__delegate.call(this,args);};
+G__38663.cljs$lang$maxFixedArity = 0;
+G__38663.cljs$lang$applyTo = (function (arglist__38665){
+var args = cljs.core.seq(arglist__38665);
+return G__38663__delegate(args);
 });
-G__38667.cljs$core$IFn$_invoke$arity$variadic = G__38667__delegate;
-return G__38667;
+G__38663.cljs$core$IFn$_invoke$arity$variadic = G__38663__delegate;
+return G__38663;
 })()
 ], null));
 }

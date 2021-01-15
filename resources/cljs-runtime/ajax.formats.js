@@ -6,8 +6,8 @@ goog.provide('ajax.formats');
  * is nonetheless really rather useful.
  */
 ajax.formats.raw_response_format = (function ajax$formats$raw_response_format(var_args){
-var G__38293 = arguments.length;
-switch (G__38293) {
+var G__38290 = arguments.length;
+switch (G__38290) {
 case 0:
 return ajax.formats.raw_response_format.cljs$core$IFn$_invoke$arity$0();
 
@@ -37,8 +37,8 @@ return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"wr
 });
 ajax.formats.text_response_format = ajax.formats.raw_response_format;
 ajax.formats.get_format = (function ajax$formats$get_format(var_args){
-var G__38300 = arguments.length;
-switch (G__38300) {
+var G__38304 = arguments.length;
+switch (G__38304) {
 case 2:
 return ajax.formats.get_format.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -164,8 +164,8 @@ return ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(accept,"*/*")) || ((conten
 (ajax.formats.content_type_matches.cljs$lang$maxFixedArity = 2);
 
 ajax.formats.detect_content_type = (function ajax$formats$detect_content_type(var_args){
-var G__38313 = arguments.length;
-switch (G__38313) {
+var G__38312 = arguments.length;
+switch (G__38312) {
 case 3:
 return ajax.formats.detect_content_type.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 

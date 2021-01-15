@@ -7,10 +7,10 @@ return key;
 }
 });
 ajax.url.value_encode = encodeURIComponent;
-ajax.url.key_value_pair_to_str = (function ajax$url$key_value_pair_to_str(p__38131){
-var vec__38132 = p__38131;
-var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38132,(0),null);
-var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38132,(1),null);
+ajax.url.key_value_pair_to_str = (function ajax$url$key_value_pair_to_str(p__38132){
+var vec__38133 = p__38132;
+var k = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38133,(0),null);
+var v = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38133,(1),null);
 return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(ajax.url.key_encode(k)),"=",cljs.core.str.cljs$core$IFn$_invoke$arity$1((ajax.url.value_encode.cljs$core$IFn$_invoke$arity$1 ? ajax.url.value_encode.cljs$core$IFn$_invoke$arity$1(v) : ajax.url.value_encode.call(null,v)))].join('');
 });
 ajax.url.vec_key_transform_fn = (function ajax$url$vec_key_transform_fn(var_args){

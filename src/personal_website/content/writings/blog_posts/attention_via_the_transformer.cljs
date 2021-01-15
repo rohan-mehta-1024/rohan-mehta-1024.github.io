@@ -11,10 +11,10 @@
 (def post-content
   [:div
    [:p "The transformer — a neural net architecture proposed in "
-        (utils/link "Vsawani et. al., 2017" "https://arxiv.org/pdf/1706.03762.pdf")
+        (utils/link "Vsawani et. al., 2017" "https://arxiv.org/abs/1706.03762")
        " – has taken the NLP world by storm in the past few years, contributing
         to the recent success of "
-       (utils/link "OpenAI’s GPT-3" "https://arxiv.org/pdf/2005.14165.pdf")
+       (utils/link "OpenAI’s GPT-3" "https://arxiv.org/abs/2005.14165")
        " model among many others. While there is an abundance of online
        material (see further reading) describing the transformer architecture though,
        a crucial idea present in the original paper – the key, query, and value
@@ -24,10 +24,14 @@
        so powerful."]
 
    [:p "Beyond that, though, I also want to take a look at how
-        beautifully connects so many ideas in deep learning,
-        and how we'll use it in the future. Is attention more
-        powerful that convolutions? Recurrence? Any indutive bias
-      we can think of Elucdiating the mechanisms inner workings will allow us to have such convs"]
+        deeply embedded the idea of attention seems to be in the field,
+        and its significance beyond the sub-field of natural language processing.
+        Will it overtake convolutions? Is recurrence still useful?
+        Are transformers a sign that inductive biases always fall
+        to a more general architectures with enough compute?
+        An intuitive understanding of the mechanics behind attention
+        will let us ponder these – and many more – interesting questions
+        in greater detail, so let's begin!"]
 
 
   ; [:p "Before we lay out this idea from the bottom-up however,
@@ -59,32 +63,33 @@
         self-attention mathematically, it's worth clarifying what exactly
         " [:q "self-attention"] " means. Just like a standard layer of neurons,
         the self-attention operation is some parameterized, differentiable function we can
-        include in our neural nets. Unlike these layers,
-        it works on sets of elements (instead of vectors), and learns some
+        include in our neural nets. Unlike these layers though,
+        it works on sets of elements (not vectors), and learns some
         function to linearly combine each element with all the others."]
 
     [:p "In other words, it selectively incoporates the "[:q "information"] "
          of all other elements into the current element, providing the network with some
-         contextual information about the set as a whole. Intuitively, we can think of this
-         process as the network learning to focus some its attention on elements other than
-         the one it currently processing, hence it's name."]
+         contextual information about the set as a whole. Intuitively, this means that
+         the network is learning to focus some of its attention on elements other than
+         the one it is currently processing, hence the operation's name."]
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
       [:img {:src "/self_attention_1.png" :class "post-img" :style {:width "75%"}}]]
       [:figcaption {:class "post-caption"}
-      "Fig. 1. An example of self-attention. The word being processed (in red)
-      learns to attend to other words in the sentence (in blue) and incorporate
+      "Fig. 1. An example of self-attention. The word being processed (red)
+      learns to attend to other words (blue) and incorporates
       their " [:q "information"] " in differing amounts (Source: "
       (utils/link "Cheng et al., 2016" "https://arxiv.org/pdf/1601.06733.pdf") ")."]]
 
-  [:p "This approach has proven to be especially useful for language
+  [:p "In particular, this approach has proven to be especially useful for language
       tasks, as it allows the mapping of informational dependencies
       across the entire input, whereas conventional approaches such
       as RNNs (and their more complex cousins, LSTMs and GRUs) degrade
       the further spread out those dependencies are."]
+
    [:p "Self-attention on
-      the other hand allows any element of the input to attend to any
+      the other hand allows any element of the input to directly attend to any
       other element, making it much easier for models to build up more
       robust representations of the text they are fed, even when that
       text is especially long or complex."]
@@ -96,11 +101,11 @@
     [:figcaption {:class "post-caption"}
      "Fig. 2. Top: RNNs have to compress their entire input text
      into a single vector; only parts of each word's representation
-     are con directly access any other words' entire representation
+     are conserved; directly access any other words' entire representation
      (Source: " (utils/link "Vsawni. et al., 2017" "https://arxiv.org/pdf/1706.03762.pdf") ")."]]
 
 
-   [:p "While it has proved incredibly helpful to the NLP field though,
+   [:p "While it has proved incredibly helpful to the NLP field,
         the concept of self-attention (and more broadly, attention in
         general) is not exclusive to language-based tasks. That said,
         the transformer – and even the idea of attention itself – was
@@ -113,9 +118,7 @@
    [:h1 {:class "post-section-header"} "Learnable Representations" ]
 
    [:p "So how might we go about implementing self-attention for some language
-        task? A key part of the attentional paradigm is being able to selectively
-        incorporate information from other sources – in the case of self-attention specifically,
-        from other elements of the input."]
+        task? Well I've been usinf the term information somewhat flippantly."]
 
    [:p "For us, this equates to words.
         But whereas the constituent units of other types of data (e.g.,

@@ -110,14 +110,14 @@ if(cljs.core.truth_(clerk.core.browser_supports_manual_restoration_QMARK_)){
 return (history.scrollRestoration = "manual");
 } else {
 return goog.events.listen(window,goog.events.EventType.POPSTATE,(function (event){
-var temp__5733__auto___39970 = event.state;
-if(cljs.core.truth_(temp__5733__auto___39970)){
-var state_39971 = temp__5733__auto___39970;
-var temp__5735__auto___39972 = (state_39971["scroll-top"]);
-if(cljs.core.truth_(temp__5735__auto___39972)){
-var scroll_top_39973 = temp__5735__auto___39972;
+var temp__5733__auto___39974 = event.state;
+if(cljs.core.truth_(temp__5733__auto___39974)){
+var state_39975 = temp__5733__auto___39974;
+var temp__5735__auto___39976 = (state_39975["scroll-top"]);
+if(cljs.core.truth_(temp__5735__auto___39976)){
+var scroll_top_39977 = temp__5735__auto___39976;
 goog.events.listenOnce(window,goog.events.EventType.SCROLL,(function (){
-scrollTo((0),scroll_top_39973);
+scrollTo((0),scroll_top_39977);
 
 return null;
 }));
@@ -136,9 +136,9 @@ return null;
  */
 clerk.core.install_scroll_saver = (function clerk$core$install_scroll_saver(){
 return goog.events.listen(window,goog.events.EventType.SCROLL,clerk.core.debounce.cljs$core$IFn$_invoke$arity$2((function (event){
-var scroll_top_39974 = clerk.core.get_scroll_top();
-var state_39975 = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"scroll-top","scroll-top",-46723100),scroll_top_39974], null);
-history.replaceState(cljs.core.clj__GT_js(state_39975),document.title);
+var scroll_top_39979 = clerk.core.get_scroll_top();
+var state_39980 = new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"scroll-top","scroll-top",-46723100),scroll_top_39979], null);
+history.replaceState(cljs.core.clj__GT_js(state_39980),document.title);
 
 return null;
 }),(200)));
@@ -169,14 +169,14 @@ return null;
  */
 clerk.core.navigate_page_BANG_ = (function clerk$core$navigate_page_BANG_(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___39976 = arguments.length;
-var i__4737__auto___39977 = (0);
+var len__4736__auto___39981 = arguments.length;
+var i__4737__auto___39982 = (0);
 while(true){
-if((i__4737__auto___39977 < len__4736__auto___39976)){
-args__4742__auto__.push((arguments[i__4737__auto___39977]));
+if((i__4737__auto___39982 < len__4736__auto___39981)){
+args__4742__auto__.push((arguments[i__4737__auto___39982]));
 
-var G__39978 = (i__4737__auto___39977 + (1));
-i__4737__auto___39977 = G__39978;
+var G__39983 = (i__4737__auto___39982 + (1));
+i__4737__auto___39982 = G__39983;
 continue;
 } else {
 }
@@ -187,9 +187,9 @@ var argseq__4743__auto__ = ((((1) < args__4742__auto__.length))?(new cljs.core.I
 return clerk.core.navigate_page_BANG_.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__4743__auto__);
 });
 
-(clerk.core.navigate_page_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (url,p__39957){
-var vec__39958 = p__39957;
-var top_element_id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__39958,(0),null);
+(clerk.core.navigate_page_BANG_.cljs$core$IFn$_invoke$arity$variadic = (function (url,p__39959){
+var vec__39960 = p__39959;
+var top_element_id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__39960,(0),null);
 if(typeof url === 'string'){
 } else {
 throw (new Error("Assert failed: (string? url)"));
@@ -229,11 +229,11 @@ return clerk.core.scroll_to((y - y_translation));
 (clerk.core.navigate_page_BANG_.cljs$lang$maxFixedArity = (1));
 
 /** @this {Function} */
-(clerk.core.navigate_page_BANG_.cljs$lang$applyTo = (function (seq39955){
-var G__39956 = cljs.core.first(seq39955);
-var seq39955__$1 = cljs.core.next(seq39955);
+(clerk.core.navigate_page_BANG_.cljs$lang$applyTo = (function (seq39957){
+var G__39958 = cljs.core.first(seq39957);
+var seq39957__$1 = cljs.core.next(seq39957);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__39956,seq39955__$1);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__39958,seq39957__$1);
 }));
 
 /**

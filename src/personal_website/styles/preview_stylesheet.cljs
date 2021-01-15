@@ -31,7 +31,8 @@
                    :line-height (px 25)
                    :margin-top (px 15)
                    :font-weight "500"
-                   :font-family "WorkSans"}])
+                   :font-family "WorkSans"
+                   :margin-right "10%"}])
 
 (defn media-query-1 []
   (at-media {:max-width (px 400)}
