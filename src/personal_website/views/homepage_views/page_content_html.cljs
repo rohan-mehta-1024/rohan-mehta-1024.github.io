@@ -68,4 +68,6 @@
         [:img {:src "/resources/me.jpg" :id "picture"}]
         ;[:div {:id "picture"}]
         [:span {:id "about-me"} about-me-text]]
-   (recents)])
+   (recents)
+   [:script {:defer true :src "https://cdn.commento.io/js/commento.js" }]
+   [:div {:id "commento"}]])
