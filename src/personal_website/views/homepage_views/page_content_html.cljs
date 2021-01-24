@@ -38,7 +38,7 @@
 
 
         "This webpage is an outlet for me
-        to share the projects I've worked
+        to share projects I've worked
         on in these areas, things in math
         and the sciences "
         (color-text "I find beautiful and interesting" "/blog-posts/all#subpage-container-1")

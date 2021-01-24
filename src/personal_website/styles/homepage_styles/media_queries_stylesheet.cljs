@@ -15,7 +15,9 @@
                   :margin-top (px 40)
                   :margin-left (px 30)}]
      [:#recents {:width "100%" :margin-right "100px"}]
-     [:.preview-text {:width "90%"}]]))
+     ;[:.preview-text {:width "90%"}]
+     ]))
+
 
 (defn media-queries []
   [(media-query-1)])

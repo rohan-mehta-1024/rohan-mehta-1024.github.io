@@ -16,7 +16,7 @@
           with GATs (graph attention nets) on superpixel graphs for image classification.
           Pytorch Lightning and the Deep Graph Library made it a breeze.
           Here's what happened."
-   :tags ["Deep Learning", "Computer Vision", "Graph Neural Nets"]
+   :tags ["Deep Learning", "GNNs"]
    :type "computer-science"
    :overarching "project"
    :id "0"})

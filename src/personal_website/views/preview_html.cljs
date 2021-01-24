@@ -11,6 +11,10 @@
   (->> tags (map (fn [x] (clojure.string/split x " ")))
             (map (comp (partial clojure.string/join " ")
                        (partial map clojure.string/capitalize)))
+            (map (fn [x] (if
+                           (contains? utils/special-words x)
+                           (utils/special-words x)
+                           x)))
             flatten
             (interpose ", ")
             clojure.string/join))

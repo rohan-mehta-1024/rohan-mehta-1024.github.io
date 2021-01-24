@@ -7,7 +7,7 @@
 
 (def special-words
   {"Mnist" "MNIST"
-   "Reaction-diffusion" "Reaction-Diffusion"})
+   "Gnns" "GNNs"})
 
 (defn scroll-to-top []
  (let [obj (.getElementById js/document "top")

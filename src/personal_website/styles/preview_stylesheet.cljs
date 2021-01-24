@@ -20,6 +20,7 @@
                     :width "auto"
                     :display "inline-block"
                     :font-family "WorkSans"
+
                     }
    [(s/& s/hover) {:color "black"
                    :cursor "pointer"
@@ -29,10 +30,12 @@
   [:.preview-text {:font-size (px 16)
                    :display "block"
                    :line-height (px 25)
-                   :margin-top (px 15)
+                  ; :margin-top (px 15)
                    :font-weight "500"
                    :font-family "WorkSans"
-                   :margin-right "10%"}])
+                   ;:margin-right "15%"
+                   }])
+
 
 (defn media-query-1 []
   (at-media {:max-width (px 400)}
@@ -40,14 +43,27 @@
                          :margin-top (px 9)
                          :font-family "WorkSans"}]
        [:.preview-text {;:line-height (px 20)
-                        :font-size (px 15)
-                        :margin-top (px 8)
+                        ;:font-size (px 15)
+                        ;:margin-top (px 8)
+                        ;:background-color "blue"
+                        :width "100%"
+                        :margin-right "!0%"
                         }]
        [:.preview-header {:font-size (px 13)
                           :margin-bottom (px 0)}]]))
+
+
+(defn media-query-2 []
+  (at-media {:max-width (px 720)}
+      [[:.preview-text {:margin-right "0%"}]]))
+
+
 
 (defn preview []
   [(preview-header)
    (preview-title)
    (preview-text)
-   (media-query-1)])
+   (media-query-1)
+   (media-query-2)
+
+   ])

@@ -40,6 +40,7 @@
       [:.lines {:width (px 35) :height (px 2)}
         [(s/& (s/nth-child :1)) (if clicked? {:transform "translateY(12px) rotate(45deg)"} {})]
         [(s/& (s/nth-child :3)) (if clicked? {:transform "translateY(-12px) rotate(-45deg)"} {})]]
+    [:#side-nav-container-1 {:margin-top (px 125)}]
      ])))
 
 (defn media-queries []
