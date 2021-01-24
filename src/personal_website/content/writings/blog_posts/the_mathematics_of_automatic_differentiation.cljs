@@ -18,11 +18,10 @@
         nets to learn! But it is really only one of the many applications
         of an even broader numerical computing technique known as automatic differentiation."]
 
-   [:p "Its contribution to neural nets is perhaps its most popularized use today,
+   [:p "Automatic differentiation's contribution to neural nets is perhaps its most popularized use today,
         but the idea has a long history, and its story is ongoing. In its modern
         day incarnation, it draws on a broad swath of mathematical
-        knowledge and is
-        a beautiful amalgamation of many different ideas. While
+        knowledge and is a beautiful amalgamation of many ideas. While
         our discussion of the technique will be phrased in terms of its utility to
         neural nets, the ideas underpinning it are far more applicable,
         illustrating some deeper truths about calculus, dynamic programming, and the
@@ -30,7 +29,11 @@
 
    [:p " What follows is a concise review of
    multivariable calculus, before we delve into some more complex math.
-   If you don't need it, skip ahead. Otherwise, read on!"]
+   Regardless of your skill level, it may help to codify (or at least revisit)
+   the basic intuitions behind the classical conception of the derivative,
+   because we will need these foundations to build up to some more involved ideas.
+   Of course, if you'd like to get right into things, you're welcome
+   " [:span {:class "post-links" :on-click (fn [] (utils/scroll-to-this "scroll"))} "skip ahead"] ". That said, let's begin!"]
 
    [:h1 {:class "post-section-header"} "Learning To Differentiate"]
 
@@ -201,7 +204,7 @@
 
 
 
-   [:h1 {:class "post-section-header"} "Gradient Descent"]
+   [:h1 {:class "post-section-header" :id "scroll"} "Gradient Descent"]
 
    [:p "We've now gone through all the basics necessary
         to consider how we might optimize neural nets,
@@ -1154,7 +1157,7 @@
 
  "$$\\begin{aligned}
     \\lim_{h\\to 0} \\frac{f(x+h, y) - f(x, y)}{h}\\hspace{1cm}
-    &\\textrm{(Definition of the derivative of } f(x,y) = x^2 + y^2 \\hspace{0.1cm}\\textrm{ w.r.t to } x)
+    &\\text{(Definition of the derivative of } f(x,y) = x^2 + y^2 \\hspace{0.1cm}\\text{ w.r.t to } x)
     \\\\ \\\\ \\lim_{h\\to 0} \\frac{(x+h)^2 + y^2 - (x^2 + y^2)}{h}\\hspace{1cm}
     &\\textrm{(Simplification)}
     \\\\ \\\\ \\lim_{h\\to 0} \\frac{(x+h)^2 - x^2}{h}\\hspace{1cm}

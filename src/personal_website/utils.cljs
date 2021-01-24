@@ -6,7 +6,8 @@
        :target "_blank"} text])
 
 (def special-words
-  {"Mnist" "MNIST"})
+  {"Mnist" "MNIST"
+   "Reaction-diffusion" "Reaction-Diffusion"})
 
 (defn scroll-to-top []
  (let [obj (.getElementById js/document "top")

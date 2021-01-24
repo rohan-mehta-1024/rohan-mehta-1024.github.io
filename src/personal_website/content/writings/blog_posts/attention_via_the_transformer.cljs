@@ -25,10 +25,10 @@
 
    [:p "Beyond that, though, I also want to take a look at how
         deeply embedded the idea of attention seems to be in the field,
-        and its significance beyond the sub-field of natural language processing.
+        and its significance beyond natural language processing.
         Will it overtake convolutions? Is recurrence still useful?
-        Are transformers a sign that inductive biases always fall
-        to a more general architectures with enough compute?
+        Are transformers a sign that inductive biases can't compete
+        with more generic models with enough compute?
         An intuitive understanding of the mechanics behind attention
         will let us ponder these – and many more – interesting questions
         in greater detail, so let's begin!"]
@@ -68,10 +68,10 @@
         function to linearly combine each element with all the others."]
 
     [:p "In other words, it selectively incoporates the "[:q "information"] "
-         of all other elements into the current element, providing the network with some
-         contextual information about the set as a whole. Intuitively, this means that
-         the network is learning to focus some of its attention on elements other than
-         the one it is currently processing, hence the operation's name."]
+         of all other elements into the current element, embedding some contextual
+         information about the set as a whole into each element. The intuitive explanation
+         here is that the network is learning to focus some of its "[:q "attention"] "
+         on elements other the one it's currently processing, hence the operations' name."]
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
@@ -82,11 +82,7 @@
       their " [:q "information"] " in differing amounts (Source: "
       (utils/link "Cheng et al., 2016" "https://arxiv.org/pdf/1601.06733.pdf") ")."]]
 
-  [:p "In particular, this approach has proven to be especially useful for language
-      tasks, as it allows the mapping of informational dependencies
-      across the entire input, whereas conventional approaches such
-      as RNNs (and their more complex cousins, LSTMs and GRUs) degrade
-      the further spread out those dependencies are."]
+  [:p "And this turns out to be incredibly helpful, where context ca "]
 
    [:p "Self-attention on
       the other hand allows any element of the input to directly attend to any

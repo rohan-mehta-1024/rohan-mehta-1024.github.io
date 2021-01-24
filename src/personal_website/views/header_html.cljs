@@ -14,9 +14,9 @@
      "placeholder"
      "placeholder"]]
    ["Projects"
-    ["Synthetic Biology"
+    ["Entrepreneurial"
+     "Synthetic Biology"
      "Computer Science"
-     "placeholder"
      "placeholder"
      "placeholder"
      "placeholder"]]

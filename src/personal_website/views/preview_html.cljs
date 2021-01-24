@@ -41,4 +41,4 @@
                          :else (str "/#/" type "s" "/"  (utils/format-title title)))
              :on-click utils/scroll-to-top}
          title]
-        [:em {:class "preview-text"} (if homepage? show "")]]))
+        [:p {:class "preview-text"} (if homepage? show "")]]))
