@@ -28,8 +28,8 @@
      "Blog Posts"
      "placeholder"]]
    ["Readings"
-    ["Books"
-     "Articles & Essays"
+    ["Fiction"
+     "Non-Fiction"
      "placeholder"
      "placeholder"
      "placeholder"
