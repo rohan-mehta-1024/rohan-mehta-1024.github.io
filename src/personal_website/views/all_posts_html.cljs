@@ -113,10 +113,7 @@
                 (conj prefix $)
                 (conj $ (footer))))
 
-        (let [q (print (params :id))
-              s (print (keys posts))
-              l (print (utils/unformat-title (params :id)))
-              post-title ((posts (utils/unformat-title (params :id))) :title)
+        (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
               cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
           (as-> posts $
@@ -129,5 +126,5 @@
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
                 (conj $ [:script {:src "https://cdn.commento.io/js/commento.js" :defer true}])
-                (conj $ [:div {:id "commento"}])
+                (conj $ [:div {:id "commento"} "helllloooooo"])
                 (conj $ (footer))))))))
