@@ -1,9 +1,9 @@
 goog.provide('kee_frame.scroll');
-re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("kee-frame.scroll","connection-balance","kee-frame.scroll/connection-balance",2106148751),(function (db,p__40002){
-var vec__40003 = p__40002;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40003,(0),null);
-var route = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40003,(1),null);
-var inc_or_dec = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40003,(2),null);
+re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("kee-frame.scroll","connection-balance","kee-frame.scroll/connection-balance",2106148751),(function (db,p__40008){
+var vec__40009 = p__40008;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40009,(0),null);
+var route = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40009,(1),null);
+var inc_or_dec = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40009,(2),null);
 return cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(cljs.core.assoc_in(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"route-counter","route-counter",-2049314649),new cljs.core.Keyword(null,"route","route",329891309)], null),route),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"route-counter","route-counter",-2049314649),new cljs.core.Keyword(null,"balance","balance",418967409)], null),inc_or_dec);
 }));
 kee_frame.scroll.start_BANG_ = (function kee_frame$scroll$start_BANG_(){
@@ -13,9 +13,9 @@ kee_frame.scroll.monitor_requests_BANG_ = (function kee_frame$scroll$monitor_req
 clerk.core.navigate_page_BANG_(new cljs.core.Keyword(null,"path","path",-188191168).cljs$core$IFn$_invoke$arity$1(route));
 
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$2(ajax.core.default_interceptors,(function (interceptors){
-return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__40011_SHARP_){
-return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2("route-interceptor",new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(p1__40011_SHARP_));
-}),interceptors),(function (){var G__40014 = new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"name","name",1843675177),"route-interceptor",new cljs.core.Keyword(null,"request","request",1772954723),(function (request){
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__40012_SHARP_){
+return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2("route-interceptor",new cljs.core.Keyword(null,"name","name",1843675177).cljs$core$IFn$_invoke$arity$1(p1__40012_SHARP_));
+}),interceptors),(function (){var G__40013 = new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"name","name",1843675177),"route-interceptor",new cljs.core.Keyword(null,"request","request",1772954723),(function (request){
 re_frame.core.dispatch(new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("kee-frame.scroll","connection-balance","kee-frame.scroll/connection-balance",2106148751),route,cljs.core.inc], null));
 
 return request;
@@ -24,7 +24,7 @@ re_frame.core.dispatch(new cljs.core.PersistentVector(null, 3, 5, cljs.core.Pers
 
 return response;
 })], null);
-return (ajax.core.to_interceptor.cljs$core$IFn$_invoke$arity$1 ? ajax.core.to_interceptor.cljs$core$IFn$_invoke$arity$1(G__40014) : ajax.core.to_interceptor.call(null,G__40014));
+return (ajax.core.to_interceptor.cljs$core$IFn$_invoke$arity$1 ? ajax.core.to_interceptor.cljs$core$IFn$_invoke$arity$1(G__40013) : ajax.core.to_interceptor.call(null,G__40013));
 })());
 }));
 });
@@ -33,18 +33,18 @@ reagent.core.after_render(clerk.core.after_render_BANG_);
 
 return null;
 }));
-re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("kee-frame.scroll","poll","kee-frame.scroll/poll",-1227808225),(function (p__40022,p__40023){
-var map__40024 = p__40022;
-var map__40024__$1 = (((((!((map__40024 == null))))?(((((map__40024.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__40024.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__40024):map__40024);
-var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__40024__$1,new cljs.core.Keyword(null,"db","db",993250759));
-var vec__40025 = p__40023;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40025,(0),null);
-var active_route = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40025,(1),null);
-var counter = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40025,(2),null);
-var map__40029 = new cljs.core.Keyword(null,"route-counter","route-counter",-2049314649).cljs$core$IFn$_invoke$arity$1(db);
-var map__40029__$1 = (((((!((map__40029 == null))))?(((((map__40029.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__40029.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__40029):map__40029);
-var route = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__40029__$1,new cljs.core.Keyword(null,"route","route",329891309));
-var balance = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__40029__$1,new cljs.core.Keyword(null,"balance","balance",418967409));
+re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("kee-frame.scroll","poll","kee-frame.scroll/poll",-1227808225),(function (p__40014,p__40015){
+var map__40016 = p__40014;
+var map__40016__$1 = (((((!((map__40016 == null))))?(((((map__40016.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__40016.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__40016):map__40016);
+var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__40016__$1,new cljs.core.Keyword(null,"db","db",993250759));
+var vec__40017 = p__40015;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40017,(0),null);
+var active_route = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40017,(1),null);
+var counter = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__40017,(2),null);
+var map__40023 = new cljs.core.Keyword(null,"route-counter","route-counter",-2049314649).cljs$core$IFn$_invoke$arity$1(db);
+var map__40023__$1 = (((((!((map__40023 == null))))?(((((map__40023.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__40023.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__40023):map__40023);
+var route = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__40023__$1,new cljs.core.Keyword(null,"route","route",329891309));
+var balance = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__40023__$1,new cljs.core.Keyword(null,"balance","balance",418967409));
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(route,active_route)){
 if((!((balance > (0))))){
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"dispatch","dispatch",1319337009),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("kee-frame.scroll","scroll","kee-frame.scroll/scroll",-1666611933)], null)], null);
