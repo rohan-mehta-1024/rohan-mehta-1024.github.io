@@ -111,6 +111,7 @@
           (as-> (vals posts) $
                 (list-posts $)
                 (conj prefix $)
+                (conj $ [:div {:id "commento"}])
                 (conj $ (footer))))
 
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
