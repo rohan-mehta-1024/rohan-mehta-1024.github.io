@@ -36,5 +36,5 @@
         (conj (header))
         (conj (search-html))
         (conj (page-content))
-        (conj [:div {:id "commento"}])
+        ;(conj [:div {:id "commento"}])
         (conj (footer)))))
