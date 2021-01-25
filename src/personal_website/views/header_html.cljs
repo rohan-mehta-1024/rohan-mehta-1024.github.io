@@ -150,6 +150,7 @@
    [:h1 {:id "my-name"}
     [:a {:href "/"
          :on-click close-search} "Rohan Mehta"]]
+   [:div {:id "commento"}]
    (subpages)
    (side-nav)
    (hamburger-button)])
