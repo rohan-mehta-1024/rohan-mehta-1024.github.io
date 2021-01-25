@@ -86,7 +86,8 @@
 
 
 (defn reload []
-  (print "testing testing"))
+  (print "testing testing")
+  (.write js/document "<script defer src='https://cdn.commento.io/js/commento.js'></script>"))
 
 ;function reload_js(src) {
 ;$('script[src="' + src + '"]').remove();
@@ -125,7 +126,8 @@
 
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
-              cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
+              cssify (-> :id params utils/unformat-title posts :css css update-page-css)
+              reload (reload)]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
