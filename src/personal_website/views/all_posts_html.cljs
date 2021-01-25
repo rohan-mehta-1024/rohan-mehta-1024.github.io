@@ -116,7 +116,8 @@
 
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
-              cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
+              cssify (-> :id params utils/unformat-title posts :css css update-page-css)
+              reload (reload_js "https://cdn.commento.io/js/commento.js")]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
