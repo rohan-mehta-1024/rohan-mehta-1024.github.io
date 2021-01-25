@@ -85,6 +85,15 @@
          (conj [:div {:id "post-container-1"}]))))
 
 
+(defn reload []
+  (print "testing testing"))
+
+;function reload_js(src) {
+;$('script[src="' + src + '"]').remove();
+;console.log("testing testing")
+;$('<script defer>').attr('src', src).appendTo('body');
+;}
+
 
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
@@ -116,10 +125,7 @@
 
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
-              cssify (-> :id params utils/unformat-title posts :css css update-page-css)
-              reload (js/reload_js "https://cdn.commento.io/js/commento.js")
-
-              ]
+              cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
