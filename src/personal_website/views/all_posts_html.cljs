@@ -137,6 +137,5 @@
                   [:blockquote {:id "post-intro-text"} ($ :show)]]
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
-                (conj $ [:script {:defer true :src "https://cdn.commento.io/js/commento.js"}])
-                (conj $ [:div {:id "commento"}])
+                (conj $ [:div {:id "disqus_thread"}])
                 (conj $ (footer))))))))
