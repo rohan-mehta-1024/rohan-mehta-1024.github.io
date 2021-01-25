@@ -30,6 +30,7 @@
     <script>
     function reload_js(src) {
         $('script[src="' + src + '"]').remove();
+        console.log("testing testing")
         $('<script defer>').attr('src', src).appendTo('body');
     }
     reload_js('https://cdn.commento.io/js/commento.js');
