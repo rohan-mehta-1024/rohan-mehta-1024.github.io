@@ -29,8 +29,8 @@
     <script src="https://cdn.commento.io/js/commento.js"></script>
     <script>
     function reload_js(src) {
-        
-        $('<script>').attr('src', src).appendTo('body');
+        $('script[src="' + src + '"]').remove();
+        $('<script defer>').attr('src', src).appendTo('body');
     }
     reload_js('https://cdn.commento.io/js/commento.js');
 </script>
