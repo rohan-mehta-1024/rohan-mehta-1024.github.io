@@ -125,5 +125,5 @@
                   [:blockquote {:id "post-intro-text"} ($ :show)]]
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
-                (conj $ [:div {:id "commento"}])
+                (conj $ [:div  {:id "commento"}])
                 (conj $ (footer))))))))
