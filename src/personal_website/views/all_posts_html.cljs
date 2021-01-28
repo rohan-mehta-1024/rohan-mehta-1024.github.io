@@ -88,9 +88,9 @@
 
 (defn load-disqus []
   (let [script (.createElement js/document "script")
-        ]
+         x (print js/document.head)]
     (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
-    (.setAttribute script "defer" true)
+    ;(.setAttribute script "defer" true)
     (js/document.head.appendChild script)
         ))
 
