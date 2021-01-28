@@ -88,10 +88,10 @@
 
 (defn load-disqus []
   (let [script (.createElement js/document "script")
-         x (print js/document.head)]
+         head (.getElementById js/document "head")]
     (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
     ;(.setAttribute script "defer" true)
-    (js/document.head.appendChild script)
+    (.appendChild head script)
         ))
 
 (defn display [route-data]
