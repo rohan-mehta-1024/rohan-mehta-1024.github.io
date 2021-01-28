@@ -85,6 +85,14 @@
          (conj [:div {:id "post-container-1"}]))))
 
 
+(defn load-disqus []
+  (let [el (.createElement js/document "script")
+        set-src (.setAttribute el "src" "https://EXAMPLE.disqus.com/embed.js")
+        body (.getElementById js/document "body")])
+  (print "testing" el)
+  (.appendChild body el))
+
+
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
         params (-> route-data :path-params)
@@ -115,7 +123,8 @@
 
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
-              cssify (-> :id params utils/unformat-title posts :css css update-page-css)]
+              cssify (-> :id params utils/unformat-title posts :css css update-page-css)
+              x (load-)]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
