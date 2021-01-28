@@ -91,7 +91,7 @@
          head (.getElementById js/document "head")]
     (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
     ;(.setAttribute script "defer" true)
-    (.appendChild head script)
+    (js/document.head.appendChild script)
         ))
 
 (defn display [route-data]
