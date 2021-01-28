@@ -85,14 +85,16 @@
          (conj [:div {:id "post-container-1"}]))))
 
 
+         (defn load-disqus []
+           (let [script (.createElement js/document "script")
+                  head (.getElementById js/document "head")
+                ]
+             (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
+             ;(.setAttribute script "defer" true)
+             (print "hello" head)
+             (.appendChild (. js/document -head) script)
+                 ))
 
-(defn load-disqus []
-  (let [script (.createElement js/document "script")
-         head (.getElementById js/document "head")]
-    (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
-    ;(.setAttribute script "defer" true)
-    (js/document.head.appendChild script)
-        ))
 
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)

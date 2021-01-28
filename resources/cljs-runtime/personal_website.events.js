@@ -20,22 +20,22 @@ var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43251,(0),null);
 var keyword = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43251,(1),null);
 return cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(db,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"homepage","homepage",-1646828249),new cljs.core.Keyword(null,"side-nav-arrow","side-nav-arrow",-1763292330),keyword], null),cljs.core.not);
 }));
-re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("homepage","search","homepage/search",951395840),(function (db,p__43254){
-var vec__43255 = p__43254;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43255,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43255,(1),null);
+re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("homepage","search","homepage/search",951395840),(function (db,p__43255){
+var vec__43256 = p__43255;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43256,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43256,(1),null);
 return cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"homepage","homepage",-1646828249),new cljs.core.Keyword(null,"search","search",1564939822)], null),cljs.core.not);
 }));
-re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("homepage","search-term","homepage/search-term",-1305942950),(function (db,p__43260){
-var vec__43261 = p__43260;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43261,(0),null);
-var new_val = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43261,(1),null);
+re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("homepage","search-term","homepage/search-term",-1305942950),(function (db,p__43259){
+var vec__43260 = p__43259;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43260,(0),null);
+var new_val = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43260,(1),null);
 return cljs.core.assoc_in(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"homepage","homepage",-1646828249),new cljs.core.Keyword(null,"search-term","search-term",356193544)], null),new_val);
 }));
-re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("homepage","reloading","homepage/reloading",372961106),(function (db,p__43267){
-var vec__43268 = p__43267;
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43268,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43268,(1),null);
+re_frame.core.reg_event_db.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("homepage","reloading","homepage/reloading",372961106),(function (db,p__43264){
+var vec__43265 = p__43264;
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43265,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__43265,(1),null);
 return cljs.core.update_in.cljs$core$IFn$_invoke$arity$3(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"homepage","homepage",-1646828249),new cljs.core.Keyword(null,"reloading","reloading",961158984)], null),cljs.core.not);
 }));
 
