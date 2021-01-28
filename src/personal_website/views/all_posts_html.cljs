@@ -85,13 +85,14 @@
          (conj [:div {:id "post-container-1"}]))))
 
 
-(defn load-disqus []
-  (let [el (.createElement js/document "script")
-        set-src (.setAttribute el "src" "https://EXAMPLE.disqus.com/embed.js")
-        body (.getElementById js/document "body")])
-  (print "testing" el)
-  (.appendChild body el))
 
+(defn load-disqus []
+  (let [script (.createElement js/document "script")
+        ]
+    (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
+    (.setAttribute script "defer" true)
+    (js/document.head.appendChild script)
+        ))
 
 (defn display [route-data]
   (let [posts (-> route-data :data :name get-posts)
@@ -124,7 +125,8 @@
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
               cssify (-> :id params utils/unformat-title posts :css css update-page-css)
-              x (load-disqus)]
+              script (load-disqus)
+              ]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
@@ -134,6 +136,5 @@
                   [:blockquote {:id "post-intro-text"} ($ :show)]]
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
-                (conj $ [:script {:src "https://EXAMPLE.disqus.com/embed.js"}])
-                (conj $ [:div {:id "disqus_thread"}])
+                (conj $ [:div {:id "commento"}])
                 (conj $ (footer))))))))
