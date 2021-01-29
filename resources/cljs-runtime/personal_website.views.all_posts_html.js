@@ -23,8 +23,8 @@ return (style_tag["innerHTML"] = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(pr
 personal_website.views.all_posts_html.date_mapping = cljs.core.PersistentHashMap.fromArrays(["9","3","4","8","7","5","12","6","1","11","2","10"],["Sep","Mar","Apr","Aug","Jul","May","Dec","Jun","Jan","Nov","Feb","Oct"]);
 personal_website.views.all_posts_html.format_date = (function personal_website$views$all_posts_html$format_date(date){
 var split_date = clojure.string.split.cljs$core$IFn$_invoke$arity$2(date,"/");
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__45421 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(split_date,(0));
-return (personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1 ? personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1(G__45421) : personal_website.views.all_posts_html.date_mapping.call(null,G__45421));
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1((function (){var G__45435 = cljs.core.get.cljs$core$IFn$_invoke$arity$2(split_date,(0));
+return (personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1 ? personal_website.views.all_posts_html.date_mapping.cljs$core$IFn$_invoke$arity$1(G__45435) : personal_website.views.all_posts_html.date_mapping.call(null,G__45435));
 })())," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1((split_date.cljs$core$IFn$_invoke$arity$1 ? split_date.cljs$core$IFn$_invoke$arity$1((1)) : split_date.call(null,(1)))),", ",cljs.core.str.cljs$core$IFn$_invoke$arity$1((split_date.cljs$core$IFn$_invoke$arity$1 ? split_date.cljs$core$IFn$_invoke$arity$1((2)) : split_date.call(null,(2))))," by Rohan Mehta"].join('');
 });
 personal_website.views.all_posts_html.get_posts = (function personal_website$views$all_posts_html$get_posts(post_type){
@@ -71,7 +71,7 @@ return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVect
 personal_website.views.all_posts_html.load_disqus = (function personal_website$views$all_posts_html$load_disqus(){
 var script = document.createElement("script");
 var head = document.getElementById("head");
-script.setAttribute("src","https://cdn.commento.io/js/commento.js");
+script.setAttribute("src","https://rohan-mehta-blog.disqus.com/embed.js");
 
 cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["hello",head], 0));
 
@@ -106,23 +106,23 @@ var $__$2 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(prefix,$__$1);
 var $__$3 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2($__$2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"commento"], null)], null));
 return cljs.core.conj.cljs$core$IFn$_invoke$arity$2($__$3,personal_website.views.footer_html.footer());
 } else {
-var post_title = (function (){var fexpr__45423 = (function (){var G__45424 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
-return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__45424) : posts.call(null,G__45424));
+var post_title = (function (){var fexpr__45437 = (function (){var G__45438 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
+return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__45438) : posts.call(null,G__45438));
 })();
-return (fexpr__45423.cljs$core$IFn$_invoke$arity$1 ? fexpr__45423.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title","title",636505583)) : fexpr__45423.call(null,new cljs.core.Keyword(null,"title","title",636505583)));
+return (fexpr__45437.cljs$core$IFn$_invoke$arity$1 ? fexpr__45437.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title","title",636505583)) : fexpr__45437.call(null,new cljs.core.Keyword(null,"title","title",636505583)));
 })();
 var page_title = personal_website.views.all_posts_html.update_page_title(post_title);
-var cssify = personal_website.views.all_posts_html.update_page_css(garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"css","css",1135045163).cljs$core$IFn$_invoke$arity$1((function (){var G__45425 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
-return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__45425) : posts.call(null,G__45425));
+var cssify = personal_website.views.all_posts_html.update_page_css(garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"css","css",1135045163).cljs$core$IFn$_invoke$arity$1((function (){var G__45439 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
+return (posts.cljs$core$IFn$_invoke$arity$1 ? posts.cljs$core$IFn$_invoke$arity$1(G__45439) : posts.call(null,G__45439));
 })())], 0)));
 var script = personal_website.views.all_posts_html.load_disqus();
 var $ = posts;
-var $__$1 = (function (){var G__45426 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
-return ($.cljs$core$IFn$_invoke$arity$1 ? $.cljs$core$IFn$_invoke$arity$1(G__45426) : $.call(null,G__45426));
+var $__$1 = (function (){var G__45440 = personal_website.utils.unformat_title((params.cljs$core$IFn$_invoke$arity$1 ? params.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"id","id",-1388402092)) : params.call(null,new cljs.core.Keyword(null,"id","id",-1388402092))));
+return ($.cljs$core$IFn$_invoke$arity$1 ? $.cljs$core$IFn$_invoke$arity$1(G__45440) : $.call(null,G__45440));
 })();
 var $__$2 = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-content-container"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h1","h1",-1896887462),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-title"], null),($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"title","title",636505583)) : $__$1.call(null,new cljs.core.Keyword(null,"title","title",636505583)))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h4","h4",2004862993),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-byline"], null),personal_website.views.all_posts_html.format_date(($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"date","date",-1463434462)) : $__$1.call(null,new cljs.core.Keyword(null,"date","date",-1463434462))))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-intro-container"], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"blockquote","blockquote",372264190),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-intro-text"], null),($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"show","show",-576705889)) : $__$1.call(null,new cljs.core.Keyword(null,"show","show",-576705889)))], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"post-content"], null),($__$1.cljs$core$IFn$_invoke$arity$1 ? $__$1.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"content","content",15833224)) : $__$1.call(null,new cljs.core.Keyword(null,"content","content",15833224)))], null)], null);
 var $__$3 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(prefix,$__$2);
-var $__$4 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2($__$3,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"commento"], null)], null));
+var $__$4 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2($__$3,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"id","id",-1388402092),"disqus_thread"], null)], null));
 return cljs.core.conj.cljs$core$IFn$_invoke$arity$2($__$4,personal_website.views.footer_html.footer());
 }
 }

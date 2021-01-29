@@ -89,7 +89,7 @@
            (let [script (.createElement js/document "script")
                   head (.getElementById js/document "head")
                 ]
-             (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
+             (.setAttribute script "src" "https://rohan-mehta-blog.disqus.com/embed.js")
              ;(.setAttribute script "defer" true)
              (print "hello" head)
              (.appendChild (. js/document -head) script)
@@ -138,5 +138,5 @@
                   [:blockquote {:id "post-intro-text"} ($ :show)]]
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
-                (conj $ [:div {:id "commento"}])
+                (conj $ [:div {:id "disqus_thread"}])
                 (conj $ (footer))))))))
