@@ -90,6 +90,7 @@
                   head (.getElementById js/document "head")
                 ]
              (.setAttribute script "src" "https://rohan-mehta-blog.disqus.com/embed.js")
+             ;(.setAttribute script "data-timestamp" js/Date)
              ;(.setAttribute script "defer" true)
              (print "hello" head)
              (.appendChild (. js/document -head) script)
