@@ -85,10 +85,11 @@
          (conj [:div {:id "post-container-1"}]))))
 
 
-         (defn load-disqus []
+         (defn commentbox []
            (let [script (.createElement js/document "script")
                   head (.getElementById js/document "head")]
              (js/commentBox "5711441948573696-proj")
+             (print "testing testing")
             ; (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
              ;(.setAttribute script "data-timestamp" js/Date)
              ;(.setAttribute script "defer" true)
@@ -128,7 +129,8 @@
         (let [post-title ((posts (utils/unformat-title (params :id))) :title)
               page-title (update-page-title post-title)
               cssify (-> :id params utils/unformat-title posts :css css update-page-css)
-              script (load-disqus)
+              comments (fn [] (js/setTimeout (fn [] (commentbox)) 1000))
+              comments (comments)
               ]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
