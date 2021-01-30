@@ -87,13 +87,13 @@
 
          (defn load-disqus []
            (let [script (.createElement js/document "script")
-                  head (.getElementById js/document "head")
-                ]
-             (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
+                  head (.getElementById js/document "head")]
+             (js/commentBox "5711441948573696-proj")
+            ; (.setAttribute script "src" "https://cdn.commento.io/js/commento.js")
              ;(.setAttribute script "data-timestamp" js/Date)
-             (.setAttribute script "defer" true)
-             (print "hello" head)
-             (.appendChild (. js/document -head) script)
+             ;(.setAttribute script "defer" true)
+             ;(print "hello" head)
+             ;(.appendChild (. js/document -head) script)
                  ))
 
 
@@ -139,5 +139,5 @@
                   [:blockquote {:id "post-intro-text"} ($ :show)]]
                  [:div {:id "post-content"} ($ :content)]]
                 (conj prefix $)
-                (conj $ [:div {:id "commento"}])
+                (conj $ [:div {:id "commentbox"}])
                 (conj $ (footer))))))))

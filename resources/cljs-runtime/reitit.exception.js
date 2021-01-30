@@ -1,7 +1,7 @@
 goog.provide('reitit.exception');
 reitit.exception.fail_BANG_ = (function reitit$exception$fail_BANG_(var_args){
-var G__41759 = arguments.length;
-switch (G__41759) {
+var G__41758 = arguments.length;
+switch (G__41758) {
 case 1:
 return reitit.exception.fail_BANG_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

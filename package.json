@@ -8,6 +8,7 @@
   "dependencies": {
     "lunr": "^2.3.9",
     "react": "^16.13.0",
-    "react-dom": "16.13.0"
+    "react-dom": "16.13.0",
+    "commentbox" : "2.0.0"
   }
 }

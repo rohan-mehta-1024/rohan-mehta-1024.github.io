@@ -139,10 +139,10 @@ var sb = (new goog.string.StringBuffer());
 var coll__$1 = cljs.core.seq(coll);
 while(true){
 if((!((coll__$1 == null)))){
-var G__27100 = sb.append(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.first(coll__$1)));
-var G__27101 = cljs.core.next(coll__$1);
-sb = G__27100;
-coll__$1 = G__27101;
+var G__27102 = sb.append(cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.first(coll__$1)));
+var G__27103 = cljs.core.next(coll__$1);
+sb = G__27102;
+coll__$1 = G__27103;
 continue;
 } else {
 return sb.toString();
@@ -201,8 +201,8 @@ clojure.string.pop_last_while_empty = (function clojure$string$pop_last_while_em
 var v__$1 = v;
 while(true){
 if(("" === cljs.core.peek(v__$1))){
-var G__27107 = cljs.core.pop(v__$1);
-v__$1 = G__27107;
+var G__27106 = cljs.core.pop(v__$1);
+v__$1 = G__27106;
 continue;
 } else {
 return v__$1;
@@ -271,12 +271,12 @@ return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(parts,s__$1);
 var m = cljs.core.re_find(re,s__$1);
 if((!((m == null)))){
 var index = s__$1.indexOf(m);
-var G__27118 = s__$1.substring((index + cljs.core.count(m)));
-var G__27119 = (limit__$1 - (1));
-var G__27120 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(parts,s__$1.substring((0),index));
-s__$1 = G__27118;
-limit__$1 = G__27119;
-parts = G__27120;
+var G__27113 = s__$1.substring((index + cljs.core.count(m)));
+var G__27114 = (limit__$1 - (1));
+var G__27115 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(parts,s__$1.substring((0),index));
+s__$1 = G__27113;
+limit__$1 = G__27114;
+parts = G__27115;
 continue;
 } else {
 return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(parts,s__$1);
@@ -325,8 +325,8 @@ return "";
 } else {
 var ch = cljs.core.get.cljs$core$IFn$_invoke$arity$2(s,(index - (1)));
 if(((("\n" === ch)) || (("\r" === ch)))){
-var G__27127 = (index - (1));
-index = G__27127;
+var G__27116 = (index - (1));
+index = G__27116;
 continue;
 } else {
 return s.substring((0),index);
@@ -364,8 +364,8 @@ buffer.append(cljs.core.str.cljs$core$IFn$_invoke$arity$1(replacement));
 buffer.append(ch);
 }
 
-var G__27132 = (index + (1));
-index = G__27132;
+var G__27121 = (index + (1));
+index = G__27121;
 continue;
 }
 break;
