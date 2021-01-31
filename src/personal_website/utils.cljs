@@ -11,7 +11,6 @@
 
 (defn scroll-to-top []
  (let [obj (.getElementById js/document "top")
-       x (print "hello")
        scroll (fn [] (.scrollIntoView obj))]
    (js/setTimeout scroll 5)))
 
