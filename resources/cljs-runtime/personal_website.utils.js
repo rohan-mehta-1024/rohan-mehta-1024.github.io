@@ -5,6 +5,7 @@ return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMP
 personal_website.utils.special_words = new cljs.core.PersistentArrayMap(null, 2, ["Mnist","MNIST","Gnns","GNNs"], null);
 personal_website.utils.scroll_to_top = (function personal_website$utils$scroll_to_top(){
 var obj = document.getElementById("top");
+var x = cljs.core.print.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["hello"], 0));
 var scroll = (function (){
 return obj.scrollIntoView();
 });
