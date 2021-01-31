@@ -149,7 +149,7 @@
   [:header {:id "page-header"}
    [:h1 {:id "my-name"}
     [:a {:href "/"
-         :on-click close-search} "Rohan Mehta"]]
+         :on-click (comp utils/scroll-to-top close-search)} "Rohan Mehta"]]
    (subpages)
    (side-nav)
    (hamburger-button)])
