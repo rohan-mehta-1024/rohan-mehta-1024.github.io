@@ -207,7 +207,7 @@
    [:h1 {:class "post-section-header" :id "scroll"} "Gradient Descent"]
 
    [:p "We've now gone through all the basics necessary
-        to consider how we might optimize neural nets,
+        to start considering how we might optimize neural nets,
         and the first step lies in understanding how
         we can model them mathematically."]
 
@@ -237,7 +237,7 @@
 
   [:p "What's more, all of these behaviors can be framed
        as some sort of prediction task: given lots of labeled
-       data, how do optimize the parameters of all neurons in
+       data, how do we optimize the parameters of all neurons in
        a given network such that it predicts the correct label
        for a given input?"]
 
@@ -724,7 +724,7 @@
         So after one pass through the graph, we end up with the derivative
         of the output with respect to that one input. Reverse-mode on the other hand –
         which explores the paths from the one output node to all input nodes –
-        can get the derivatives of the output with respect to every inputin a single go."]
+        can get the derivatives of the output with respect to every input in a single go."]
 
         [:figure {:class "img-container"}
          [:div {:style {:text-align "center"}}
@@ -734,7 +734,7 @@
    [:p "Of course, there's the flip side: when we have a graph with many outputs, but only
         a single input, forward-mode can grab everything in one go, since it only has to
         worry about a single input anyway. Reverse-mode, however, only gets the
-        the derivative of output with the respesct to the input each time it runs."]
+        the derivative of output with the respect to the input each time it runs."]
 
   [:figure {:class "img-container"}
    [:div {:style {:text-align "center"}}
@@ -758,7 +758,7 @@
    [:h1 {:class "post-section-header"} "Let's Vectorize!"]
 
    [:p "But what we've described so far still isn't how things are done in practice.
-        As I mentioned before, concerning ourselves each individual each weight and
+        As I mentioned before, concerning ourselves with each individual each weight and
         bias is not the most efficient nor most elegant way of doing things.
         Instead, a much cleaner conception of what's going on
         can be achieved by representing things in a vectorized fashion."]
@@ -1083,9 +1083,10 @@
         so row-by-row. That's why functions with many outputs (many rows) are better suited to forward-mode
         and those with many inputs (many columns) to reverse-mode."]
 
-[:h1 {:class "post-section-header"} "Differentiable Programming: A Vision"]
+[:h1 {:class "post-section-header"} "Differentiable Programming"]
 
-   [:p "One last thing, I promise! Automatic differentiation is not just
+   [:p "That's pretty much a wrap, but there's one more essential idea about
+        AD worth mentioning: it's not just
         limited to typical mathematical expressions. Anything that can be
         represented as a computational graph is fair game. That includes
         control flow constructs like loops and conditionals, and so as a consequence,
@@ -1100,9 +1101,12 @@
         a good language for differentible programming will take the whole
         deep learning paradigm to the next level."]
 
-   [:p "The main point here, though, is that as a tool, automatic differentiation
+   [:p "All that is for another time, but the main thing to take away from
+        this is that as a tool, automatic differentiation
         is very flexible, and can give us some notion of a derivative
-        where even classical calculus fails."]
+        even where classical calculus fails. Differentiable programming
+        seems like an especially promising application of this flexibility,
+        but it is certainly not the only one."]
 
 [:h1 {:class "post-section-header"} "Conclusion"]
 
@@ -1130,6 +1134,11 @@
      that there are other "[:q "killer"] " applications of the
      technique yet to be found. After all, there's not
      much you can't solve with derivatives."]
+
+[:h1 {:class "post-section-header"} "Acknolwedgments"]
+
+[:p "Thank you to Dr. John McKay for taking the time to proofread this post."]
+
 
 [:h1 {:class "post-section-header"} "References"]
 
@@ -1250,7 +1259,7 @@
        [:p
         (utils/bold "7.") " While researching for this post, I found out
         that before AD was commonly used, neural net researchers
-        would calculate the derivatives for their networks by hand
+        would analytically calculate the derivatives for their networks by hand
         and then hardcode them into computers.
         So obviously networks couldn't be deep! Read more "(utils/link "here" "https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/")"."
         (utils/make-footnote "↩" "seventh-footnote-b" "seventh-footnote-a")]
