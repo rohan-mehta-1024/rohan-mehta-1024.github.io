@@ -17,7 +17,7 @@
 (defn description []
     [:div {:id "footer-part-2"}
      "© 2021 Rohan Mehta. Built with\n"
-     [:span {:class "links"} "re-frame"] "."])
+     [:a {:class "links" :href "https://github.com/day8/re-frame"} "re-frame"] "."])
 
 (defn footer []
   (let [route  @(re-frame/subscribe [:kee-frame/route])

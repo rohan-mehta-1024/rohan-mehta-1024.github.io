@@ -25,7 +25,7 @@
              ["/poetry/:id" :poems]
              ["/academic-papers/:id" :papers]
 
-            ["/books/:id" :books]
+            ["/fiction/:id" :books]
 
              ])
 

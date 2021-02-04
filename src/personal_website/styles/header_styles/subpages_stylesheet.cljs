@@ -113,7 +113,7 @@
         (s/> subpage-tooltips)) {:height (px 87)}]
   [(-> (s/nth-child :1)
        subpage-container-2
-       (s/> subpage-tooltips)) {:height (px 30)}]
+       (s/> subpage-tooltips)) {:height (px 50)}]
    [(-> (s/nth-child :4)
         subpage-container-2
         (s/> subpage-tooltips)) {:height (px 30)}]

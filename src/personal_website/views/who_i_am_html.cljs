@@ -4,7 +4,9 @@
             [personal-website.views.preview-html :refer [preview]]
             [personal-website.views.search-html :refer [search-html]]))
 
-
-
 (defn content []
-  (header))
+  (->  [:div ]
+       (conj (header))
+       (conj (search-html))
+       (conj (footer))
+       (conj [:div])))

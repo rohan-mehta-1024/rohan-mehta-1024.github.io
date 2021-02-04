@@ -22,14 +22,14 @@
 
       [:p "But while it is acknowledged by the government, this organization is neither controlled by
            nor amenable to it. In fact, perhaps " [:q "organization"] " is the wrong
-           word to use – it is a cult of self-styled angels and devils charged with taking
+           word to use – it would be better described as a cult of self-styled angels and devils charged with taking
            the lives of others for a living, and thus granted the status of gods.
            As such, scythes are not beholden to the law in any way, and all that prevents
            them from bringing the world to its knees are their increasingly lax morals,
            which, unsurpisingly, represents the main conflict of the story. "]
 
         [:p "That is, in and of itself, an exotic enough idea to grab anyone's attention, but
-             the truly genius move on Shusterman's part is what happens next. Because while
+             the truly genius move on Shusterman's comes from how he counters this dialogue. Because while
              it e, it does not exist in isolation. Just as it is tasked with the business
              of death, the Thunderhead, a quasi-ominpotent (in its own words) general artifical intelligence
              is charged with the business of life, with a caring hand."]
@@ -58,8 +58,8 @@ In The Toll these snippets
   {:title "The Toll By Neal Shusterman"
    :date "12/25/2020"
    :content post-content
-   :show "A breathtaking – if somewhat saddening – end to the one series that defined the dystopian genre for me,
-          The Toll ."
+   :show "A breathtaking, if somewhat saddening end to the one series that defined the dystopian genre for me,
+          The Toll truly marks the end of an era."
    :tags ["dystopian", "futuristic"]
    :overarching "reading"
    :type "book"})
