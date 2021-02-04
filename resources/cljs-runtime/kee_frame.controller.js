@@ -29,9 +29,9 @@ return null;
 }
 });
 kee_frame.controller.debug_enabled_QMARK_ = (function kee_frame$controller$debug_enabled_QMARK_(){
-var map__41683 = cljs.core.deref(kee_frame.state.debug_config);
-var map__41683__$1 = (((((!((map__41683 == null))))?(((((map__41683.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__41683.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__41683):map__41683);
-var controllers_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__41683__$1,new cljs.core.Keyword(null,"controllers?","controllers?",-2009030071),true);
+var map__41681 = cljs.core.deref(kee_frame.state.debug_config);
+var map__41681__$1 = (((((!((map__41681 == null))))?(((((map__41681.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__41681.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__41681):map__41681);
+var controllers_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__41681__$1,new cljs.core.Keyword(null,"controllers?","controllers?",-2009030071),true);
 var and__4115__auto__ = cljs.core.deref(kee_frame.state.debug_QMARK_);
 if(cljs.core.truth_(and__4115__auto__)){
 return controllers_QMARK_;
@@ -79,56 +79,56 @@ return null;
 return null;
 }
 });
-kee_frame.controller.process_controller = (function kee_frame$controller$process_controller(id,p__41689,ctx,route){
-var map__41690 = p__41689;
-var map__41690__$1 = (((((!((map__41690 == null))))?(((((map__41690.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__41690.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__41690):map__41690);
-var last_params = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41690__$1,new cljs.core.Keyword(null,"last-params","last-params",1293824707));
-var params = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41690__$1,new cljs.core.Keyword(null,"params","params",710516235));
-var start = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41690__$1,new cljs.core.Keyword(null,"start","start",-355208981));
-var stop = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41690__$1,new cljs.core.Keyword(null,"stop","stop",-2140911342));
+kee_frame.controller.process_controller = (function kee_frame$controller$process_controller(id,p__41695,ctx,route){
+var map__41696 = p__41695;
+var map__41696__$1 = (((((!((map__41696 == null))))?(((((map__41696.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__41696.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__41696):map__41696);
+var last_params = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs.core.Keyword(null,"last-params","last-params",1293824707));
+var params = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs.core.Keyword(null,"params","params",710516235));
+var start = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs.core.Keyword(null,"start","start",-355208981));
+var stop = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__41696__$1,new cljs.core.Keyword(null,"stop","stop",-2140911342));
 var current_params = kee_frame.controller.process_params(params,route);
-var last_params_41745__$1 = last_params;
-var current_params_41746__$1 = current_params;
-var ocr_41719_41747 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(last_params_41745__$1,current_params_41746__$1);
-try{if((ocr_41719_41747 === true)){
+var last_params_41737__$1 = last_params;
+var current_params_41738__$1 = current_params;
+var ocr_41698_41739 = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(last_params_41737__$1,current_params_41738__$1);
+try{if((ocr_41698_41739 === true)){
 } else {
 throw cljs.core.match.backtrack;
 
 }
 }catch (e41729){if((e41729 instanceof Error)){
-var e__40585__auto___41749 = e41729;
-if((e__40585__auto___41749 === cljs.core.match.backtrack)){
-try{if((ocr_41719_41747 === false)){
-try{if((last_params_41745__$1 === null)){
-kee_frame.controller.start_BANG_(id,ctx,start,current_params_41746__$1);
+var e__40654__auto___41740 = e41729;
+if((e__40654__auto___41740 === cljs.core.match.backtrack)){
+try{if((ocr_41698_41739 === false)){
+try{if((last_params_41737__$1 === null)){
+kee_frame.controller.start_BANG_(id,ctx,start,current_params_41738__$1);
 } else {
 throw cljs.core.match.backtrack;
 
 }
 }catch (e41731){if((e41731 instanceof Error)){
-var e__40585__auto___41751__$1 = e41731;
-if((e__40585__auto___41751__$1 === cljs.core.match.backtrack)){
-try{if((current_params_41746__$1 === null)){
+var e__40654__auto___41741__$1 = e41731;
+if((e__40654__auto___41741__$1 === cljs.core.match.backtrack)){
+try{if((current_params_41738__$1 === null)){
 kee_frame.controller.stop_BANG_(id,ctx,stop);
 } else {
 throw cljs.core.match.backtrack;
 
 }
 }catch (e41732){if((e41732 instanceof Error)){
-var e__40585__auto___41754__$2 = e41732;
-if((e__40585__auto___41754__$2 === cljs.core.match.backtrack)){
+var e__40654__auto___41742__$2 = e41732;
+if((e__40654__auto___41742__$2 === cljs.core.match.backtrack)){
 kee_frame.controller.stop_BANG_(id,ctx,stop);
 
-kee_frame.controller.start_BANG_(id,ctx,start,current_params_41746__$1);
+kee_frame.controller.start_BANG_(id,ctx,start,current_params_41738__$1);
 } else {
-throw e__40585__auto___41754__$2;
+throw e__40654__auto___41742__$2;
 }
 } else {
 throw e41732;
 
 }
 }} else {
-throw e__40585__auto___41751__$1;
+throw e__40654__auto___41741__$1;
 }
 } else {
 throw e41731;
@@ -139,18 +139,18 @@ throw cljs.core.match.backtrack;
 
 }
 }catch (e41730){if((e41730 instanceof Error)){
-var e__40585__auto___41755__$1 = e41730;
-if((e__40585__auto___41755__$1 === cljs.core.match.backtrack)){
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(last_params_41745__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(current_params_41746__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ocr_41719_41747)].join('')));
+var e__40654__auto___41743__$1 = e41730;
+if((e__40654__auto___41743__$1 === cljs.core.match.backtrack)){
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(last_params_41737__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(current_params_41738__$1)," ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ocr_41698_41739)].join('')));
 } else {
-throw e__40585__auto___41755__$1;
+throw e__40654__auto___41743__$1;
 }
 } else {
 throw e41730;
 
 }
 }} else {
-throw e__40585__auto___41749;
+throw e__40654__auto___41740;
 }
 } else {
 throw e41729;

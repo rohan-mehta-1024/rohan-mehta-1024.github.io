@@ -39,10 +39,10 @@
 
         "This webpage is an outlet for me
         to share projects I've worked
-        on in these areas, things in math
+        on in these areas, things in the mathemtatics
         and the sciences "
         (color-text "I find beautiful and interesting" "/blog-posts/all#subpage-container-1")
-        " (plus the occasional practical tip), and my "
+        ", and my "
         (color-text "thoughts, values, and opinions" "b")
         " on science, technology, and life in general."])
 

@@ -16,7 +16,7 @@
 
 (defn description []
     [:div {:id "footer-part-2"}
-     "© 2020 Rohan Mehta. Built with\n"
+     "© 2021 Rohan Mehta. Built with\n"
      [:span {:class "links"} "re-frame"] "."])
 
 (defn footer []

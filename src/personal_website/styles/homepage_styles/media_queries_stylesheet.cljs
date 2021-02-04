@@ -5,7 +5,7 @@
 
 
 (defn media-query-1 []
-  (at-media {:max-width (px 875)}
+  (at-media {:max-width (px 890)}
     [[:#content-container {:width "95%"}]
      [:#about-me-container {}
       [(s/& s/after) {:width "100%"

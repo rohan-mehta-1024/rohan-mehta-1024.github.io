@@ -7,10 +7,11 @@
 
 (def subpage-data
   [["About"
-    ["Who I Am"
+    [
+     "Who I Am"
      "Accomplishments"
      "placeholder"
-     "placeholder"
+      "placeholder"
      "placeholder"
      "placeholder"]]
    ["Projects"

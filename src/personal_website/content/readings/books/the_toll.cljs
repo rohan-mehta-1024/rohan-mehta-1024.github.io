@@ -16,30 +16,31 @@
       [:p "The trilogy examines the idea of a " [:q "post-mortal"] " world – a place
            where the steady advancement of medical technology has rendered almost all once-fatal
            injuries but a minor annoyance. As a consequence, state-sanctioned death has become a necessity
-           to curb popualtion growth, and a global organization of
-           professional killers known as Scythes have been tasked with carrying this
-           business out."]
+           to curb population growth, and a global organization of
+           professional killers known as Scythes have been tasked with the carrying out of this less than palatable
+           business."]
 
-      [:p "But this organization, while acknowledged by the government, is not controlled by
-           nor amenable to it. In fact, perhaps organization is the wrong
+      [:p "But while it is acknowledged by the government, this organization is neither controlled by
+           nor amenable to it. In fact, perhaps " [:q "organization"] " is the wrong
            word to use – it is a cult of self-styled angels and devils charged with taking
-           the lives of others for a living, and thus given the status of gods. They are not
-           beholden to the law in any way, and all that prevents them from bringing society
-           to its knees are their increasingly lax morals, which, unsurpisingly,
-           is the main conflict of the story. "]
+           the lives of others for a living, and thus granted the status of gods.
+           As such, scythes are not beholden to the law in any way, and all that prevents
+           them from bringing the world to its knees are their increasingly lax morals,
+           which, unsurpisingly, represents the main conflict of the story. "]
 
-      [:p "Moreover, it examines all of this in the context of a world run
-           by a quasi-omnipotent (in its own words) general artifical intelligence,
-           known as the Thunderhead – or the cloud
-           is directly prohibited for interacting with this organization, for
-           a machine can have no hand in human death, even if only by association.
-           And so, this benevolent steward of mankind is forced to helplessly
-           watch on as once  "]
+        [:p "That is, in and of itself, an exotic enough idea to grab anyone's attention, but
+             the truly genius move on Shusterman's part is what happens next. Because while
+             it e, it does not exist in isolation. Just as it is tasked with the business
+             of death, the Thunderhead, a quasi-ominpotent (in its own words) general artifical intelligence
+             is charged with the business of life, with a caring hand."]
+
 
       [:p "The Toll closes the trilogy, and in my opinion, does so magnificently.
            It builds out the of the more recent charactories, and the elegance
            in how it solves is. It is not just victory, there is an element of
-           loss in it too. There is "]
+           loss in it too. But most of all, it ends things perfectly. It
+           is an imperfect ending, an impactful ending, and though I will
+           admit I soemtimes"]
 
         [:p "If I had to pick a favorite element from the book, it would
              be the way each chapter ends with the writings from a character's
@@ -57,7 +58,8 @@ In The Toll these snippets
   {:title "The Toll By Neal Shusterman"
    :date "12/25/2020"
    :content post-content
-   :show "A breathtaking if somewhat saddening end to the one series that defined the dystopian genre for me."
+   :show "A breathtaking – if somewhat saddening – end to the one series that defined the dystopian genre for me,
+          The Toll ."
    :tags ["dystopian", "futuristic"]
    :overarching "reading"
    :type "book"})

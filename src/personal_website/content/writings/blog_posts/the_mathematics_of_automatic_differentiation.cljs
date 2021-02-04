@@ -1135,7 +1135,7 @@
      technique yet to be found. After all, there's not
      much you can't solve with derivatives."]
 
-[:h1 {:class "post-section-header"} "Acknolwedgments"]
+[:h1 {:class "post-section-header"} "Acknowledgments"]
 
 [:p "Thank you to Dr. John McKay for taking the time to proofread this post."]
 

@@ -25,8 +25,8 @@ return a;
 });
 shadow.util.console_QMARK_ = (typeof console !== 'undefined');
 shadow.util.log = (function shadow$util$log(var_args){
-var G__34590 = arguments.length;
-switch (G__34590) {
+var G__34568 = arguments.length;
+switch (G__34568) {
 case 1:
 return shadow.util.log.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -130,30 +130,30 @@ return null;
 }));
 
 /** @this {Function} */
-(shadow.util.log.cljs$lang$applyTo = (function (seq34583){
-var G__34584 = cljs.core.first(seq34583);
-var seq34583__$1 = cljs.core.next(seq34583);
-var G__34585 = cljs.core.first(seq34583__$1);
-var seq34583__$2 = cljs.core.next(seq34583__$1);
-var G__34586 = cljs.core.first(seq34583__$2);
-var seq34583__$3 = cljs.core.next(seq34583__$2);
-var G__34587 = cljs.core.first(seq34583__$3);
-var seq34583__$4 = cljs.core.next(seq34583__$3);
-var G__34588 = cljs.core.first(seq34583__$4);
-var seq34583__$5 = cljs.core.next(seq34583__$4);
-var G__34589 = cljs.core.first(seq34583__$5);
-var seq34583__$6 = cljs.core.next(seq34583__$5);
+(shadow.util.log.cljs$lang$applyTo = (function (seq34560){
+var G__34561 = cljs.core.first(seq34560);
+var seq34560__$1 = cljs.core.next(seq34560);
+var G__34562 = cljs.core.first(seq34560__$1);
+var seq34560__$2 = cljs.core.next(seq34560__$1);
+var G__34563 = cljs.core.first(seq34560__$2);
+var seq34560__$3 = cljs.core.next(seq34560__$2);
+var G__34564 = cljs.core.first(seq34560__$3);
+var seq34560__$4 = cljs.core.next(seq34560__$3);
+var G__34565 = cljs.core.first(seq34560__$4);
+var seq34560__$5 = cljs.core.next(seq34560__$4);
+var G__34566 = cljs.core.first(seq34560__$5);
+var seq34560__$6 = cljs.core.next(seq34560__$5);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__34584,G__34585,G__34586,G__34587,G__34588,G__34589,seq34583__$6);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__34561,G__34562,G__34563,G__34564,G__34565,G__34566,seq34560__$6);
 }));
 
 (shadow.util.log.cljs$lang$maxFixedArity = (6));
 
 shadow.util.remove_from_vector = (function shadow$util$remove_from_vector(coll,key){
-return cljs.core.persistent_BANG_(cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (v,p__34591){
-var vec__34592 = p__34591;
-var idx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__34592,(0),null);
-var item = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__34592,(1),null);
+return cljs.core.persistent_BANG_(cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (v,p__34582){
+var vec__34583 = p__34582;
+var idx = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__34583,(0),null);
+var item = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__34583,(1),null);
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(idx,key)){
 return v;
 } else {
