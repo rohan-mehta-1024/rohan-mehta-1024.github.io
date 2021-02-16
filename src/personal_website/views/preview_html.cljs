@@ -42,6 +42,7 @@
              :href (cond (= type "paper") (post :paper-link)
                          (= type "computer-science") (str "/#/" type "/" (utils/format-title title))
                          (= type "synthetic-biology") (str "/#/" type "/" (utils/format-title title))
+                         (= type "fiction") (str "/#/" type "/" (utils/format-title title))
                          :else (str "/#/" type "s" "/"  (utils/format-title title)))
              :on-click utils/scroll-to-top}
          title]

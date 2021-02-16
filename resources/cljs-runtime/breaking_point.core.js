@@ -1,92 +1,92 @@
 goog.provide('breaking_point.core');
-re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),(function (_,p__38582){
-var vec__38583 = p__38582;
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38583,(0),null);
-var map__38586 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38583,(1),null);
-var map__38586__$1 = (((((!((map__38586 == null))))?(((((map__38586.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38586.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38586):map__38586);
-var opts = map__38586__$1;
-var breakpoints = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38586__$1,new cljs.core.Keyword(null,"breakpoints","breakpoints",1018731739));
-var debounce_ms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38586__$1,new cljs.core.Keyword(null,"debounce-ms","debounce-ms",-1127263167));
+re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),(function (_,p__38533){
+var vec__38538 = p__38533;
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38538,(0),null);
+var map__38541 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38538,(1),null);
+var map__38541__$1 = (((((!((map__38541 == null))))?(((((map__38541.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38541.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38541):map__38541);
+var opts = map__38541__$1;
+var breakpoints = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38541__$1,new cljs.core.Keyword(null,"breakpoints","breakpoints",1018731739));
+var debounce_ms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38541__$1,new cljs.core.Keyword(null,"debounce-ms","debounce-ms",-1127263167));
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword("breaking-point.core","set-breakpoints","breaking-point.core/set-breakpoints",607629013),opts], null);
 }));
 re_frame.core.reg_cofx(new cljs.core.Keyword("breaking-point.core","screen-dimensions","breaking-point.core/screen-dimensions",407195814),(function (coeffect){
-var screen_width = (function (){var or__4126__auto__ = (function (){var G__38589 = window;
-if((G__38589 == null)){
+var screen_width = (function (){var or__4126__auto__ = (function (){var G__38555 = window;
+if((G__38555 == null)){
 return null;
 } else {
-return G__38589.innerWidth;
+return G__38555.innerWidth;
 }
 })();
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
 } else {
-var or__4126__auto____$1 = (function (){var G__38591 = document;
-var G__38591__$1 = (((G__38591 == null))?null:G__38591.documentElement);
-if((G__38591__$1 == null)){
+var or__4126__auto____$1 = (function (){var G__38557 = document;
+var G__38557__$1 = (((G__38557 == null))?null:G__38557.documentElement);
+if((G__38557__$1 == null)){
 return null;
 } else {
-return G__38591__$1.clientWidth;
+return G__38557__$1.clientWidth;
 }
 })();
 if(cljs.core.truth_(or__4126__auto____$1)){
 return or__4126__auto____$1;
 } else {
-var G__38592 = document;
-var G__38592__$1 = (((G__38592 == null))?null:G__38592.body);
-if((G__38592__$1 == null)){
+var G__38558 = document;
+var G__38558__$1 = (((G__38558 == null))?null:G__38558.body);
+if((G__38558__$1 == null)){
 return null;
 } else {
-return G__38592__$1.clientWidth;
+return G__38558__$1.clientWidth;
 }
 }
 }
 })();
-var screen_height = (function (){var or__4126__auto__ = (function (){var G__38594 = window;
-if((G__38594 == null)){
+var screen_height = (function (){var or__4126__auto__ = (function (){var G__38560 = window;
+if((G__38560 == null)){
 return null;
 } else {
-return G__38594.innerHeight;
+return G__38560.innerHeight;
 }
 })();
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
 } else {
-var or__4126__auto____$1 = (function (){var G__38596 = document;
-var G__38596__$1 = (((G__38596 == null))?null:G__38596.documentElement);
-if((G__38596__$1 == null)){
+var or__4126__auto____$1 = (function (){var G__38574 = document;
+var G__38574__$1 = (((G__38574 == null))?null:G__38574.documentElement);
+if((G__38574__$1 == null)){
 return null;
 } else {
-return G__38596__$1.clientHeight;
+return G__38574__$1.clientHeight;
 }
 })();
 if(cljs.core.truth_(or__4126__auto____$1)){
 return or__4126__auto____$1;
 } else {
-var G__38597 = document;
-var G__38597__$1 = (((G__38597 == null))?null:G__38597.body);
-if((G__38597__$1 == null)){
+var G__38575 = document;
+var G__38575__$1 = (((G__38575 == null))?null:G__38575.body);
+if((G__38575__$1 == null)){
 return null;
 } else {
-return G__38597__$1.clientHeight;
+return G__38575__$1.clientHeight;
 }
 }
 }
 })();
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(coeffect,new cljs.core.Keyword(null,"screen-width","screen-width",1557963263),screen_width,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"screen-height","screen-height",141363033),screen_height], 0));
 }));
-breaking_point.core.set_screen_dimensions = (function breaking_point$core$set_screen_dimensions(p__38598,_){
-var map__38599 = p__38598;
-var map__38599__$1 = (((((!((map__38599 == null))))?(((((map__38599.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38599.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38599):map__38599);
-var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38599__$1,new cljs.core.Keyword(null,"db","db",993250759));
-var screen_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38599__$1,new cljs.core.Keyword(null,"screen-width","screen-width",1557963263));
-var screen_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38599__$1,new cljs.core.Keyword(null,"screen-height","screen-height",141363033));
+breaking_point.core.set_screen_dimensions = (function breaking_point$core$set_screen_dimensions(p__38576,_){
+var map__38577 = p__38576;
+var map__38577__$1 = (((((!((map__38577 == null))))?(((((map__38577.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38577.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38577):map__38577);
+var db = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38577__$1,new cljs.core.Keyword(null,"db","db",993250759));
+var screen_width = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38577__$1,new cljs.core.Keyword(null,"screen-width","screen-width",1557963263));
+var screen_height = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38577__$1,new cljs.core.Keyword(null,"screen-height","screen-height",141363033));
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"db","db",993250759),cljs.core.assoc_in(cljs.core.assoc_in(db,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","breakpoints","breaking-point.core/breakpoints",1759036980),new cljs.core.Keyword(null,"screen-width","screen-width",1557963263)], null),screen_width),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","breakpoints","breaking-point.core/breakpoints",1759036980),new cljs.core.Keyword(null,"screen-height","screen-height",141363033)], null),screen_height)], null);
 });
 re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$3(new cljs.core.Keyword("breaking-point.core","set-screen-dimensions","breaking-point.core/set-screen-dimensions",1622393691),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [re_frame.core.inject_cofx.cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword("breaking-point.core","screen-dimensions","breaking-point.core/screen-dimensions",407195814))], null),breaking_point.core.set_screen_dimensions);
-re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("breaking-point.core","set-screen-dimensions-debounced","breaking-point.core/set-screen-dimensions-debounced",807683602),(function (_,p__38601){
-var vec__38602 = p__38601;
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38602,(0),null);
-var debounce_ms = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38602,(1),null);
+re_frame.core.reg_event_fx.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword("breaking-point.core","set-screen-dimensions-debounced","breaking-point.core/set-screen-dimensions-debounced",807683602),(function (_,p__38579){
+var vec__38580 = p__38579;
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38580,(0),null);
+var debounce_ms = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38580,(1),null);
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"dispatch-debounce","dispatch-debounce",-2065179020),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword("breaking-point.core","calcaulate-width-after-resize","breaking-point.core/calcaulate-width-after-resize",1288445004),new cljs.core.Keyword(null,"timeout","timeout",-318625318),debounce_ms,new cljs.core.Keyword(null,"action","action",-811238024),new cljs.core.Keyword(null,"dispatch","dispatch",1319337009),new cljs.core.Keyword(null,"event","event",301435442),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("breaking-point.core","set-screen-dimensions","breaking-point.core/set-screen-dimensions",1622393691)], null)], null)], null)], null);
 }));
 breaking_point.core.get_screen_width = (function breaking_point$core$get_screen_width(db,_){
@@ -98,10 +98,10 @@ return cljs.core.get_in.cljs$core$IFn$_invoke$arity$2(db,new cljs.core.Persisten
 breaking_point.core.__GT_get_screen = (function breaking_point$core$__GT_get_screen(breakpoints){
 return (function breaking_point$core$__GT_get_screen_$_get_screen(screen_width,_){
 if(cljs.core.truth_(screen_width)){
-return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (prev_breakpoint,p__38605){
-var vec__38606 = p__38605;
-var screen_key = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38606,(0),null);
-var breakpoint = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38606,(1),null);
+return cljs.core.reduce.cljs$core$IFn$_invoke$arity$3((function (prev_breakpoint,p__38596){
+var vec__38597 = p__38596;
+var screen_key = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38597,(0),null);
+var breakpoint = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38597,(1),null);
 if((((breakpoint == null)) || ((((screen_width < breakpoint)) && ((screen_width >= prev_breakpoint)))))){
 return cljs.core.reduced(screen_key);
 } else {
@@ -113,10 +113,10 @@ return null;
 }
 });
 });
-breaking_point.core.get_orientation = (function breaking_point$core$get_orientation(p__38609,_){
-var vec__38610 = p__38609;
-var screen_width = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38610,(0),null);
-var screen_height = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38610,(1),null);
+breaking_point.core.get_orientation = (function breaking_point$core$get_orientation(p__38600,_){
+var vec__38601 = p__38600;
+var screen_width = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38601,(0),null);
+var screen_height = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38601,(1),null);
 if((screen_height > screen_width)){
 return new cljs.core.Keyword(null,"portrait","portrait",-9810007);
 } else {
@@ -168,14 +168,14 @@ return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(screen,screen_key);
 ], 0));
 
 
-var G__38641 = seq__38618;
-var G__38642 = chunk__38619;
-var G__38643 = count__38620;
-var G__38644 = (i__38621 + (1));
-seq__38618 = G__38641;
-chunk__38619 = G__38642;
-count__38620 = G__38643;
-i__38621 = G__38644;
+var G__38625 = seq__38618;
+var G__38626 = chunk__38619;
+var G__38627 = count__38620;
+var G__38628 = (i__38621 + (1));
+seq__38618 = G__38625;
+chunk__38619 = G__38626;
+count__38620 = G__38627;
+i__38621 = G__38628;
 continue;
 } else {
 var temp__5735__auto__ = cljs.core.seq(seq__38618);
@@ -183,14 +183,14 @@ if(temp__5735__auto__){
 var seq__38618__$1 = temp__5735__auto__;
 if(cljs.core.chunked_seq_QMARK_(seq__38618__$1)){
 var c__4556__auto__ = cljs.core.chunk_first(seq__38618__$1);
-var G__38645 = cljs.core.chunk_rest(seq__38618__$1);
-var G__38646 = c__4556__auto__;
-var G__38647 = cljs.core.count(c__4556__auto__);
-var G__38648 = (0);
-seq__38618 = G__38645;
-chunk__38619 = G__38646;
-count__38620 = G__38647;
-i__38621 = G__38648;
+var G__38629 = cljs.core.chunk_rest(seq__38618__$1);
+var G__38630 = c__4556__auto__;
+var G__38631 = cljs.core.count(c__4556__auto__);
+var G__38632 = (0);
+seq__38618 = G__38629;
+chunk__38619 = G__38630;
+count__38620 = G__38631;
+i__38621 = G__38632;
 continue;
 } else {
 var screen_key = cljs.core.first(seq__38618__$1);
@@ -201,14 +201,14 @@ return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(screen,screen_key);
 ], 0));
 
 
-var G__38649 = cljs.core.next(seq__38618__$1);
-var G__38650 = null;
-var G__38651 = (0);
-var G__38652 = (0);
-seq__38618 = G__38649;
-chunk__38619 = G__38650;
-count__38620 = G__38651;
-i__38621 = G__38652;
+var G__38633 = cljs.core.next(seq__38618__$1);
+var G__38634 = null;
+var G__38635 = (0);
+var G__38636 = (0);
+seq__38618 = G__38633;
+chunk__38619 = G__38634;
+count__38620 = G__38635;
+i__38621 = G__38636;
 continue;
 }
 } else {

@@ -20,27 +20,41 @@
            professional killers known as Scythes have been tasked with the carrying out of this less than palatable
            business."]
 
-      [:p "But while it is acknowledged by the government, this organization is neither controlled by
+      [:p "But while it is acknowledged by the government, this organization – known as
+           the Scythedom – is neither controlled by
            nor amenable to it. In fact, perhaps " [:q "organization"] " is the wrong
-           word to use – it would be better described as a cult of self-styled angels and devils charged with taking
-           the lives of others for a living, and thus granted the status of gods.
-           As such, scythes are not beholden to the law in any way, and all that prevents
-           them from bringing the world to its knees are their increasingly lax morals,
-           which, unsurpisingly, represents the main conflict of the story. "]
+           word alltogther. Something along the lines of a cult would be more accurate, for those
+           charged with taking the lives of others for a living are invariably led
+           to style themselves as either angels or devils, often with very little distinction."]
 
-        [:p "That is, in and of itself, an exotic enough idea to grab anyone's attention, but
-             the truly genius move on Shusterman's comes from how he counters this dialogue. Because while
-             it e, it does not exist in isolation. Just as it is tasked with the business
-             of death, the Thunderhead, a quasi-ominpotent (in its own words) general artifical intelligence
-             is charged with the business of life, with a caring hand."]
+   [:p  "Regardless, their ability to act as judge, jury, and executioner whenever and wheresoever
+         they please has erned Scythes the status of gods. Beholden to but ten commandments,
+         they can more or less do what they please when they please it, and all that keeps
+         them from turning are their increasingly lax morals, which unsurprisingly,
+         represents the main conflict of the story."]
+
+      [:p "That is, in and of itself, an exotic enough idea to grab anyone's attention. But
+           the truly genius move on Shusterman's part comes from the context that this bizzarely unfolds in.
+           Because while its power may seem absolute, the Scythedom only has jurasdiction over the dead.
+           The world of the living, on the other hand, is governed by the Thunderhead:
+           a benevolent, quasi-omnipotent (in its own words) general artifical intelligence."]
 
 
       [:p "The Toll closes the trilogy, and in my opinion, does so magnificently.
+           It would be too monumental a task and try to do Shusterman's entire world
+           justice in such a short reflection, so I'll focus instead on what I found
+           most appealing about
+            to try andBut most of all it closes things spectacularly.
+           Too many a wonderful series stumble at the finish light, caught in
+           an unatural act to tie things up neatly
            It builds out the of the more recent charactories, and the elegance
            in how it solves is. It is not just victory, there is an element of
            loss in it too. But most of all, it ends things perfectly. It
            is an imperfect ending, an impactful ending, and though I will
            admit I soemtimes"]
+
+
+      [:p "I"]
 
         [:p "If I had to pick a favorite element from the book, it would
              be the way each chapter ends with the writings from a character's
@@ -58,8 +72,8 @@ In The Toll these snippets
   {:title "The Toll By Neal Shusterman"
    :date "12/25/2020"
    :content post-content
-   :show "A breathtaking, if somewhat saddening end to the one series that defined the dystopian genre for me,
+   :show "A breathtaking – if somewhat saddening – end to the one series that defined the dystopian genre for me,
           The Toll truly marks the end of an era."
    :tags ["dystopian", "futuristic"]
    :overarching "reading"
-   :type "book"})
+   :type "fiction"})

@@ -52,6 +52,6 @@
          :poems display
          :papers display
 
-         :books display
+         :fiction display
 
          nil [homepage-html]]))

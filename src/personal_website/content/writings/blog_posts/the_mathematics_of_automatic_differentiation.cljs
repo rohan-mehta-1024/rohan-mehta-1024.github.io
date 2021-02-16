@@ -348,7 +348,7 @@
         take the average. In other words, the function we're
         really trying to minimize looks more like this:"]
 
-   [:p "$$J(\\boldsymbol{X}, \\boldsymbol{\\vec{y}}; \\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha, \\boldsymbol{\\vec{y}}_i)$$"]
+   [:p "$$J(\\boldsymbol{X}, \\boldsymbol{\\vec{y}}; \\boldsymbol{\\theta}) = \\frac{1}{n}\\sum_{i=1}^{n} E(\\alpha_i, \\boldsymbol{\\vec{y}}_i)$$"]
 
    [:p "And since the gradient of a sum equals the sum of gradients,
         the gradient of this function is the average
@@ -1286,7 +1286,7 @@
    :date "12/22/2020"
    :show post-preview
    :content post-content
-   :tags ["mathematics", "deep learning"]
+   :tags ["calculus", "deep learning"]
    :type "blog-post"
    :overarching "writing"
    :id "1"

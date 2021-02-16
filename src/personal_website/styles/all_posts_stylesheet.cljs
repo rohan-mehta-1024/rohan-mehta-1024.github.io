@@ -110,7 +110,7 @@
   (at-media {:max-width (px 500)}
     [[:#post-content {:font-size (px 15)
                      :line-height (px 25)}]
-     [:.post-caption {:font-size (px 12)
+     [:.post-caption {:font-size (px 13)
                       :line-height (px 20)}]]))
 
 
@@ -131,6 +131,6 @@
    (media-query-1)
    (media-query-2)
    ;(special)
-   ;(media-query-3)
+   (media-query-3)
 
    ])

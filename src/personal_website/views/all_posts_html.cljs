@@ -73,7 +73,7 @@
     (= post-type :stories)    stories/posts
     (= post-type :poems)      poems/posts
     (= post-type :papers)     papers/posts
-    (= post-type :books)      books/posts))
+    (= post-type :fiction)      books/posts))
 
 (defn list-posts [posts]
   (let [preview-fn (fn [x] (preview x false))]
@@ -127,8 +127,7 @@
               page-title (update-page-title post-title)
               cssify (-> :id params utils/unformat-title posts :css css update-page-css)
               comments (fn [] (js/setTimeout (fn [] (commentbox)) 1000))
-              comments (comments)
-              ]
+              comments (comments)]
           (as-> posts $
                 ($ (utils/unformat-title (params :id)))
                 [:div {:id "post-content-container"}
