@@ -1,11 +1,11 @@
 goog.provide('kee_frame.debug');
-kee_frame.debug.debug_enabled_QMARK_ = (function kee_frame$debug$debug_enabled_QMARK_(p__42914){
-var vec__42915 = p__42914;
-var event_key = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__42915,(0),null);
-var map__42918 = cljs.core.deref(kee_frame.state.debug_config);
-var map__42918__$1 = (((((!((map__42918 == null))))?(((((map__42918.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__42918.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__42918):map__42918);
-var blacklist = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__42918__$1,new cljs.core.Keyword(null,"blacklist","blacklist",1248093170));
-var events_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__42918__$1,new cljs.core.Keyword(null,"events?","events?",-780512682),true);
+kee_frame.debug.debug_enabled_QMARK_ = (function kee_frame$debug$debug_enabled_QMARK_(p__42953){
+var vec__42954 = p__42953;
+var event_key = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__42954,(0),null);
+var map__42957 = cljs.core.deref(kee_frame.state.debug_config);
+var map__42957__$1 = (((((!((map__42957 == null))))?(((((map__42957.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__42957.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__42957):map__42957);
+var blacklist = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__42957__$1,new cljs.core.Keyword(null,"blacklist","blacklist",1248093170));
+var events_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__42957__$1,new cljs.core.Keyword(null,"events?","events?",-780512682),true);
 var and__4115__auto__ = cljs.core.deref(kee_frame.state.debug_QMARK_);
 if(cljs.core.truth_(and__4115__auto__)){
 var and__4115__auto____$1 = events_QMARK_;
@@ -56,16 +56,16 @@ return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(new_db,new cljs.core.Keyw
 return and__4115__auto__;
 }
 })())){
-var vec__42920_42932 = clojure.data.diff(orig_db,new_db);
-var only_before_42933 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__42920_42932,(0),null);
-var only_after_42934 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__42920_42932,(1),null);
-var db_changed_QMARK__42935 = (((!((only_before_42933 == null)))) || ((!((only_after_42934 == null)))));
-if(db_changed_QMARK__42935){
+var vec__42963_42980 = clojure.data.diff(orig_db,new_db);
+var only_before_42981 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__42963_42980,(0),null);
+var only_after_42982 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__42963_42980,(1),null);
+var db_changed_QMARK__42983 = (((!((only_before_42981 == null)))) || ((!((only_after_42982 == null)))));
+if(db_changed_QMARK__42983){
 re_frame.core.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"group","group",582596132),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["db clojure.data/diff for:",cljs.core.first(event)], 0));
 
-re_frame.core.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"log","log",-1595516004),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["only before:",only_before_42933], 0));
+re_frame.core.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"log","log",-1595516004),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["only before:",only_before_42981], 0));
 
-re_frame.core.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"log","log",-1595516004),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["only after :",only_after_42934], 0));
+re_frame.core.console.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.Keyword(null,"log","log",-1595516004),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2(["only after :",only_after_42982], 0));
 
 re_frame.core.console(new cljs.core.Keyword(null,"groupEnd","groupEnd",-337721382));
 } else {

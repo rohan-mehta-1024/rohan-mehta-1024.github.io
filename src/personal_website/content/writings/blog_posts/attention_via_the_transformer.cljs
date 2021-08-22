@@ -23,15 +23,15 @@
        is to hopefully provide some of that intuition and demonstrate why it is
        so powerful."]
 
-   [:p "Beyond that, though, I also want to take a look at how
-        deeply embedded the idea of attention seems to be in the field,
-        and its significance beyond natural language processing.
-        Will it overtake convolutions? Is recurrence still useful?
-        Are transformers a sign that inductive biases can't compete
-        with more generic models with enough compute?
-        An intuitive understanding of the mechanics behind attention
-        will let us ponder these – and many more – interesting questions
-        in greater detail, so let's begin!"]
+  ; [:p "Beyond that, though, I also want to take a look at how
+   ;     deeply embedded the idea of attention seems to be in the field,
+    ;    and its significance beyond natural language processing.
+     ;   Will it overtake convolutions? Is recurrence still useful?
+      ;  Are transformers a sign that inductive biases can't compete
+       ; with more generic models with enough compute?
+       ; An intuitive understanding of the mechanics behind attention
+       ; will let us ponder these – and many more – interesting questions
+       ; in greater detail, so let's begin!"]
 
 
   ; [:p "Before we lay out this idea from the bottom-up however,
@@ -550,35 +550,35 @@
        look like ("[:q "it"] "  is on the left, " [:q "ball"] " is on the right). A
        word's abstract representation (top-right of each diagram) is used to compute all the others."]]
 
-     [:p "This idea is very powerful, and while we'll expound more on it later,
-          it's worth reiterating. Rather than trying to compute a single,
+     [:p "This idea is very powerful, and so
+          worth reiterating. Rather than trying to compute a single,
           highly-detailed representation of each word, the transformer knowingly
           computes a general, albeit incomplete representation, and instead learns how
           to transform this representation into several more specialized
           ones (e.g., a key, query, or value)."]
 
 
-   [:h1 {:class "post-section-header"} "Multi-Head Self-Attention"]
+   (comment [:h1 {:class "post-section-header"} "Multi-Head Self-Attention"]
 
-   [:p "But the transformer takes this one step further! Instead of just
+            [:p "But the transformer takes this one step further! Instead of just
         learning one key, query, and value for a single word, it learns multiple.
         Why might we want to do this though? Well, one way to motivate this idea is to
         compare and contrast the self-attention operation to convolutions."]
 
-   [:p "If you haven't noticed already these two operations are strikingly
+            [:p "If you haven't noticed already these two operations are strikingly
         similar – they're both weighted averages of some kind. However while
         the weights of a convolution remain constant throughout the whole input,
         weights (attention coefficients) change from element to element in
         self-attention."]
 
-   [:p "It would be unwise to assume that convolutions, as a rule,
+            [:p "It would be unwise to assume that convolutions, as a rule,
         are always less powerful then self-attention, though
         (at least in the form we've defined it so far). In fact, there
         is a desirable property of the convolution operator
         that we would like to extend self-attention operation to be applied
         based on relative position . "]
 
-   [:p "Self-attention is just a linear combination, or in other words
+            [:p "Self-attention is just a linear combination, or in other words
         a weighted average. It would be like a convolution filter in
         which all columns are only one number. It fundamentally limits
         the ability to compress informagio  In other words we can think
@@ -587,40 +587,40 @@
         sentence thet limit what we can acheive our span is limited ye s
         "]
 
-   ;Single-head self-attention can be defined as a convolution
+                                        ;Single-head self-attention can be defined as a convolution
 
-   [:p "But a self-attention alone isn't as powerful as
+            [:p "But a self-attention alone isn't as powerful as
         After all, self attention is just a linear combination
         of its
 
 "]
 
-   [:p "But unlike self attention
+            [:p "But unlike self attention
         There is no rotating of vectors only scaling"]
 
-        ;albeit at the cost of reduced effective resolution due
-        ;to averaging attention-weighted positions
+                                        ;albeit at the cost of reduced effective resolution due
+                                        ;to averaging attention-weighted positions
 
-        ;Multi-head attention allows the model to jointly attend to information from different representation
-        ;subspaces at different positions.
+                                        ;Multi-head attention allows the model to jointly attend to information from different representation
+                                        ;subspaces at different positions.
 
-   ;ITS ALL ABOUT SPLITTING INFORMATION APART!
+                                        ;ITS ALL ABOUT SPLITTING INFORMATION APART!
 
-    [:img {:src "/conv-vs-atten.png" :style {:width "80%"}}]
+            [:img {:src "/conv-vs-atten.png" :style {:width "80%"}}] 
 
-   [:p "Because its weights are global, a doesn't only convovle one filter
+            [:p "Because its weights are global, a doesn't only convovle one filter
         around . These give it representations containing specific pieces of
         information. This information can then be "]
 
-   [:p "In the transformer's lingo, we call these attentional units heads, where each
+            [:p "In the transformer's lingo, we call these attentional units heads, where each
         head is associated with different \\(\\boldsymbol{W^K},
        \\boldsymbol{W^Q},\\) and \\(\\boldsymbol{W^V}\\) matrices. It then
-       computes the matrix of context vectors like so:"]
+       computes the matrix of context vectors like so:"] 
 
-   [:p "$$\\textrm{head}_\\textrm{i} = Attention\\left((\\boldsymbol{W^K_i}\\boldsymbol{X})^\\top,
+            [:p "$$\\textrm{head}_\\textrm{i} = Attention\\left((\\boldsymbol{W^K_i}\\boldsymbol{X})^\\top,
         (\\boldsymbol{W^Q_i}\\boldsymbol{X})^\\top, (\\boldsymbol{W^V_i}\\boldsymbol{X})^\\top\\right)$$"]
 
-   [:p "In other words, each attention head learns a different set of linear maps
+            [:p "In other words, each attention head learns a different set of linear maps
         that transforms the same abstract representation into a different key,
         query, and value. This means that given \\(n\\) attention heads
         we wind up with \\(n\\) matrices containing a different \\(\\boldsymbol{\\vec{\\gamma}}\\)
@@ -629,11 +629,11 @@
         by some other learned matrix \\(\\boldsymbol{W^O}\\), such
         that each word ends up with only a single context vector:"]
 
-   [:p "$$\\textrm{Concat}(\\textrm{head}_1, \\ldots, \\textrm{head}_n) \\boldsymbol{W^O}$$"]
+            [:p "$$\\textrm{Concat}(\\textrm{head}_1, \\ldots, \\textrm{head}_n) \\boldsymbol{W^O}$$"]
 
-   [:p "This final matrix should then hold the informtion of all the indivdual attention heads"]
+            [:p "This final matrix should then hold the informtion of all the indivdual attention heads"]
 
-   [:p "So the operation itself is simple enough – but why are we doing it to begin with? The
+            [:p "So the operation itself is simple enough – but why are we doing it to begin with? The
         transformer paper's answer's are somewhat cryptic here, but we will do
         our bst to decipher them. The first reason is that f reduced effective resolution due
           to averaging attention-weighted positions In other words compared to RNNs which
@@ -643,23 +643,28 @@
           Multi-head attention allows the model to jointly attend to information from different representation
           subspaces at different positions. With a single attention head, averaging inhibits this."]
 
-[:h1 {:class "post-section-header"} "What Does It All Mean?"]
-[:h1 {:class "post-section-header"} "Alternative "]
-[:h1 {:class "post-section-header"} "Multi-Representation Learning"]
-[:h1 {:class "post-section-header"} "An Ode To The Transformer"]
-[:h1 {:class "post-section-header"} "noitatumerP Invariant?"]
-[:h1 {:class "post-section-header"} "But...RNNs Aren't Dead"]
+            [:h1 {:class "post-section-header"} "What Does It All Mean?"] 
+            [:h1 {:class "post-section-header"} "Alternative "]
+            [:h1 {:class "post-section-header"} "Multi-Representation Learning"]
+            [:h1 {:class "post-section-header"} "An Ode To The Transformer"]
+            [:h1 {:class "post-section-header"} "noitatumerP Invariant?"]
+            [:h1 {:class "post-section-header"} "But...RNNs Aren't Dead"] 
 
-[:h1 {:class "post-section-header"} "References"]
-[:h1 {:class "post-section-header" :id "further-reading"} "Further Reading"]
-[:h1 {:class "post-section-header"} "Footnotes"]
+            [:h1 {:class "post-section-header"} "References"]
+            [:h1 {:class "post-section-header" :id "further-reading"} "Further Reading"]
+            [:h1 {:class "post-section-header"} "Footnotes"]
 
-[:p "1. Technically this isn't the exact formula given in the actual transformer paper,
+            [:p "1. Technically this isn't the exact formula given in the actual transformer paper,
         but is equivelant. That's because the paper regards words' representations as being
         stored in the rows of the \\(\\boldsymbol{K}\\), \\(\\boldsymbol{Q}\\), and \\(\\boldsymbol{V}\\)
         matrices where as in this post we regard them as being stored in their columns."
 
-  (utils/make-footnote "↩" "first-footnote-b" "first-footnote-a")]
+             (utils/make-footnote "↩" "first-footnote-b" "first-footnote-a")])
+   [:h1 {:class "post-section-header"} "Conclusion"]
+   [:p "So there you have it. This post is already quite long, but it only scratches the surface of this topic, and I aim to add several
+more sections to it in the near future (however, I also wanted to share the progress I had made so far, so I decided to just bite the bullet and publish it). The idea of attention, often introduced as a bunch of unmotivated matrix-multiplication that 'just works' (but then again, what isn't in deep learning?!) is actually highly intuitive and is all about the fundamental properties and constraints of vectors, since that is after all, all a neural network is doing: manipulating vectors. The whole fact that doing so is able to mimic intelligent behaviors isa sort of happy coincidence that we're still trying to understand."
+
+    [:p "Regardless, I hope this post gave you a better understanding of what the idea of attention is all about, and has helped pave the way for you to explore all the ways transformers and attention are currently upending deep learning! Remember, it's all about dividing and conquering: understanding different concepts in different ways at different times, instead of trying to keep all the information on hand at once. It's about, of course, paying attention!"]]
 
 
    ])
@@ -679,7 +684,7 @@
 
 (def post
   {:title "Intuitive Attention Via The Transformer"
-   :date "1/12/2021"
+   :date "8/12/2021"
    :show post-preview
    :content post-content
    :tags ["mathematics", "differentiable programming"]

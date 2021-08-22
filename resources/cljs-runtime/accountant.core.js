@@ -66,8 +66,8 @@ return e;
 var temp__5735__auto__ = e.parentNode;
 if(cljs.core.truth_(temp__5735__auto__)){
 var parent = temp__5735__auto__;
-var G__38009 = parent;
-e = G__38009;
+var G__38039 = parent;
+e = G__38039;
 continue;
 } else {
 return null;
@@ -135,8 +135,8 @@ var current_host = window.location.hostname;
 var current_port = window.location.port;
 var loc = window.location;
 var current_relative_href = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(loc.pathname),cljs.core.str.cljs$core$IFn$_invoke$arity$1(loc.search),cljs.core.str.cljs$core$IFn$_invoke$arity$1(loc.hash)].join('');
-if(cljs.core.truth_(((cljs.core.not(any_key))?(function (){var and__4115__auto__ = (function (){var fexpr__37969 = new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, ["",null,"_self",null], null), null);
-return (fexpr__37969.cljs$core$IFn$_invoke$arity$1 ? fexpr__37969.cljs$core$IFn$_invoke$arity$1(link_target) : fexpr__37969.call(null,link_target));
+if(cljs.core.truth_(((cljs.core.not(any_key))?(function (){var and__4115__auto__ = (function (){var fexpr__38018 = new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, ["",null,"_self",null], null), null);
+return (fexpr__38018.cljs$core$IFn$_invoke$arity$1 ? fexpr__38018.cljs$core$IFn$_invoke$arity$1(link_target) : fexpr__38018.call(null,link_target));
 })();
 if(cljs.core.truth_(and__4115__auto__)){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(button,(0))){
@@ -198,12 +198,12 @@ accountant.core.navigate_listener_key = null;
  * 
  *   path-exists?: a fn of one argument, a path. Return truthy if this path is handled by the SPA
  */
-accountant.core.configure_navigation_BANG_ = (function accountant$core$configure_navigation_BANG_(p__37975){
-var map__37976 = p__37975;
-var map__37976__$1 = (((((!((map__37976 == null))))?(((((map__37976.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__37976.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__37976):map__37976);
-var nav_handler = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__37976__$1,new cljs.core.Keyword(null,"nav-handler","nav-handler",2039495484));
-var path_exists_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__37976__$1,new cljs.core.Keyword(null,"path-exists?","path-exists?",1473384514));
-var reload_same_path_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__37976__$1,new cljs.core.Keyword(null,"reload-same-path?","reload-same-path?",1981904231));
+accountant.core.configure_navigation_BANG_ = (function accountant$core$configure_navigation_BANG_(p__38020){
+var map__38021 = p__38020;
+var map__38021__$1 = (((((!((map__38021 == null))))?(((((map__38021.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38021.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38021):map__38021);
+var nav_handler = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38021__$1,new cljs.core.Keyword(null,"nav-handler","nav-handler",2039495484));
+var path_exists_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38021__$1,new cljs.core.Keyword(null,"path-exists?","path-exists?",1473384514));
+var reload_same_path_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38021__$1,new cljs.core.Keyword(null,"reload-same-path?","reload-same-path?",1981904231));
 accountant.core.history.setUseFragment(false);
 
 accountant.core.history.setPathPrefix("");
@@ -229,59 +229,59 @@ accountant.core.unconfigure_navigation_BANG_ = (function accountant$core$unconfi
 
 (accountant.core.path_exists_QMARK_ = null);
 
-var seq__37981 = cljs.core.seq(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [accountant.core.document_click_handler_listener_key,accountant.core.navigate_listener_key], null));
-var chunk__37982 = null;
-var count__37983 = (0);
-var i__37984 = (0);
+var seq__38023 = cljs.core.seq(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [accountant.core.document_click_handler_listener_key,accountant.core.navigate_listener_key], null));
+var chunk__38024 = null;
+var count__38025 = (0);
+var i__38026 = (0);
 while(true){
-if((i__37984 < count__37983)){
-var key = chunk__37982.cljs$core$IIndexed$_nth$arity$2(null,i__37984);
+if((i__38026 < count__38025)){
+var key = chunk__38024.cljs$core$IIndexed$_nth$arity$2(null,i__38026);
 if(cljs.core.truth_(key)){
 goog.events.unlistenByKey(key);
 } else {
 }
 
 
-var G__38017 = seq__37981;
-var G__38018 = chunk__37982;
-var G__38019 = count__37983;
-var G__38020 = (i__37984 + (1));
-seq__37981 = G__38017;
-chunk__37982 = G__38018;
-count__37983 = G__38019;
-i__37984 = G__38020;
+var G__38043 = seq__38023;
+var G__38044 = chunk__38024;
+var G__38045 = count__38025;
+var G__38046 = (i__38026 + (1));
+seq__38023 = G__38043;
+chunk__38024 = G__38044;
+count__38025 = G__38045;
+i__38026 = G__38046;
 continue;
 } else {
-var temp__5735__auto__ = cljs.core.seq(seq__37981);
+var temp__5735__auto__ = cljs.core.seq(seq__38023);
 if(temp__5735__auto__){
-var seq__37981__$1 = temp__5735__auto__;
-if(cljs.core.chunked_seq_QMARK_(seq__37981__$1)){
-var c__4556__auto__ = cljs.core.chunk_first(seq__37981__$1);
-var G__38021 = cljs.core.chunk_rest(seq__37981__$1);
-var G__38022 = c__4556__auto__;
-var G__38023 = cljs.core.count(c__4556__auto__);
-var G__38024 = (0);
-seq__37981 = G__38021;
-chunk__37982 = G__38022;
-count__37983 = G__38023;
-i__37984 = G__38024;
+var seq__38023__$1 = temp__5735__auto__;
+if(cljs.core.chunked_seq_QMARK_(seq__38023__$1)){
+var c__4556__auto__ = cljs.core.chunk_first(seq__38023__$1);
+var G__38048 = cljs.core.chunk_rest(seq__38023__$1);
+var G__38049 = c__4556__auto__;
+var G__38050 = cljs.core.count(c__4556__auto__);
+var G__38051 = (0);
+seq__38023 = G__38048;
+chunk__38024 = G__38049;
+count__38025 = G__38050;
+i__38026 = G__38051;
 continue;
 } else {
-var key = cljs.core.first(seq__37981__$1);
+var key = cljs.core.first(seq__38023__$1);
 if(cljs.core.truth_(key)){
 goog.events.unlistenByKey(key);
 } else {
 }
 
 
-var G__38033 = cljs.core.next(seq__37981__$1);
-var G__38034 = null;
-var G__38035 = (0);
-var G__38036 = (0);
-seq__37981 = G__38033;
-chunk__37982 = G__38034;
-count__37983 = G__38035;
-i__37984 = G__38036;
+var G__38052 = cljs.core.next(seq__38023__$1);
+var G__38053 = null;
+var G__38054 = (0);
+var G__38055 = (0);
+seq__38023 = G__38052;
+chunk__38024 = G__38053;
+count__38025 = G__38054;
+i__38026 = G__38055;
 continue;
 }
 } else {
@@ -292,21 +292,21 @@ break;
 }
 });
 accountant.core.map__GT_params = (function accountant$core$map__GT_params(query){
-var params = cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__37985_SHARP_){
-return cljs.core.name(p1__37985_SHARP_);
+var params = cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__38027_SHARP_){
+return cljs.core.name(p1__38027_SHARP_);
 }),cljs.core.keys(query));
 var values = cljs.core.vals(query);
 var pairs = cljs.core.partition.cljs$core$IFn$_invoke$arity$2((2),cljs.core.interleave.cljs$core$IFn$_invoke$arity$2(params,values));
-return clojure.string.join.cljs$core$IFn$_invoke$arity$2("&",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__37986_SHARP_){
-return clojure.string.join.cljs$core$IFn$_invoke$arity$2("=",p1__37986_SHARP_);
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2("&",cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__38028_SHARP_){
+return clojure.string.join.cljs$core$IFn$_invoke$arity$2("=",p1__38028_SHARP_);
 }),pairs));
 });
 /**
  * add a browser history entry. updates window/location
  */
 accountant.core.navigate_BANG_ = (function accountant$core$navigate_BANG_(var_args){
-var G__37998 = arguments.length;
-switch (G__37998) {
+var G__38030 = arguments.length;
+switch (G__38030) {
 case 1:
 return accountant.core.navigate_BANG_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -355,8 +355,8 @@ var path = window.location.pathname;
 var query = window.location.search;
 var hash = window.location.hash;
 if(cljs.core.truth_(accountant.core.nav_handler)){
-var G__38000 = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(path),cljs.core.str.cljs$core$IFn$_invoke$arity$1(query),cljs.core.str.cljs$core$IFn$_invoke$arity$1(hash)].join('');
-return (accountant.core.nav_handler.cljs$core$IFn$_invoke$arity$1 ? accountant.core.nav_handler.cljs$core$IFn$_invoke$arity$1(G__38000) : accountant.core.nav_handler.call(null,G__38000));
+var G__38035 = [cljs.core.str.cljs$core$IFn$_invoke$arity$1(path),cljs.core.str.cljs$core$IFn$_invoke$arity$1(query),cljs.core.str.cljs$core$IFn$_invoke$arity$1(hash)].join('');
+return (accountant.core.nav_handler.cljs$core$IFn$_invoke$arity$1 ? accountant.core.nav_handler.cljs$core$IFn$_invoke$arity$1(G__38035) : accountant.core.nav_handler.call(null,G__38035));
 } else {
 return console.error("can't dispatch-current until configure-navigation! called");
 }

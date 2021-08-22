@@ -2,10 +2,10 @@ goog.provide('day8.re_frame.http_fx');
 /**
  * ajax-request only provides a single handler for success and errors
  */
-day8.re_frame.http_fx.ajax_xhrio_handler = (function day8$re_frame$http_fx$ajax_xhrio_handler(on_success,on_failure,xhrio,p__30353){
-var vec__30354 = p__30353;
-var success_QMARK_ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__30354,(0),null);
-var response = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__30354,(1),null);
+day8.re_frame.http_fx.ajax_xhrio_handler = (function day8$re_frame$http_fx$ajax_xhrio_handler(on_success,on_failure,xhrio,p__38573){
+var vec__38574 = p__38573;
+var success_QMARK_ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38574,(0),null);
+var response = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38574,(1),null);
 if(cljs.core.truth_(success_QMARK_)){
 return (on_success.cljs$core$IFn$_invoke$arity$1 ? on_success.cljs$core$IFn$_invoke$arity$1(response) : on_success.call(null,response));
 } else {
@@ -13,70 +13,70 @@ var details = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.pri
 return (on_failure.cljs$core$IFn$_invoke$arity$1 ? on_failure.cljs$core$IFn$_invoke$arity$1(details) : on_failure.call(null,details));
 }
 });
-day8.re_frame.http_fx.request__GT_xhrio_options = (function day8$re_frame$http_fx$request__GT_xhrio_options(p__30365){
-var map__30366 = p__30365;
-var map__30366__$1 = (((((!((map__30366 == null))))?(((((map__30366.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__30366.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__30366):map__30366);
-var request = map__30366__$1;
-var on_success = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__30366__$1,new cljs.core.Keyword(null,"on-success","on-success",1786904109),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"http-no-on-success","http-no-on-success",-1593227158)], null));
-var on_failure = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__30366__$1,new cljs.core.Keyword(null,"on-failure","on-failure",842888245),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"http-no-on-failure","http-no-on-failure",962976084)], null));
+day8.re_frame.http_fx.request__GT_xhrio_options = (function day8$re_frame$http_fx$request__GT_xhrio_options(p__38595){
+var map__38596 = p__38595;
+var map__38596__$1 = (((((!((map__38596 == null))))?(((((map__38596.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38596.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38596):map__38596);
+var request = map__38596__$1;
+var on_success = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__38596__$1,new cljs.core.Keyword(null,"on-success","on-success",1786904109),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"http-no-on-success","http-no-on-success",-1593227158)], null));
+var on_failure = cljs.core.get.cljs$core$IFn$_invoke$arity$3(map__38596__$1,new cljs.core.Keyword(null,"on-failure","on-failure",842888245),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"http-no-on-failure","http-no-on-failure",962976084)], null));
 var api = (new goog.net.XhrIo());
-return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(request,new cljs.core.Keyword(null,"api","api",-899839580),api,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"handler","handler",-195596612),cljs.core.partial.cljs$core$IFn$_invoke$arity$4(day8.re_frame.http_fx.ajax_xhrio_handler,(function (p1__30357_SHARP_){
-return re_frame.core.dispatch(cljs.core.conj.cljs$core$IFn$_invoke$arity$2(on_success,p1__30357_SHARP_));
-}),(function (p1__30358_SHARP_){
-return re_frame.core.dispatch(cljs.core.conj.cljs$core$IFn$_invoke$arity$2(on_failure,p1__30358_SHARP_));
+return cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(request,new cljs.core.Keyword(null,"api","api",-899839580),api,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"handler","handler",-195596612),cljs.core.partial.cljs$core$IFn$_invoke$arity$4(day8.re_frame.http_fx.ajax_xhrio_handler,(function (p1__38588_SHARP_){
+return re_frame.core.dispatch(cljs.core.conj.cljs$core$IFn$_invoke$arity$2(on_success,p1__38588_SHARP_));
+}),(function (p1__38589_SHARP_){
+return re_frame.core.dispatch(cljs.core.conj.cljs$core$IFn$_invoke$arity$2(on_failure,p1__38589_SHARP_));
 }),api)], 0)),new cljs.core.Keyword(null,"on-success","on-success",1786904109),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"on-failure","on-failure",842888245)], 0));
 });
 day8.re_frame.http_fx.http_effect = (function day8$re_frame$http_fx$http_effect(request){
 var seq_request_maps = ((cljs.core.sequential_QMARK_(request))?request:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [request], null));
-var seq__30374 = cljs.core.seq(seq_request_maps);
-var chunk__30375 = null;
-var count__30376 = (0);
-var i__30377 = (0);
+var seq__38615 = cljs.core.seq(seq_request_maps);
+var chunk__38616 = null;
+var count__38617 = (0);
+var i__38618 = (0);
 while(true){
-if((i__30377 < count__30376)){
-var request__$1 = chunk__30375.cljs$core$IIndexed$_nth$arity$2(null,i__30377);
-var G__30394_30414 = day8.re_frame.http_fx.request__GT_xhrio_options(request__$1);
-(ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1 ? ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1(G__30394_30414) : ajax.core.ajax_request.call(null,G__30394_30414));
+if((i__38618 < count__38617)){
+var request__$1 = chunk__38616.cljs$core$IIndexed$_nth$arity$2(null,i__38618);
+var G__38631_38647 = day8.re_frame.http_fx.request__GT_xhrio_options(request__$1);
+(ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1 ? ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1(G__38631_38647) : ajax.core.ajax_request.call(null,G__38631_38647));
 
 
-var G__30415 = seq__30374;
-var G__30416 = chunk__30375;
-var G__30417 = count__30376;
-var G__30418 = (i__30377 + (1));
-seq__30374 = G__30415;
-chunk__30375 = G__30416;
-count__30376 = G__30417;
-i__30377 = G__30418;
+var G__38648 = seq__38615;
+var G__38649 = chunk__38616;
+var G__38650 = count__38617;
+var G__38651 = (i__38618 + (1));
+seq__38615 = G__38648;
+chunk__38616 = G__38649;
+count__38617 = G__38650;
+i__38618 = G__38651;
 continue;
 } else {
-var temp__5735__auto__ = cljs.core.seq(seq__30374);
+var temp__5735__auto__ = cljs.core.seq(seq__38615);
 if(temp__5735__auto__){
-var seq__30374__$1 = temp__5735__auto__;
-if(cljs.core.chunked_seq_QMARK_(seq__30374__$1)){
-var c__4556__auto__ = cljs.core.chunk_first(seq__30374__$1);
-var G__30428 = cljs.core.chunk_rest(seq__30374__$1);
-var G__30429 = c__4556__auto__;
-var G__30430 = cljs.core.count(c__4556__auto__);
-var G__30431 = (0);
-seq__30374 = G__30428;
-chunk__30375 = G__30429;
-count__30376 = G__30430;
-i__30377 = G__30431;
+var seq__38615__$1 = temp__5735__auto__;
+if(cljs.core.chunked_seq_QMARK_(seq__38615__$1)){
+var c__4556__auto__ = cljs.core.chunk_first(seq__38615__$1);
+var G__38652 = cljs.core.chunk_rest(seq__38615__$1);
+var G__38653 = c__4556__auto__;
+var G__38654 = cljs.core.count(c__4556__auto__);
+var G__38655 = (0);
+seq__38615 = G__38652;
+chunk__38616 = G__38653;
+count__38617 = G__38654;
+i__38618 = G__38655;
 continue;
 } else {
-var request__$1 = cljs.core.first(seq__30374__$1);
-var G__30395_30432 = day8.re_frame.http_fx.request__GT_xhrio_options(request__$1);
-(ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1 ? ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1(G__30395_30432) : ajax.core.ajax_request.call(null,G__30395_30432));
+var request__$1 = cljs.core.first(seq__38615__$1);
+var G__38632_38656 = day8.re_frame.http_fx.request__GT_xhrio_options(request__$1);
+(ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1 ? ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1(G__38632_38656) : ajax.core.ajax_request.call(null,G__38632_38656));
 
 
-var G__30433 = cljs.core.next(seq__30374__$1);
-var G__30434 = null;
-var G__30435 = (0);
-var G__30436 = (0);
-seq__30374 = G__30433;
-chunk__30375 = G__30434;
-count__30376 = G__30435;
-i__30377 = G__30436;
+var G__38657 = cljs.core.next(seq__38615__$1);
+var G__38658 = null;
+var G__38659 = (0);
+var G__38660 = (0);
+seq__38615 = G__38657;
+chunk__38616 = G__38658;
+count__38617 = G__38659;
+i__38618 = G__38660;
 continue;
 }
 } else {
