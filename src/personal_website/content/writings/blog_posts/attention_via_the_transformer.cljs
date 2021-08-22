@@ -75,7 +75,7 @@
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
-      [:img {:src "/self_attention_1.png" :class "post-img" :style {:width "75%"}}]]
+      [:img {:src "/resources/self_attention_1.png" :class "post-img" :style {:width "75%"}}]]
       [:figcaption {:class "post-caption"}
       "Fig. 1. An example of self-attention. The word being processed (red)
       learns to attend to other words (blue) and incorporates
@@ -92,8 +92,8 @@
 
    [:figure {:class "img-container"}
     [:div {:style {:text-align "center"}}
-      [:img {:src "/rnn_encoder_decoder.jpg" :class "post-img" :style {:width "85%"}}]
-      [:img {:src "/self_attention_2.png" :class "post-img" :style {:width "85%"}}]]
+      [:img {:src "/resources/rnn_encoder_decoder.jpg" :class "post-img" :style {:width "85%"}}]
+      [:img {:src "/resources/self_attention_2.png" :class "post-img" :style {:width "85%"}}]]
     [:figcaption {:class "post-caption"}
      "Fig. 2. Top: RNNs have to compress their entire input text
      into a single vector; only parts of each word's representation
@@ -155,7 +155,7 @@
 
     [:figure {:class "img-container"}
      [:div {:style {:text-align "center"}}
-      [:img {:src "/learned_embeddings.png" :class "post-img" :style {:width "75%"}}]]
+      [:img {:src "/resources/learned_embeddings.png" :class "post-img" :style {:width "75%"}}]]
      [:figcaption {:class "post-caption"}
       "Fig. 3. A lower dimensional visualization of a learned embedding space
        using PCA. Words with similar meanings, connotations, or that are used
@@ -223,8 +223,8 @@
         word)."]
 
   [:figure {:style {:width "100%" :margin "auto"}}
-   [:img {:src "/attention-with-similarity-1.svg" :style {:width "50%"}}]
-   [:img {:src "/attention-with-similarity-2.svg" :style {:width "50%"}}]
+   [:img {:src "/resources/attention-with-similarity-1.svg" :style {:width "50%"}}]
+   [:img {:src "/resources/attention-with-similarity-2.svg" :style {:width "50%"}}]
    [:figcaption {:class "post-caption"}
     "Fig. 4. If we inform our self-attention algorithm based on closness we
      might expect pronouns (e.g.,  " [:q "it"] ") to be  close to nouns, and
@@ -264,8 +264,8 @@
         embeddings overwrites what is already there." ]
 
   [:figure {:style {:width "100%" :margin "auto"}}
-   [:img {:src "/cold-hot-temp-vectors.svg" :id "hot-cold-2" :style {:width "50%" }}]
-   [:img { :src "/cold-hot-vectors.svg" :id "hot-cold-1" :style {:width "50%" }}]
+   [:img {:src "/resources/cold-hot-temp-vectors.svg" :id "hot-cold-2" :style {:width "50%" }}]
+   [:img { :src "/resources/cold-hot-vectors.svg" :id "hot-cold-1" :style {:width "50%" }}]
    [:figcaption {:class "post-caption"}
     "Fig. 5. Making the representations of " [:q "hot"] " and " [:q "cold"]
     " closer to that of " [:q "temperature"] " necessarily makes them closer to
@@ -299,10 +299,10 @@
 
     [:figure {:class "img-container" :style {:width "100%" :margin "auto"}}
      [:div {:style {:text-align "center"}}
-      [:img {:src "/reciprocal-attention.svg" :style {:width "100%" :margin-left "6%"}}]  ]]
+      [:img {:src "/resources/reciprocal-attention.svg" :style {:width "100%" :margin-left "6%"}}]  ]]
 
     [:figure {:class "img-container" :style {:width "100%" :margin "auto"}}
-      [:img {:src "/reciprocal-attention-2.svg" :style {:width "100%" :margin-left "6%"}}]]
+      [:img {:src "/resources/reciprocal-attention-2.svg" :style {:width "100%" :margin-left "6%"}}]]
 
       [:figcaption {:class "post-caption"}
        "Fig. 6. If we use closeness as an indicator for self-attention,
@@ -346,8 +346,8 @@
         to be very positive (" [:q "hot"] " and   " [:q "cold"] " attend highly to " [:q "temperature"] ")."]
 
   [:figure {:style {:width "100%" :margin "auto"}}
-    [:img {:src "/cold-hot-temp-vectors-vspace.svg" :style {:width "50%"}}]
-    [:img {:src "/cold-hot-vectors-vspace.svg" :style {:width "50%"}}]]
+    [:img {:src "/resources/cold-hot-temp-vectors-vspace.svg" :style {:width "50%"}}]
+    [:img {:src "/resources/cold-hot-vectors-vspace.svg" :style {:width "50%"}}]]
   [:figcaption {:class "post-caption"}
    "Fig. 7. So our visualization from earlier wasn't
    necessarily wrong – it would just have to take place in seperate
@@ -392,8 +392,8 @@
         " vs. " [:q "ball"] ", self-attention becomes non-commutative."]
 
   [:figure {:style {:width "100%" :margin "auto"}}
-   [:img {:src "/it-ball-1.svg" :style {:width "50%"}}]
-   [:img {:src "/it-ball-2.svg" :style {:width "50%"}}]
+   [:img {:src "/resources/it-ball-1.svg" :style {:width "50%"}}]
+   [:img {:src "/resources/it-ball-2.svg" :style {:width "50%"}}]
    [:figcaption {:class "post-caption"}
     "Fig. 8. \\(\\boldsymbol{E_q}\\) is on the right and \\(\\boldsymbol{E_k}\\)
      is on the left. Notice that the representation of " [:q "it"] " in
@@ -406,7 +406,7 @@
 
   [:figure {:style {:width "100%" :margin "auto" :margin-top "25px"}}
    [:div {:style {:text-align "center"}}
-     [:img {:src "/it-ball-3.svg" :class "post-img" :style {:width "70%"}}]]
+     [:img {:src "/resources/it-ball-3.svg" :class "post-img" :style {:width "70%"}}]]
    [:figcaption {:class "post-caption"}
      "Fig. 9. A juxtaposition of the two embedding spaces \\(\\boldsymbol{E_q}\\) and
       \\(\\boldsymbol{E_k}\\). This makes clear  that " [:q "it"] " attends to "
@@ -494,7 +494,7 @@
 
       [:figure {:class "img-container"}
        [:div {:style {:text-align "center"}}
-          [:img {:src "/scaled-dot-prod-atten.png" :id "scaled-dot" :style {:width "30%"}}]]
+          [:img {:src "/resources/scaled-dot-prod-atten.png" :id "scaled-dot" :style {:width "30%"}}]]
          [:figcaption {:class "post-caption"}
          "Fig. 10. A visual illustration of the the above self-attention
          formula. The step labeled " [:q "Masking"] " has to do specfically
@@ -542,9 +542,9 @@
 
     [:figure {:style {:width "100%" :margin "auto" :margin-top "25px"}}
      [:div {:style {:text-align "center"}}
-           [:img {:src "/abstract_embedding-2.svg" :style {:width "40%"}}]
+           [:img {:src "/resources/abstract_embedding-2.svg" :style {:width "40%"}}]
      [:span {:style {:width "5%" :display "inline-block"}}]
-      [:img {:src "/abstract_embedding.svg" :style {:width "40%"}}]]
+      [:img {:src "/resources/abstract_embedding.svg" :style {:width "40%"}}]]
      [:figcaption {:class "post-caption" :style {:margin-top "25px"}}
       "Fig. 11. An example of what representations for " [:q "it"] " and " [:q "ball"] " might
        look like ("[:q "it"] "  is on the left, " [:q "ball"] " is on the right). A
@@ -640,12 +640,19 @@
           use a non-linearity here
           also
 
-          Multi-head attention allows the model to jointly attend to information from different representation
+          Multi-head attention allows the modeljsdjjhkjshjsdhjksdhjsdhjkhsdkj to jointly attend to information from different representation
           subspaces at different positions. With a single attention head, averaging inhibits this."]
 
             [:h1 {:class "post-section-header"} "What Does It All Mean?"] 
             [:h1 {:class "post-section-header"} "Alternative "]
+
+
+
+
             [:h1 {:class "post-section-header"} "Multi-Representation Learning"]
+
+
+
             [:h1 {:class "post-section-header"} "An Ode To The Transformer"]
             [:h1 {:class "post-section-header"} "noitatumerP Invariant?"]
             [:h1 {:class "post-section-header"} "But...RNNs Aren't Dead"] 
