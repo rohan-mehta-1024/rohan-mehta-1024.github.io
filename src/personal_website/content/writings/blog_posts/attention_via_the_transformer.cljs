@@ -86,6 +86,9 @@
 over other ways of embedding context, like recurrent neural nets. They try and smush the whole
 context into a single vector, and so neccessarily must reduce its resolution."]
 
+
+
+   
    [:p "Self-attention on
       the other hand allows any element of the input to directly attend to any
       other element, making it much easier for models to build up more
