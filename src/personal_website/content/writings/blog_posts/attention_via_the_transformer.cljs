@@ -88,14 +88,18 @@ context into a single vector, and so neccessarily must reduce its resolution."]
 
 
 
-   
+
+
+
+
+
    [:p "Self-attention on
       the other hand allows any element of the input to directly attend to any
       other element, making it much easier for models to build up more
       robust representations of the text they are fed, even when that
       text is especially long or complex."]
 
-   [:figure {:class "img-container"}
+   [:figure    {:class "img-container"}
     [:div {:style {:text-align "center"}}
       [:img {:src "/resources/rnn_encoder_decoder.jpg" :class "post-img" :style {:width "85%"}}]
       [:img {:src "/resources/self_attention_2.png" :class "post-img" :style {:width "85%"}}]]
