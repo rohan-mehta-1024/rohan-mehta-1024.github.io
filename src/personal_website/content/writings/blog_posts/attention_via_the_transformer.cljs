@@ -82,7 +82,9 @@
       their " [:q "information"] " in differing amounts (Source: "
       (utils/link "Cheng et al., 2016" "https://arxiv.org/pdf/1601.06733.pdf") ")."]]
 
-  [:p "And this turns out to be incredibly helpful, where context ca "]
+  [:p "And this turns out to be incredibly helpful. What's more, it offers a distinctive advantage
+over other ways of embedding context, like recurrent neural nets. They try and smush the whole
+context into a single vector, and so neccessarily must reduce its resolution."]
 
    [:p "Self-attention on
       the other hand allows any element of the input to directly attend to any
