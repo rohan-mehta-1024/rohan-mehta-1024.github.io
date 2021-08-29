@@ -8,6 +8,9 @@
    In this post, we will develop an intution for how it works, examine the
    deeper ideas at play behind it, and take a look at where it's heading in the future.")
 
+
+
+
 (def post-content
   [:div
    [:p "The transformer — a neural net architecture proposed in "
