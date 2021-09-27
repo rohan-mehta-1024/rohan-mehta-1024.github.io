@@ -26,15 +26,7 @@
        is to hopefully provide some of that intuition and demonstrate why it is
        so powerful."]
 
-  ; [:p "Beyond that, though, I also want to take a look at how
-   ;     deeply embedded the idea of attention seems to be in the field,
-    ;    and its significance beyond natural language processing.
-     ;   Will it overtake convolutions? Is recurrence still useful?
-      ;  Are transformers a sign that inductive biases can't compete
-       ; with more generic models with enough compute?
-       ; An intuitive understanding of the mechanics behind attention
-       ; will let us ponder these – and many more – interesting questions
-       ; in greater detail, so let's begin!"]
+  ; [:p "!"]
 
 
   ; [:p "Before we lay out this idea from the bottom-up however,
