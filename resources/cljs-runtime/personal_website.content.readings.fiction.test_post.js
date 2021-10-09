@@ -1,4 +1,0 @@
-goog.provide('personal_website.content.readings.fiction.test_post');
-personal_website.content.readings.fiction.test_post.post = new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"title","title",636505583),"The Toll By Neal Shusterman",new cljs.core.Keyword(null,"date","date",-1463434462),"2020/8/29",new cljs.core.Keyword(null,"content","content",15833224),"A breathtaking if somehat",new cljs.core.Keyword(null,"show","show",-576705889),"this is what you should show about this post",new cljs.core.Keyword(null,"tags","tags",1771418977),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["dystopian","futuristic"], null),new cljs.core.Keyword(null,"overarching","overarching",696949346),"reading",new cljs.core.Keyword(null,"type","type",1174270348),"fiction"], null);
-
-//# sourceMappingURL=personal_website.content.readings.fiction.test_post.js.map

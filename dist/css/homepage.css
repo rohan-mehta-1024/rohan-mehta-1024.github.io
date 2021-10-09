@@ -1,0 +1,107 @@
+#content-container {
+  text-align: center;
+  width: 75%;
+  height: 100%;
+  margin: auto;
+  margin-top: 35px;
+  margin-bottom: 50px;
+}
+
+#about-me-container {
+
+}
+
+#about-me-container::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 720px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: black;
+}
+
+#picture {
+  height: 225px;
+  width: 225px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -10px;
+}
+
+#about-me {
+  text-align: left;
+  width: 400px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 75px;
+}
+
+#about-me-text {
+  line-height: 1.5;
+  font-family: WorkSans;
+  color: black;
+}
+
+#recents {
+  font-family: WorkSansBold;
+  font-size: 28px;
+  width: 700px;
+  margin: auto;
+  text-align: left;
+  margin-top: 20px;
+}
+
+#recents div + div {
+  margin-top: 50px;
+}
+
+@media (max-width: 950px) {
+
+  
+  
+  #content-container {
+    width: 95%;
+    margin-top: 15px;
+  }
+  
+  #about-me-container {
+  
+  }
+  
+  #about-me-container::after {
+    width: 100%;
+    margin: auto;
+  }
+  
+  #about-me {
+    width: 90%;
+    display: block;
+    margin-top: 60px;
+    margin-left: 30px;
+  }
+  
+  #picture {
+    width: 250px;
+    height: 250px;
+    margin-bottom: -40px;
+    margin-top: 35px;
+  }
+  
+  #recents {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  #about-me-text {
+    font-size: 15px;
+    margin-left: -20px;
+  }
+
+}
