@@ -99,16 +99,16 @@
     :js    []}})
 
 (defn get-all-pages! [posts export?]
-  (let [new-posts (back-into-map (map post/format-post posts))
+  (let [export-fn (if export? #(-> % :draft) (constantly true))
+        posts (setval [MAP-VALS export-fn] NONE posts)
+        new-posts (back-into-map (map post/format-post posts))
         about     (generate-about-page)
-        homepage  (generate-homepage posts)
-        export-fn (if export? identity (constantly true))]
+        homepage  (generate-homepage posts)]
     (->> posts
          (generate-preview-pages)
          (back-into-map)
          (merge homepage about new-posts)
          ;(select [MAP-VALS :draft export-fn])
-         (setval [MAP-VALS :draft export-fn] NONE)
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
 
 (defn get-assets! []
