@@ -1,0 +1,13 @@
+.two-images {
+  width: 48%;
+}
+
+@media (max-width: 500px) {
+
+  .two-images {
+    display: block;
+    margin: auto;
+    width: 95%;
+  }
+
+}

@@ -116,11 +116,11 @@
 
 (defn build-app! []
   (let [assets (get-assets!)]
-    (stasis/empty-directory! "dist")
-    (optimus.export/save-assets assets "dist")
+    (stasis/empty-directory! "docs")
+    (optimus.export/save-assets assets "docs")
     (-> (get-content-pages!)
         (get-all-pages! true)
-        (stasis/export-pages "dist"))))
+        (stasis/export-pages "docs"))))
 
 (def app
   (-> (get-content-pages!)

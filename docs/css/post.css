@@ -1,0 +1,150 @@
+#post-content-container {
+  width: 750px;
+  min-height: 100vh;
+  word-break: break-word;
+  margin: auto;
+  margin-top: 15px;
+}
+
+#post-title {
+  text-align: left;
+  font-family: WorkSans;
+  font-size: 35px;
+  color: black;
+}
+
+#post-byline {
+  color: grey;
+  text-align: left;
+  font-family: WorkSans;
+  font-weight: 500;
+}
+
+#post-intro-container {
+  position: relative;
+  z-index: -1;
+  margin-top: 30px;
+}
+
+#post-intro-container::before {
+  content: '';
+  float: left;
+  width: 5px;
+  position: absolute;
+  height: 100%;
+  background-color: #D0D0D0;
+  margin-left: 8px;
+}
+
+#post-intro-text {
+  margin-left: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #B0B0B0;
+  font-family: WorkSans;
+  font-size: 20px;
+}
+
+#post-content {
+  font-size: 16px;
+  font-family: WorkSans;
+  margin-top: 35px;
+  line-height: 28px;
+  padding-bottom: 100px;
+}
+
+#post-content.not-poem {
+
+}
+
+#post-content.not-poem p:first-of-type::first-letter {
+  float: left;
+  font-size: 75px;
+  color: #903;
+  font-family: Georgia;
+  line-height: 40px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+}
+
+.colored-post-link {
+  color: #DC143C;
+}
+
+.colored-post-link:hover {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 25px;
+  clear: both;
+}
+
+sup {
+  font-size: 14px;
+}
+
+.MathJax {
+  font-size: 18px !important;
+}
+
+sup {
+  padding-top: 100px;
+  line-height: 0px;
+}
+
+.two-images {
+  width: 48%;
+}
+
+@media (max-width: 900px) {
+
+  #post-content-container {
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  
+  
+  .get-bigger {
+    width: 100% !important;
+  }
+  
+  .get-bigger-2 {
+    width: 80% !important;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  
+  
+  #post-content {
+    font-size: 15px;
+  }
+  
+  .two-images {
+    display: block;
+    margin: auto;
+    width: 95%;
+  }
+  
+  .MathJax {
+    font-size: 15px !important;
+  }
+  
+  figcaption {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+}
