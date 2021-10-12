@@ -112,19 +112,19 @@
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
 
 (defn get-assets! []
-  (assets/load-assets "public" [#".ttf|css|png|jpg|svg"]))
+  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|js"]))
 
 (defn build-app! []
   (let [assets (get-assets!)]
     (stasis/empty-directory! "docs")
     (optimus.export/save-assets assets "docs")
     (-> (get-content-pages!)
-        (get-all-pages! true)
+        (get-all-pages! false)
         (stasis/export-pages "docs"))))
 
 (def app
   (-> (get-content-pages!)
-      (get-all-pages! false)
+      (get-all-pages! true)
       (stasis/serve-pages)
       (optimus/wrap
         get-assets!

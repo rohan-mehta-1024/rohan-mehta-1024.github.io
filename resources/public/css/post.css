@@ -41,7 +41,7 @@
   padding-top: 8px;
   padding-bottom: 8px;
   color: #B0B0B0;
-  font-family: WorkSans;
+  font-family: serif;
   font-size: 20px;
 }
 
@@ -49,8 +49,8 @@
   font-size: 16px;
   font-family: WorkSans;
   margin-top: 35px;
-  line-height: 28px;
-  padding-bottom: 100px;
+  line-height: 26px;
+  padding-bottom: 30px;
 }
 
 #post-content.not-poem {

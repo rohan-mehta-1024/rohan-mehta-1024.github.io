@@ -43,15 +43,15 @@
                       :padding-top (px 8)
                       :padding-bottom (px 8)
                       :color       "#B0B0B0"
-                      :font-family "WorkSans"
+                      :font-family "serif";"Times New Roman";"WorkSans"
                       :font-size   (px 20)}])
 
 (def post-content 
   [:#post-content {:font-size      (px 16)
                    :font-family    "WorkSans"
                    :margin-top     (px 35)
-                   :line-height    (px 28)
-                   :padding-bottom (px 100)}])
+                   :line-height    (px 26)
+                   :padding-bottom (px 30)}])
 
 (def first-letter
   [:#post-content.not-poem {}
