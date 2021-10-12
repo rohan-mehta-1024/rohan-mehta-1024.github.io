@@ -114,9 +114,12 @@
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
 
 (defn get-assets! []
-  (concat
-    (assets/load-assets "public" [#".ttf|css|png|jpg|svg"])
-    (assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"]) )
+  ;(concat)
+  (assets/load-assets "public" [#".ttf|css|png|jpg|svg"])
+                                        ;(->  (assets/load-assets "public" [#".js"])
+                                        ; (optimizations/minify-js-assets nil))
+  ;(assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"])
+  
 
   )
 
