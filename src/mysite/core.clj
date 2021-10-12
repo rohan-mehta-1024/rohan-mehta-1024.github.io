@@ -1,5 +1,6 @@
 (ns mysite.core
   (:require [clj-time.format :as f]
+            [me.raynes.fs :as fs]
             [optimus.export] 
             [markdown.core :as md]
             [stasis.core :as stasis]
@@ -136,6 +137,9 @@
         (get-all-pages! true)
         (stasis/export-pages "docs"))
     (write-cname "docs")
+    (fs/delete-dir "docs/cljs-out")
+    ;(print "hello")
+    (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")
     ))
 
 (def app

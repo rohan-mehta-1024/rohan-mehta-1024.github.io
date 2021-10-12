@@ -48,6 +48,5 @@
     (doseq [subpage subpages]
       (. subpage addEventListener "click" (comp on-click-subpage get-current)))))
 
-
 ;(js/commentBox "5711441948573696-proj")
 (set! (.-onload js/window) start-listening!)

@@ -21,7 +21,7 @@
 (defn generate-head [title css-files js-files]
   (let [head        (head-template title)
         default-css ["/css/header.css" "/css/footer.css"]
-        default-js  ["target/public/cljs-out/dev-main.js"]]
+        default-js  ["/cljs-out/dev-main.js"]]
     (->> [css-files js-files]
          (transform [FIRST] (partial into default-css))
          (transform [LAST] (partial into default-js))
