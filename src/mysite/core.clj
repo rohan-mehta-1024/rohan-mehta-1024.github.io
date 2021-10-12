@@ -112,7 +112,11 @@
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
 
 (defn get-assets! []
-  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|js"]))
+  (concat
+    (assets/load-assets "public" [#".ttf|css|png|jpg|svg"])
+    (assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"]) )
+
+  )
 
 (defn build-app! []
   (let [assets (get-assets!)]
