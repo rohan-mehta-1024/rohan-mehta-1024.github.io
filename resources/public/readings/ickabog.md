@@ -23,7 +23,7 @@ just poorly written.
 
 And that's why I was so eagerly looking forward to this book: as 
 a cleansing of the palette by an author who I knew could deliver. 
-The story follows the kindom of Cornucopia, and how two 
+The story follows the Kingdom of Cornucopia, and how two 
 insiduous lords hoodwink the entire country in a great scam
 by convincing them that the Ickabog – a mythical creature invented
 to scare disobedient children into submission – is,
@@ -31,7 +31,7 @@ in fact, real. They then proceed to kill their enemies and
 institute outrageously high taxes (among other crimes), 
 blaming the Ickabog for it all. Little do they know that the 
 tale of the Ickabog is grounded in reality, and that the creature
-does actually exist, and that a recokining is coming.
+does actually exist, and that a reckoning is coming.
 
 In all senses, it is a throroughly enjoyable read,
 although I do feel it petered out just the slightest bit
@@ -46,7 +46,7 @@ the tounge, inspiring curiosity or admiration through
 their ingenious plays on words. 
 
 Take the word Ickabog, for instance. What a wonderful name 
-it makes for, what a wonderful title! The whole book
+it makes for; what a wonderful title! The whole book
 is replete with delightful names, from Major Beamish to 
 Lords Spittleworth and Flapoon to Advisor Herringbone. 
 These names in and of themselves provide as much color
