@@ -69,7 +69,9 @@
          (transform [MAP-KEYS] md->HTML)
          (sort-by (comp parse-date :date second))
          (reverse)
-         (back-into-map))))
+         (back-into-map)
+
+  )))
 
 (defn generate-preview-pages [posts]
   (let [previews (preview/make-all-previews posts)]
@@ -118,13 +120,20 @@
 
   )
 
+
+(defn write-cname [out]
+  (spit (str out "/CNAME") "https://mehta-rohan.com"))
+
+
 (defn build-app! []
   (let [assets (get-assets!)]
     (stasis/empty-directory! "docs")
     (optimus.export/save-assets assets "docs")
     (-> (get-content-pages!)
         (get-all-pages! true)
-        (stasis/export-pages "docs"))))
+        (stasis/export-pages "docs"))
+    (write-cname "docs")
+    ))
 
 (def app
   (-> (get-content-pages!)
