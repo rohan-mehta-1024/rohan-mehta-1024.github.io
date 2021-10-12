@@ -99,7 +99,7 @@
     :js    []}})
 
 (defn get-all-pages! [posts export?]
-  (let [export-fn (if export? #(-> % :draft) (constantly true))
+  (let [export-fn (if export? #(-> % :draft) (constantly false))
         posts (setval [MAP-VALS export-fn] NONE posts)
         new-posts (back-into-map (map post/format-post posts))
         about     (generate-about-page)
@@ -123,12 +123,12 @@
     (stasis/empty-directory! "docs")
     (optimus.export/save-assets assets "docs")
     (-> (get-content-pages!)
-        (get-all-pages! false)
+        (get-all-pages! true)
         (stasis/export-pages "docs"))))
 
 (def app
   (-> (get-content-pages!)
-      (get-all-pages! true)
+      (get-all-pages! false)
       (stasis/serve-pages)
       (optimus/wrap
         get-assets!
