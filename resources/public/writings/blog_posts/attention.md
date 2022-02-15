@@ -1,5 +1,491 @@
 TITLE=The Attention Mechanism Demystified
-DATE=7/17/2021
-PREVIEW=Automatic differentiation is the numerical computing technique that gave us the backpropagation algorithm. Let's find out how it works!
-TAGS=Deep Learning, Calculus
+DATE=1/30/2022
+PREVIEW=You can barely without encountering – but what does?
+TAGS=Deep Learning, NLP
 DRAFT=true
+
+The transformer – a neural net architecture proposed in 
+<a class="colored-post-link" href="https://arxiv.org/abs/1706.03762">
+Vaswani et al., 2017</a> – has taken the NLP world by storm in the past
+few years, contributing to the recent success of 
+<a class="colored-post-link" href="https://arxiv.org/abs/2005.14165">OpenAI's GPT-3</a>
+among many others. But while there is an abundance of online
+material describing the transformer architecture, its crucial theoretical
+contribution – the key, query, and value attention mechanism –
+lacks a clear, accessible explanation, especially from
+the perspective of what motivated it and why it works. The focus of this post
+is to hopefully provide some of that intuition, and demonstrate why 
+the attention mechanism is so powerful. 
+
+<h1>Attending To Thy-Self</h1>
+
+Before we delve further into how the transformer phrases
+self-attention mathematically, it's worth clarifying what exactly
+&ldquo;self-attention&rdquo; means. Just like a standard layer
+of neurons, the self-attention operation is some parameterized, 
+differentiable function we can include in our neural nets. 
+Unlike these layers though, it works on sets of elements (not vectors),
+and learns some function to linearly combine each element with all the others.
+
+You can think of it a bit like a blender: it blends
+all other elements into the current element, creating some
+new hybrid element that contains contextual information about the set as 
+a whole. The intuition  here is that the network is learning 
+to focus some of its &ldquo;attention&rdquo; on elements other than the 
+one it is currently processing, hence the operation's name.
+
+<div style="text-align:center;">
+<img src=../../images/attention/self_attention_1.png class=get-bigger style=width:85%;></img>
+<figcaption style="text-align:left;">
+Fig. 1.  Example of self-attention. The word being processed (red)
+learns to attend to other words (blue) and incorporates them
+in differing amounts (Source: 
+<a class="colored-post-link" href= "https://arxiv.org/pdf/1601.06733.pdf">
+Cheng et al., 2016</a>).
+</figcaption>
+</div>
+
+And this turns out to be incredibly helpful, especially in situations
+where context matters (like understanding language). What's more,
+it offers a distinctive advantage over other, more traditional
+ways of embedding context, like recurrent neural nets. 
+
+RNNs try and smush the whole context into a single vector.
+This compression means that some information will inevitably be lost,
+especially as the text being interpreted gets longer and more complex. 
+Moreover, only a small part of this vector may actually
+be useful to any given element, and having to block out the
+noise introduces uneccessary complexity.
+
+
+<div style="text-align:center;">
+<img src=../../images/attention/rnn_encoder_decoder.png class=get-bigger style=width:100%;></img>
+<figcaption style="text-align:left;">
+Fig. 2. RNNs have to compress their entire input text
+into a single vector; only parts of each word's representation
+are conserved (Source: Unknown).
+</figcaption>
+</div>
+
+Self-attention, on the other hand, allows any element of the input to directly
+attend to any other element. As such, each element gets to define its own unique 
+context vector! And since it only has to account for the local  context
+(unlike in RNNs), this vector can be much more precise about the information it does contain.
+
+<div style="text-align:center;">
+<img src=../../images/attention/self_attention_2.png class=get-bigger style=width:95%;margin-top:-20px;></img>
+<figcaption style="text-align:left;">
+Fig. 3. Self-attention allows each element to access
+the entire representation of any other element, rather than some
+compressed version of it (Source: 
+<a class="colored-post-link" href="https://arxiv.org/pdf/1706.03762.pdf">
+Vaswani. et al., 2017</a>).
+</figcaption>
+</div>
+
+But how exactly does a given element decide how much to attend to another element? 
+And how does it use this information to build up its associated context vector? To get to the real meat
+of the attention mechanism, we need to start phrasing things mathematically.
+
+Let's imagine we have a matrix \\(\\boldsymbol{V}\\) that contains the vector 
+representations of some input text in its columns.
+Suppose we also have a vector \\(\\boldsymbol{\\vec{\\alpha}}\\) which contains 
+the attention coefficients for one of these words (i.e., how much that
+word wants to attend to every other word). 
+
+<p>$$\boldsymbol{V} =
+           \begin{bmatrix}
+           \vert & \vert & \hspace{1cm} & \vert \\
+           \boldsymbol{\vec{v}_1} & \boldsymbol{\vec{v}_2} & \cdots & \boldsymbol{\vec{v}_n} \\
+           \vert & \vert & \hspace{1cm} & \vert \\
+           \end{bmatrix} \in \mathbb{R}^{n \times m}
+           \hspace{2cm}
+           \begin{align}
+           \boldsymbol{\vec{\alpha}} &=
+           \begin{bmatrix} 
+           \alpha_{1} \\
+           \alpha_{2} \\
+           \vdots \\
+           \alpha_{n} \\
+           \end{bmatrix} \in \mathbb{R}^{n}
+           \end{align}$$</p> 
+
+When computing the new representation for this word, 
+we want it to incorporate other words such that it more strongly
+incorporates words with which it has a high attention coefficient, and
+more weakly incorporates those with which it has low attention coefficient.
+
+The easiest way to do this is by a weighted sum (of vectors), 
+\\(\\alpha_1 \\boldsymbol{\\vec{v}_1} + \\alpha_2 \\boldsymbol{\\vec{v}_2} +
+\\ldots + \\alpha_n \\boldsymbol{\\vec{v}_n}.\\) This is equivelant to
+the matrix-vector product \\(\\boldsymbol{V}\\boldsymbol{\\vec{\\alpha}}.\\)
+In other words, calculating this matrix-vector product gives us our chosen word's
+specific context vector. 
+
+However, we still need to find some function that
+is capable of computing the vector \\(\\boldsymbol{\\vec{\\alpha}}\\) for
+each word in the first place. Given the embeddings of two words,
+it needs to determine how strongly one should attend to the other (and vice versa). 
+
+The simplest binary operation on vectors which gives some sense of how 
+strongly they resonate with one another is the dot product. 
+It  acts as a measure of similarity
+between two vectors: the closer
+in space two vectors are, the larger
+their dot product. 
+
+Intuitively, it makes sense that the more similar two words are, 
+the more they would want to attend to one another.
+So perhaps we can just define the attention coefficient between
+two words as the dot product of their embeddings.
+
+<img src=../../images/attention/attention-with-similarity-1.svg class=two-images></img>
+<img src=../../images/attention/attention-with-similarity-2.svg class=two-images></img>
+<figcaption>Fig. 4. If we inform our self-attention algorithm based on vector similarity we
+might expect pronouns (e.g., &ldquo;it&rdquo;) to be close to nouns, and
+linking verbs (e.g.,  &ldquo;is&rdquo;) to be close to adjectives.</figcaption>
+
+Unfortunately, this idea has two key flaws that stop
+it from working outright. To see what I mean,
+consider the words &ldquo;hot&rdquo; 
+and &ldquo;cold&rdquo;. For now, we're going to make
+the simplifcation that word-embeddings
+only reflect word-meaning. In other words, the representations for 
+&ldquo;hot&rdquo; and &ldquo;cold&rdquo; should
+point in opposite directions, 
+since they are antonyms. 
+
+However, it's also likely that both words
+will want to attend highly to the word &ldquo;temperature&rdquo;, 
+as in the phrase &ldquo;The temperature is hot&rdquo; or 
+&ldquo;The temperature is cold&rdquo;. If both &ldquo;hot&rdquo; and 
+&ldquo;cold&rdquo; want to attend highly to &ldquo;temperature&rdquo;, 
+then their embeddings must be close to its embedding,
+as that's the only way they will yield a high dot product with one another,
+and thus – as we've defined it – a high attention coefficient.
+
+But by making the representations of &ldquo;hot&rdquo; and 
+&ldquo;cold&rdquo; closer the representation of &ldquo;temperature&rdquo;, 
+we are necessarily making them closer to one another,
+and therefore loosing the information that they are antonyms! 
+
+
+<img src=../../images/attention/cold-hot-temp-vectors.svg class=two-images></img>
+<img src=../../images/attention/cold-hot-vectors.svg class=two-images></img>
+<figcaption>Fig. 5. Making the representations of &ldquo;hot&rdquo; and 
+&ldquo;cold&rdquo; closer to that of &ldquo;temperature&rdquo; also
+causes them to be closer to another (as can be seen on the right). 
+This overwrites the information that they are antoyms.</figcaption>
+
+In other words, it's not possible to encode 
+data about attentional relationships into our word-embeddings
+without compromising the information about semantic relationships 
+that's already there. Dot production attention requires
+that we choose between one or the other.
+
+As if that wasn't bad enough, there's another, arguably even
+worse problem.  Attention is not a mutually reciprocal
+action, but similarity is. 
+
+Consider the sentence
+&ldquo;He picked up the tennis ball and found it was wet.&rdquo;
+We would probably expect  &ldquo;it&rdquo; to attend
+highly to &ldquo;ball&rdquo; (what &ldquo;it&rdquo; 
+is referring to) while &ldquo;ball&rdquo; would probably
+attend highly to &ldquo;tennis&rdquo; and &ldquo;picked up&rdquo; 
+(its type and the action performed on it), but
+much more weakly to  &ldquo;it&rdquo; (after all, 
+what new information does it gain from this?).
+
+However, even though it might be more advantageous for 
+&ldquo;ball&rdquo; to attend weakly to &ldquo;it&rdquo;,
+so long as &ldquo;it&rdquo; attends strongly to &ldquo;ball&rdquo;,
+&ldquo;ball&rdquo; must attend to &ldquo;it&rdquo; with equal
+strength.<sup><a href=#foot1 id=head1 class="colored-post-link">1</a></sup>
+This is because making &ldquo;it&rdquo; closer to &ldquo;ball&rdquo;
+necessarily makes &ldquo;ball&rdquo; closer to &ldquo;it&rdquo;
+by an equal amount.
+
+More generally if a word X attends highly to another word Y, then Y must
+attend as highly to X by default. Furthermore, since X is similar to Y it
+is also similar to those words which are also similar to Y (words which
+Y attends highly to) and by extension those words which are similar to those
+words which are similar to Y (the words the words similar to Y attend highly to)
+and so on and so forth. Thus, everything will end up attending to everything else!
+
+
+<div style="">
+<img src=../../images/attention/reciprocal-attention.svg class=get-bigger style=width:100%;margin-left:5%;></img>
+</div>
+
+<div style="">
+<img src=../../images/attention/reciprocal-attention-2.svg class=get-bigger style=width:100%;;margin-left:5%;></img>
+<figcaption style="text-align:left;">
+Fig. 6. If we use similarity  as an indicator for self-attention,
+then attention becomes reciprocal. The original attention (in black)
+will be automatically reciprocated (in red).
+</figcaption>
+</div>
+
+Evidently, using similarity as a metric for self-attention
+comes with its problems. But if we could  get it work,
+a dot product attention mechanism would be awfully nice. And it seems to 
+make a great deal of intuitive sense as well.
+So how can we resolve its shortcomings?
+
+<h1>Keys, Queries, and Values</h1>
+
+The answer, in fact, is deceptively simple: with multiple embedding
+spaces. Let's consider our first problem again.  There wasn't enough
+room in a single word-embedding to hold information about
+both word meaning and attentional relationships. 
+
+The natural thing to do, then, 
+would be to distribute this information throughout multiple
+representations, as opposed to trying to cram it all into just one. 
+
+So let's create two embedding spaces. In \\(\\boldsymbol{E_1}\\), the
+vector representation of each word will encode the semantic information
+associated with that word. It is in this space that &ldquo;hot&rdquo;
+and &ldquo;cold&rdquo; will be oppositely positioned. Conversely, in
+\\(\\boldsymbol{E_2}\\), word-embeddings will hold  attentional
+information – here, &ldquo;hot&rdquo; and &ldquo;cold&rdquo; will be close
+together along with &ldquo;temperature&rdquo;. But this is no longer an issue, as we have
+preserved the information that they are antonyms within \\(\\boldsymbol{E_1}\\)!
+
+<!--  <p>More mathematically, given \(\boldsymbol{\vec{v}_{cold}},\hspace{0.15cm}\boldsymbol{\vec{v}_{hot}}
+\in \boldsymbol{E_1}\)  and \(\boldsymbol{\vec{\alpha}_{cold}},\hspace{0.15cm} \boldsymbol{\vec{\alpha}_{hot}},\hspace{0.15cm}
+\boldsymbol{\vec{\alpha}_{temperature}} \in \boldsymbol{E_2}\)
+we would expect \(\boldsymbol{\vec{v}_{cold}} \cdot \boldsymbol{\vec{v}_{hot}}\)
+to be very negative (&ldquo;hot&rdquo; and &ldquo;cold&rdquo; are antonyms) and
+\(\boldsymbol{\vec{\alpha}_{cold}} \cdot \boldsymbol{\vec{\alpha}_{temperature}}\)
+and \(\boldsymbol{\vec{\alpha}_{hot}} \cdot \boldsymbol{\vec{\alpha}_{temperature}}\)
+to be very positive (&ldquo;hot&rdquo; and &ldquo;cold&rdquo; attend highly
+to &ldquo;temperature&rdquo;).</p> -->
+
+<img src=../../images/attention/cold-hot-temp-vectors-vspace.svg class=two-images style="border:2px solid black;"></img>
+<img src=../../images/attention/cold-hot-vectors-vspace.svg class=two-images style="border:2px solid black;"></img>
+<figcaption>Fig. 7. So our visualization from earlier wasn't
+necessarily wrong – it would just have to take place in seperate
+embedding spaces. \(\boldsymbol{E_1}\) (semantic-space) is on the
+left and \(\boldsymbol{E_2}\) (attention-space) is on the right.</figcaption>
+
+This seems to solve our first problem, but it doesn't do much
+to help us with our second one. By having &ldquo;hot&rdquo; and &ldquo;cold&rdquo; 
+attend highly to &ldquo;temperature&rdquo;, we're still
+forcing it to attend highly to them, as well (which it may acutally want to do,
+but shouldn't have to).
+
+Luckily for us though, this has a very similar fix:
+add another embedding space. More
+specifically, we need to split our second embedding space, \\(\\boldsymbol{E_2}\\),
+into two seperate spaces.
+
+Let's call them \\(\\boldsymbol{E_q}\\) and \\(\\boldsymbol{E_k}.\\)
+We can then define self-attention as follows. When
+calculating self-attention with respect to &ldquo;it&rdquo; (i.e.,
+how much &ldquo;it&rdquo; attends to &ldquo;ball&rdquo;) we dot
+its embedding in \\(\\boldsymbol{E_q}\\) with the embedding 
+of &ldquo;ball&rdquo; in \\(\\boldsymbol{E_k}.\\) Likewise,
+dotting the representation of &ldquo;ball&rdquo; 
+in \\(\\boldsymbol{E_q}\\) with that of
+&ldquo;it&rdquo; in \\(\\boldsymbol{E_k}\\),
+will give us  self-attention with respect to &ldquo;ball&rdquo;.
+ 
+ 
+As both operations deal with different embeddings
+(&ldquo;it&rdquo; in \\(\\boldsymbol{E_q}\\) and &ldquo;ball&rdquo; 
+in \\(\\boldsymbol{E_k}\\) vs.
+&ldquo;ball&rdquo; in \\(\\boldsymbol{E_q}\\) and &ldquo;it&rdquo; 
+in \\(\\boldsymbol{E_k}\\)) attention doesn't reciprocate. But, what
+is the intuition behind this operation?
+
+Essentially, what we're doing is
+computing two representations for each word: one is a 
+&ldquo;key&rdquo;, and the other is a &ldquo;lock&rdquo;.
+Computing self-attention with respect to some word X is a matter of
+seeing how similar other words' lock-representations are to its key-representation.
+
+But just because a word Y's lock-representation is similar to
+X's key-representation doesn't imply the opposite – its key-representation
+may not be similar to X's lock representation!
+
+<img src=../../images/attention/it-ball-1.svg class=two-images style="border:2px solid black;"></img>
+<img src=../../images/attention/it-ball-2.svg class=two-images style="border:2px solid black;"></img>
+<figcaption>Fig. 8. \(\boldsymbol{E_q}\) is on the right and \(\boldsymbol{E_k}\)
+is on the left. Notice that the representation of &ldquo;it&rdquo; in
+\(\boldsymbol{E_q}\) is close to the representation of &ldquo;ball&rdquo; 
+in \(\boldsymbol{E_k}\) (&ldquo;it&rdquo; attends highly to &ldquo;ball&rdquo;)
+but the representation of &ldquo;ball&rdquo; in \(\boldsymbol{E_q}\) is
+rather far from the representation of &ldquo;it&rdquo; in \(\boldsymbol{E_k}\)
+(&ldquo;ball&rdquo;  attends weakly to &ldquo;it&rdquo;).</figcaption>
+
+To adopt the transformer's lingo, we refer
+to these key- and lock-representations as queries (key-representations)
+and keys (lock-representations), respectively. Put simply, a word's key
+is the information it chooses to expose about itself (the lock), while its
+query is the information it looks for in other words,
+when determining how much to attend to them (the key).
+
+For example, the query of the word &ldquo;it&rdquo; might be
+something like  &ldquo;I attend highly to nouns – are you a noun?&rdquo;, while its key
+might be &ldquo;I am a pronoun&rdquo;. Since the key of &ldquo;ball&rdquo; is &ldquo;I am a noun&rdquo;, it would strongly satisfy the query of &ldquo;it&rdquo;, causing
+&ldquo;it&rdquo; to attend highly to &ldquo;ball&rdquo;. 
+
+But crucially, since the key of  &ldquo;it&rdquo; doesn't
+answer the query of &ldquo;ball&rdquo; with similar strength (&ldquo;I attend highly to adjectives – are you an adjective?&rdquo;), &ldquo;ball&rdquo; will attend very weakly to &ldquo;it&rdquo;. 
+
+We can visualize this idea even more viscerally by overlaying the
+embedding spaces containing our keys and queries
+atop one another. When doing so,
+we see that the angle formed between
+between the key of &ldquo;it&rdquo; and
+the query of &ldquo;ball&rdquo;
+is different from the angle
+formed between the key of &ldquo;ball&rdquo;
+and the query of &ldquo;it&rdquo;. Different angles means
+different dot products means different 
+attention coefficients!
+
+<div style="text-align:center;">
+<img src=../../images/attention/it-ball-3.svg class=get-bigger style="width:75%;"></img>
+<figcaption>Fig. 9. An overlay of the embedding spaces \(\boldsymbol{E_q}\) and \(\boldsymbol{E_k}.\)</figcaption>
+</div>
+
+So what's the mathematics behind all of this, then? How do we
+formalize these ideas? Let's imagine that we are given some sentence of
+variable length and need to find \\(\\boldsymbol{\\vec{\\alpha}}\\) for the \\(i\\)th word
+in this sentence. Given this word's query \\(\\boldsymbol{\\vec{q}}\\) and the matrix
+\\(\\boldsymbol{K}\\) whose columns are the keys of each word in the input, we can
+calculate it like so:
+
+<p>
+$$\boldsymbol{\vec{\alpha}} = \boldsymbol{K}^\top\boldsymbol{\vec{q}}$$
+<p>
+
+This is equivelant to dotting \\(\\boldsymbol{\\vec{q}}\\) with each entry of
+\\(\\boldsymbol{K}\\) and storing the results in a vector, which is exactly how
+we defined key-query attention. But calculating \\(\\boldsymbol{\\vec{\\alpha}}\\)
+isn't our true goal. What we really want to compute is \\(\\boldsymbol{\\vec{\\gamma}},\\)
+our current word's context vector. And, as we realized earlier, 
+this is just the product of \\(\\boldsymbol{\\vec{\\alpha}}\\) with the
+matrix containing the semantic representations of all words. 
+
+We had said that these representations lived in the emebdding space  \\(\\boldsymbol{E_1}\\), but to be  consistent
+with the transformer's  jargon, we'll rename  it to \\(\\boldsymbol{E_v}\\). Just as  key- and lock-representations became queries and keys, we will refer to a word's semantic representation as its value. 
+
+In this vocabulary, self-attention is a  sum of words' values weighted by their attention coefficients, or the dot product of their key with the current word's query. Thus:
+        
+<p>$$\boldsymbol{\vec{\gamma}} =
+        \boldsymbol{V}\boldsymbol{K}^\top\boldsymbol{\vec{q}}
+        \hspace{1cm}$$<p>
+
+
+<h1>Sprouting Multiple Heads</h1>
+
+Given all the complexities we encountered, it's surprisingly satisfying to 
+see everything reduce to such a simple formula! But there's
+one glaring detail that we've glossed over so far. We've been assuming that our initial
+represention for each word is its semantic representation, or value.
+So where do its key and query come from? 
+
+Instead of first working with our word's value, we might imagine starting with
+some more general, abstract representation, that has a broad idea of 
+word meaning, grammar, syntax, etc., but nothing too specific.
+We can then learn a series of weight matrices to linearly project this representation
+in three different ways, yielding the word's query, key, and value.
+
+<p>
+$$\boldsymbol{Q} = \boldsymbol{X}\boldsymbol{W_Q} \hspace{1cm}
+\boldsymbol{K} = \boldsymbol{X}\boldsymbol{W_K} \hspace{1cm}
+\boldsymbol{V} = \boldsymbol{X}\boldsymbol{W_V}
+$$
+</p>
+
+The query weight matrix might, for example, pull out the specific
+parts of this representation that store the types of words our word is usually 
+accompanied by, while the key weight matrix might project it into a space
+that is more aware of grammar, tense, and part-of-speech. Of course, the attention
+mechanism is much more complex than this, and still not entirely understood, but
+rationalizing it in this way helps us to understand why it works so well. 
+
+And indeed it does work! This general recipe of keys, queries, and values
+has been proven to be applicable far beyond NLP, to fields such as 
+computer vision and generative modeling. Admittedly, a lot of things 
+have to go just right for this approach to be successful.
+For instance, why is a linear projection expressive enough to 
+derive our keys, values, and queries?  We don't yet have extremely satisfactory answers to 
+these types of questions. 
+
+Now that we understand where our keys, queries, and values come from,
+we can re-write our self-attention equation to operate on. If we also prinkle in a softmax as well as a dimensionality constant to keep numbers from getting to large, we arrive at the following:<sup><a href=#foot2 id=head2 class="colored-post-link">2</a></sup>
+
+<p>$$\textrm{Attention}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}) = \textrm{softmax}\left( \frac{\boldsymbol{Q} \boldsymbol{K}^T}{\sqrt{d_k}} \right)\boldsymbol{V}^T$$</p>
+
+The full picture, then, is as follows. The self-attention mechanism
+is parameterized by three projection matrices, each of which
+projects our general word representation into a specific space, 
+which themselves each prioritize a  different aspect of the word's identity. 
+By multiplying together a word's representations in these spaces we can produce
+its new representatio, or context vector. 
+
+<div style="text-align:center;">
+<img src=../../images/attention/single-head.png class=get-bigger style="width:95%;"></img>
+</div>
+<figcaption style="margin-top:-25px;">Fig. 10. Visual diagram of the single-head self-attention mechanism  (Source: 
+<a class="colored-post-link" href= "https://arxiv.org/pdf/1601.06733.pdf">
+Vaswani et al., 2017</a>).</figcaption>
+
+
+Now that we've got a pretty solid understanding of self-attention, 
+it's worth considering how it matches up with the convolution operation. They have 
+some striking similarities. Both are fundemantally weighted averages. The key difference
+between the two is that attention has no limting 
+receptive field: it can model arbitrarily long-distance interactions, while convolutions
+are model on some pre-determined scale. 
+
+But there's also a less obvious advantage to convolutions
+that doesn't really become clear until we try to express a as a convolutional kernel itself.
+For example, with respect to a single word would like: 
+
+<p>$$\boldsymbol{A} =
+           \begin{bmatrix}
+           \alpha_1 & \alpha_2 & \hspace{1cm} & \alpha_n \\
+           \vdots & \vdots  & \cdots & \vdots \\
+           \alpha_1 & \alpha_2 & \hspace{1cm} & \alpha_n  \\
+           \end{bmatrix} \in \mathbb{R}^{n \times m}$$</p> 
+
+
+Seen this way it is intuitively, is less expressive than a convolution. 
+Just a linear combination, while. 
+However, we may need more expressive power. It may to suit different needs.
+For. Again, this sort of rationalziation but its not. 
+
+
+As multipled attention heads and concatenate their outputs together. 
+
+
+<div style="text-align:center;">
+<img src=../../images/attention/multi-head.png class=get-bigger style="width:35%;"></img>
+</div>
+<figcaption style="margin-top:-25px;">Fig. 10. Visual diagram of the single-head self-attention mechanism  (Source: 
+<a class="colored-post-link" href= "https://arxiv.org/pdf/1601.06733.pdf">
+Vaswani et al., 2017</a>).</figcaption>
+
+
+<h1>Conclusion</h1>
+
+But we've really just dipped our toes. Our parallel between attention and 
+convlutions was highly simplified. More recent efforts have tried a mechanistic, or ciruit-level
+view of the transformer. Attention has been even more recently
+linked to ideas. That's to say that many of these ideas are still
+very much in flux. One thing's for certain though. The attention mechanism
+and will play an increasingly important role in the future of deep learning.
+<h1>Footnotes</h1>
+
+<span id=foot1>**1.**</span>
+This leads to a certain Newton's Third Law of Attention: each
+act of attention induces an equal and opposite
+act of attention. Of course, we don't want this property!
+<a href=#head1 class=colored-post-link>↩</a>
+

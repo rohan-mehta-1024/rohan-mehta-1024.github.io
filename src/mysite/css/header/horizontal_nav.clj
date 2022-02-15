@@ -176,7 +176,15 @@
 
 (def hovering
   [[(s/> (s/hover subpage-container-3) sub-subpage-container) {:display "block"}]
-   [((s/> (s/hover subpage-container-3) subpages) s/after) {:width "100%"}]
+   [((-> (s/nth-child :3)
+         subpage-container-2
+         (s/> subpage-container-3)
+         s/hover
+         (s/> subpages)) s/after)
+
+    ;((s/> (s/hover subpage-container-3) subpages) s/after)
+    {:width "100%"}
+    ]
    [((s/> (s/hover subpage-container-3) subpages)) {:color "#000"}]])
 
 (def colored-text-link

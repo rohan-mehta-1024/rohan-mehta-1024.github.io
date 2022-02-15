@@ -38,7 +38,9 @@
        (transform [ALL FIRST] (comp keyword string/lower-case))
        (transform [ALL LAST] string/trim)
        (back-into-map)
-       (merge {:draft "false" :css "[]" :js "[]" :series "nil"})
+
+       (merge {;:draft "false"
+               :css "[]" :js "[]" :series "nil"})
        (transform [:draft] (comp read-string string/lower-case))
        (transform [:css] read-string)
        (transform [:js] read-string)))
@@ -70,9 +72,7 @@
          (transform [MAP-KEYS] md->HTML)
          (sort-by (comp parse-date :date second))
          (reverse)
-         (back-into-map)
-
-  )))
+         (back-into-map))))
 
 (defn generate-preview-pages [posts]
   (let [previews (preview/make-all-previews posts)]
@@ -88,7 +88,7 @@
 
 (defn generate-homepage [posts]
   {"/index.html"
-   {:html  (homepage/html posts)
+   {:html  (homepage/html (select-keys posts (for [[k v] posts :when (= (v :draft) false)] k)))
     :title "Rohan Mehta"
     :css   ["/css/preview.css"
             "/css/homepage.css"]
@@ -102,27 +102,29 @@
     :js    []}})
 
 (defn get-all-pages! [posts export?]
-  (let [export-fn (if export? #(-> % :draft) (constantly false))
-        posts (setval [MAP-VALS export-fn] NONE posts)
+  (let [;;export-fn (if export? #(-> % :draft) (constantly false))
+        ;;posts (setval [MAP-VALS export-fn] NONE posts)
+        a (print posts)
         new-posts (back-into-map (map post/format-post posts))
         about     (generate-about-page)
         homepage  (generate-homepage posts)]
-    (->> posts
+    (->> (select-keys posts (for [[k v] posts :when (= (v :draft) false)] k))
          (generate-preview-pages)
          (back-into-map)
          (merge homepage about new-posts)
-         ;(select [MAP-VALS :draft export-fn])
+         ;;(select [MAP-VALS :draft export-fn])
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
+
 
 (defn get-assets! []
   ;(concat)
   (assets/load-assets "public" [#".ttf|css|png|jpg|svg"])
                                         ;(->  (assets/load-assets "public" [#".js"])
                                         ; (optimizations/minify-js-assets nil))
-  ;(assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"])
-  
+                                        ;(assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"])
+)
 
-  )
+
 
 
 (defn write-cname [out]
@@ -138,9 +140,7 @@
         (stasis/export-pages "docs"))
     (write-cname "docs")
     (fs/delete-dir "docs/cljs-out")
-    ;(print "hello")
-    (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")
-    ))
+    (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")))
 
 (def app
   (-> (get-content-pages!)
@@ -148,8 +148,15 @@
       (stasis/serve-pages)
       (optimus/wrap
         get-assets!
-        optimizations/all
-        serve-live-assets)
+
+
+
+
+
+
+
+optimizations/all
+  serve-live-assets)
       (wrap-reload)))
 
 

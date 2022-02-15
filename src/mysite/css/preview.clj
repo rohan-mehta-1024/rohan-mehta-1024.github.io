@@ -55,14 +55,14 @@
 (def series
   [:.series
    {:font-size (px 20)
-    :font-family "WorkSans"}])
+    :font-family "WorkSansBold"}])
 
 (def not-homepage
   [[:.not-homepage.preview-header {:font-size (px 16)
                                     :margin-bottom (px -5)}]
    [:.not-homepage.preview-title {:font-size (px 21)}]
    ;[(:#preview-container s/first-child) {:margin-top (px 100)}]
-   [(s/+ :#preview-container-2.not-homepage :#preview-container-2.not-homepage) {       :margin-top (px 25)}]])
+   [(s/+ :#preview-container-2.not-homepage :#preview-container-2.not-homepage) {       :margin-top (px 35)}]])
 
 (def media-query-1 
   (at-media {:max-width (px 400)}

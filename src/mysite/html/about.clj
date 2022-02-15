@@ -6,15 +6,15 @@
   [:div {:id "about-me-container"}
  
   
-;   [:p {:class "headers"}  "I'm Currently"
- ;   [:ul {:class ["nice-list" "bullets"]}
-  ;   [:li "Exploring the Pi Calculus and Petri Nets while interning at "
-   ;   (colored-text-link "Wolfram Research" "https://www.wolfram.com")]
-    ; [:li "Democratizing synthetic biology as a student ambassador at "
-     ; (colored-text-link "Amino Labs" "https://amino.bio")]
-    ; [:li "Doing AI research with the " (colored-text-link "ML Collective" "https://mlcollective.org")]
+  [:p {:class "headers"}  "I'm Currently"
+   [:ul {:class ["nice-list" "bullets"]}
+    ;;[:li "Exploring the Pi Calculus and Petri Nets while interning at "
+     ;; (colored-text-link "Wolfram Research" "https://www.wolfram.com")]
+     [:li "Democratizing synthetic biology as a student ambassador at "
+     (colored-text-link "Amino Labs" "https://amino.bio")]
+     [:li "Doing AI research with the " (colored-text-link "ML Collective" "https://mlcollective.org")]
 
-    ; ]]
+    ]]
 
    
    ;(comment)
@@ -33,7 +33,7 @@
      [:li [:a {:class "colored-text-link" :target "_blank" :href "https://en.wikipedia.org/wiki/Noether%27s_theorem"} "Noether's Theorem"]
       " and mining the universe of symmetry-conservation relations"]
      [:li [:a {:class "colored-text-link" :target "_blank" :href "https://en.wikipedia.org/wiki/Unconventional_computing"} "Unconventional computing"]
-      " and what lies beyond the von Neumman architecture"]
+      " and what lies beyond the von Neumann architecture"]
      [:li [:a {:class "colored-text-link" :target "_blank" :href "https://distill.pub/2021/gnn-intro/"} "Graph Neural Networks"]
       " for chemistry, biology, vision, and reasoning"]
      [:li [:a {:class "colored-text-link" :target "_blank" :href "https://en.wikipedia.org/wiki/Functional_programming"} "Functional programming" ]

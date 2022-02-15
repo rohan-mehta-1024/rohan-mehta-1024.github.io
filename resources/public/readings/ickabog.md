@@ -1,7 +1,7 @@
 TITLE=The Ickabog (J.K. Rowling)
 DATE=5/15/2021
 PREVIEW=This book just proves what those of us who've read Harry Potter already know: any book J.K. Rowling writes is one you've got to read!
-TAGS=Fiction, Fantasy
+TAGS=Fiction, Fantasy, Rowling
 DRAFT=false
 
 
@@ -35,7 +35,7 @@ does actually exist, and that a reckoning is coming.
 
 In all senses, it is a throroughly enjoyable read,
 although I do feel it petered out just the slightest bit
-torward the end (I feel similarly about Harry Potter, too,
+toward the end (I feel similarly about Harry Potter, too,
 but endings are hard, and ending good books even more so,
 so I'm prepared to let this slide). 
 

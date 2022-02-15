@@ -673,9 +673,9 @@ since forward mode will have to traverse the graph
 
 And obviously neural nets fit the first description – they are 
 functions from millions or even billions of parameters (GPT-3, anyone?) 
-to usually no more than a hundred outputs, and most of the time, 
-even less than that. If we used forward mode to differentiate 
-neural  nets instead, our performance could potentially be
+to a single scalar loss (at least, during training).
+If we used forward mode to differentiate 
+neural nets instead, our performance could potentially be
 millions of times worse!
 
 <h1>Let's Vectorize!</h1>
@@ -1066,7 +1066,7 @@ Thank you to Dr. John McKay for taking the time to proofread this post.
 
 <h1>Footnotes</h1>
 
-<span id=foot1>**1.**</span>It's relatively trivial to demonstrate this: 
+<span id=foot1>**1.**</span> It's relatively trivial to demonstrate this: 
 
 <p style=text-align:center;overflow-x:auto;display:block;>
 $$\begin{aligned}

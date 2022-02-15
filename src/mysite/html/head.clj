@@ -8,6 +8,15 @@
    [:meta {:name    "viewport"
            :content "width=device-width, initial-scale=1.0"}]
    [:script {:src "https://polyfill.io/v3/polyfill.min.js?features=es6"}]
+   [:script 
+
+    "window.MathJax = {
+                      tex:    {
+                               //        inlineMath: [['$', '$'], ['\\(', '\\)']],
+                               packages: {'[+] ': ['mhchem']}
+                               },
+                      loader: {load: ['[tex]/mhchem']},
+                      };"]
    [:script {:id "MathJax-script" :src "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" :async true}]
    [:script {:src "https://unpkg.com/commentbox.io/dist/commentBox.min.js"}]
    [:link {:rel "icon" :type "image/png" :href "/images/favicon.ico"}]])

@@ -1,19 +1,7 @@
 (ns mysite.html.header
   (:require [clojure.string :as string]
-            [com.rpl.specter :refer :all]))
-
-(def subpage-data
-  [["About Me" []]
-   ["Projects" []]
-
-   ["Writings"
-    ["Poetry"
-     "Short Stories"
-     "Academic Papers"
-     "Personal Essays"
-     "Blog Posts"]]
-
-   ["Readings" []]])
+            [com.rpl.specter :refer :all]
+            [mysite.config :refer [site-structure]]))
 
 (defn format-sub-subpage-url [subpage sub-subpage]
   (let [head (str "/" (string/lower-case subpage) "/")]
@@ -52,7 +40,7 @@
       (get-sub-subpages subpage sub-subpages))]])
 
 (def subpages
-  (as-> (for [[subpage sub-subpages] subpage-data]
+  (as-> (for [[subpage sub-subpages] site-structure]
           (get-subpage subpage sub-subpages)) $
     (cons {:id "subpage-container-1"} $)
     (cons :ul $)
@@ -84,7 +72,7 @@
      (get-side-nav-sub-subpages subpage sub-subpages))])
 
 (def side-nav 
-  (as-> (for [[subpage sub-subpages] subpage-data]
+  (as-> (for [[subpage sub-subpages] site-structure]
           (->> (get-side-nav-subpage subpage sub-subpages)
                (cons {:class "side-nav-container-2"})
                (cons :ul)

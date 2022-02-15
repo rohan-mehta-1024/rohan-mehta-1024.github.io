@@ -10,6 +10,28 @@
    "short_stories" "Short Story"
    "poetry"        "Poetry"})
 
+(def dates-map {"1" "Jan"
+                "2" "Feb"
+                "3" "Mar"
+                "4" "Apr"
+                "5" "May"
+                "6" "Jun"
+                "7" "Jul"
+                "8" "Aug"
+                "9" "Sep"
+                "10" "Oct"
+                "11" "Nov"
+                "12" "Dec"})
+
+
+
+(defn format-date [date]
+  (let [[x y z] (->> 
+                  (string/split date #"/")
+                  (transform [FIRST] dates-map))]
+
+    (str x " " y ", " z)))
+
 (defn format-type [url]
   (let [pred (string/includes? url  "writings")]
     (cond-> url
@@ -18,9 +40,9 @@
       (not pred) second
       true       types-map)))
 
-(defn format-header [date url tags]
-  (let [type (format-type url)]
-    (string/join " | " [date type tags])))
+(defn format-header [date url tags type?]
+  (let [type (format-type url) date (format-date date)]
+    (string/join " | " (if type? [date type] [date]))))
 
 (defn is-series? [el]
   (-> el first string?))
@@ -34,8 +56,11 @@
   (let [class (if homepage? nil "not-homepage")]
     [:div {:class class :id "preview-container-2"}
      (if homepage?
-       [:p {:class [class "preview-header"]} (format-header date link tags)]
-       [:p {:class [class "preview-header"]} (string/join " | " [date tags])])
+       [:p {:class [class "preview-header"]} (format-header date link tags true)]
+
+       [:p {:class [class "preview-header"]} (format-header date link tags false)]
+       ;;nil;[:p {:class [class "preview-header"]} (string/join " | " [date tags])]
+       )
      [:a {:class [class "preview-title"] :href link} title]
      (when homepage?
        [:p {:class "preview-text"} preview])]))

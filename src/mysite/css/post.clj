@@ -13,7 +13,7 @@
 (def post-title
   [:#post-title {:text-align  "left"
                  :font-family "WorkSans"
-                 :font-size (px 35)
+                 :font-size (px 37)
                  ;:color "#903";
                                         ;:color "#DC143C"
                  :color "black"
@@ -94,9 +94,10 @@
             [[:#post-content {:font-size (px 15)}]
              [:.two-images {:display "block"
                             :margin  "auto"
-                            :width   "95%"}]
+                            :width   "95%"
+                            :margin-bottom (px 5)}]
             
-             [:.MathJax {:font-size "15px !important"}]
+             ;;[:.MathJax {:font-size "15px !important"}]
                                         ; [:.post-image {:width "10%" :display "block"}]
              [:figcaption {:font-size (px 12)
                            :line-height (px 20)}]]))
@@ -114,7 +115,7 @@
     colored-post-link
     captions
     footnotes
-    [:.MathJax {:font-size "18px !important"}]
+    ;;[:.MathJax {:font-size "18px !important"}]
     [:sup {:padding-top "100px" :line-height "0px"}]
     [:.two-images {:width "48%"}]
     media-query-1
