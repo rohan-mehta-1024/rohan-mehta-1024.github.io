@@ -9,7 +9,7 @@
 #post-title {
   text-align: left;
   font-family: WorkSans;
-  font-size: 35px;
+  font-size: 37px;
   color: black;
 }
 
@@ -89,10 +89,6 @@ sup {
   font-size: 14px;
 }
 
-.MathJax {
-  font-size: 18px !important;
-}
-
 sup {
   padding-top: 100px;
   line-height: 0px;
@@ -136,10 +132,7 @@ sup {
     display: block;
     margin: auto;
     width: 95%;
-  }
-  
-  .MathJax {
-    font-size: 15px !important;
+    margin-bottom: 5px;
   }
   
   figcaption {
