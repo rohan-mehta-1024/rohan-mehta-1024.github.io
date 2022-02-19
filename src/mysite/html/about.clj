@@ -12,9 +12,18 @@
      ;; (colored-text-link "Wolfram Research" "https://www.wolfram.com")]
      [:li "Democratizing synthetic biology as a student ambassador at "
      (colored-text-link "Amino Labs" "https://amino.bio")]
-     [:li "Doing AI research with the " (colored-text-link "ML Collective" "https://mlcollective.org")]
+     [:li "Doing AI research with the " (colored-text-link "Machine Learning Collective" "https://mlcollective.org")]
 
     ]]
+
+
+
+
+
+
+
+
+
 
    
    ;(comment)
