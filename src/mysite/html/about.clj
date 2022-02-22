@@ -8,8 +8,7 @@
   
   [:p {:class "headers"}  "I'm Currently"
    [:ul {:class ["nice-list" "bullets"]}
-    ;;[:li "Exploring the Pi Calculus and Petri Nets while interning at "
-     ;; (colored-text-link "Wolfram Research" "https://www.wolfram.com")]
+   
      [:li "Democratizing synthetic biology as a student ambassador at "
      (colored-text-link "Amino Labs" "https://amino.bio")]
      [:li "Doing AI research with the " (colored-text-link "Machine Learning Collective" "https://mlcollective.org")]
