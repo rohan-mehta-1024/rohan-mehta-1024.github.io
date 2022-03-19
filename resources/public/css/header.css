@@ -97,15 +97,6 @@ a {
   padding-bottom: 0px;
 }
 
-.subpage-container-2 .subpages::after {
-  content: '';
-  display: block;
-  height: 1.5px;
-  width: 0%;
-  background-color: #000;
-  transition: width 0.5s ease-in-out;
-}
-
 .subpage-container-2 :hover.subpages {
   color: #000;
 }
@@ -120,7 +111,6 @@ a {
 
 .subpage-container-3 {
   display: inline-block;
-  padding: 5px;
   cursor: pointer;
 }
 
@@ -157,7 +147,7 @@ a {
 }
 
 .subpage-container-2:nth-child(3) > .subpage-container-3 > .sub-subpage-container {
-  height: 83px;
+  height: 30px;
   width: 110px;
 }
 

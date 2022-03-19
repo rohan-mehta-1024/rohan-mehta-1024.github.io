@@ -316,9 +316,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.7743623"
-     inkscape:cx="479.89072"
-     inkscape:cy="332.51383"
+     inkscape:zoom="0.90127697"
+     inkscape:cx="322.32045"
+     inkscape:cy="188.62126"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -417,34 +417,34 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="21.360748"
+       x="20.302414"
        y="58.776947"
        id="text2121-2"><tspan
          sodipodi:role="line"
          id="tspan2119-0"
-         x="21.360748"
+         x="20.302414"
          y="58.776947"
          style="stroke-width:0.264583">It</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:6.35px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;baseline-shift:sub;stroke-width:0.264583"
-       x="82.899849"
-       y="9.2455921"
+       x="85.545685"
+       y="8.7164259"
        id="text6380"><tspan
          sodipodi:role="line"
          id="tspan6378"
-         x="82.899849"
-         y="9.2455921"
+         x="85.545685"
+         y="8.7164259"
          style="font-size:6.35px;baseline-shift:sub;stroke-width:0.264583">K</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:6.35px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;baseline-shift:sub;stroke-width:0.264583"
-       x="28.255774"
+       x="29.314108"
        y="56.810493"
        id="text6380-5"><tspan
          sodipodi:role="line"
          id="tspan6378-4"
-         x="28.255774"
+         x="29.314108"
          y="56.810493"
          style="font-size:6.35px;baseline-shift:sub;stroke-width:0.264583">Q</tspan></text>
     <path
@@ -476,24 +476,24 @@
     <text
        xml:space="preserve"
        style="font-size:6.35px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;baseline-shift:sub;stroke-width:0.264583"
-       x="47.167171"
-       y="25.444365"
+       x="48.225506"
+       y="24.915197"
        id="text6380-8"><tspan
          sodipodi:role="line"
          id="tspan6378-40"
-         x="47.167171"
-         y="25.444365"
+         x="48.225506"
+         y="24.915197"
          style="font-size:6.35px;baseline-shift:sub;stroke-width:0.264583">K</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:6.35px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;baseline-shift:sub;stroke-width:0.264583"
-       x="187.61429"
-       y="80.723381"
+       x="188.67261"
+       y="80.194214"
        id="text6380-6"><tspan
          sodipodi:role="line"
          id="tspan6378-46"
-         x="187.61429"
-         y="80.723381"
+         x="188.67261"
+         y="80.194214"
          style="font-size:6.35px;baseline-shift:sub;stroke-width:0.264583">Q</tspan></text>
   </g>
 </svg>

@@ -104,19 +104,19 @@
     
     }
 
-   [(subpages s/after) {:content "''"
-                        :display "block"
-                        :height (px 1.5)
-                        :width "0%"
-                        :background-color "#000"
-                        :transition "width 0.5s ease-in-out"}]
+;;   [(subpages s/after) {:content "''"
+;;                        :display "block"
+;;                        :height (px 1.5)
+;;                        :width "0%"
+;;                        :background-color "#000"
+;;                        :transition "width 0.5s ease-in-out"}]
 
    [(s/hover subpages) {:color "#000"}]])
 
 (def subpage-container-3-styles
   [:.subpage-container-3
    {:display "inline-block"
-    :padding (px 5)
+;    :padding (px 5)
     :cursor "pointer"}])
 
 (def subpages-styles
@@ -160,7 +160,7 @@
   [(-> (s/nth-child :3)
        subpage-container-2
        (s/> subpage-container-3)
-       (s/> sub-subpage-container)) {:height (px 83)
+       (s/> sub-subpage-container)) {:height (px 30) ;; CHANGE LATER
                                      :width (px 110)}])
 
 (def sub-subpage-styles

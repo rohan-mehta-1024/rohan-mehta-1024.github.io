@@ -8,13 +8,14 @@
     (as-> sub-subpage $
       (string/lower-case $)
       (string/split $ #" ")
-      (string/join "-" $)
+      (string/join "_" $)
       (str head $ "/index.html#myname"))))
 
 (defn format-subpage-url [subpage]
   (-> (str "/" subpage)
       string/lower-case
-      (string/replace #" " "-")))
+      (string/replace #" " "_")))
+
 
 (defn get-sub-subpage [subpage sub-subpage]
   [:a {:href (format-sub-subpage-url subpage sub-subpage)

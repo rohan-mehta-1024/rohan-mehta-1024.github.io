@@ -6,8 +6,8 @@
 
    ["Writings"
     ["Poetry"
-     "Essays"
-     "Short Stories"
+     ;;"Essays"
+     ;;"Short Stories"
 ;;     "Essays"
      "Blog Posts"]]
 

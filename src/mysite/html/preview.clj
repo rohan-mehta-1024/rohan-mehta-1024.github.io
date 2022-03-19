@@ -106,5 +106,6 @@
          (transform [MAP-VALS] (partial into template))
          (transform [MAP-KEYS] #(as-> % $
                                   (str "/" $ "/index.html")
-                                  (string/replace $ "_" "-")))
+                                  ;(string/replace $ "_" "-")
+                                  ))
          )))

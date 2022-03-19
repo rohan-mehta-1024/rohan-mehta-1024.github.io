@@ -21,9 +21,9 @@
    [:br]
    [:br]
 
-   "This site showcases " (colored-text-link "cool projects I've worked on" "/")
+   "This site showcases " (colored-text-link "cool projects I've worked on" "/projects")
    ", ideas in the mathematics and sciences "
-   (colored-text-link "I find beautiful and interesting" "/")
+   (colored-text-link "I find beautiful and interesting" "/blog_posts/index.html")
    ", my " (colored-text-link "thoughts, values, and opinions" "/")
    " on science, technology, and life, and the occasional bit of "
    (colored-text-link "creative" "/") " " (colored-text-link "writing" "/") ".

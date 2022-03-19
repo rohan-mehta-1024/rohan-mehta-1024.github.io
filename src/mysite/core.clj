@@ -95,7 +95,7 @@
     :js    []}})
 
 (defn generate-about-page []
-  {"/about-me/index.html"
+  {"/about_me/index.html"
    {:html  about/html
     :title "About Me"
     :css   ["/css/about.css"]
