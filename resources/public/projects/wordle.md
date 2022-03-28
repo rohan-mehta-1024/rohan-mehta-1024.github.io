@@ -38,4 +38,4 @@ Moreover, even though the average score for the whole country always came out to
 
 That said, the data-collection process has only just begun. It will be interesting to 
 see what trends persist and which new ones develop in the coming months.
-To that end, I've created the <a class="colored-text-link" href=https://mehta-rohan.com/wordle-data-repository/>Wordle Data Repository</a> to host all the data the program continues to collect in the coming days. Be sure to check it out, and let me know what you discover!
+To that end, I've created the <a class="colored-text-link" href=https://mehta-rohan.com/wordle-data-repository/>Wordle Data Repository</a> to host all the data that the program continues to collect. Be sure to check it out, and let me know what you discover!
