@@ -118,7 +118,7 @@
 
 (defn get-assets! []
   ;(concat)
-  (assets/load-assets "public" [#".ttf|css|png|jpg|svg"])
+  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif"])
                                         ;(->  (assets/load-assets "public" [#".js"])
                                         ; (optimizations/minify-js-assets nil))
                                         ;(assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"])
@@ -155,7 +155,7 @@
 
 
 
-     
+
         optimizations/all 
         serve-live-assets)
   (wrap-reload)))
