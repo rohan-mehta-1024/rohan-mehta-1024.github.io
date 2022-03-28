@@ -10,7 +10,7 @@ For those of us math and science types, though, Wordle has presented a second ch
 
 It was watching this video, actually, that inspired me to do a different type of analysis of the game. I wanted to know: just how viral had it gone? How much were people playing, and where were the best players coming from?
 
-Short of tracking all users, this task might seem impossible. Except for the fact that the Wordle trend has so deeply pervaded American culture that people have not only taken not to playing the game on a daily basis, but also posting their scores on Twitter with similar frequency. Of course, the scores on Twitter aren't necessarily a representative sample of people's playing behavior at large, but we can still gain some interesting insights from them.
+Short of tracking all users, this task might seem impossible. Except for the fact that the Wordle trend has so deeply pervaded American culture that people have not only taken to playing the game on a daily basis, but also posting their scores on Twitter with similar frequency. Of course, the scores on Twitter aren't necessarily a representative sample of people's playing behavior at large, but we can still gain some interesting insights from them.
 
 Using the Wolfram Language, I wrote a simple script to scrape Twitter for "#Wordle" Tweets from each of the fifty states. The program runs at around 9:00 PM every night, so that people have had ample time to post their score for the day, and tries to pull a hundred Tweets from each state. It then compiles this information to compute various statistics. The stats for last week have been assembled in the table shown below.
 
@@ -23,19 +23,18 @@ We can also see how the average score for the whole country and the word frequen
 <img src=../../images/wordle/scores.png class=two-images></img>
 <img src=../../images/wordle/word_freq.png class=two-images></img>
 
-And  even how the average score (on the left) and amount of tweets posted  (on the right) changed on a state-by-state basis.
+And  even how the average score (on the left/top) and amount of Tweets posted  (on the right/bottom) changed on a state-by-state basis.
 
 <img src=../../images/wordle/scores.gif class=two-images></img>
 <img src=../../images/wordle/activity.gif class=two-images></img>
 
 Looking at all of this data does reveal some interesting information. For instance,
-in most states (especially on the West coast and in the Midwest)  posting 
-Wordle scores on Twitter is essentially a thing of the past , as the program could never find more than a handful of tagged tweets posted from these locations.
+in most states (especially on the West coast and in the Midwest) posting 
+Wordle scores on Twitter is essentially a thing of the past, as the program could never find more than a handful of tagged Tweets posted from these locations.
 
 Oklahoma, on the other hand, consistently had the most Wordle-related Tweets this week (more than 90 every day!). My best guess is that this activity is coming from a specific cluster of Wordle-obsessed users, unless anyone else has thoughts on why Oklahoma is shaping up to be the Wordle capital of the US?
 
-Moreover, even though the average score for the whole country always averaged out around four, we can still
-see the impact that more difficult words have had. For instance, the score for this week's easiest word, their, was a whole point lower than it was for the word epoxy, which is much more esoteric. Looking at the histograms is even more revealing, as arguably the two hardest words of the week, epoxy and nymph, had extremely right-skewed distributions, with almost nobody posting scores of one or two.
+Moreover, even though the average score for the whole country always came out to be around four, there are noticeable variations depending on the difficulty of the word. For instance, the score for this week's easiest word, their, was a whole point lower than it was for the word epoxy, which is much more esoteric. Looking at the histograms is even more revealing, as arguably the two hardest words of the week, epoxy and nymph, had extremely left-skewed distributions, with almost nobody posting scores of one or two.
 
 That said, the data-collection process has only just begun. It will be interesting to 
 see what trends persist and which new ones develop in the coming months.
