@@ -5,14 +5,14 @@ goog.require('goog.log');
 goog.require('goog.object');
 goog.require('clojure.string');
 figwheel.repl.logging.cljs_version__GT_value = (function figwheel$repl$logging$cljs_version__GT_value(v){
-try{return cljs.core.reduce.call(null,cljs.core._PLUS_,cljs.core.map.call(null,cljs.core._STAR_,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(100000000000),(10000),(1)], null),cljs.core.map.call(null,(function (p1__17987_SHARP_){
-return parseInt(p1__17987_SHARP_);
+try{return cljs.core.reduce.call(null,cljs.core._PLUS_,cljs.core.map.call(null,cljs.core._STAR_,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(100000000000),(10000),(1)], null),cljs.core.map.call(null,(function (p1__23421_SHARP_){
+return parseInt(p1__23421_SHARP_);
 }),cljs.core.take.call(null,(3),clojure.string.split.call(null,v,/[^\d]/)))));
-}catch (e17988){if((e17988 instanceof Error)){
-var e = e17988;
+}catch (e23422){if((e23422 instanceof Error)){
+var e = e23422;
 return ((100000000000) * (100));
 } else {
-throw e17988;
+throw e23422;
 
 }
 }});
@@ -41,14 +41,14 @@ return goog.log.log.call(null,log,goog.debug.Logger.Level.FINEST,msg);
 figwheel.repl.logging.console_logging = (function figwheel$repl$logging$console_logging(){
 if(cljs.core.truth_(goog.object.get(goog.debug.Console,"instance"))){
 } else {
-var c_17990 = (new goog.debug.Console());
-var G__17989_17991 = c_17990.getFormatter();
-goog.object.set(G__17989_17991,"showAbsoluteTime",false);
+var c_23424 = (new goog.debug.Console());
+var G__23423_23425 = c_23424.getFormatter();
+goog.object.set(G__23423_23425,"showAbsoluteTime",false);
 
-goog.object.set(G__17989_17991,"showRelativeTime",false);
+goog.object.set(G__23423_23425,"showRelativeTime",false);
 
 
-goog.object.set(goog.debug.Console,"instance",c_17990);
+goog.object.set(goog.debug.Console,"instance",c_23424);
 
 }
 
@@ -62,8 +62,8 @@ return true;
 return null;
 }
 });
-figwheel.repl.logging.log_levels = cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,cljs.core.juxt.call(null,clojure.string.lower_case,(function (p1__17992_SHARP_){
-return goog.object.get(goog.debug.Logger.Level,p1__17992_SHARP_);
+figwheel.repl.logging.log_levels = cljs.core.into.call(null,cljs.core.PersistentArrayMap.EMPTY,cljs.core.map.call(null,cljs.core.juxt.call(null,clojure.string.lower_case,(function (p1__23426_SHARP_){
+return goog.object.get(goog.debug.Logger.Level,p1__23426_SHARP_);
 })),cljs.core.map.call(null,cljs.core.str,cljs.core.list(new cljs.core.Symbol(null,"SEVERE","SEVERE",2038088045,null),new cljs.core.Symbol(null,"WARNING","WARNING",1233939303,null),new cljs.core.Symbol(null,"INFO","INFO",578874437,null),new cljs.core.Symbol(null,"CONFIG","CONFIG",1613043737,null),new cljs.core.Symbol(null,"FINE","FINE",1120074650,null),new cljs.core.Symbol(null,"FINER","FINER",1219697631,null),new cljs.core.Symbol(null,"FINEST","FINEST",-1116440228,null)))));
 figwheel.repl.logging.set_log_level = (function figwheel$repl$logging$set_log_level(logger_SINGLEQUOTE_,level){
 var temp__5751__auto__ = cljs.core.get.call(null,figwheel.repl.logging.log_levels,level);
