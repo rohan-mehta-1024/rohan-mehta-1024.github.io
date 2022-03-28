@@ -1,0 +1,6 @@
+(undo-tree-save-format-version . 1)
+"08bb8aa420caddc311be28b8674ae260bc183844"
+[nil nil nil nil (25151 28112 856366 0) 0 nil]
+([nil nil ((251 . 256) (250 . 252) (#("\"" 0 1 (fontified nil)) . -250) (250 . 251) (#(" " 0 1 (fontified nil)) . -250) (undo-tree-id0 . -1) (250 . 251) (#("\"" 0 1 (fontified nil help-echo cider--help-echo cider-locals ("2" "absolute" "ease-in-out" "0.75s" "width" "0" "px" "absolute" "0%" "none" "-100" "px" "110%" "white" "#DC143C" "#fffff8"))) . -250) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (250 . 251) (t 24874 18013 0 0)) nil (25151 28112 856365 0) 0 nil])
+([nil current ((257 . 258)) nil (25151 28112 856344 0) 0 nil])
+nil

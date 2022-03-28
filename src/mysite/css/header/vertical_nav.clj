@@ -7,7 +7,7 @@
 
 (def side-nav-background
    [:#side-nav-background
-    {:background  "#fffff8";"#DC143C";"white"
+    {:background  "white";"#fffff8";"#DC143C";"white"
      :height "110%"
      :margin-top (px -100)
      :display "none"

@@ -13,7 +13,7 @@
      :display "block"
      :width "100%"
      :height (px 1)
-     :background-color "#E0E0E0"
+     :background-color "white";; "#E0E0E0"
      :margin-bottom (px -30)
      :margin-left (px 0)}]])
 

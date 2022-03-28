@@ -31,7 +31,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #fffff8;
+  background-color: white;
   z-index: 1;
   overflow-y: scroll;
 }
@@ -44,7 +44,7 @@ body.active {
 
 header {
   width: 100%;
-  background-color: #fffff8;
+  background-color: white;
   top: 10px;
   height: 90px;
 }
@@ -124,7 +124,7 @@ a {
   position: relative;
   margin-top: 15px;
   margin-bottom: 0px;
-  background-color: #fffff8;
+  background-color: white;
   border-radius: 10px;
   display: none;
 }
@@ -238,7 +238,7 @@ a {
   z-index: 2;
   display: none;
   transition: width 0.75s ease-in-out;
-  background: #fffff8;
+  background: white;
 }
 
 #side-nav-background.active {

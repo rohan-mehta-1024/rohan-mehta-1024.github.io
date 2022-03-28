@@ -38,7 +38,7 @@
      :min-height "100vh"
      :display "flex"
      :flex-direction "column"
-     :background-color "#fffff8"
+     :background-color "white" ;;"#fffff8"
      :z-index 1
      :overflow-y "scroll"
     
@@ -47,14 +47,14 @@
    [:body.active {:position "fixed"
                   :overflow-y "scroll"
                   :width "100%"
-                  ;:overflow "hidden"
+                                        ;:overflow "hidden"
                   }]
 
    [:header
     {:width "100%"
                                        ; :background "white"
      
-     :background-color "#fffff8"
+     :background-color "white";; "#fffff8"
      ;:position "fixed"
      :top (px 10)
      :height (px 90)
@@ -138,7 +138,7 @@
     :margin-right "20%"
     :margin-top (px 15)
     :border-radius (px 10)
-    :background-color  "#fffff8";"#DC143C";"white"
+    :background-color "white";; "#fffff8";"#DC143C";"white"
     :margin-bottom (px 0)
     :display "none"}
 

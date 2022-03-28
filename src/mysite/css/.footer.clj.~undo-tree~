@@ -1,0 +1,6 @@
+(undo-tree-save-format-version . 1)
+"082638bb747ebc9ec241a12e188f2ddbd3b9f688"
+[nil nil nil nil (25151 27496 550712 0) 0 nil]
+([nil nil ((371 . 376) (370 . 372) (#("\"" 0 1 (fontified nil help-echo cider--help-echo cider-locals ("0" "px" "-30" "px" "#E0E0E0" "1" "px" "100%" "block" "''" "s/before" "s/&" "auto"))) . -370) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (369 . 371) (t 24852 14652 0 0)) nil (25151 27496 550710 0) 0 nil])
+([nil current ((377 . 379)) nil (25151 27496 550685 0) 0 nil])
+nil

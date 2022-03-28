@@ -12,19 +12,19 @@ binging the movies earlier this summer), but it was so refreshing
 
 For the last two years or so, I've been somewhat starved of a good fiction series
 to get excited about. That's not for lack of trying by the way. I've opened 
-many a young adult fiction novel, but almost all of them have dissapointed, 
+many a young adult fiction novel, but almost all of them have disappointed, 
 or were simply just &ldquo;ok&rdquo;. 
 
 While the quantity of YA fiction being 
 produced definitely seems to be on the rise, the quality of the genre
 has shown a commensurate decrease. The majority of YA 
-fiction these days is overly contrived, plagued with weak worldbuilding, or 
+fiction these days is overly contrived, plagued with weak world-building, or 
 just poorly written. 
 
 And that's why I was so eagerly looking forward to this book: as 
 a cleansing of the palette by an author who I knew could deliver. 
 The story follows the Kingdom of Cornucopia, and how two 
-insiduous lords hoodwink the entire country in a great scam
+insidious lords hoodwink the entire country in a great scam
 by convincing them that the Ickabog – a mythical creature invented
 to scare disobedient children into submission – is,
 in fact, real. They then proceed to kill their enemies and 
@@ -33,7 +33,7 @@ blaming the Ickabog for it all. Little do they know that the
 tale of the Ickabog is grounded in reality, and that the creature
 does actually exist, and that a reckoning is coming.
 
-In all senses, it is a throroughly enjoyable read,
+In all senses, it is a thoroughly enjoyable read,
 although I do feel it petered out just the slightest bit
 toward the end (I feel similarly about Harry Potter, too,
 but endings are hard, and ending good books even more so,
@@ -42,7 +42,7 @@ so I'm prepared to let this slide).
 One thing in particular I appreciated was Rowling's witty
 way with names. Just as in Harry Potter, the names of 
 characters, objects, events, and places all roll off 
-the tounge, inspiring curiosity or admiration through 
+the tongue, inspiring curiosity or admiration through 
 their ingenious plays on words. 
 
 Take the word Ickabog, for instance. What a wonderful name 
