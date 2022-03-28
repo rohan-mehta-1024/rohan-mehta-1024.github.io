@@ -28,7 +28,7 @@
    " on science, technology, and life, and the occasional bit of "
    (colored-text-link "creative" "/") " " (colored-text-link "writing" "/") ".
     You can learn more about (and how to contact) me "
-   (colored-text-link "here" "/about-me") "!"])
+   (colored-text-link "here" "/about_me") "!"])
 
 (defn most-recent [posts]
   (let [grouped (group-content posts false)]
