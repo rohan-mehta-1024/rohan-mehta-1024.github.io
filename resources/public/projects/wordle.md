@@ -1,5 +1,5 @@
 TITLE=Data Science Meets Wordle
-DATE=10/25/2021
+DATE=3/29/2022
 PREVIEW=What can analyzing Twitter posts tell us about the viral word-game Wordle? Where do people play the most, and the best? 
 TAGS=Data Science, Wolfram Language
 DRAFT=false
