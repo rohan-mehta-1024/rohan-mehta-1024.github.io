@@ -131,8 +131,6 @@
   (spit (str out "/CNAME") "https://mehta-rohan.com"))
 
 
-
-
 (defn build-app! []
   (let [assets (get-assets!)]
     (stasis/empty-directory! "docs")
@@ -147,7 +145,6 @@
 (def app
 
 
-
 (-> (get-content-pages!)
     (get-all-pages! false)
 
@@ -156,9 +153,7 @@
      get-assets!
 
 
-
-
-        optimizations/all 
+     optimizations/all 
         serve-live-assets)
   (wrap-reload)))
 

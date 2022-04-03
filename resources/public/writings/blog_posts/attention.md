@@ -162,6 +162,7 @@ as in the phrase &ldquo;The temperature is hot&rdquo; or
 &ldquo;cold&rdquo; want to attend highly to &ldquo;temperature&rdquo;, 
 then their embeddings must be close to its embedding,
 as that's the only way they will yield a high dot product with one another,
+
 and thus – as we've defined it – a high attention coefficient.
 
 But by making the representations of &ldquo;hot&rdquo; and 

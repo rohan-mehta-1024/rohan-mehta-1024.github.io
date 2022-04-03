@@ -42,6 +42,15 @@
     [:div {:id "content-container"}
      [:div {:id "about-me-container"}
       [:img {:src "images/me.jpg" :id "picture"}]
-      [:span {:id "about-me"} about-me-text]]
+      [:span {:id "about-me"} about-me-text]
+      [:div {:style "display:flex;justify-content:center;"}
+       [:iframe {:id "signup" :src "https://rohanmehta.substack.com/embed" :width "480" :height "100" :style "background:white;":frameborder "0" :scrolling "no" :onload "access()"}]
+       [:script "function access() {var iframe = document.getElementById('signup');
+             var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+             const button = innerDoc.querySelector('.button');
+             button.onclick = function(e) {button.style.display = 'none'}}
+"]
+       ]
+      ]
      [:h1 {:id "recents"} "Recent Activity"
       (most-recent posts)]]))
