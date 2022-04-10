@@ -150,11 +150,13 @@
 
     (stasis/serve-pages)
     (optimus/wrap
-     get-assets!
+
+
 
 
      
-     optimizations/all 
+  get-assets!
+    optimizations/all
         serve-live-assets)
   (wrap-reload)))
 

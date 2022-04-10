@@ -162,7 +162,6 @@ as in the phrase &ldquo;The temperature is hot&rdquo; or
 &ldquo;cold&rdquo; want to attend highly to &ldquo;temperature&rdquo;, 
 then their embeddings must be close to its embedding,
 as that's the only way they will yield a high dot product with one another,
-
 and thus – as we've defined it – a high attention coefficient.
 
 But by making the representations of &ldquo;hot&rdquo; and 
@@ -408,18 +407,9 @@ parts of this representation that store the types of words our word is usually
 accompanied by, while the key weight matrix might project it into a space
 that is more aware of grammar, tense, and part-of-speech. Of course, the attention
 mechanism is much more complex than this, and still not entirely understood, but
-rationalizing it in this way helps us understand why it works so well. 
+rationalizing it in this way helps us understand why it works so well.
 
-And it does indeed work! This general recipe of keys, queries, and values
-has been proven to be applicable far beyond NLP, to fields such as 
-computer vision and generative modeling. Admittedly, a lot of things 
-have to go just right for this approach to be successful.
-For instance, why is a linear projection expressive enough to 
-derive our keys, values, and queries?  We don't yet have extremely satisfactory answers to 
-these types of questions. 
-
-Now that we understand how to obtain our keys, queries, and values, 
-we can re-write our self-attention equation to operate on an entire matrix of word-embeddings. If we also sprinkle in a softmax and dimensionality constant to keep numbers from getting to large, we get:<sup><a href=#foot2 id=head2 class="colored-post-link">2</a></sup>
+Moreover, adopting this perspective also allows us to re-write our self-attention equation to operate on an entire matrix of word-embeddings. If we also sprinkle in a softmax and dimensionality constant to keep numbers from getting to large, we get:<sup><a href=#foot2 id=head2 class="colored-post-link">2</a></sup>
 
 <p>$$\textrm{Attention}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}) = \textrm{softmax}\left( \frac{\boldsymbol{Q} \boldsymbol{K}^T}{\sqrt{d_k}} \right)\boldsymbol{V}^T$$</p>
 
@@ -431,17 +421,16 @@ By multiplying together a word's representations in these three spaces we can pr
 its new representation, or context vector. 
 
 <div style="text-align:center;">
-<img src=../../images/attention/single-head.png class=get-bigger style="width:95%;"></img>
+<img src=../../images/attention/single-head.png  style="width:35%; margin-bottom:15px;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 10. Visual diagram of the single-head self-attention mechanism  (Source: 
+<figcaption style="margin-top:-25px;">Fig. 10. Single-head self-attention mechanism (Source: 
 <a class="colored-post-link" href= "https://arxiv.org/pdf/1601.06733.pdf">
 Vaswani et al., 2017</a>).</figcaption>
 
-
-It's also worth considering how self-attention matches up with the convolution operation.<sup><a href=#foot3 id=head3 class="colored-post-link">3</a></sup> 
+It's also worth considering how self-attention matches up with the convolution operation.
 They have some striking similarities. Both are fundamentally ways of embedding context. The key difference 
 between the two is that attention has no limiting 
-receptive field: it can model arbitrarily long-distance interactions, while convolutions
+receptive field. It can model arbitrarily long-distance interactions, while convolutions
 operate on a pre-determined scale. 
 
 This makes attention seem like the clear winner. 
@@ -458,85 +447,96 @@ that doesn't become clear until we try to express attention as a convolutional k
 
 Seen in this way, it is intuitively obvious that an attention kernel
 is less expressive than an arbitrary convolutional one. Attention is a convolutional
-kernel where the values are the same in all columns; in particular, they are the attention
+kernel where the values are the same in all columns. In particular, they are the attention
 coefficients of the word in question with respect to the word represented by that column.
-That's because attention is simply a weighted sum: it is just mixing together
+That's because attention is simply a weighted sum. It is just mixing together
 what already exists in different proportions. 
 
 <div style="text-align:center;">
 <img src=../../images/attention/single-head-viz.png class=get-bigger style="width:95%;text-align:center;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 11. Visual diagram of single-head attention performing a weighted sym  (Source: 
+<figcaption style="margin-top:-25px;">Fig. 11. Single attention head performing a weighted sum over its input (Source: 
 <a class="colored-post-link" href= "https://web.stanford.edu/class/cs224n/slides/cs224n-2019-lecture14-transformers.pdf">
 Vaswani et al., 2019</a>).</figcaption>
 
-Convolutions, on the other hand, have no such limitation. They can transform the input in a much more complex way than a weighted sum. In fact, they actually do so several linear transformations (as opposed to just one: scaling) based on the relative position of each of the elements in the input.
+Convolutions, on the other hand, have no such limitation. They can transform the input in a much more complex way than a weighted sum. In fact, they actually do so several linear transformations based on the relative position of each of the elements in the input.
 
 <div style="text-align:center;">
 <img src=../../images/attention/convolutions.png class=get-bigger style="width:95%;;margin-left:-30px;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 12. Visual diagram of a convolutional kernel performing several linear transformations over its input (Source: 
+<figcaption style="margin-top:-25px;">Fig. 12. Convolution applying many linear transformations over its input (Source: 
 <a class="colored-post-link" href= "https://web.stanford.edu/class/cs224n/slides/cs224n-2019-lecture14-transformers.pdf">
 Vaswani et al., 2019</a>).</figcaption>
 
 This reveals a drawback of our current attention mechanism. While the weighted sum operation
 it is doing makes intuitive sense, it also limits the types of new representations we can create, confining us to the subspace spanned by the specific words in the input. 
 
-We can think of this problem in another way, too. Even though our idea of creating context vectors for each word was a good first step, we need to go even further. Our key-query attention scheme is overworked: it's trying to consider all of the meanings and relationships of each word with respect to the current word, and then condense this information into a single representation. Once again, we run into the issue of straining our information capacity.
+We can think of this problem in another way, too. Even though our idea of creating context vectors for each word was a good first step, we need to go even further. Our key-query attention scheme is overworked. It's trying to consider all of the meanings and relationships of each word with respect to the current word, and then condense this information into a single representation, all in one go. Once again, we are straining our information capacity.
 
-We might instead imagine using multiple such attention mechanisms, where each attention mechanism focuses on a specific aspect of each word. Instead of relying on one attention mechanism to recognize that a verb should attend highly to both the subject performing it and the direct object it's being done to, we could split up this work between two attention mechanisms. In this way, each attention mechanism can specialize, and develop its own niche.
+We might instead imagine using multiple such attention mechanisms, where each attention mechanism focuses on a specific aspect of each word. For example, instead of relying on one attention mechanism to recognize that a verb should attend highly to both the person doing it and the object it's being done to, we could split up this work between two seperate attention mechanisms. In this way, each attention mechanism can specialize, and develop its own niche.
 
 <div style="text-align:center;">
-<img src=../../images/attention/multi-head-viz.png class=get-bigger style="width:95%;;margin-left:-30px;"></img>
+<img src=../../images/attention/multi-head-viz.png  style="width:95%;;margin-left:-30px;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 12. Visual diagram of conbolutional  performing a weighted sym  (Source: 
+<figcaption style="margin-top:-25px;">Fig. 12. Two attention heads working together. One (in blue) is a &ldquo;who did it&rdquo; attention head, while the other (in red) is a &ldquo;to whom?&rdquo; attention head.  (Source: 
 <a class="colored-post-link" href= "https://web.stanford.edu/class/cs224n/slides/cs224n-2019-lecture14-transformers.pdf">
 Vaswani et al., 2019</a>).</figcaption>
 
-Mathematically, we can represent this idea as follows. Instead of just learning one set of three project matrices, we can learn multiple such sets – one for each attention mechanism, which we'll call attention heads. If we plug these into the attention formula we end up with multiple context vectors for each word, one per attention head.
+Mathematically, this means that instead of learning one set of three project matrices, we will learn multiple such sets – one for each attention mechanism, which we'll call attention heads. If we then compute the relevant keys, queries, and values and plug them into the attention formula, we end up with multiple context vectors for each word, one per attention head.
 
-Now we're left with the task of combining this set of context vectors into a single context vector for each word. This might seem counterintuitive; after all, wasn't the whole point of learning multiple attention heads to avoid having to cram things into a single representation? 
-
-Well, sort of. Really, it was to provide room for the network to extract this information and then whittle it down from there. The same goes for the idea of computing multiple intermediate representations for our word (i.e., key, query, value), for that matter.
+Now we're left with the task of combining this set of context vectors into a single context vector for each word. There is a lot of potential choice for how to do this, but the transformer paper chooses to concatenate the output of each attention head – a matrix containing that head's recommendation for what each word's context vector should be – and multiply the resulting matrix by one final projection matrix. So the formula for multi-head attention is:
 
 
 
-Then multi-head attention is;
 
+<p>$$\begin{aligned} \textrm{MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}) &= \textrm{Concat}(\textrm{head}_1, \ldots, \textrm{head}_h)\boldsymbol{W^O} \\ \textrm{where head}_i &= \textrm{Attention}\left(  \boldsymbol{X}\boldsymbol{W_Q^i},  \boldsymbol{X}\boldsymbol{W_K^i},  \boldsymbol{X}\boldsymbol{W_V^i} \right) \end{aligned}$$</p>
 
-<p>$$\textrm{MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}) = \textrm{softmax}\left( \frac{\boldsymbol{Q} \boldsymbol{K}^T}{\sqrt{d_k}} \right)\boldsymbol{V}^T$$</p>
-
-It's worth noting that the. Many papers of ablating, suggesting that they aren't nearly. That's another thing to be careful of too. 
+It's worth noting that the argument we used to motivate multi-head attention is still pretty hand-wavy, and how useful having multiple heads really is is still an issue up for debate. Many papers have found that ablating (or getting rid of) a vast majority of the attention heads in a transformer can actually have minimal affects on performance. However, it seems that –  for now at least – the conventional knowledge still mostly holds: two heads are better than one.
 
 
 <div style="text-align:center;">
-<img src=../../images/attention/multi-head.png class=get-bigger style="width:35%;"></img>
+<img src=../../images/attention/multi-head.png style="width:40%; margin-bottom:15px;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 10. Visual diagram of the single-head self-attention mechanism  (Source: 
+<figcaption style="margin-top:-25px;">Fig. 10. Multi-head self-attention mechanism  (Source: 
 <a class="colored-post-link" href= "https://arxiv.org/pdf/1601.06733.pdf">
 Vaswani et al., 2017</a>).</figcaption>
 
 
 <h1>Conclusion</h1>
 
-So there you have it: an intuitive, visual understanding to the attention mechanism.
+There you have it: an intuitive, visual understanding of the attention mechanism!
 Really, it's all about grappling with some of the intrinsic properties of vectors,
-and providing the network with ample opportunity to spread information out across multiple 
-sources before pooling it all together. This design seems simple in hindsight, but within it 
+and providing the underlying neural net with ample opportunity to spread information out across multiple 
+sources before pooling it all together. This design seems simple in hindsight, but therein 
 lies the engineering genius of the transformer architecture. 
 
-But we've really just dipped our toes into this idea. For one, the parallel between attention and 
-convlutions given above was highly simplified, and there is extremely interesting
-work going right now. Other efforts have tried a model mechanistic, or ciruit-level
-view of the transformer. Attention has been even more recently
-linked to ideas such as Hopfield networks. 
+Even so, we've still just dipped our toes into the idea of attention. For one, the parallel between attention and 
+convolutions given above was highly simplified, and there is a growing body of research 
+(see <a target=_blank href=
+https://arxiv.org/abs/1911.03584papers class=colored-post-link>this paper</a> for an example) trying to better understand this relationship, especially as attention makes inroads into the field of computer vision. 
 
-That's to say that many of these ideas are still
-very much in flux. These ideas, and I'd definitely like to explore them further
-in a future blog post. One thing's for certain though. The attention mechanism
-and will play an increasingly important role in the future of deep learning.
+
+Other efforts have tried a model attention from a mechanistic, ciruit-level point of 
+view, and have also seen some pretty <a target=_blank href=
+https://transformer-circuits.pub/ class=colored-post-link>interesting results</a>
+as of late. Even more recently, attention has been
+linked to ideas such as <a target=_blank href=https://arxiv.org/abs/2008.02217 class=colored-post-link>Hopfield Networks</a> and, as a result, <a target=_blank href=https://mcbal.github.io/post/transformers-are-secretly-collectives-of-spin-systems/ class=colored-post-link>spin systems</a>. 
+
+
+That's to say that many of these ideas are still very much in flux.
+And now that we've laid the groundwork for understanding the
+what, why, and how of the attention mechanism,
+I'm itching to explore them in all of their glory in future blog posts! So stay tuned for more!
 
 <h1>Resources</h1>
+
+
+<ul style=list-style-type:circle;>
+<li><a target=_blank href=https://www.robots.ox.ac.uk/~tvg/publications/talks/autodiff.pdf class=colored-post-link>Attention Is All You Need</a></li>
+
+<li><a target=_blank href=https://www.youtube.com/watch?v=5vcj8kSwBCY class=colored-post-link>Ashish Vaswani's 2019 Lecture</a></li>
+
+<li><a target=_blank href=https://www.youtube.com/watch?v=5vcj8kSwBCY class=colored-post-link>Yannic Kilcher's Video on the Transformer</a></li></ul>
 
 <h1>Footnotes</h1>
 
@@ -546,3 +546,8 @@ act of attention induces an equal and opposite
 act of attention. Of course, we don't want this property!
 <a href=#head1 class=colored-post-link>↩</a>
 
+<span id=foot2>**2.**</span>
+Actually, this equation isn't perfectly identical to what appears in the transformer paper. That's because
+we chose to put our word-embeddings in the columns of each matrix (as opposed to the rows, which is what paper does) for ease of visualization, and so had to add in 
+a few transposes. 
+<a href=#head2 class=colored-post-link>↩</a>
