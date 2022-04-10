@@ -1,5 +1,5 @@
 TITLE=The Attention Mechanism Demystified
-DATE=1/30/2022
+DATE=4/10/2022
 PREVIEW=You can barely without encountering – but what does?
 TAGS=Deep Learning, NLP
 DRAFT=true
