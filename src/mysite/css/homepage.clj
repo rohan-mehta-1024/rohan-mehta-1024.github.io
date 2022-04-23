@@ -27,8 +27,8 @@
 
 (def picture
   [:#picture
-   {:height (px 225)
-    :width (px 225)
+   {:height (px 245)
+    :width (px 245)
     :border-radius "50%"
     :border "1px solid black"
     :display "inline-block"

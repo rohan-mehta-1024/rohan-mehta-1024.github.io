@@ -22,28 +22,40 @@
             [mysite.html.homepage :as homepage]
             [mysite.utils :refer [back-into-map parse-date]]))
 
+
+
 (defn md->HTML [file-path]
   (string/replace file-path ".md" ".html"))
 
 (defn extract-metadata [file-contents]
   (let [metadata-length (count (re-seq #"[A-Z]+=.*" file-contents))]
+
     (as-> file-contents $
       (string/split $ #"\n")
       (split-at metadata-length $)
       (transform [LAST] #(string/join "\n" %) $))))
 
+
+
+
 (defn format-metadata [metadata]
+
   (->> metadata
        (map #(string/split % #"="))
        (transform [ALL FIRST] (comp keyword string/lower-case))
        (transform [ALL LAST] string/trim)
        (back-into-map)
 
-       (merge {;:draft "false"
-               :css "[]" :js "[]" :series "nil"})
+      (merge {;:draft "false"
+               :css "[]" :js "[]" :series "nil" :updates "[]"})
        (transform [:draft] (comp read-string string/lower-case))
        (transform [:css] read-string)
        (transform [:js] read-string)))
+
+
+
+
+
 
 (defn initial-letter [html]
   (let [inital (str "<span class=initial-letter>" (second html) "</span>")]
@@ -53,6 +65,7 @@
         (string/join "" $))))
 
 (defn create-page [metadata html css js]
+  ;(print metadata)
   (merge-with into
     metadata
     {:html html :css css :js js}))
@@ -73,6 +86,8 @@
          (sort-by (comp parse-date :date second))
          (reverse)
          (back-into-map))))
+
+
 
 (defn generate-preview-pages [posts]
   (let [previews (preview/make-all-previews posts)]
@@ -102,9 +117,11 @@
     :js    []}})
 
 (defn get-all-pages! [posts export?]
+
+
   (let [;;export-fn (if export? #(-> % :draft) (constantly false))
         ;;posts (setval [MAP-VALS export-fn] NONE posts)
-        a (print posts)
+        ;a (print posts)
         new-posts (back-into-map (map post/format-post posts))
         about     (generate-about-page)
         homepage  (generate-homepage posts)]
@@ -114,6 +131,8 @@
          (merge homepage about new-posts)
          ;;(select [MAP-VALS :draft export-fn])
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
+
+
 
 
 (defn get-assets! []
@@ -150,9 +169,6 @@
 
     (stasis/serve-pages)
     (optimus/wrap
-
-
-
 
      
 

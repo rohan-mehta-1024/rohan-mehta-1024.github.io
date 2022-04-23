@@ -41,8 +41,9 @@
       true       types-map)))
 
 (defn format-header [date url tags type?]
-  (let [type (format-type url) date (format-date date)]
-    (string/join " | " (if type? [date type] [date]))))
+  (let [type (format-type url)
+        date (format-date date)]
+    (string/join " | " (if type? [date type] [date]) )))
 
 (defn is-series? [el]
   (-> el first string?))
@@ -52,13 +53,11 @@
     (-> el second :date parse-date)
     (-> el last second :date parse-date)))
 
-(defn make-preview [[link {:keys [title date preview tags]}] homepage?]
+(defn make-preview [[link {:keys [title date preview tags updates]}] homepage?]
   (let [class (if homepage? nil "not-homepage")]
     [:div {:class class :id "preview-container-2"}
      (if homepage?
-       [:p {:class [class "preview-header"]} (format-header date link tags true)]
-
-       [:p {:class [class "preview-header"]} (format-header date link tags false)]
+       [:p {:class [class "preview-header"]} (format-header date link tags  false)]
        ;;nil;[:p {:class [class "preview-header"]} (string/join " | " [date tags])]
        )
      [:a {:class [class "preview-title"] :href link} title]

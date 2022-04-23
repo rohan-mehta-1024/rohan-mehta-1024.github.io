@@ -54,16 +54,16 @@ footer::before {
   }
   
   #footer-part-1 a + a {
-    margin-left: 23%;
+    margin-left: 25%;
   }
   
   #footer-part-2 {
     margin-left: 10px;
-    font-size: 12px;
+    font-size: 13px;
   }
   
   .icons {
-    width: 22px;
+    width: 25px;
   }
 
 }

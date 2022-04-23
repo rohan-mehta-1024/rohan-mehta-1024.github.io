@@ -9,9 +9,9 @@
   [:p {:class "headers"}  "I'm Currently"
    [:ul {:class ["nice-list" "bullets"]}
    
-     [:li "Democratizing synthetic biology as a student ambassador at "
-     (colored-text-link "Amino Labs" "https://amino.bio")]
-     [:li "Doing AI research with the " (colored-text-link "Machine Learning Collective" "https://mlcollective.org")]
+    [:li "Democratizing synthetic biology as a student ambassador at " (colored-text-link "Amino Labs" "https://amino.bio")]
+    [:li "Doing AI research with the " (colored-text-link "Machine Learning Collective" "https://mlcollective.org")]
+    [:li "Exploring ways to metamodel economic and chemical behavior as an intern at " (colored-text-link "Wolfram Research" "https://www.wolfram.com")]
 
     ]]
 
@@ -69,7 +69,7 @@
                                         ; [:li "Love exploring the Marvel Universe, from the comics to the movies"]
      ]]
    [:p {:class "headers"} "Contact Information"
-    [:p "If any of this (or any my other content) has caught your attention, please feel free to get in touch with me via email at:
+    [:p {:id "contact-blurb" :style {:margin-right "8%"}} "If any of this (or any my other content) has caught your attention, please feel free to get in touch with me via email at:
           rohanmehta1024 [AT] gmail [DOT] com, or reach out through "
-     (colored-text-link "Twitter" "/") " and "
-     (colored-text-link "LinkedIn" "/") "."]]])
+     (colored-text-link "Twitter" "https://twitter.com/RohanMe93264078") " and "
+     (colored-text-link "LinkedIn" "https://www.linkedin.com/in/rohan-mehta-a35023211/") "."]]])

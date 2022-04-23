@@ -10,7 +10,6 @@
                                         ;:margin-top (px 120)
     :margin-left (px 75)
     :margin-bottom (px 50)
-    :margin-right (px 100)
     :font-family "WorkSans"}])
 
 (def headers
@@ -21,7 +20,8 @@
 
 (def nice-list
   [:.nice-list
-   {:list-style-type "square"}
+   {:list-style-type "square"
+    :margin-right "8%"}
    [(s/+ s/li s/li) {:margin-top (px 10)}]
    [(s/li) {:line-height (px 25)
             }]])
@@ -34,8 +34,10 @@
 
 (def media-query-2
   (at-media {:max-width (px 600)}
-            [:.bullets
-             {:font-size (px 15)}]))
+            [[:.bullets
+              {:font-size (px 15)}]
+             ;[:#contact-blurb {:margin-right "8%"}]
+             ]))
 
 (defstylesheet css
   {:output-to "resources/public/css/about.css"}
