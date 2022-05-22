@@ -14,7 +14,9 @@
         jayq/jayq {:mvn/version "2.5.5"}
         markdown-clj/markdown-clj {:mvn/version "1.10.6"}
         ;; optional but recommended
-        com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}}
+        com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
+        clj-rss/clj-rss {:mvn/version "0.4.0"}
+        }
 
 
  :aliases
