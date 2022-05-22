@@ -93,7 +93,7 @@ Suppose we also have a vector \\(\\boldsymbol{\\vec{\\alpha}}\\) which contains
 the attention coefficients for one of these words (i.e., how much that
 word wants to attend to every other word). 
 
-<p>$$\boldsymbol{V} =
+<p style=text-align:center;overflow-x:auto;display:block;>$$\boldsymbol{V} =
            \begin{bmatrix}
            \vert & \vert & \hspace{1cm} & \vert \\
            \boldsymbol{\vec{v}_1} & \boldsymbol{\vec{v}_2} & \cdots & \boldsymbol{\vec{v}_n} \\
@@ -203,6 +203,8 @@ by an equal amount.
 
 
 <div style="">
+
+<img src=../../images/attention/reciprocal-attention.svg class=get-bigger style=width:100%;;margin-left:5%;></img>
 <img src=../../images/attention/reciprocal-attention-2.svg class=get-bigger style=width:100%;;margin-left:5%;></img>
 <figcaption style="text-align:left;">
 Fig. 6. If we use similarity  as an indicator for self-attention,
@@ -479,7 +481,7 @@ Now we're left with the task of combining this set of context vectors into a sin
 
 
 
-<p>$$\begin{aligned} \textrm{MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}) &= \textrm{Concat}(\textrm{head}_1, \ldots, \textrm{head}_h)\boldsymbol{W^O} \\ \textrm{where head}_i &= \textrm{Attention}\left(  \boldsymbol{X}\boldsymbol{W_Q^i},  \boldsymbol{X}\boldsymbol{W_K^i},  \boldsymbol{X}\boldsymbol{W_V^i} \right) \end{aligned}$$</p>
+<p style=text-align:center;overflow-x:auto;display:block;>$$\begin{aligned} \textrm{MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}) &= \textrm{Concat}(\textrm{head}_1, \ldots, \textrm{head}_h)\boldsymbol{W^O} \\ \textrm{where head}_i &= \textrm{Attention}\left(  \boldsymbol{X}\boldsymbol{W_Q^i},  \boldsymbol{X}\boldsymbol{W_K^i},  \boldsymbol{X}\boldsymbol{W_V^i} \right) \end{aligned}$$</p>
 
 It's worth noting that the argument we used to motivate multi-head attention is still pretty hand-wavy, and how useful having multiple heads really is is still an issue up for debate. Many papers have found that ablating (or getting rid of) a vast majority of the attention heads in a transformer can actually have minimal effects on performance. However, it seems that –  for now at least – the conventional knowledge still mostly holds: two heads are better than one.
 
