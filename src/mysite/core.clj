@@ -139,7 +139,7 @@
 
 (defn get-assets! []
   ;(concat)
-  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif"])
+  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif|ico"])
                                         ;(->  (assets/load-assets "public" [#".js"])
                                         ; (optimizations/minify-js-assets nil))
                                         ;(assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"])
@@ -166,28 +166,11 @@
     (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")))
 
 (def app
-
-
   (-> (get-content-pages!)
-
-
     (get-all-pages! false)
-
-
-
-
-
-
-
-
-
     (stasis/serve-pages)
     (optimus/wrap
-  get-assets!
+    get-assets!
     optimizations/all
     serve-live-assets)
-
-
   (wrap-reload)))
-
-
