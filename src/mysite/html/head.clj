@@ -19,7 +19,7 @@
                       };"]
    [:script {:id "MathJax-script" :src "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" :async true}]
    [:script {:src "https://unpkg.com/commentbox.io/dist/commentBox.min.js"}]
-   [:link {:rel "icon" :type "image/x-icon" :href "/images/favicon.ico"}]
+   [:link {:rel "icon" :type "image/x-icon" :href "images/favicon.ico"}]
    ])
 
 (defn css->hiccup [file-path]
