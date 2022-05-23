@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"78178245619e116e25c7a47b77ce880cef5ac552"
+"9bd9df34eb6fb7adbbded6028afb95497b59a4e4"
 [nil nil nil nil (25151 19597 106025 0) 0 nil]
 ([nil nil ((244 . 248) (t 24941 65502 0 0)) nil (25151 19597 106024 0) 0 nil])
 ([nil nil ((258 . 263) (257 . 259) (#("{" 0 1 (fontified nil help-echo cider--help-echo cider-locals ("title"))) . -257) (undo-tree-id410 . -1) (undo-tree-id411 . -1) (249 . 258) (248 . 250) (#("[" 0 1 (fontified nil help-echo cider--help-echo cider-locals ("title"))) . -248) (undo-tree-id412 . -1) (undo-tree-id413 . -1) (248 . 249)) nil (25151 19599 67686 0) 0 nil])
@@ -104,5 +104,6 @@ nil
 ([nil nil ((1002 . 1003)) nil (25226 44329 135026 0) 0 nil])
 ([nil nil ((1002 . 1004)) nil (25226 44329 135025 0) 0 nil])
 ([nil nil ((1002 . 1003)) nil (25226 44329 135024 0) 0 nil])
-([nil current ((1002 . 1004)) nil (25226 44329 135020 0) 0 nil])
+([nil nil ((1002 . 1004)) nil (25226 44329 135020 0) 0 nil])
+([nil current ((1011 . 1028) (t 25226 44329 149380 962000)) nil (25226 53143 62127 0) 0 nil])
 nil
