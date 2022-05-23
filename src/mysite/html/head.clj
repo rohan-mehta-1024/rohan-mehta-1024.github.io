@@ -7,7 +7,6 @@
    [:meta {:charset "utf-8"}]
    [:meta {:name    "viewport"
            :content "width=device-width, initial-scale=1.0"}]
-   [:script {:src "https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js"}]
    [:script {:src "https://polyfill.io/v3/polyfill.min.js?features=es6"}]
    [:script 
 
