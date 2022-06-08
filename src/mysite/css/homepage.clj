@@ -58,7 +58,7 @@
    [(s/+ s/div s/div) {:margin-top (px 50)}]])
 
 (def media-query-1
-  (at-media {:max-width (px 950)}
+  (at-media {:max-width (px 980)}
     [[:#content-container {:width "95%" :margin-top (px 15)}]
      [:#about-me-container {}
       [(s/& s/after) {:width "100%" :margin "auto"}]]
