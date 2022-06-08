@@ -4,6 +4,8 @@
             [garden.def :refer [defstylesheet]]
             [garden.stylesheet :refer [at-media]]))
 
+(s/defclass updates)
+
 (def post-content-container 
   [:#post-content-container {:width      (px 750)                                                   :min-height "100vh"
                              :word-break "break-word"
@@ -102,6 +104,13 @@
              [:figcaption {:font-size (px 12)
                            :line-height (px 20)}]]))
 
+(def updates-styles
+  [[(-> (s/last-child)
+       (s/not)
+       updates) {:margin-bottom (px 8)}]
+   [updates {:font-size (px 13)}]])
+
+
 (defstylesheet css
   {:output-to "resources/public/css/post.css"}
   (list
@@ -121,5 +130,6 @@
     media-query-1
     media-query-2
     media-query-3
+    updates-styles
     ))
 

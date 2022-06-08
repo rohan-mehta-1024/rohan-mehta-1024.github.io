@@ -3,18 +3,18 @@
 
 
 (defn format-updates [updates]
-  (let [update-fn #(str "Update on " (str (first %)) ":")]
-  (->> updates
+  (let [update-fn #(if (empty? %)  "" (str "Update on " (str (first %)) ": " (str (second %))))]
+    (->> updates
+         str 
        read-string
-       
        (partition 2)
-;       (print "hiii")
        (map update-fn))))
 
 
 
 (defn format-post [[url {:keys [title date tags updates preview html] :as post}]]
-  (let [poem? (string/includes? url "poetry")]
+  (let [poem? (string/includes? url "poetry")
+        x (print (format-updates updates))]
     [url
      (assoc post :html
             [:div
@@ -23,8 +23,10 @@
               [:h4 {:id "post-byline"} (str date " • Rohan Mehta | " tags)]
                                         ;[:div {:id "post-intro-container"}
                                         ;[:blockquote {:id "post-intro-text"} preview]]
-              (print (format-updates updates))
-              [:p (format-updates updates)
+              [:ul {:id "post-byline" :style {:list-style-type "none"
+                                              :margin "0"
+                                              :padding "0"}}
+               ;(for [update (format-updates updates)] [:li {:class "updates"} update])
                ]
               [:div {:id "post-content" :class (if poem? nil "not-poem")} html]
               ]

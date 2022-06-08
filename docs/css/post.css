@@ -141,3 +141,11 @@ sup {
   }
 
 }
+
+.updates:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.updates {
+  font-size: 13px;
+}

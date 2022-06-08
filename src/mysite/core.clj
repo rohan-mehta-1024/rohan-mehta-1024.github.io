@@ -1,5 +1,7 @@
+
 (ns mysite.core
   (:require [clj-time.format :as f]
+            [java-time :as jt]
             [me.raynes.fs :as fs]
             [optimus.export] 
             [markdown.core :as md]
@@ -20,6 +22,7 @@
             [mysite.html.footer :as footer]
             [mysite.html.preview :as preview]
             [mysite.html.homepage :as homepage]
+            [clj-rss.core :as rss]
             [mysite.utils :refer [back-into-map parse-date]]))
 
 
@@ -29,35 +32,22 @@
 
 (defn extract-metadata [file-contents]
   (let [metadata-length (count (re-seq #"[A-Z]+=.*" file-contents))]
-
     (as-> file-contents $
       (string/split $ #"\n")
       (split-at metadata-length $)
       (transform [LAST] #(string/join "\n" %) $))))
 
 
-
-
-
-
 (defn format-metadata [metadata]
-
   (->> metadata
        (map #(string/split % #"="))
        (transform [ALL FIRST] (comp keyword string/lower-case))
        (transform [ALL LAST] string/trim)
        (back-into-map)
-
-      (merge {;:draft "false"
-               :css "[]" :js "[]" :series "nil" :updates "[]"})
+       (merge {:css "[]" :js "[]" :series "nil" :updates "[]"})
        (transform [:draft] (comp read-string string/lower-case))
        (transform [:css] read-string)
        (transform [:js] read-string)))
-
-
-
-
-
 
 (defn initial-letter [html]
   (let [inital (str "<span class=initial-letter>" (second html) "</span>")]
@@ -67,7 +57,6 @@
         (string/join "" $))))
 
 (defn create-page [metadata html css js]
-  ;(print metadata)
   (merge-with into
     metadata
     {:html html :css css :js js}))
@@ -88,7 +77,6 @@
          (sort-by (comp parse-date :date second))
          (reverse)
          (back-into-map))))
-
 
 
 (defn generate-preview-pages [posts]
@@ -119,49 +107,56 @@
     :js    []}})
 
 (defn get-all-pages! [posts export?]
-
-
-  (let [;;export-fn (if export? #(-> % :draft) (constantly false))
-        ;;posts (setval [MAP-VALS export-fn] NONE posts)
-        ;a (print posts)
-        new-posts (back-into-map (map post/format-post posts))
+  (let [new-posts (back-into-map (map post/format-post posts))
         about     (generate-about-page)
         homepage  (generate-homepage posts)]
     (->> (select-keys posts (for [[k v] posts :when (= (v :draft) false)] k))
          (generate-preview-pages)
          (back-into-map)
          (merge homepage about new-posts)
-         ;;(select [MAP-VALS :draft export-fn])
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
 
-
-
+(defn generate-xml [posts]
+  (let [channel {:title "Rohan Mehta"
+                 :link "https://mehta-rohan.com"
+                 :description "Rohan Mehta's personal website, including writings, readings, and projects"
+                 :lastBuildDate (jt/instant)}]
+  (->> (select-keys posts (for [[k v] posts :when (= (v :draft) false)] k))
+       (transform [MAP-VALS] #(select-keys % [:title :tags :date :preview]))
+       (reduce-kv (fn [m k v] (assoc m k (assoc v :link k))) {})
+       (vals)
+       (map #(reduce-kv (fn [m k v] (assoc m k
+                                     (if (= k :tags)
+                                       (string/split v #",")
+                                       v))) {} %))
+       (map #(reduce-kv (fn [m k v] (assoc m k
+                                           (if (= k :date)
+                                             (->> (string/split v #"/")
+                                                  ((fn [x] [(last x) (first x) (second x)]))
+                                                  (map (fn [x] (Integer. x)))
+                                                  (apply jt/offset-date-time)
+                                                  jt/instant)
+                                             v))) {} %))
+       (map #(clojure.set/rename-keys % {:preview :description :date :pubDate :tags :category}))
+       (apply rss/channel-xml channel)
+       (spit "feed.xml"))))
 
 (defn get-assets! []
-  ;(concat)
-  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif|ico"])
-                                        ;(->  (assets/load-assets "public" [#".js"])
-                                        ; (optimizations/minify-js-assets nil))
-                                        ;(assets/load-bundle "public" "main.js" ["/cljs-out/dev-main.js"])
-)
-
-
-
+  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif|ico"]))
 
 (defn write-cname [out]
   (spit (str out "/CNAME") "https://mehta-rohan.com"))
 
-
 (defn build-app! []
-  (let [assets (get-assets!)]
+  (let [assets (get-assets!)
+        content (get-content-pages!)]
+    (generate-xml content)
     (stasis/empty-directory! "docs")
     (optimus.export/save-assets assets "docs")
-    (-> (get-content-pages!)
+    (-> content
         (get-all-pages! true)
         (stasis/export-pages "docs"))
     (write-cname "docs")
-
-
     (fs/delete-dir "docs/cljs-out")
     (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")))
 
@@ -170,8 +165,8 @@
     (get-all-pages! false)
     (stasis/serve-pages)
     (optimus/wrap
-    get-assets!
-    optimizations/all
+     get-assets!
 
-    serve-live-assets)
-  (wrap-reload)))
+     optimizations/all
+     serve-live-assets)
+    (wrap-reload)))

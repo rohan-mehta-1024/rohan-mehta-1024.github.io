@@ -4,7 +4,7 @@
   [["/images//github.svg" "https://github.com/rohan-mehta-1024"]
    ["/images//twitter.svg" "https://twitter.com/RohanMe93264078"]
    ["/images/linkedin.svg" "https://www.linkedin.com/in/rohan-mehta-a35023211/"]
-   ["/images/rss.svg" ""]])
+   ["/images/rss.svg" "https://mehta-rohan.com//feed.xml"]])
 
 (def socials
   (into
