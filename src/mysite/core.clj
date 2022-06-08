@@ -139,7 +139,10 @@
                                              v))) {} %))
        (map #(clojure.set/rename-keys % {:preview :description :date :pubDate :tags :category}))
        (apply rss/channel-xml channel)
-       (spit "feed.xml"))))
+       (spit "docs/feed.xml")
+
+
+       )))
 
 (defn get-assets! []
   (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif|ico"]))
@@ -150,13 +153,13 @@
 (defn build-app! []
   (let [assets (get-assets!)
         content (get-content-pages!)]
-    (generate-xml content)
     (stasis/empty-directory! "docs")
     (optimus.export/save-assets assets "docs")
     (-> content
         (get-all-pages! true)
         (stasis/export-pages "docs"))
     (write-cname "docs")
+    (generate-xml content)
     (fs/delete-dir "docs/cljs-out")
     (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")))
 
@@ -166,7 +169,6 @@
     (stasis/serve-pages)
     (optimus/wrap
      get-assets!
-
      optimizations/all
      serve-live-assets)
     (wrap-reload)))
