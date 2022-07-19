@@ -1,33 +1,10 @@
-TITLE=Chemical Rate Equations
+TITLE=Exploring Chemical Reaction Networks
 DATE=10/25/2021
 PREVIEW=This
 TAGS=Differential Equations, Chemistry
 DRAFT=true
 
-All of science – from physics to chemistry to biology – attempts to 
-construct accurate and predictive models of our world. But doing so,
-it turns out, is hard. Very, very hard. In fact, all of our success in this arena 
-has been almost entirely due to one realization: even though describing complex
-systems from the ground up is usually beyond our ability, we're just smart enough 
-to be able to distinguish what's different between two 
-versions of the same system. Or, more specifically, what's changing.
-
-Coming up with a mathematical description of how a system changes – 
-known as a differential equation –  is the easy part, though. 
-Reasoning backwards to an actual description of the system itself is infinitely harder 
-(though also infinitely easier than trying to do so without the differential equation!). 
-And while we humans have invented a bag of tools and tricks to 
-crack these equations open, they tend to be frustratingly unintutive
-and unmotivated.
-
-What I propose here is a flipping of the script, so to speak. 
-Instead of developing techniques for solving these equations 
-and then applying them to real-life scenarios after the fact, 
-can we turn <a class="colored-post-link" href="https://www.youtube.com/watch?v=tQQ3oiB32GI">
-science in service of mathematics</a> and do the opposite?
-It's an ambitious goal in any field of math, but given the inherently 
-applied nature of differential equations, I'm hopeful that it just might
-be possible in this case. Our starting point? Chemical rate equations!
+Though we, chemistry is rich in mathematical structure.
 
 <h1 class="header"">Modeling Chemical Reactions</h1>
 

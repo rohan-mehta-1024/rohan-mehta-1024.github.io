@@ -1,0 +1,49 @@
+(undo-tree-save-format-version . 1)
+"cc282d0f2d1fcd2ee1365a521d8e9c0ef30a8adc"
+[nil nil nil nil (25258 14413 101320 0) 0 nil]
+([nil nil ((#("Rate Equations" 0 14 (fontified t face markdown-metadata-value-face)) . 16) (undo-tree-id80 . -14) (undo-tree-id81 . -14) (undo-tree-id82 . -14) 30 (t 25090 48573 0 0)) nil (25258 14413 101319 0) 0 nil])
+([nil nil ((35 . 37) (34 . 36) (#("(" 0 1 (fontified nil face markdown-metadata-value-face)) . -34) (16 . 35)) nil (25258 14413 101317 0) 0 nil])
+([nil nil ((#("(" 0 1 (fontified nil face markdown-metadata-value-face)) . -34) (undo-tree-id74 . -1) (undo-tree-id75 . -1) (#(")" 0 1 (fontified t face markdown-metadata-value-face)) . 35) (#("o" 0 1 (fontified t face markdown-metadata-value-face)) . -35) (undo-tree-id76 . -1) (undo-tree-id77 . -1) (#("r" 0 1 (fontified t face markdown-metadata-value-face)) . -36) (undo-tree-id78 . -1) (undo-tree-id79 . -1) 37) nil (25258 14413 101316 0) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t face markdown-metadata-value-face)) . -33) (undo-tree-id72 . -1) (undo-tree-id73 . -1) 34) nil (25258 14413 101313 0) 0 nil])
+([nil nil ((33 . 34)) nil (25258 14413 101311 0) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t face markdown-metadata-value-face)) . -33) (undo-tree-id70 . -1) (undo-tree-id71 . -1) 34) nil (25258 14413 101311 0) 0 nil])
+([nil nil ((33 . 34)) nil (25258 14413 101305 0) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t face markdown-metadata-value-face)) . -33) (undo-tree-id68 . -1) (undo-tree-id69 . -1) 34) nil (25258 14413 101305 0) 0 nil])
+([nil nil ((7 . 17)) nil (25258 14413 101303 0) 0 nil])
+([nil nil ((#("All of science – from physics to chemistry to biology – attempts to 
+construct accurate and predictive models of our world. But doing so,
+it turns out, is hard. Very, very hard. In fact, all of our success in this arena 
+has been almost entirely due to one realization: even though describing complex
+systems from the ground up is usually beyond our ability, we're just smart enough 
+to be able to distinguish what's different between two 
+versions of the same system. Or, more specifically, what's changing.
+
+Coming up with a mathematical description of how a system changes – 
+known as a differential equation –  is the easy part, though. 
+Reasoning backwards to an actual description of the system itself is infinitely harder 
+(though also infinitely easier than trying to do so without the differential equation!). 
+And while we humans have invented a bag of tools and tricks to 
+crack these equations open, they tend to be frustratingly unintutive
+and unmotivated.
+
+What I propose here is a flipping of the script, so to speak. 
+Instead of developing techniques for solving these equations 
+and then applying them to real-life scenarios after the fact, 
+can we turn <a class=\"colored-post-link\" href=\"https://www.youtube.com/watch?v=tQQ3oiB32GI\">
+science in service of mathematics</a> and do the opposite?
+It's an ambitious goal in any field of math, but given the inherently 
+applied nature of differential equations, I'm hopeful that it just might
+be possible in this case. Our starting point? Chemical rate equations!" 0 390 (fontified t) 390 498 (fontified t) 498 890 (fontified t) 890 998 (fontified t) 998 1171 (fontified t) 1171 1172 (fontified t face markdown-html-tag-delimiter-face) 1172 1173 (fontified t face markdown-html-tag-name-face) 1173 1174 (fontified t) 1174 1179 (fontified t face markdown-html-attr-name-face) 1179 1180 (fontified t face markdown-html-tag-delimiter-face) 1180 1199 (fontified t face markdown-html-attr-value-face) 1199 1200 (fontified t) 1200 1204 (fontified t face markdown-html-attr-name-face) 1204 1205 (fontified t face markdown-html-tag-delimiter-face) 1205 1250 (fontified t face markdown-html-attr-value-face) 1250 1251 (fontified t face markdown-html-tag-delimiter-face) 1251 1285 (fontified t) 1285 1287 (fontified t face markdown-html-tag-delimiter-face) 1287 1288 (fontified t face markdown-html-tag-name-face) 1288 1289 (fontified t face markdown-html-tag-delimiter-face) 1289 1498 (fontified t) 1498 1525 (fontified t)) . 124) (undo-tree-id60 . -329) (undo-tree-id61 . -329) (undo-tree-id62 . -1525) (undo-tree-id63 . -69) (undo-tree-id64 . -10) (undo-tree-id65 . -10) (undo-tree-id66 . -373) (undo-tree-id67 . -1525)) nil (25258 14413 101302 0) 0 nil])
+([nil nil ((124 . 145)) nil (25258 14413 101298 0) 0 nil])
+([nil nil ((145 . 150)) nil (25258 14413 101297 0) 0 nil])
+([nil nil ((#("s" 0 1 (fontified t)) . -129) (undo-tree-id18 . -1) (undo-tree-id19 . -1) (#("t" 0 1 (fontified t)) . -130) (undo-tree-id20 . -1) (undo-tree-id21 . -1) (#("r" 0 1 (fontified t)) . -131) (undo-tree-id22 . -1) (undo-tree-id23 . -1) (#("y" 0 1 (fontified t)) . -132) (undo-tree-id24 . -1) (undo-tree-id25 . -1) (#(" " 0 1 (fontified t)) . -133) (undo-tree-id26 . -1) (undo-tree-id27 . -1) (#("i" 0 1 (fontified t)) . -134) (undo-tree-id28 . -1) (undo-tree-id29 . -1) (#("s" 0 1 (fontified t)) . -135) (undo-tree-id30 . -1) (undo-tree-id31 . -1) (#(" " 0 1 (fontified t)) . -136) (undo-tree-id32 . -1) (undo-tree-id33 . -1) (#("r" 0 1 (fontified t)) . -137) (undo-tree-id34 . -1) (undo-tree-id35 . -1) (#("i" 0 1 (fontified t)) . -138) (undo-tree-id36 . -1) (undo-tree-id37 . -1) (#("c" 0 1 (fontified t)) . -139) (undo-tree-id38 . -1) (undo-tree-id39 . -1) (#("h" 0 1 (fontified t)) . -140) (undo-tree-id40 . -1) (undo-tree-id41 . -1) (#(" " 0 1 (fontified t)) . -141) (undo-tree-id42 . -1) (undo-tree-id43 . -1) (#("i" 0 1 (fontified t)) . -142) (undo-tree-id44 . -1) (undo-tree-id45 . -1) (#("n" 0 1 (fontified t)) . -143) (undo-tree-id46 . -1) (undo-tree-id47 . -1) (#(" " 0 1 (fontified t)) . -144) (undo-tree-id48 . -1) (undo-tree-id49 . -1) (#("m" 0 1 (fontified t)) . -145) (undo-tree-id50 . -1) (undo-tree-id51 . -1) (#("a" 0 1 (fontified t)) . -146) (undo-tree-id52 . -1) (undo-tree-id53 . -1) (#("t" 0 1 (fontified t)) . -147) (undo-tree-id54 . -1) (undo-tree-id55 . -1) (#("h" 0 1 (fontified t)) . -148) (undo-tree-id56 . -1) (undo-tree-id57 . -1) (#("e" 0 1 (fontified t)) . -149) (undo-tree-id58 . -1) (undo-tree-id59 . -1) 150) nil (25258 14413 101295 0) 0 nil])
+([nil nil ((#("m" 0 1 (fontified t)) . -127) (undo-tree-id14 . -1) (undo-tree-id15 . -1) (#("i" 0 1 (fontified t)) . -128) (undo-tree-id16 . -1) (undo-tree-id17 . -1) 129) nil (25258 14413 101270 0) 0 nil])
+([nil nil ((#("C" 0 1 (fontified t)) . -124) (undo-tree-id8 . -1) (undo-tree-id9 . -1) (#("h" 0 1 (fontified t)) . -125) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (#("e" 0 1 (fontified t)) . -126) (undo-tree-id12 . -1) (undo-tree-id13 . -1) 127) nil (25258 14413 101268 0) 0 nil])
+([nil nil ((124 . 134)) nil (25258 14413 101253 0) 0 nil])
+([nil nil ((#("d" 0 1 (fontified t)) . -133) (undo-tree-id6 . -1) (undo-tree-id7 . -1) 134) nil (25258 14413 101253 0) 0 nil])
+([nil nil ((133 . 136)) nil (25258 14413 101252 0) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t)) . -133) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (#(" " 0 1 (fontified t face (markdown-line-break-face))) . -134) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (#("d" 0 1 (fontified t)) . -135) (undo-tree-id4 . -1) (undo-tree-id5 . -1) 136) nil (25258 14413 101250 0) 0 nil])
+([nil nil ((133 . 154)) nil (25258 14413 101232 0) 0 nil])
+([nil nil ((154 . 175)) nil (25258 14413 101231 0) 0 nil])
+([nil current ((175 . 179)) nil (25258 14413 101227 0) 0 nil])
+nil
