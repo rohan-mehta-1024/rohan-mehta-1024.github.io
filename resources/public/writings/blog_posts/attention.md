@@ -549,5 +549,5 @@ a few transposes.
 
 
 <span id=foot3>**3.**</span>
-In talking with Llion Jones, I learned that the first version of the transformer, actually added the outputs of the heads together, instead of concatenating them. However, since then concatenation has become the de facto standard, and is also what the language of the paper most strongly suggests, so we will proceed with this choice. 
+In talking with Llion Jones, I learned that the first version of the transformer actually added the outputs of the heads together instead of concatenating them. However, since then concatenation has become the de facto standard, so we will proceed with this choice. 
 <a href=#head3 class=colored-post-link>↩</a>
