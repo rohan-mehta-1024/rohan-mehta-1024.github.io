@@ -82,7 +82,7 @@ Of course, I don't mean to imply that everyone who left a bad review did so due 
 
 So to conclude: we've found a large group of users that are rating *Ms. Marvel* very poorly (especially compared to other Marvel shows) despite many other users and critics rating it extremely well. We've found evidence that these users have been intentional in doing so. And we've also found a racial and religious bias tying these low-rating users together. Or rather, review-bombers, because we can be pretty certain that that's what they are at this point. 
 
-If you want some more details, as well as to dig into the code I used to make these visualizations, a more formal writeup of the project is available as a PDF <a class="colored-text-link" href=../../images/marvel/marvelPublished.pdf download>here</a>. This document also contains links to sources for all other claims I make in this post  (such as initial reports of review-bombing). I would encourage you to try and adapt the code to work with other Marvel motion pictures, and share whatever you discover!
+If you want some more details, as well as to dig into the code I used to make these visualizations, a more formal writeup of the project is available as a PDF <a class="colored-text-link" href=marvelPublished.pdf target="_blank">here</a>. This document also contains links to sources for all other claims I make in this post  (such as initial reports of review-bombing). I would encourage you to try and adapt the code to work with other Marvel motion pictures, and share whatever you discover!
 
 <h1>Footnotes</h1>
 
