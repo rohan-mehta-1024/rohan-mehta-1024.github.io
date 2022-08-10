@@ -145,7 +145,7 @@
        )))
 
 (defn get-assets! []
-  (assets/load-assets "public" [#".ttf|css|png|jpg|svg|gif|ico"]))
+  (assets/load-assets "public" [#".ttf|pdf|css|png|jpg|svg|gif|ico"]))
 
 (defn write-cname [out]
   (spit (str out "/CNAME") "https://mehta-rohan.com"))
