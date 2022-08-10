@@ -170,7 +170,8 @@
       (stasis/serve-pages)
       (optimus/wrap
 
-     get-assets!
+       get-assets!
+       
   optimizations/all
      serve-live-assets)
     (wrap-reload)))
