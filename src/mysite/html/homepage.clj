@@ -53,4 +53,5 @@
        ]
       ]
      [:h1 {:id "recents"} "Recent Activity"
+
       (most-recent posts)]]))
