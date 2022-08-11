@@ -1,7 +1,7 @@
 (ns mysite.html.head
   (:require [com.rpl.specter :refer :all]))
 
-(defn head-template [title]
+(defn head-template [title prev img]
   [:head
    [:title title]
    [:meta {:charset "utf-8"}]
@@ -10,9 +10,9 @@
    [:meta {:name "twitter:card" :content "summary_large_image"}]
    [:meta {:name "twitter:site" :content "@RohanMe93264078"}]
    [:meta {:name "twitter:creator" :content "@RohanMe93264078"}]
-   [:meta {:name "twitter:title" :content "Rohan Mehta's Personal Website"}]
-   [:meta {:name "twitter:description" :content "Check out Rohan's latest blogs, projects, and pursuits!"}]
-   [:meta {:content "https://mehta-rohan.com/images/homepage.png" :name "twitter:image"}]
+   [:meta {:name "twitter:title" :content title}]
+   [:meta {:name "twitter:description" :content (if (not= prev nil) prev  "Check out Rohan's latest blogs, projects, and pursuits!")}]
+    [:meta {:content (if (not= img nil) img "https://mehta-rohan.com/images/homepage.png") :name "twitter:image"}]
    [:script {:src "https://polyfill.io/v3/polyfill.min.js?features=es6"}]
    [:script 
 
@@ -36,8 +36,8 @@
 (defn js->hiccup [file-path]
   [:script {:src file-path :type "text/javascript"}])
 
-(defn generate-head [title css-files js-files]
-  (let [head        (head-template title)
+(defn generate-head [title css-files js-files prev img]
+  (let [head        (head-template title prev img)
         default-css ["/css/header.css" "/css/footer.css"]
         default-js  ["/cljs-out/dev-main.js"]]
     (->> [css-files js-files]

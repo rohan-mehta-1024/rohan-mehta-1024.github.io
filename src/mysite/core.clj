@@ -44,12 +44,10 @@
        (transform [ALL FIRST] (comp keyword string/lower-case))
        (transform [ALL LAST] string/trim)
        (back-into-map)
-       (merge {:css "[]" :js "[]" :series "nil" :updates "[]" :img nil})
+       (merge {:css "[]" :js "[]" :series "nil" :updates "[]" :img nil :preview nil})
        (transform [:draft] (comp read-string string/lower-case))
        (transform [:css] read-string)
        (transform [:js] read-string)))
-
-
 
 (defn initial-letter [html]
   (let [inital (str "<span class=initial-letter>" (second html) "</span>")]
@@ -59,14 +57,13 @@
         (string/join "" $))))
 
 
-
 (defn create-page [metadata html css js]
   (merge-with into
     metadata
     {:html html :css css :js js}))
 
-(defn apply-header-footer [{:keys [title css js html]}]
-  (let [head (head/generate-head title css js)]
+(defn apply-header-footer [{:keys [title css js html img preview]}]
+  (let [head (head/generate-head title css js preview img)]
     (html5 head header/html html footer/html)))
 
 (defn get-content-pages! []
