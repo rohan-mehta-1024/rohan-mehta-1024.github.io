@@ -1,4 +1,4 @@
-TITLE=Analyzing Online Sentiment Towards Marvel TV Shows
+TITLE=Sentiment Analysis of Marvel TV Shows
 DATE=8/9/2022
 PREVIEW=Yes, Ms. Marvel was review-bombed. Don't believe me? I'll prove it.
 TAGS=Data Science, Wolfram Language, Marvel
