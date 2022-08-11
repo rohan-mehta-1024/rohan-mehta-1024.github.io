@@ -3,7 +3,7 @@ DATE=8/9/2022
 PREVIEW=Yes, Ms. Marvel was review-bombed. Don't believe me? I'll prove it.
 TAGS=Data Science, Wolfram Language, Marvel
 DRAFT=false
-IMG=https://mehta-rohan.com/images/marvel/critic_score2.png
+IMG=https://mehta-rohan.com/images/critic_score2copy.png
 
 
 Have you been watching *Ms. Marvel* recently? Chances are you either loved it or hated it. And if you hated it enough to give it a terrible rating, chances are it's because you were put off by its racial and religious diversity. An explosive claim that has you either nodding or shaking your head? Sure. But one I can back up with data.
