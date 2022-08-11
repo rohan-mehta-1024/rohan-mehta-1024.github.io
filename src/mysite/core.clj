@@ -167,7 +167,6 @@
         (stasis/export-pages "docs"))
     (write-cname "docs")
     (generate-xml content)
-
     (fs/delete-dir "docs/cljs-out")
     (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")))
 
