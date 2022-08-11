@@ -66,6 +66,8 @@
   (let [head (head/generate-head title css js preview img)]
     (html5 head header/html html footer/html)))
 
+
+
 (defn get-content-pages! []
   (let [files (stasis/slurp-directory "resources/public" #".*\.md$")]
     (->> files
