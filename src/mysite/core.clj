@@ -44,10 +44,12 @@
        (transform [ALL FIRST] (comp keyword string/lower-case))
        (transform [ALL LAST] string/trim)
        (back-into-map)
-       (merge {:css "[]" :js "[]" :series "nil" :updates "[]"})
+       (merge {:css "[]" :js "[]" :series "nil" :updates "[]" :img nil})
        (transform [:draft] (comp read-string string/lower-case))
        (transform [:css] read-string)
        (transform [:js] read-string)))
+
+
 
 (defn initial-letter [html]
   (let [inital (str "<span class=initial-letter>" (second html) "</span>")]
@@ -55,6 +57,7 @@
         (subs $ 2)
         (vector inital $)
         (string/join "" $))))
+
 
 (defn create-page [metadata html css js]
   (merge-with into
@@ -110,11 +113,14 @@
   (let [new-posts (back-into-map (map post/format-post posts))
         about     (generate-about-page)
         homepage  (generate-homepage posts)]
+
     (->> (select-keys posts (for [[k v] posts :when (= (v :draft) false)] k))
          (generate-preview-pages)
+
          (back-into-map)
          (merge homepage about new-posts)
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
+
 
 (defn generate-xml [posts]
   (let [channel {:title "Rohan Mehta"
@@ -171,7 +177,6 @@
       (optimus/wrap
 
        get-assets!
-       
   optimizations/all
      serve-live-assets)
     (wrap-reload)))

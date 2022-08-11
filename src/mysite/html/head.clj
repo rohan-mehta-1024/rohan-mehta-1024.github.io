@@ -7,6 +7,12 @@
    [:meta {:charset "utf-8"}]
    [:meta {:name    "viewport"
            :content "width=device-width, initial-scale=1.0"}]
+   [:meta {:name "twitter:card" :content "summary_large_image"}]
+   [:meta {:name "twitter:site" :content "@RohanMe93264078"}]
+   [:meta {:name "twitter:creator" :content "@RohanMe93264078"}]
+   [:meta {:name "twitter:title" :content "Rohan Mehta's Personal Website"}]
+   [:meta {:name "twitter:description" :content "Check out Rohan's latest blogs, projects, and pursuits!"}]
+   [:meta {:name "twitter:img" :content "/images/favicon.ico?"}]
    [:script {:src "https://polyfill.io/v3/polyfill.min.js?features=es6"}]
    [:script 
 
@@ -22,6 +28,7 @@
    [:link {:rel "icon" :type "image/x-icon" :href "/images/favicon.ico?"}]
    [:link {:rel "alternate" :type "applications/rss+xml" :href "https://mehta-rohan.com/feed.xml" :title "RSS"}]
    ])
+
 
 (defn css->hiccup [file-path]
   [:link {:href file-path :rel "stylesheet"}])

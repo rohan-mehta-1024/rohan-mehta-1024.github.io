@@ -12,12 +12,14 @@
 
 
 
-(defn format-post [[url {:keys [title date tags updates preview html] :as post}]]
-  (let [poem? (string/includes? url "poetry")
-        x (print (format-updates updates))]
+(defn format-post [[url {:keys [title date tags updates preview html img] :as post}]]
+  (let [poem? (string/includes? url "poetry")]
     [url
      (assoc post :html
             [:div
+             [:meta {:name "twitter:title" :content title}]
+             [:meta {:name "twitter:description" :content preview}]
+             (if (not= img nil) [:meta {:name "twitter:img" :content img}])
              [:div {:id "post-content-container"}
               [:h1 {:id "post-title"} title]
               [:h4 {:id "post-byline"} (str date " • Rohan Mehta | " tags)]
@@ -36,3 +38,4 @@
              [:script "commentBox('5711441948573696-proj')"]])]
 
     ))
+
