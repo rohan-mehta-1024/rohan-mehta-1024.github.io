@@ -12,7 +12,7 @@
    [:meta {:name "twitter:creator" :content "@RohanMe93264078"}]
    [:meta {:name "twitter:title" :content "Rohan Mehta's Personal Website"}]
    [:meta {:name "twitter:description" :content "Check out Rohan's latest blogs, projects, and pursuits!"}]
-   [:meta {:content "https://mehta-rohan.com/images/homepage.png" :name "twitter:image:src"}]
+   [:meta {:content "https://mehta-rohan.com/images/homepage.png" :name "twitter:image"}]
    [:script {:src "https://polyfill.io/v3/polyfill.min.js?features=es6"}]
    [:script 
 
