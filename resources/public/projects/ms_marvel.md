@@ -85,6 +85,9 @@ So to conclude: we've found a large group of users that are rating *Ms. Marvel* 
 
 If you want some more details, as well as to dig into the code I used to make these visualizations, a more formal writeup of the project is available as a PDF <a class="colored-text-link" href=marvelPublished.pdf download>here</a>. This document also contains links to sources for all other claims I make in this post  (such as initial reports of review-bombing). I would encourage you to try and adapt the code to work with other Marvel motion pictures, and share whatever you discover!
 
+<h1>Acknowledgments</h1>
+Thank you to Dr. John McKay for taking the time to look over a first draft of this blog post. In particular, his advice to further explore review length, review postings over time, and review helpfulness all contributed to making this analysis more complete and nuanced.
+
 <h1>Footnotes</h1>
 
 <span id=foot1>**1.**</span>
