@@ -1,4 +1,3 @@
-
 (ns mysite.core
   (:require [clj-time.format :as f]
             [java-time :as jt]

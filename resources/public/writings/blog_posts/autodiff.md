@@ -74,8 +74,8 @@ where \\(y\\) is a constant.
 
 Similarly, a walk in a purely vertical direction is described when 
 \\(x\\) is a constant. In fact, we would find that all 
-multivariable functions behave in this way when being "walked 
-upon" in the direction of one of their variables, such that 
+multivariable functions behave in this way when being walked 
+upon in the direction of one of their variables, such that 
 all others become constants.
 
 
@@ -158,7 +158,7 @@ of our function! So the direction represented by this vector
 must be the direction of steepest ascent – the greatest 
 derivative of our function.
 
-Intuitively, this makes sense too
+Intuitively, this makes sense too, 
 as how much this vector points in a given direction is equivalent to the 
 derivative in that direction, such that it points more in steeper directions and 
 less in shallow ones, thus becoming the steepest direction itself. This vector 
@@ -188,7 +188,7 @@ a computational machine with the ability to learn. Mathematically, a
 neuron's activation (output) is defined like so, where 
 \\(\\boldsymbol{\\vec{x}}\\) is some input vector, 
 \\(\\boldsymbol{\\vec{w}}\\) and \\(b\\) are the neuron's two learnable 
-parameters (known as a weight and bias respectively) and \\(\\sigma\\)
+parameters (known as a weight and bias, respectively) and \\(\\sigma\\)
 denotes some non-linearity:
 
 <p style="text-align: center;">
@@ -240,12 +240,12 @@ $$J(\boldsymbol{\vec{x}}, y; \boldsymbol{\theta}) = E(\alpha, y)$$
 This function takes in some labeled datapoint \\((\\boldsymbol{\\vec{x}}, y)\\)
 and our neuron's parameters \\(\\boldsymbol{\\theta}\\). Using these, 
 it computes our  neuron's activation \\(\\alpha\\), and passes it and 
-the label \\(y\\) to our  error function. It returns low values for good 
+the label \\(y\\) to our error function. It returns low values for good 
 parameters, because good parameters generate good predictions, and good 
 predictions have a low margin of error.
 
 So optimizing our neuron boils down to finding parameters 
-that produce the local minima of this function:
+nestled in the local minima of this function:
 the valleys of whatever high-dimensional error-surface
 it encodes.
 
@@ -267,7 +267,7 @@ to move in the direction of steepest descent – or the negative gradient,
 <figcaption>Fig. 5. Visualization of the error-surface for a single neuron. 
 Each point is some parameter pair and the height of each pair indicates how 
 badly the neuron performs when it uses them. By traveling along the negative 
-gradient we can arrive at good pairs (Source: 
+gradient, we can arrive at good pairs (Source: 
 <a class=colored-post-link  target=_blank href=https://arxiv.org/pdf/1805.04829.pdf>Amini et. al, 2018</a>).</figcaption>
 
 And it turns out that repeatedly stepping in the direction of the negative 
@@ -367,7 +367,7 @@ So how do we represent all this mathematically? Well, we can
 index each neuron by its layer and position in that layer. 
 Each of a neuron's weights can then be indexed with one 
 additional term, representing the position of the neuron it 
-connects to in the previous layer. Thus the activation of the 
+connects to in the previous layer. Thus, the activation of the 
 \\(i\\)th neuron in the \\(L\\)th layer, given 
 \\(j\\) neurons in the previous layer, is:
 
@@ -540,7 +540,7 @@ It is the sum of two variables: the node \\(\\eta\\) and the
 bias \\(b^{(1)}_1\\). So obviously the derivative with respect 
 to both variables is just one.
 
-We can similarly consider node \\(\\epsilon\\)
+We can similarly consider the node \\(\\epsilon\\)
 which is the product of the first entry of our input vector 
 \\(x_1\\) and the weight \\(w^{(1)}_{(1,1)}\\). Again, 
 the derivative with respect to the weight is obviously
@@ -591,10 +591,10 @@ Secondly, the chain rule provides us with a very straightforward
 way to find the derivatives of such compositions. And even though 
 we, as humans, wouldn't usually use the chain rule, to, say,
 differentiate an expression like \\(x^2 + 2x\\), technically 
-you could. After all, the chain rule is the only differentiation 
+we could. After all, the chain rule is the only differentiation 
 rule you really need to know – everything else follows from it. 
 Plus, it generalizes rather nicely to the multivariable case –
-all we have to do is add &ldquo;paths&rdquo; together.
+all we have to do is add paths together.
 
 And this approach works great for computers, because it allows 
 us to hardcode the expressions for only a few basic derivatives 
@@ -607,9 +607,9 @@ to make gradient descent viable.
 
 <h1>An Algorithmic Perspective</h1>
 
-Together this entire process is known as reverse-mode automatic 
+Together, this entire process is known as reverse-mode automatic 
 differentiation (AD). In the context of neural networks, though, 
-it goes under another name – backpropagation.
+it goes under another name: backpropagation.
 
 But it's actually not the only way we could traverse a computational 
 graph. After all, our decision to start at the end of the graph was an 
@@ -683,7 +683,7 @@ millions of times worse!
 But what we've described so far still isn't how things 
 are done in practice. As I mentioned before, concerning 
 ourselves with each individual each weight  and bias is not
-the most efficient nor most elegant way of doing things. 
+the most efficient nor the most elegant way of doing things. 
 Instead, a much cleaner conception of what's going on can 
 be achieved by representing things in a vectorized fashion.
 
@@ -760,7 +760,7 @@ $$\\begin{bmatrix}
          \\frac{\\partial{\\boldsymbol{\\vec{y}}_n}}{\\partial{\\boldsymbol{\\vec{x}}_1}} & \\cdots & \\frac{\\partial{\\boldsymbol{\\vec{y}}_n}}{\\partial{\\boldsymbol{\\vec{x}}_n}} \\\\
          \\end{bmatrix}$$
          
-In some sense then, this matrix is the derivative of that 
+In some sense then, this matrix **is** the derivative of that 
 vector-to-vector function, because it represents all the 
 ways the output vector could change given some 
 infinitesimal nudge to the input vector. We refer to such 
@@ -973,14 +973,14 @@ calculus just doesn't expose them in their full generality. And the only
 reason there's a notion of multiplication in the chain rule in the first 
 place is because composing linear maps is defined as matrix multiplication.
 
-This is a long-winded way of saying that the derivative is the Jacobian - 
+That's is a long-winded way of saying that the derivative is the Jacobian - 
 they're equivalent concepts. And the different branches of calculus just study 
 increasingly less specialized versions of it. In that sense, all automatic 
 differentiation does is compute a Jacobian-vector product, or the Jacobian at 
 a specific input.
 
 Thinking about things in terms of Jacobians also highlights an important 
-difference between forward-mode and reverse-mode. As we ackowledged before, 
+difference between forward-mode and reverse-mode. As we acknowledged before, 
 one pass with forward-mode computes the derivatives of all outputs with respect 
 to a single input, while one pass with reverse-mode computes the derivatives of 
 a single output with respect to all inputs.
@@ -1103,8 +1103,8 @@ input and a label, we don't want to include their partials in our gradient
 information are set for the problem.
 <a href=#head3 class=colored-post-link>↩</a>
 
-<span id=foot4>**4.**</span> \\(\\eta\\)is a hyperparameter, or a variable the neural net does not 
-learn by itself, but must be explicitly set. It's known as learning rate, since 
+<span id=foot4>**4.**</span> \\(\\eta\\) is a hyperparameter, or a variable the neural net does not 
+learn by itself, but must be explicitly set. It's known as the learning rate, since 
 it controls how quickly we descend the error-surface, and thus how fast we learn.
 <a href=#head4 class=colored-post-link>↩</a>
 
