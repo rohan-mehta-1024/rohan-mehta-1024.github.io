@@ -282,8 +282,8 @@ its embedding in \\(\\boldsymbol{E_q}\\) with the embedding
 of &ldquo;ball&rdquo; in \\(\\boldsymbol{E_k}.\\) Likewise,
 dotting the representation of &ldquo;ball&rdquo; 
 in \\(\\boldsymbol{E_q}\\) with that of
-&ldquo;it&rdquo; in \\(\\boldsymbol{E_k}\\),
-will give us  self-attention with respect to &ldquo;ball&rdquo;.
+&ldquo;it&rdquo; in \\(\\boldsymbol{E_k}\\)
+will give us self-attention with respect to &ldquo;ball&rdquo;.
  
  
 As both operations deal with different embeddings
@@ -339,7 +339,8 @@ and the query of &ldquo;it&rdquo;. Different angles means
 different dot products means different 
 attention coefficients!
 
-<div style="text-align:center;">
+ <!--style="text-align:center;"!-->
+<div>
 <img src=../../images/attention/it-ball-3.svg class=get-bigger style="width:75%;"></img>
 <figcaption>Fig. 9. An overlay of the embedding spaces \(\boldsymbol{E_q}\) and \(\boldsymbol{E_k}.\)</figcaption>
 </div>
@@ -470,13 +471,13 @@ We might instead imagine using multiple such attention mechanisms, where each at
 <div style="text-align:center;">
 <img src=../../images/attention/multi-head-viz.png  style="width:95%;;margin-left:-30px;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 12. Two attention heads working together. One (in blue) is a &ldquo;who did it&rdquo; attention head, while the other (in red) is a &ldquo;to whom?&rdquo; attention head.  (Source: 
+<figcaption style="margin-top:-25px;">Fig. 13. Two attention heads working together. One (in blue) is a &ldquo;who did it?&rdquo; attention head, while the other (in red) is a &ldquo;to whom?&rdquo; attention head.  (Source: 
 <a class="colored-post-link" href= "https://web.stanford.edu/class/cs224n/slides/cs224n-2019-lecture14-transformers.pdf">
 Vaswani et al., 2019</a>).</figcaption>
 
-Mathematically, this means that instead of learning one set of three project matrices, we will learn multiple such sets – one for each attention mechanism, which we'll call attention heads. If we then compute the relevant keys, queries, and values and plug them into the attention formula, we end up with multiple context vectors for each word, one per attention head.
+Mathematically, this means that instead of learning one set of three projection matrices, we will learn multiple such sets – one for each attention mechanism, which we'll call attention heads. If we then compute the relevant keys, queries, and values and plug them into the attention formula, we end up with multiple context vectors for each word, one per attention head.
 
-Now we're left with the task of combining this set of context vectors into a single context vector for each word. There is a lot of potential choice for how to do this, but the transformer paper chooses to concatenate<sup><a href=#foot3 id=head3 class="colored-post-link">3</a></sup> the output of each attention head – a matrix containing that head's recommendation for what each word's context vector should be – and multiply the resulting matrix by one final projection matrix. So the formula for multi-head attention is:
+Now we're left with the task of combining this set of context vectors into a single context vector for each word. There is a lot of potential choice for how to do this, but the transformer paper chooses to concatenate<sup><a href=#foot3 id=head3 class="colored-post-link">3</a></sup> the output of each attention head, resulting in a matrix containing that head's recommendation for what each word's context vector should be. This matrix is then multiplied by one final projection matrix. So the formula for multi-head attention is:
 
 
 
@@ -489,7 +490,7 @@ It's worth noting that the argument we used to motivate multi-head attention is 
 <div style="text-align:center;">
 <img src=../../images/attention/multi-head.png style="width:40%; margin-bottom:15px;"></img>
 </div>
-<figcaption style="margin-top:-25px;">Fig. 10. Multi-head self-attention mechanism  (Source: 
+<figcaption style="margin-top:-25px;">Fig. 14. Multi-head self-attention mechanism  (Source: 
 <a class="colored-post-link" href= "https://arxiv.org/pdf/1601.06733.pdf">
 Vaswani et al., 2017</a>).</figcaption>
 
