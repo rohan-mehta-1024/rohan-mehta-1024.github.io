@@ -30,7 +30,7 @@
    {:height (px 245)
     :width (px 245)
     :border-radius "50%"
-    :border "1px solid black"
+    ;;:border "1px solid black"
     :display "inline-block"
     :vertical-align "middle"
     :margin-top (px -10)}])

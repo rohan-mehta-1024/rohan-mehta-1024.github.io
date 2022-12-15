@@ -12,9 +12,9 @@
    [:br]
    [:br]
 
-   "By day, I'm a junior at Moravian Academy.
-    By night, I dabble in " (colored-text-link "research" "/")
-   " and " (colored-text-link "entrepreneurship" "/")
+   "By day, I'm a senior at Moravian Academy.
+    By night, I dabble in " (colored-text-link "research" "https://mlcollective.org/community/")
+   " and " (colored-text-link "entrepreneurship"  "https://esolangconf.com")
    ", with a driving interest in " "computer science"
    " and how it intersects physics, mathematics, and biology." 
 
@@ -24,9 +24,9 @@
    "This site showcases " (colored-text-link "cool projects I've worked on" "/projects")
    ", ideas in the mathematics and sciences "
    (colored-text-link "I find beautiful and interesting" "/writings/blog_posts/index.html")
-   ", my " (colored-text-link "thoughts, values, and opinions" "/")
-   " on science, technology, and life, and the occasional bit of "
-   (colored-text-link "creative" "/") " " (colored-text-link "writing" "/") ".
+   ", my thoughts, values, and opinions on science, technology,
+    and life, and the occasional bit of "
+   (colored-text-link "creative writing" "/poetry/index.html")  ".
     You can learn more about (and how to contact) me "
    (colored-text-link "here" "/about_me") "!"])
 
@@ -41,7 +41,7 @@
   (list
     [:div {:id "content-container"}
      [:div {:id "about-me-container"}
-      [:img {:src "images/me7.jpg" :id "picture"}]
+      [:img {:src "images/me8.jpg" :id "picture"}]
       [:span {:id "about-me"} about-me-text]
       [:div {:style "display:flex;justify-content:center;"}
        [:iframe {:id "signup" :src "https://rohanmehta.substack.com/embed" :width "480" :height "100" :style "background:white;margin-top:15px;":frameborder "0" :scrolling "no" :onload "access()"}]
