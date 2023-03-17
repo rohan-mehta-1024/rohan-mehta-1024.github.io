@@ -15,7 +15,7 @@
 
 (def ending
   [:div {:id "footer-part-2"}
-   "© 2021 Rohan Mehta. All Rights Reserved. Built with\n"
+   "© 2023 Rohan Mehta. All Rights Reserved. Built with\n"
    [:a {:href "https://github.com/magnars/stasis"
         :id "stasis"
         :target "blank_"} "Stasis"] "."])

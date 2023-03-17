@@ -1,6 +1,8 @@
 (ns mysite.html.homepage
   (:require [clj-time.format :as f]
             [com.rpl.specter :refer :all]
+            [clj-time.format :as f]
+            [clojure.string :as string]
             [mysite.html.utils :refer [colored-text-link]]
             [mysite.html.preview :refer [group-content make-preview]]))
 
@@ -26,15 +28,28 @@
    (colored-text-link "I find beautiful and interesting" "/writings/blog_posts/index.html")
    ", my thoughts, values, and opinions on science, technology,
     and life, and the occasional bit of "
-   (colored-text-link "creative writing" "/poetry/index.html")  ".
+   (colored-text-link "creative writing" "//index.html")  ".
     You can learn more about (and how to contact) me "
    (colored-text-link "here" "/about_me") "!"])
+
+(defn date-sort [posts]
+  (let [date-fn (partial f/parse (f/formatters :year-month-day))]
+    (sort-by
+     #(as-> % $
+          (last $)
+          ($ :date)
+          (string/split $ #"/")
+          (vector (last $) (first $) (second $))
+          (string/join "-" $)
+          (date-fn $))
+     posts)))
 
 (defn most-recent [posts]
   (let [grouped (group-content posts false)]
     (for [[_ posts] grouped]
       (-> posts
-          first 
+          date-sort
+          last
           (make-preview true)))))
 
 (defn html [posts]

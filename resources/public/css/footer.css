@@ -54,7 +54,7 @@ footer::before {
   }
   
   #footer-part-1 a + a {
-    margin-left: 25%;
+    margin-left: 20%;
   }
   
   #footer-part-2 {
@@ -63,7 +63,7 @@ footer::before {
   }
   
   .icons {
-    width: 25px;
+    width: 20px;
   }
 
 }

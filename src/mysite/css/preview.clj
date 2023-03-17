@@ -6,7 +6,7 @@
 
 (def previews-container
   [:#previews-container
-   {:width "75%"
+   {:width "85%"
     ;:position "absolute"
     ;:top "0"
     ;:left "0"
@@ -35,6 +35,7 @@
 (def preview-title
   [:.preview-title {:font-size (px 23)
                     :margin "0 0 0 0"
+                    :margin-left (px 10)
                                         ;:color "#DC143C"
                     :color "#903"
                     :width "auto"
@@ -52,6 +53,7 @@
                    :font-weight "500"
                    :font-family "WorkSans"}])
 
+
 (def series
   [:.series
    {:font-size (px 20)
@@ -61,8 +63,9 @@
   [[:.not-homepage.preview-header {:font-size (px 16)
                                     :margin-bottom (px -5)}]
    [:.not-homepage.preview-title {:font-size (px 21)}]
-   ;[(:#preview-container s/first-child) {:margin-top (px 100)}]
-   [(s/+ :#preview-container-2.not-homepage :#preview-container-2.not-homepage) {       :margin-top (px 35)}]])
+                                        ;[(s/first-child :#previews-container) {:margin-top (px 100) :color "red"}]
+   [:#preview-container-2.not-homepage {:padding-top (px 15)}]
+   [(s/+ :#preview-container-2.not-homepage :#preview-container-2.not-homepage) {:margin-top (px 25)}]])
 
 (def media-query-1 
   (at-media {:max-width (px 400)}
@@ -76,8 +79,11 @@
 
 (def media-query-2 
   (at-media {:max-width (px 720)}
-            [[:.preview-text {:margin-right "0%"}]
-             [:#previews-container {:margin-left (px 50)}]]))
+            [[:.not-homepage.preview-title {:font-size (px 18)}]
+             [:.preview-text {:margin-right "0%"}]
+             [:#previews-container {:margin-left (px 50)}]
+             [:.preview-img {:width "80px" :height "60px"}]
+             ]))
 
 (defstylesheet css
   {:output-to "resources/public/css/preview.css"}
@@ -87,5 +93,7 @@
         preview-text
         series
         not-homepage
+        [:.preview-img {:width "100px" :height "70px":display "inline-block" :vertical-align "middle"}]
+        media-query-2
         media-query-1
-        media-query-2))
+        ))

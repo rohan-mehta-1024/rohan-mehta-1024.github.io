@@ -3,6 +3,7 @@ DATE=7/17/2021
 PREVIEW=Automatic differentiation is the numerical computing technique that gave us the backpropagation algorithm. Let's find out how it works!
 TAGS=Deep Learning, Calculus
 DRAFT=false
+IMG=https://mehta-rohan.com/images/autodiff/parabaloid-1.png
 
 Backpropagation is the cornerstone of the deep learning paradigm
 – the idea that learning is nothing more than optimizing some 

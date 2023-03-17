@@ -5,7 +5,6 @@ TAGS=Data Science, Wolfram Language, Marvel
 DRAFT=false
 IMG=https://mehta-rohan.com/images/marvel/critic_score2.png
 
-
 Have you been watching *Ms. Marvel* recently? Chances are you either loved it or hated it. And if you hated it enough to give it a terrible rating, chances are it's because you were put off by its racial and religious diversity. An explosive claim that has you either nodding or shaking your head? Sure. But one I can back up with data.
 
 Like many others, I instantly fell in love with *Ms. Marvel*. It's not often that I'm able to enjoy a motion picture<sup><a href=#foot1 id=head1 class="colored-post-link">1</a></sup> in the MCU without the prescience that comes from already having read the comics – or more accurately, the Marvel Encyclopedia. But I had actually never heard of *Ms. Marvel* (at least, Kamala Khan's rendition of her) until Disney+ announced the series. 
@@ -94,4 +93,5 @@ Thank you to Dr. John McKay for taking the time to look over a first draft of th
 Here, we'll take  &ldquo;motion picture&rdquo; to mean either TV show or movie (which is actually it's correct definition, even though we usually think of it  as synonymous with movie).<a href=#head1 class=colored-post-link>↩</a>
 
 <span id=foot2>**2.**</span> Interestingly, quite a few  positive reviews are written in Spanish and Russian.<a href=#head2 class=colored-post-link>↩</a>
+
 

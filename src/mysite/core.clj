@@ -24,8 +24,6 @@
             [clj-rss.core :as rss]
             [mysite.utils :refer [back-into-map parse-date]]))
 
-
-
 (defn md->HTML [file-path]
   (string/replace file-path ".md" ".html"))
 
@@ -35,7 +33,6 @@
       (string/split $ #"\n")
       (split-at metadata-length $)
       (transform [LAST] #(string/join "\n" %) $))))
-
 
 (defn format-metadata [metadata]
   (->> metadata
@@ -48,6 +45,7 @@
        (transform [:css] read-string)
        (transform [:js] read-string)))
 
+
 (defn initial-letter [html]
   (let [inital (str "<span class=initial-letter>" (second html) "</span>")]
     (as-> html $
@@ -55,16 +53,15 @@
         (vector inital $)
         (string/join "" $))))
 
-
 (defn create-page [metadata html css js]
   (merge-with into
     metadata
     {:html html :css css :js js}))
 
+
 (defn apply-header-footer [{:keys [title css js html img preview]}]
   (let [head (head/generate-head title css js preview img)]
     (html5 head header/html html footer/html)))
-
 
 
 (defn get-content-pages! []
@@ -80,9 +77,9 @@
          (reverse)
          (back-into-map))))
 
-
 (defn generate-preview-pages [posts]
-  (let [previews (preview/make-all-previews posts)]
+  (let [previews (preview/make-all-previews posts)
+        x (print previews)]
     (for [[url html] previews]
       [url
        {:html  html
@@ -101,12 +98,14 @@
             "/css/homepage.css"]
     :js    []}})
 
+
 (defn generate-about-page []
   {"/about_me/index.html"
    {:html  about/html
     :title "About Me"
     :css   ["/css/about.css"]
     :js    []}})
+
 
 (defn get-all-pages! [posts export?]
   (let [new-posts (back-into-map (map post/format-post posts))
@@ -119,6 +118,7 @@
          (back-into-map)
          (merge homepage about new-posts)
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
+
 
 
 (defn generate-xml [posts]
@@ -168,14 +168,15 @@
     (fs/delete-dir "docs/cljs-out")
     (fs/copy-dir "target/public/cljs-out" "docs/cljs-out")))
 
+
 (def app
   (-> (get-content-pages!)
       (get-all-pages! false)
       (stasis/serve-pages)
       (optimus/wrap
        get-assets!
-  optimizations/all
-     serve-live-assets)
+       optimizations/all
+  serve-live-assets)
     (wrap-reload)))
 
 

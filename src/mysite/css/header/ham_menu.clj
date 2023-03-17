@@ -31,9 +31,9 @@
 
 (def active
   [:#ham-menu.active {}
-   [(lines (s/nth-child :1)) {:transform "translateY(18px)  rotate(45deg)"}]
+   [(lines (s/nth-child :1)) {:transform "translate(0px, 16px) rotate(45deg)"}]
    [(lines (s/nth-child :2)) {:opacity "0%"}]
-   [(lines (s/nth-child :3)) {:transform "translateY(-15px) rotate(-45deg)"}]])
+   [(lines (s/nth-child :3)) {:transform "translate(0px, -16px) rotate(-45deg)"}]])
 
 (def css
   (list

@@ -13,13 +13,13 @@
 
 
 (defn format-post [[url {:keys [title date tags updates preview html img] :as post}]]
-  (let [poem? (string/includes? url "poetry")]
+  (let [poem? (.contains tags "Poetry")]
     [url
      (assoc post :html
             [:div
             ; [:meta {:name "twitter:title" :content title}]
             ; [:meta {:name "twitter:description" :content preview}]
-            ; (if (not= img nil) [:meta {:name "twitter:img" :content img}])
+             (if (not= img nil) [:meta {:name "twitter:img" :content img}])
              [:div {:id "post-content-container"}
               [:h1 {:id "post-title"} title]
               [:h4 {:id "post-byline"} (str date " • Rohan Mehta | " tags)]
@@ -30,10 +30,9 @@
                                               :padding "0"}}
                ;(for [update (format-updates updates)] [:li {:class "updates"} update])
                ]
-              [:div {:id "post-content" :class (if poem? nil "not-poem")} html]
-              ]
+              [:div {:id "post-content" :class (if poem? nil "not-poem")} html]]
              
-             [:div {:class "commentbox"}]
+             [:div {:class "commentbox" :style {:width "100%"}}]
              [:script {:src "https://unpkg.com/commentbox.io/dist/commentBox.min.js"}]
              [:script "commentBox('5711441948573696-proj')"]])]
 

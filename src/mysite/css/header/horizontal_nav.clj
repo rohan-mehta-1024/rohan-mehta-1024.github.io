@@ -38,11 +38,16 @@
      :min-height "100vh"
      :display "flex"
      :flex-direction "column"
-     :background-color "white" ;;"#fffff8"
+     :background-color "#FFF" ;;"#fffff8"
      :z-index 1
      :overflow-y "scroll"
     
-    }]
+     }]
+
+   [:hr
+    {:color "#D8DAE1"
+     :border-top "1px"
+     :margin "1rem auto"}]
 
    [:body.active {:position "fixed"
                   :overflow-y "scroll"
@@ -148,7 +153,7 @@
     {:content "''"
      :position "relative"
      :margin "auto"
-     :top (px -38)
+     :top (px -37)
      :padding-bottom (px -10)
      :height (px 0)
      :border-width (px 8)
@@ -160,7 +165,7 @@
   [(-> (s/nth-child :3)
        subpage-container-2
        (s/> subpage-container-3)
-       (s/> sub-subpage-container)) {:height (px 30) ;; CHANGE LATER
+       (s/> sub-subpage-container)) {:height (px 50) ;; CHANGE LATER
                                      :width (px 110)}])
 
 (def sub-subpage-styles

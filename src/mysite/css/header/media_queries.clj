@@ -16,8 +16,8 @@
              ]))
 
 (def media-query-2
-  (at-media {:min-width (px 1090)}
-      [:#side-nav-background {:display "none"}]))
+  (at-media {:min-width (px 950)}
+            [:#side-nav-background {:display "none !important" :background-color "blue"}]))
 
 (def media-query-3
   (at-media {:max-width (px 750)}

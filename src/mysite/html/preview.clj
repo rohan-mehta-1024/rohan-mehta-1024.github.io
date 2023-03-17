@@ -7,8 +7,7 @@
   {"projects"      "Project"
    "readings"      "Reading"
    "blog_posts"    "Blog Post"
-   "short_stories" "Short Story"
-   "poetry"        "Poetry"})
+   "creative_writing" "Creative Writing"})
 
 (def dates-map {"1" "Jan"
                 "2" "Feb"
@@ -53,16 +52,24 @@
     (-> el second :date parse-date)
     (-> el last second :date parse-date)))
 
-(defn make-preview [[link {:keys [title date preview tags updates]}] homepage?]
+(defn make-preview [[link {:keys [title date preview tags updates img]}] homepage?]
   (let [class (if homepage? nil "not-homepage")]
     [:div {:class class :id "preview-container-2"}
      (if homepage?
        [:p {:class [class "preview-header"]} (format-header date link tags  false)]
        ;;nil;[:p {:class [class "preview-header"]} (string/join " | " [date tags])]
        )
-     [:a {:class [class "preview-title"] :href link} title]
+
+     (when (not homepage?)
+      [:img {:src img :class "preview-img"}])
+     [:a {:class [class "preview-title"] :href link :style {:margin-left (if homepage? "0px" "10px")}} title]
+
      (when homepage?
-       [:p {:class "preview-text"} preview])]))
+       [:p {:class "preview-text"} preview])
+     ]
+
+    )
+  )
 
 (defn group-content [posts with-writings]
   (letfn [(is-writing? [url]
@@ -95,13 +102,15 @@
          (into [:p {:class "series"} (str "Series: " name)]))))
 
 (defn make-all-previews [posts]
-  (let [template  [:div {:id "previews-container"} "Posts"]]
+  (let [template  [:div {:id "previews-container"} "Posts" ]]
     (->> (group-content posts true)
          (group-series)
          (apply merge)
          (transform [MAP-VALS ALL] #(if (is-series? %)
                                       (make-preview % false)
-                                      (make-series %)))
+                                      (make-series %)
+                                      ))
+         ;(transform [MAP-VALS] #(interleave % (repeat [:hr])))
          (transform [MAP-VALS] (partial into template))
          (transform [MAP-KEYS] #(as-> % $
                                   (str "/" $ "/index.html")

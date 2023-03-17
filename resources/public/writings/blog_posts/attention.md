@@ -3,6 +3,7 @@ DATE=5/17/2022
 PREVIEW=You can barely read a single deep learning paper nowadays without encountering the modern  attention mechanism. But why does it work – and work so well?
 TAGS=Deep Learning, NLP
 DRAFT=false
+IMG=https://mehta-rohan.com/images/attention/self_attention_1.png
 
 The transformer – a neural net architecture proposed in 
 <a class="colored-post-link" href="https://arxiv.org/abs/1706.03762">

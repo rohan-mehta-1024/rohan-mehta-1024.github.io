@@ -3,7 +3,7 @@ DATE=3/29/2022
 PREVIEW=What can analyzing Twitter posts tell us about the viral word-game Wordle? Where do people play the most, and the best? 
 TAGS=Data Science, Wolfram Language
 DRAFT=false
-UPDATES=["5/24/2022", "Added new features to Wordle Data Repository."]
+IMG=https://mehta-rohan.com/images/wordle/activity.gif
 
 The word-game Wordle has gone viral in these first few months of 2022, and the trend doesn't appear to be stopping any time soon. In fact, the New York Times, which purchased the rights to the game just last month, has over five years worth of future words stored in the site (yes, I checked).
 

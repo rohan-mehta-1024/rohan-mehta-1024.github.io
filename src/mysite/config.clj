@@ -5,10 +5,11 @@
    ["Projects" []]
 
    ["Writings"
-    ["Poetry"
-     ;;"Essays"
+    [;;"Poetry"
+     "Essays"
      ;;"Short Stories"
 ;;     "Essays"
-     "Blog Posts"]]
+     "Blog Posts"
+     "Creative Writing"]]
 
    ["Readings" []]])

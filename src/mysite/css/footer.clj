@@ -45,9 +45,9 @@
 (def media-query-1
   (at-media {:max-width (px 500)}
             [[:#footer-part-1 {:margin-left (px 10)}
-              [(s/+ s/a s/a) {:margin-left "25%"}]]]
+              [(s/+ s/a s/a) {:margin-left "20%"}]]]
              [:#footer-part-2 {:margin-left (px 10) :font-size (px 13)}]
-             [:.icons {:width (px 25)}]))
+             [:.icons {:width (px 20)}]))
 
 (defstylesheet css
   {:output-to "resources/public/css/footer.css"}

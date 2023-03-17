@@ -3,6 +3,7 @@ DATE=9/15/2021
 PREVIEW=This book just proves what those of us who've read Harry Potter already know: any book J.K. Rowling writes is one you've got to read!
 TAGS=Fiction, Fantasy, Rowling
 DRAFT=false
+IMG=../images/ickabog.jpg
 
 
 It's been quite a while since my last re-read of the Harry Potter books 

@@ -54,12 +54,13 @@
 
    [(s/& s/after)
     {:content "''"
-     :width "50%"
      :margin-top (px 20)
-     :height (px 1)
      :background-color "black"
      :display "block"
-     :margin "auto"}]])
+     :height (px 1)
+     :width "50%"
+     :margin "auto"
+     }]])
 
 (def side-nav-arrow
   [:.side-nav-arrow
@@ -105,8 +106,9 @@
    side-nav-container-1
    side-nav-container-2-styles
    side-nav-subpages-styles
-   side-nav-arrow
+   ;side-nav-arrow
    side-nav-subpages-active
    side-nav-sub-subpage-container
    side-nav-sub-subpages
-   reveal-sub-subpages))
+   reveal-sub-subpages
+   ))
