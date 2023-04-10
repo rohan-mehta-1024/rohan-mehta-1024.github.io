@@ -22,8 +22,6 @@
                 "11" "Nov"
                 "12" "Dec"})
 
-
-
 (defn format-date [date]
   (let [[x y z] (->> 
                   (string/split date #"/")
