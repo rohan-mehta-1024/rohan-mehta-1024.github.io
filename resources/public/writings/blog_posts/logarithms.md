@@ -1,17 +1,15 @@
 TITLE=Logarithms Are Clocks
-DATE=4/03/2023
-PREVIEW=Nonsense
+DATE=4/14/2023
+PREVIEW=Tired of remembering your logarithm rules? I've got just the solution – a mathematical timepiece!
 TAGS=Logarithms, Mathematics
-DRAFT=true
-IMG=nonsense
+DRAFT=false
+IMG=../../images/logarithms/log-clock.png
 
 I've always had a problem with logarithms. Not that I don't like them – in fact, I love them! There are so many ways to turn a logarithm on its head, to twist it inside out or upside down, that doing algebra with them can't help but be fun. But as much as I enjoy applying logarithm rules, I hate remembering them. 
 
-That's not unique to logarithms, though. I tend to remember formulae by what they mean rather than how they're written. Understanding the former is almost always enough to figure out the latter. But for the longest time, I haven't intuitively understood how logarithms work. And I don't think that's uncommon. 
+So imagine my surprise when I stumbled upon a way of thinking about logarithms that is so compelling and intuitive, it makes these rules completely obvious! Instead of having to stuff complicated algebraic expressions in my brain, it allows me to rediscover these expressions on the spot with only a little common sense. I'm sure it's not completely original, but since I've never seen it described before, I think it's worth going over here. So let's get into it!
 
-Recently, however, I've stumbled across a way of thinking about logarithms that actually makes sense. By describing the essence of the logarithm so compellingly, it renders all of their properties completely obvious. For my analogical brain, it's the only perspective that has ever truly clicked. I'm sure it's not completely original, but since I've never seen it described before, it seems worth the effort to try and explain it here.
-
-Let's start with the first logarithm rule you learn, namely that adding two logarithms with the same base multiplies their arguments: 
+We'll begin with the first logarithm rule you learn, namely that adding two logarithms with the same base multiplies their arguments: 
 
 $$\log_a{(b)} + \log_a{(c)} = \log_a{(bc)}$$
 
@@ -55,6 +53,14 @@ $$\log_a{(b^n)} = n \log_a{b}$$
 
 This rule says that the amount of time it takes an \\(a\\)-ing process to \\(b\\)-times itself \\(n\\) times is equal to \\(n\\) times however long it takes that same process to \\(b\\)-times itself once. To make things more concrete, imagine we had the example \\(\log_2{(5^3)}\\). This is just another way of saying \\(\log_2{(5 \times 5 \times 5)}\\) or, how long does it take a doubling process to quintuple three times? Since the process always takes the same amount of time to quintuple, this is obviously just three times however long it takes to quintuple once, or \\(3 \cdot \log_2{(5)}\\).
 
+<div style="text-align:center;">
+<img src=../../images/logarithms/log_intuition.png class=get-bigger style=width:85%;></img>
+<figcaption style="text-align:left;">
+Fig. 1.  Example of an \(a\)-ing process, or a process that has multiplied by \(a\) after every whole time step. 
+The graph on the left has a log scale. The graph on the right does not.
+</figcaption>
+</div>
+
 Following this same line of reasoning, we can see how: 
 
 $$\log_{(a^n)}{(b^n)} = \log_a{b}$$
@@ -74,27 +80,30 @@ How could switching the arguments of the two logarithms we are multiplying toget
 
 $$\frac{\log_a{(b)}}{\log_a{(d)}} = \frac{\log_c{(b)}}{\log_c{(d)}}$$
 
-Things suddenly begin to make a lot more sense. Let's first think about what this form of the equation is saying. It's declaring that two ratios are equal to one other, namely the ratio of how long it takes an \\(a\\)-ing process to grow to two different heights, and the ratio of how long it takes a \\(c\\)-ing process to grow to those same two heights. 
+Things suddenly begin to make a lot more sense! Let's first think about what this form of the equation is saying. It's declaring that two ratios are equal to one other, namely the ratio of how long it takes an \\(a\\)-ing process to grow to two different heights, and the ratio of how long it takes a \\(c\\)-ing process to grow to those same two heights. 
 
 Imagine, for a minute, that instead of towers of blocks, each process is represented by a runner. So the first ratio would be how long it takes runner \\(a\\) to run \\(b\\) – which we'll pretend is the distance of a mile – versus \\(d\\) – a half-mile, in our example. No matter how fast \\(a\\) runs – or \\(c\\) runs, for that matter  – this ratio will always be the same. Whether we travel at the speed of light or that of Hawking radiation, there will always be two half-miles in a mile. This relationship between distances – between amounts of growth – is a natural constant. 
 
-The idea of dividing two logarithms with the same base to obtain a dimensionless quantity relating two different amounts of growth is very powerful. And, through the lens of our runner example, it's now intuitive, as well. In fact, we can use it to unearth my favorite logarithm rule, usually called the  &ldquo;change of base&rdquo; rule. By simply taking \\(d = c\\) we get the following:
+The idea of dividing two logarithms with the same base to obtain a dimensionless quantity relating two different amounts of growth is very powerful. And, through the lens of our runner example, it now has an intuitive meaning as well In fact, we can use it to unearth my favorite logarithm rule, usually called the  &ldquo;change of base&rdquo; rule. By simply taking \\(d = c\\) we get the following:
 
 $$\log_a{b} = \left(\log_a{c}\right)\left(\log_c{b}\right)$$
 
-In this form, the rule goes by my preferred name: the chain rule of logarithms. The name elucidates that all this rule really says is that if you chain together two logarithms, where the argument of one is the base of the other, then this repeated, or chained, term cancels out. However, it's more likely you'll find this rule in it's change of base form:
+In this form, the rule goes by my preferred name: the chain rule of logarithms. The name elucidates that all this rule really says is that if you chain together two logarithms, where the argument of one is the base of the other, then this repeated – or chained  – term cancels out. However, it's more likely you'll find this rule in it change of base form:
 
 $$\log_c{(b)} = \frac{\log_a{(b)}}{\log_a{(c)}}$$
 
-This form better stresses the idea that the equation allows you to convert a logarithm of one base into a quotient of logarithms with any other base. The reason why this is true is the same as the more general case – we are converting between two expressions that both represent the universal constant of growth between \\(b\\) and \\(c\\). There is a just a \\(\log_c{(c)}\\) term that has been canceled out in the denominator of the left-hand side.
+This form better stresses the idea that the equation allows you to convert a logarithm of one base into a quotient of logarithms with any other base. The reason why this is true is the same as the more general case – we are converting between two expressions that both represent the universal constant of growth between \\(b\\) and \\(c\\). There is a just a \\(\log_c{(c)}\\) term that has been canceled out in the denominator on the left-hand side.
 
 And that's pretty much all you'll ever need to know about logarithms.<sup><a href=#foot3 id=head3 class="colored-post-link">3</a></sup>  While thinking about them as asking how long exponentially growing processes will take to do something isn't always helpful – sometimes you do just need to manipulate symbols – it should always be enough to rediscover these fundamental logarithm rules, and remind and convince yourself of why they're true. For me, that's a great win!
 
 
+<h1>Acknowledgments</h1>
+Thanks to Dr. Steven Strogatz for reading over a first draft of this post. Also, thanks to Grant Sanderson for some feedback on brevity, and encouraging me to include at least one image!
+
 <h1>Footnotes</h1>
 
 <span id=foot1>**1.**</span>
-This analogy obviously has some issues because blocks are discrete and exponential growth is not. However, instead of thinking of whole blocks being dropped one after another, you can think of them as being built up, bit by bit, which is more conducive to continuity. Really though, it doesn't matter, because we're not trying to be rigorous here, but rather, give ourselves a tool to visualize with.
+This analogy obviously has some issues because blocks are discrete and exponential growth is not. However, instead of thinking of whole blocks being dropped one after another, you can think of them as being built up, bit by bit, which is more conducive to continuity. Really though, it doesn't matter, because we're not trying to be rigorous here, but rather give ourselves a tool to visualize with.
 <a href=#head1 class=colored-post-link>↩</a>
 
 <span id=foot2>**2.**</span>
