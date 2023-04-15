@@ -7,7 +7,7 @@ IMG=https://mehta-rohan.com/images/logarithms/log-clock.jpg
 
 I've always had a problem with logarithms. Not that I don't like them – in fact, I love them! There are so many ways to turn a logarithm on its head, to twist it inside out or upside down, that doing algebra with them can't help but be fun. But as much as I enjoy applying logarithm rules, I hate remembering them. 
 
-So imagine my surprise when I stumbled upon a way of thinking about logarithms that is so compelling and intuitive, it makes these rules completely obvious! Instead of having to stuff complicated algebraic expressions in my brain, it allows me to rediscover these expressions on the spot with only a little common sense. I'm sure it's not completely original, but since I've never seen it described before, I think it's worth going over here. So let's get into it!
+So imagine my surprise when I stumbled upon a way of thinking about logarithms that is so compelling and intuitive, it makes these rules completely obvious! Instead of having to stuff complicated algebraic expressions in your brain, it allows you to rediscover these expressions on the spot with only a little common sense. I'm sure it's not completely original, but since I've never seen it described before, I think it's worth going over here. So let's get into it!
 
 We'll begin with the first logarithm rule you learn, namely that adding two logarithms with the same base multiplies their arguments: 
 

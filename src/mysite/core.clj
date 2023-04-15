@@ -171,7 +171,9 @@
 (def app
   (-> (get-content-pages!)
      (get-all-pages! false)
-      (stasis/serve-pages)
+     (stasis/serve-pages)
+
+     
       (optimus/wrap
        get-assets!
        optimizations/all
