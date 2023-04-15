@@ -3,7 +3,7 @@ DATE=4/14/2023
 PREVIEW=Tired of remembering your logarithm rules? I've got just the solution – a mathematical timepiece!
 TAGS=Logarithms, Mathematics
 DRAFT=false
-IMG=https://mehta-rohan.com/images/logarithms/log-clock.png
+IMG=https://mehta-rohan.com/images/logarithms/log-clock.jpg
 
 I've always had a problem with logarithms. Not that I don't like them – in fact, I love them! There are so many ways to turn a logarithm on its head, to twist it inside out or upside down, that doing algebra with them can't help but be fun. But as much as I enjoy applying logarithm rules, I hate remembering them. 
 
