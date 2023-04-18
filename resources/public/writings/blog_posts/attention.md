@@ -5,6 +5,7 @@ TAGS=Deep Learning, NLP
 DRAFT=false
 IMG=https://mehta-rohan.com/images/attention/self_attention_1.png
 
+
 The transformer – a neural net architecture proposed in 
 <a class="colored-post-link" href="https://arxiv.org/abs/1706.03762">
 Vaswani et al., 2017</a> – has taken the NLP world by storm in the past
@@ -341,7 +342,7 @@ different dot products means different
 attention coefficients!
 
  <!--style="text-align:center;"!-->
-<div>
+<div style="text-align:center;">
 <img src=../../images/attention/it-ball-3.svg class=get-bigger style="width:75%;"></img>
 <figcaption>Fig. 9. An overlay of the embedding spaces \(\boldsymbol{E_q}\) and \(\boldsymbol{E_k}.\)</figcaption>
 </div>

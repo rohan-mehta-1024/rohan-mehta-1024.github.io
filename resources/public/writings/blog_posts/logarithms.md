@@ -68,7 +68,7 @@ $$\log_{(a^n)}{(b^n)} = \log_a{b}$$
 For instance, imagine we had the logarithm \\(\log_{(2^3)}{(5)}\\). This just asks how long a process that doubles itself three times for every whole unit of time takes to quintuple. Since this process doubles three times faster than a normal doubling process, it will always take a third of the time a normal doubling process does to do anything. More generally:
 
 
-$$\log_{a^n}{(b)} = \frac{1}{b} \cdot \log_a{(b)}$$
+$$\log_{a^n}{(b)} = \frac{1}{n} \cdot \log_a{(b)}$$
 
 Combining this fact with the rule that allows us to move exponents outside of a logarithm, it's trivial to see that the exponents in \\(\log_{(a^n)}{(b^n)}\\) will cancel out, leaving just \\(\log_a{(b)}\\) behind.
 

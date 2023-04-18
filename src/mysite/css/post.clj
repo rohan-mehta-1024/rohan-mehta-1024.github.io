@@ -131,5 +131,6 @@
     media-query-2
     media-query-3
     updates-styles
+    ;;[:figcaption {:font-size (px 11) :line-height "normal"}]
     ))
 
