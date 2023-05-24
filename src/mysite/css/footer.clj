@@ -20,6 +20,8 @@
 (def footer-part-1 
   [:#footer-part-1
    {:margin-left (px 25)
+    :display "flex"
+    :flex-direction "row"
     :margin-bottom (px 15)
     :margin-top (px 50)}
 
@@ -44,8 +46,15 @@
 
 (def media-query-1
   (at-media {:max-width (px 500)}
-            [[:#footer-part-1 {:margin-left (px 10)}
-              [(s/+ s/a s/a) {:margin-left "20%"}]]]
+            [[:#footer-part-1 {:justify-content "space-between"
+                               :margin-left "auto"
+                               :padding-left "10px"
+                               :padding-right "10px"
+                               }
+                                        ;[(s/+ s/a s/a) {:margin-left "20%"}]
+              [(:#footer-part-1 (s/nth-child :1)) {:margin-left "100px"}]
+
+              ]]
              [:#footer-part-2 {:margin-left (px 10) :font-size (px 13)}]
              [:.icons {:width (px 20)}]))
 

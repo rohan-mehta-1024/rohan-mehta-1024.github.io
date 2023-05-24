@@ -39,6 +39,7 @@
              ;[:#contact-blurb {:margin-right "8%"}]
              ]))
 
+
 (defstylesheet css
   {:output-to "resources/public/css/about.css"}
   (list

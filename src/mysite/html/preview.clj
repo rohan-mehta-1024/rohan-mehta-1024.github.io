@@ -50,8 +50,9 @@
     (-> el second :date parse-date)
     (-> el last second :date parse-date)))
 
-(defn make-preview [[link {:keys [title date preview tags updates img]}] homepage?]
-  (let [class (if homepage? nil "not-homepage")]
+(defn make-preview [[link {:keys [title date preview tags updates img as_link]}] homepage?]
+  (let [class (if homepage? nil "not-homepage")
+        link (if (not= as_link nil) as_link link)]
     [:div {:class class :id "preview-container-2"}
      (if homepage?
        [:p {:class [class "preview-header"]} (format-header date link tags  false)]
@@ -80,7 +81,8 @@
          true                (string/split #"/")
          with-writings       is-writing?
          (not with-writings) (nth 1))
-      posts)))
+      posts
+)))
 
 (defn group-series [posts]
   (for [[type posts] posts
@@ -98,6 +100,7 @@
     (->> series
          (map #(make-preview % false))
          (into [:p {:class "series"} (str "Series: " name)]))))
+
 
 (defn make-all-previews [posts]
   (let [template  [:div {:id "previews-container"} "Posts" ]]

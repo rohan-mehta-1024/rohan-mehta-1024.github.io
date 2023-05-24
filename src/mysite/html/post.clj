@@ -12,7 +12,7 @@
 
 
 
-(defn format-post [[url {:keys [title date tags updates preview html img] :as post}]]
+(defn format-post [[url {:keys [title date tags updates preview html img as_link] :as post}]]
   (let [poem? (.contains tags "Poetry")]
     [url
      (assoc post :html
@@ -31,7 +31,6 @@
                ;(for [update (format-updates updates)] [:li {:class "updates"} update])
                ]
               [:div {:id "post-content" :class (if poem? nil "not-poem")} html]]
-             
              [:div {:class "commentbox" :style {:width "100%"}}]
              [:script {:src "https://unpkg.com/commentbox.io/dist/commentBox.min.js"}]
              [:script "commentBox('5711441948573696-proj')"]])]

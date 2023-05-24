@@ -1,11 +1,15 @@
 #previews-container {
   width: 85%;
-  height: 100%;
-  padding-top: 35px;
-  margin-left: auto;
-  margin-right: auto;
   font-family: WorkSansBold;
+  height: 100%;
+  margin: auto;
+  flex-direction: column;
+  margin-top: 55px;
+  align-content: flex-start;
   font-size: 30px;
+  padding-right: 10px;
+  display: flex;
+  padding-left: 10px;
 }
 
 .preview-header {
@@ -18,13 +22,15 @@
 }
 
 .preview-title {
-  font-size: 23px;
-  margin: 0 0 0 0;
-  margin-left: 10px;
-  color: #903;
   width: auto;
-  display: inline-block;
   font-family: WorkSans;
+  margin: 0 0 0 0;
+  margin-right: auto;
+  overflow: hidden;
+  margin-left: 10px;
+  font-size: 23px;
+  display: inline-block;
+  color: #903;
 }
 
 .preview-title:hover {
@@ -89,6 +95,10 @@
   .preview-img {
     width: 80px;
     height: 60px;
+  }
+  
+  .preview-title {
+    width: 75%;
   }
 
 }

@@ -14,7 +14,7 @@
    [:br]
    [:br]
 
-   "By day, I'm a senior at Moravian Academy.
+   "By day, I'm a freshman at Caltech.
     By night, I dabble in " (colored-text-link "research" "https://mlcollective.org/community/")
    " and " (colored-text-link "entrepreneurship"  "https://esolangconf.com")
    ", with a driving interest in " "computer science"
@@ -24,9 +24,10 @@
    [:br]
 
    "This site showcases " (colored-text-link "cool projects I've worked on" "/projects")
-   ", ideas in the mathematics and sciences "
-   (colored-text-link "I find beautiful and interesting" "/writings/blog_posts/index.html")
-   ", my thoughts, values, and opinions on science, technology,
+   ", " (colored-text-link "ideas in the mathematics and sciences"  "/writings/blog_posts/index.html")
+  " I find beautiful and interesting, "
+   (colored-text-link "my thoughts and opinions" "/writings/essays/index.html")
+" on science, technology,
     and life, and the occasional bit of "
    (colored-text-link "creative writing" "//index.html")  ".
     You can learn more about (and how to contact) me "
@@ -45,7 +46,8 @@
      posts)))
 
 (defn most-recent [posts]
-  (let [grouped (group-content posts false)]
+  (let [grouped (dissoc (group-content posts true) "writings/creative_writing")
+        s (print "fu" grouped)]
     (for [[_ posts] grouped]
       (-> posts
           date-sort

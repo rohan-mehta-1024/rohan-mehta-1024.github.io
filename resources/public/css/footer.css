@@ -14,6 +14,8 @@ footer::before {
 
 #footer-part-1 {
   margin-left: 25px;
+  display: flex;
+  flex-direction: row;
   margin-bottom: 15px;
   margin-top: 50px;
 }
@@ -50,12 +52,13 @@ footer::before {
   
   
   #footer-part-1 {
-    margin-left: 10px;
+    justify-content: space-between;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
-  #footer-part-1 a + a {
-    margin-left: 20%;
-  }
+  
   
   #footer-part-2 {
     margin-left: 10px;

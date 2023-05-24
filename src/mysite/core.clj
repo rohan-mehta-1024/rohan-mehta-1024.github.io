@@ -21,6 +21,7 @@
             [mysite.html.footer :as footer]
             [mysite.html.preview :as preview]
             [mysite.html.homepage :as homepage]
+            [mysite.html.readings :as readings]
             [clj-rss.core :as rss]
             [mysite.utils :refer [back-into-map parse-date]]))
 
@@ -104,19 +105,29 @@
    {:html  about/html
     :title "About Me"
     :css   ["/css/about.css"]
-    :js    []}})
+    :js    []}
+   })
 
+(defn generate-readings []
+  {"/readings/index.html"
+   {:html readings/html
+    :title "Readings"
+    :css ["/css/readings.css"]
+    :js []}
+   }
+  )
 
 (defn get-all-pages! [posts export?]
   (let [new-posts (back-into-map (map post/format-post posts))
+        linked-posts-removed (filter #(-> % val :as_link (= nil)) new-posts)
         about     (generate-about-page)
+        readings  (generate-readings)
         homepage  (generate-homepage posts)]
 
     (->> (select-keys posts (for [[k v] posts :when (= (v :draft) false)] k))
          (generate-preview-pages)
-
          (back-into-map)
-         (merge homepage about new-posts)
+         (merge homepage about readings  linked-posts-removed)
          (transform [MAP-VALS] #(fn [_] (apply-header-footer %))))))
 
 
@@ -172,13 +183,6 @@
   (-> (get-content-pages!)
      (get-all-pages! false)
      (stasis/serve-pages)
-
-
-
-
-     
-
-
       (optimus/wrap
        get-assets!
        optimizations/all

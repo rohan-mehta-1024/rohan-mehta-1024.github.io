@@ -1,0 +1,45 @@
+table {
+  border-collapse: collapse;
+  width: 80%;
+  font-family: WorkSans;
+  font-size: 12px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+caption {
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+th {
+  background-color: #903;
+  color: white;
+  text-align: center;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+td {
+  text-align: left;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.title-column {
+  width: 20%;
+}
+
+@media (max-width: 850px) {
+
+  .last {
+    display: none;
+  }
+
+}
